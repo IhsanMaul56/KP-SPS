@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,31 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    function index(){
+        return view("login");
+    }
+
+    function login(Request $request){
+        $request->validate([
+            'nip' => 'required',
+            'password' => 'required'
+        ],[
+            "nip.required" =>"NIP tidak boleh kosong",
+            "password.required" =>"Password tidak boleh kosong",
+        ]);
+
+        $infologin = [
+            'nip' => $request->nip,
+            'password'=> $request->password
+        ];
+
+        if (Auth::attempt($infologin)) {
+            echo "sukses";
+            exit();
+        }else{
+            return redirect('')->withErrors('Username dan Password yang dimasukan salah')->withInput();
+        }
     }
 }
