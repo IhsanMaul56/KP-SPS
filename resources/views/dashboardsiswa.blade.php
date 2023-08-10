@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Siswa</h1>
+    <a href="/logout">Logout</a>
 </body>
 </html>

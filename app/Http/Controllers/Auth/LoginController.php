@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;    
 
 class LoginController extends Controller
 {
@@ -41,28 +41,44 @@ class LoginController extends Controller
     }
 
     function index(){
-        return view("login");
+        return view("auth.login");
     }
 
-    function login(Request $request){
-        $request->validate([
-            'nip' => 'required',
+    public function login(Request $request){
+        $infologin = $request->validate([
+            'email' => 'required',
             'password' => 'required'
         ],[
-            "nip.required" =>"NIP tidak boleh kosong",
-            "password.required" =>"Password tidak boleh kosong",
-        ]);
+            'email.required' => 'Email tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
+        ]
+    );
 
         $infologin = [
-            'nip' => $request->nip,
-            'password'=> $request->password
+            'email' => $request->email,
+            'password' => $request->password
         ];
 
+        
         if (Auth::attempt($infologin)) {
-            echo "sukses";
-            exit();
-        }else{
-            return redirect('')->withErrors('Username dan Password yang dimasukan salah')->withInput();
+            $request->session()->regenerate();
+            if(Auth::user()->role == 'admin'){
+                return redirect('/dashboard');
+            }elseif(Auth::user()->role == 'kurikulum'){
+                return redirect('/dashboard/kurikulum');
+            }elseif(Auth::user()->role == 'guru'){
+                return redirect('/dashboard/guru');
+            }elseif(Auth::user()->role == 'siswa'){
+                return redirect('/dashboard/siswa');
+            }
+        } else {
+            return redirect()->back()->withErrors('Username dan Password yang dimasukkan salah')->withInput();
         }
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('');
+    }
+
 }
