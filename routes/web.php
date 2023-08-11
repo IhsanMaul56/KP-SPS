@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,12 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
-Route::post('/', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::get('/auth/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/auth/login', [LoginController::class, 'login']);
+
+Route::get('/home', [HomeController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

@@ -44,25 +44,26 @@ class LoginController extends Controller
         return view("login");
     }
 
-    function login(Request $request){
-        $request->validate([
-            'nip' => 'required',
-            'password' => 'required'
-        ],[
-            "nip.required" =>"NIP tidak boleh kosong",
-            "password.required" =>"Password tidak boleh kosong",
+    public function login(Request $request)
+    {
+        $infologin = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        // ],[
+        //     "username.required" =>"Wajib diisi",
+        //     "password.required" =>"Wajib diisi",
         ]);
 
-        $infologin = [
-            'nip' => $request->nip,
-            'password'=> $request->password
-        ];
+        // $infologin = [
+        //     'username' => $request->username,
+        //     'password'=> $request->password,
+        // ];
 
-        if (Auth::attempt($infologin)) {
-            echo "sukses";
-            exit();
-        }else{
-            return redirect('')->withErrors('Username dan Password yang dimasukan salah')->withInput();
+        if (Auth::attempt($infologin))
+        {
+            $request->session()->regenerate();
+            return redirect()->intended('/home');
         }
+            return back()->with('loginError', 'Login Gagal!');
     }
 }
