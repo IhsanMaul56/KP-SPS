@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;    
 
 class LoginController extends Controller
 {
@@ -41,29 +41,46 @@ class LoginController extends Controller
     }
 
     function index(){
-        return view("login");
+        return view("auth.login");
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $infologin = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        // ],[
-        //     "username.required" =>"Wajib diisi",
-        //     "password.required" =>"Wajib diisi",
-        ]);
+            'email' => 'required',
+            'password' => 'required'
+        ],[
+            'email.required' => 'Email tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
+        ]
+    );
 
-        // $infologin = [
-        //     'username' => $request->username,
-        //     'password'=> $request->password,
-        // ];
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-        if (Auth::attempt($infologin))
-        {
+        
+        if (Auth::attempt($infologin)) {
             $request->session()->regenerate();
-            return redirect()->intended('/home');
+            if(Auth::user()->role == 'admin'){
+                return redirect('/dashboard');
+            }elseif(Auth::user()->role == 'kurikulum'){
+                return redirect('/dashboard/kurikulum');
+            }elseif(Auth::user()->role == 'guru'){
+                return redirect('/dashboard/guru');
+            }elseif(Auth::user()->role == 'siswa'){
+                return redirect('/dashboard/siswa');
+            }
+        } else {
+            return redirect()->back()->withErrors('Username dan Password yang dimasukkan salah')->withInput();
+
         }
             return back()->with('loginError', 'Login Gagal!');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('');
+    }
+
 }

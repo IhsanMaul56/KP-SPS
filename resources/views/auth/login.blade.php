@@ -25,26 +25,24 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="username" class="form-label">{{ __('Masukkan Username or Email Address') }}</label>
+                            <label for="email" class="col-md-3 col-form-label text-md-end">{{ __('Emial Address') }}</label>
 
-                            <div class="col-md-11">
-                                <input id="username" type="username" placeholder="Username or Email Address" class="form-control @error('username') is-invalid
-                                @enderror" name="username" value="{{ old('username') }}" autofocus required>
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
 
-                                @error('username')
-                                    <div class="invalid-feedback" role="alert">
-                                        {{ $message }}
-                                    </div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="form-label">{{ __('Masukkan Password') }}</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                            <div class="col-md-11">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid
-                                @enderror" name="password" placeholder="Password" required>
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

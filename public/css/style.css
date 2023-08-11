@@ -1,0 +1,13 @@
+body{
+    background: #eeee;
+}
+
+/* css untuk sidebar */
+#side_nav{
+    background: #0000;
+}
+
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
