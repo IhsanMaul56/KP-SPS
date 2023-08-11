@@ -73,7 +73,9 @@ class LoginController extends Controller
             }
         } else {
             return redirect()->back()->withErrors('Username dan Password yang dimasukkan salah')->withInput();
+
         }
+            return back()->with('loginError', 'Login Gagal!');
     }
 
     public function logout(){
