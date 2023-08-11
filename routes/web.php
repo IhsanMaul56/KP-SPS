@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'login']);
@@ -29,8 +30,8 @@ Route::get('/home', function(){
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/dashboard/kurikulum', [DashboardController::class, 'kurikulum']);
-    Route::get('/dashboard/guru', [DashboardController::class, 'guru']);
-    Route::get('/dashboard/siswa', [DashboardController::class, 'siswa']);
+    Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
+    Route::get('/dashboard/guru', [DashboardController::class, 'index']);
+    Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
     Route::get('/logout', [LoginController::class, 'logout']);
 });
