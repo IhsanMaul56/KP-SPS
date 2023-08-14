@@ -31,11 +31,15 @@ Route::get('/home', function(){
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
-    Route::get('/dashboard/guru', [DashboardController::class, 'index']);
+    Route::get('/dashboard/guru', [DataGuruController::class, 'index']);
     Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
+
 Route::get('/dashboard/siswa', function(){
     return view('siswa');
+
+Route::get('/dashboard/guru', function(){
+    return view('/data_guru');
 });
