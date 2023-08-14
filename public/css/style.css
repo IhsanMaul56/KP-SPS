@@ -26,6 +26,11 @@ font-size : 36px;
     margin-left: -15px;
 }
 
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
+
 .custom-div3 {
     width: 30%; 
     height: 100vh; /* Memanjang sampai bawah layar */
