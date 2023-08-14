@@ -18,12 +18,11 @@
             <img src="{{URL::asset('/img/saly10@2x.png')}}" alt="logo smk" height="280" width="280">
         </div>
     </div>
-
-    <div class="row">
+    <div class="row justify-content-end">
         <div class="col-md-4">
             <div class="card" style="position: absolute; z-index: 2; margin-top: 20;">
                 <div class="card-body">
-                    <form method="post" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         
                         <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="85" width="85"><br>
@@ -32,14 +31,14 @@
                         <span class="h2"><strong>LOGIN</strong></span>
                         <div class="row mb-3">
                             <label for="email">{{ __('Masukkan Username atau Email Address') }}</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Username or Email Address">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             <label for="password">{{ __('Masukkan Password') }}</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,8 +56,9 @@
                                 </div>
                             </div>
                         </div> --}}
+            
                         <div class="row mb-0">
-                            <div class="col-md-7 offset-md-9">
+                            <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
