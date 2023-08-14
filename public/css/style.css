@@ -1,13 +1,33 @@
-body{
-    background: #eeee;
+/* .body {
+font-family : Poppins;
+font-color : #16498c;
+font-size : 36px;
+
+} */
+
+.custom-div {
+    width: 17%; /* 1/4 dari ukuran */
+    height: 100vh; /* Memanjang sampai bawah layar */
+    background-color: #16498c;
+    float: left; /* Float untuk mengatur posisi */
+    margin-left: -15px;
 }
 
-/* css untuk sidebar */
-#side_nav{
-    background: #0000;
+.content-kiri {
+    margin-left: 25%; /* Margin untuk menjaga konten di sebelah kanan div */
+    padding: 20px;
 }
 
-.content{
-    min-height: 100vh;
-    width: 100%;
+.custom-div2 {
+    width: 170%; /* 1/4 dari ukuran */
+    height: 100vh; /* Memanjang sampai bawah layar */
+    background-color: #16498c;
+    opacity: 15%;
+    margin-left: -15px;
+}
+
+.custom-div3 {
+    width: 30%; 
+    height: 100vh; /* Memanjang sampai bawah layar */
+    float: right; /* Float untuk mengatur posisi */
 }
