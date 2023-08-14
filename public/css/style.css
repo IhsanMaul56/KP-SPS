@@ -1,10 +1,3 @@
-/* .body {
-font-family : Poppins;
-font-color : #16498c;
-font-size : 36px;
-
-} */
-
 .custom-div {
     width: 17%; /* 1/4 dari ukuran */
     height: 100vh; /* Memanjang sampai bawah layar */
@@ -16,6 +9,11 @@ font-size : 36px;
 .content-kiri {
     margin-left: 25%; /* Margin untuk menjaga konten di sebelah kanan div */
     padding: 20px;
+}
+
+.content{
+    min-height: 100vh;
+    width: 100%;
 }
 
 .custom-div2 {

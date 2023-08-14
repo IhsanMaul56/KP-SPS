@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DataGuruController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,13 +33,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
     Route::get('/dashboard/guru', [DataGuruController::class, 'index']);
-    Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
+    Route::get('/dashboard/siswa', [SiswaController::class, 'index']);
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
-
 Route::get('/dashboard/siswa', function(){
     return view('siswa');
+});
 
 Route::get('/dashboard/guru', function(){
     return view('/data_guru');
