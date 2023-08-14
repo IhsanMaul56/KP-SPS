@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
     Route::get('/dashboard/guru', [DataGuruController::class, 'index']);
-    Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
+    Route::get('/dashboard/siswa', [SiswaController::class, 'index']);
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
