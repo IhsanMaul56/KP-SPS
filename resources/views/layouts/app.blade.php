@@ -16,12 +16,6 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    {{-- Loads Roboto --}}
-    @googlefonts
-
-    {{-- Loads IBM Plex Mono --}}
-    @googlefonts('code')
-
     @livewireStyles
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
