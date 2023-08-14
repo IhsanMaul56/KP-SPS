@@ -23,6 +23,7 @@
     @googlefonts('code')
 
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    
     @livewireStyles
 </head>
 <body style="font-family: 'Poppins', sans-serif;">

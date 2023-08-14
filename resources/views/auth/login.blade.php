@@ -18,8 +18,7 @@
             <img src="{{URL::asset('/img/saly10@2x.png')}}" alt="logo smk" height="280" width="280">
         </div>
     </div>
-
-    <div class="row">
+    <div class="row justify-content-end">
         <div class="col-md-4">
             <div class="card" style="position: absolute; z-index: 2; margin-top: 20;">
                 <div class="card-body">
