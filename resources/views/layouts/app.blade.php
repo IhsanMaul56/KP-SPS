@@ -16,6 +16,8 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    
     @livewireStyles
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
