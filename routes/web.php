@@ -36,11 +36,3 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
     Route::get('/logout', [LoginController::class, 'logout']);
 });
-
-// Route::get('/dashboard/siswa', function(){
-//     return view('siswa');
-// });
-
-// Route::get('/dashboard/guru', function(){
-//     return view('/data_guru');
-// });
