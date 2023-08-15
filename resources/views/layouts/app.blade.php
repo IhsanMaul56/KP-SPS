@@ -16,12 +16,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    {{-- Loads Roboto --}}
-    @googlefonts
 
-    {{-- Loads IBM Plex Mono --}}
-    @googlefonts('code')
-    
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/siswa.css') }}" rel="stylesheet">
     
