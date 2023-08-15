@@ -1,7 +1,22 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section()
-    <div class="main-continer d-flex">
+@section('content')
+    <div class="container-fluid">
+        @include('partials.sidebar')
+            <div class="col-md-4">
+                <div class="custom-div2">
+                    <h1>{{ Auth::user()->name }}</h1>
+                </div>
+            </div>
+
+            <div class="custom-div3">
+                <div class="">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="main-continer d-flex">
         <nav class="sidebar" id="side_nav">
             <div class="header-box">
                 <h1 class="fs-4">
@@ -10,8 +25,7 @@
             </div>
         </nav>
         <div class="content">
-            <h1>{{ Auth::user()->name }}</h1>
-            <a href="/logout">logout</a>
+            
         </div>
-    </div>  
+    </div>   --}}
 @endsection
