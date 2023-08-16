@@ -4,28 +4,22 @@
     <div class="container-fluid">
         @include('partials.sidebar')
             <div class="col-md-4">
-                <div class="custom-div2">
-                    <h1>{{ Auth::user()->name }}</h1>
+                <div class="grid-tengah">
+                    <h1 class="font">Beranda</h1>
+                </div>
+                <div class="card" style="position: absolute; z-index: 2;  width: 696px; height: 449px; bottom: 191px; top: 100px">
+                    <div class="card-body">
+                        <div class="row" style="position: right">
+                            <span>Semester Ganjil</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="custom-div3">
+            <<div class="grid-kanan">
                 <div class="">
                     
                 </div>
             </div>
-        </div>
     </div>
-    {{-- <div class="main-continer d-flex">
-        <nav class="sidebar" id="side_nav">
-            <div class="header-box">
-                <h1 class="fs-4">
-                    <span class="text-white">Selamat datang</span>
-                </h1>
-            </div>
-        </nav>
-        <div class="content">
-            
-        </div>
-    </div>   --}}
 @endsection
