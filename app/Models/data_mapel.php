@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class data_jurusan extends Model
+class data_mapel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama_jurusan',
+        'nama_mapel',
         'nip',
-        'nama_kepala_jurusan'
+        'nama_guru'
     ];
 }
