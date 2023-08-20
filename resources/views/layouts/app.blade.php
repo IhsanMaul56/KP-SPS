@@ -16,7 +16,10 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/siswa.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/sidebar.css') }}" rel="stylesheet">
     
     @livewireStyles
 </head>

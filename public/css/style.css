@@ -8,7 +8,6 @@ body{
     float: left; /* Float untuk mengatur posisi */
     margin-left: -15px;
 }
-
 .content-kiri {
     margin-left: 25%; /* Margin untuk menjaga konten di sebelah kanan div */
     padding: 20px;
