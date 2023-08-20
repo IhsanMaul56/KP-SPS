@@ -36,3 +36,4 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
     Route::get('/logout', [LoginController::class, 'logout']);
 });
+

@@ -1,15 +1,15 @@
 <div class="row">
-    <div class="custom-div">
+    <div class="grid-kiri">
         <center>
-            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="120" width="120">
-            <br><h3 class="text-white">SMK SANGKURIANG <br> 1 CIMAHI</h3>
+            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="90" width="90">
+            <br><h5 class="text-white"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h5>
         </center>
         <div class="col">
             <center>
-            <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
-            <span class="btn btn-primary">Beranda</span><br>
-            <span class="btn btn-primary">Beranda</span><br>
-            <a href="/logout"><span class="btn btn-danger">Logout</span></a>
+                <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
+                <span class="btn btn-primary">Akun</span><br>
+                <span class="btn btn-primary">Nilai</span><br>
+                <a href="/logout"><span class="btn btn-danger">Keluar</span></a>
             </center>
         </div>
     </div>
