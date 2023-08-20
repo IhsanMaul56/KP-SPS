@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid p-5" style="background-color:#16498c; height: 475px;">
     <div class="row">
-        <div class="col-md-4 jarak-kiri">
+        <div class="col-md-4 jarak-kiri mt-4">
                 <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mb-3" alt="logo smk" height="120" width="120" style="margin-top: -55px;">
                 <h1 class="text-white fw-bold">SMK SANGKURIANG</h1>
                 <h1 class="text-white mt-1 fw-bold">1 CIMAHI</h1>
