@@ -1,0 +1,36 @@
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.grid-kiri {
+    width: 17%; /* 1/4 dari ukuran */
+    height: 100vh; /* Memanjang sampai bawah layar */
+    background-color: #16498c;
+    float: left; /* Float untuk mengatur posisi */
+    margin-left: -15px;
+}
+
+.grid-tengah {
+    width: 170%; /* 1/4 dari ukuran */
+    height: 100vh; /* Memanjang sampai bawah layar */
+    background-color: #cd0caa;
+    /* opacity: 15%; */
+    margin-left: -15px;
+}
+
+.grid-kanan {
+    width: 30%; 
+    height: 100vh; /* Memanjang sampai bawah layar */
+    float: right; /* Float untuk mengatur posisi */
+}
+
+.font {
+    position: absolute;
+    font-family: 'arial';
+    top: 30px;
+    left: 249px;
+    /* font-size: var(--font-size-13xl);
+    font-weight: 600; */
+    color: #16498c;
+}

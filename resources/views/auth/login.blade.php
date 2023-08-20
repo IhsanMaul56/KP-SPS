@@ -55,6 +55,14 @@
                                 </div>
                             </div>
                         </div> --}}
+                        </div>
+                        </div>
+            
+                        <div class="row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
             
                         <div class="row mb-5 justify-content-end">
                             <div class="col-md-8 mb-4 d-flex justify-content-end">
