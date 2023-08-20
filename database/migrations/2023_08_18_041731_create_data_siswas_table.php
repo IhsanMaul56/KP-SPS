@@ -11,26 +11,33 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_guru', function (Blueprint $table) {
-            $table->id('nip');
-            $table->string('password');
-            $table->enum('role',['guru','kurikulum']);
-            $table->string('nama_guru');
+        Schema::create('data_siswas', function (Blueprint $table) {
+            $table->id('nis');
+            $table->string('nama_siswa');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin',['Pria','Wanita']);
             $table->string('agama');
-            $table->string('no_hp');
             $table->string('provinsi');
             $table->string('kota');
             $table->string('desa');
             $table->string('rt');
             $table->string('rw');
             $table->string('alamat');
-            $table->binary('foto_guru');
-            $table->string('email');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->string('no_hp');
+            $table->string('nik_ayah');
+            $table->string('nama_ayah');
+            $table->string('pekerjaan_ayah');
+            $table->string('nik_ibu');
+            $table->string('nama_ibu');
+            $table->string('pekerjaan_ibu');
+            $table->string('provinsi_ortu');
+            $table->string('kota_ortu');
+            $table->string('desa_ortu');
+            $table->string('rt_ortu');
+            $table->string('rw_ortu');
+            $table->string('alamat_ortu');
+            $table->binary('foto_siswa');
             $table->timestamps();
         });
     }
@@ -40,6 +47,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_guru');
+        Schema::dropIfExists('data_siswas');
     }
 };

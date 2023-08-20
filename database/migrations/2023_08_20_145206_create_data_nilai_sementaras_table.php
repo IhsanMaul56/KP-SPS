@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_nilai_sementara', function (Blueprint $table) {
+        Schema::create('data_nilai_sementaras', function (Blueprint $table) {
             $table->id('kode_nilai');
             $table->string('nis')->unique();
             $table->string('nama_siswa');
             $table->string('jurusan');
             $table->string('kelas');
+            $table->string('tahun_ajar');
             $table->string('kode_mapel')->unique();
             $table->string('nama_mapel');
             $table->string('nip_pengampu')->unique();
@@ -33,6 +34,7 @@ return new class extends Migration
             $table->string('kb_keterampilan');
             $table->string('nilai_keterampilan');
             $table->longText('desc_keterampilan');
+            $table->timestamps();
         });
     }
 
@@ -41,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_nilai_sementara');
+        Schema::dropIfExists('data_nilai_sementaras');
     }
 };
