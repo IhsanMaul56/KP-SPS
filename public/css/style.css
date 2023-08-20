@@ -7,3 +7,50 @@
     min-height: 100vh;
     width: 100%;
 }
+
+.custom-div2 {
+    width: 171%; /* 1/4 dari ukuran */
+    height: 100vh; /* Memanjang sampai bawah layar */
+    background-color: #16498c26;
+    margin-left: -15px;
+}
+
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.custom-div3 {
+    margin-left: auto;
+    width: 29%; 
+    height: 100vh; /* Memanjang sampai bawah layar */
+    float: right;
+}
+
+.text-biru {
+    color: #16498c;
+}
+
+.text-kanan {
+    text-align: end;
+}
+
+.btn-navy {
+    background-color: #16498c;
+}
+
+.card-login{
+    position: absolute;
+    z-index: 2;
+    margin-right: 57px; 
+    width: 455px; 
+    height: 586px; 
+    left: 1350px; 
+    bottom: 191px;
+}
+.jarak-kiri{
+    margin-left: 15px;
+}
+.jarak-atas{
+    margin-top: 19px;
+}
