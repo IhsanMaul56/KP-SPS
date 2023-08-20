@@ -11,7 +11,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -20,6 +20,10 @@
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/siswa.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/sidebar.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('/css/siswa.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/sidebar.css') }}" rel="stylesheet">
+
     
     @livewireStyles
 </head>
