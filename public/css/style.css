@@ -99,6 +99,7 @@ body{
     top: 98px;
     background-color: white;
     border-radius: 10px 10px 10px 10px;
+}
 
 .content{
     min-height: 100vh;
