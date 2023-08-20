@@ -67,17 +67,17 @@
 
 .card-tengah {
     display: flex;
-    position: absolute;
+    /* position: absolute; */
     z-index: 2;
     width: 696px;
     height: 449px;
-    /* top: 98px; */
+    top: 98px;
     background-color: white;
     border-radius: 10px 10px 10px 10px;
-    margin: auto;
-    top: 50%;
+    /* margin: auto; */
+    /* top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 .card-kanan {
