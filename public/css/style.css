@@ -1,3 +1,6 @@
+body{
+    font-family: 'Poppins';
+}
 .custom-div {
     width: 17%; /* 1/4 dari ukuran */
     height: 100vh; /* Memanjang sampai bawah layar */
