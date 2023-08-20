@@ -6,10 +6,10 @@
         </center>
         <div class="col">
             <center>
-            <span class="btn btn-primary">Beranda</span><br>
-            <span class="btn btn-primary">Akun</span><br>
-            <span class="btn btn-primary">Nilai</span><br>
-            <a href="/logout"><span class="btn btn-danger">Logout</span></a>
+                <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
+                <span class="btn btn-primary">Akun</span><br>
+                <span class="btn btn-primary">Nilai</span><br>
+                <a href="/logout"><span class="btn btn-danger">Keluar</span></a>
             </center>
             @if (Auth::user()->role == 'admin')
                 <div>
