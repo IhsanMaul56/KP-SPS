@@ -158,7 +158,7 @@ body{
 }
 
 .footer-fix {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -170,14 +170,14 @@ body{
     background-color: #D80001;
     color: #ffffff;
     cursor: pointer;
-    margin-left: 30px;
+    margin-left: 20px;
     margin-right: 30px;
     margin-bottom: 50px;
     padding: 5px;
     border-radius: 100px 100px 100px 100px;
     font-size: 20px;
     padding: 0px;
-    width: 159px;
+    width: 169px;
     position: absolute;
     bottom: 0;
 }
@@ -185,16 +185,27 @@ body{
 .sidebar{
     color: #ffffff;
     cursor: pointer;
-    margin-left: 30px;
-    /* padding: 5px; */
+    margin-left: 20px;
     border-radius: 100px 0px 0px 100px;
     font-size: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 199px;
+    margin-top: 10px;
+    text-align: start;
+    padding-left: 15px;
 }
 
 .sidebar.active{
     background-color: #ffffff;
     color: #16498c;
     cursor: pointer;
+    margin-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 199px;
+    margin-left: 20px;
+    padding-left: 15px;
 
 }
 .utama{
@@ -207,7 +218,6 @@ body{
 .active-page {
     display: block;
     margin-left: 30px;
-    /* padding: 5px; */
     border-radius: 100px 0px 0px 100px;
     font-size: 20px;
 }
