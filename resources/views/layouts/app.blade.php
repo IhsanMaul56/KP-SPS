@@ -16,23 +16,16 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('/css/siswa.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/sidebar.css') }}" rel="stylesheet">
-
-    
     @livewireStyles
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
     <main class="py-0">
         @yield('content')
     </main>
-
-    {{-- <footer class="bg-light text-center text-lg-start">
-        copyright
-        &copy; Copyright : 
-    </footer> --}}
+    
+    @include('partials.footer')
+    <script src="{{ asset('js/custom.js') }}"></script>
+    @livewireScripts
 </body>
 </html>

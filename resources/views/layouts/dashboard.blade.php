@@ -7,7 +7,7 @@
                 <div class="grid-tengah">
                     <div class="row p-4">
                         <div class="col-md-8">
-                            <span class="h1 p-4"><strong style="color: #16498c">Beranda</strong></span>
+                            <span class="h1 p-4 text-biru fw-bold">Beranda</span>
                         </div>
                         <div class="col-md-4 ">
                             <span class="h5 text-right">Selamat Datang,</span><br>
@@ -85,26 +85,8 @@
                             </div>
                         </div>
                     </div>
+                    @include('partials.footer')
                 </div>
         </div>
     @endsection
-
-                    <h1 class="font">Beranda</h1>
-                </div>
-                <div class="card" style="position: absolute; z-index: 2;  width: 696px; height: 449px; bottom: 191px; top: 100px">
-                    <div class="card-body">
-                        <div class="row" style="position: right">
-                            <span>Semester Ganjil</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <<div class="grid-kanan">
-                <div class="">
-                    
-                </div>
-            </div>
-    </div>
-@endsection
 

@@ -37,3 +37,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
+Route::get('/dashboard/data_guru', function(){
+    return view('/data_guru');
+});
+
