@@ -1,10 +1,10 @@
-<div class="row">
-    <div class="grid-kiri text-center">
-        {{-- <center> --}}
-            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="125" width="125">
-            <br><h4 class="text-white"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h4>
-        {{-- </center> --}}
-        <div class="col text-center mt-5">
+<div class="row m-0">
+    <div class="grid-kiri p-0">
+        <center>
+            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="90" width="90" style="margin-top: 30px; margin-bottom: 20px;">
+            <br><h5 class="text-white" style="margin-bottom: 50px;"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h5>
+        </center>
+        <div class="col">
             @if (Auth::user()->role == 'admin')
                 <div>
                     <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id="menu">
