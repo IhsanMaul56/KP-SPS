@@ -1,7 +1,12 @@
 <div class="row">
     <div class="col text-end fs-2">
-        <span class="fs-5 fw-bold">{{ Auth::user()->id }}</span>
         <i class="bi bi-person-circle"></i>
+        <span class="fs-5 fw-bold" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>
+        <ul class="dropdown-menu dropdown-menu-end">
+            {{-- <li><span class="dropdown-item" type="button" id="btnPage6">Profil</span></li> --}}
+            <li><a class="dropdown-item" href="#" id="btnPage6">Profil</a></li>
+            <li><a class="dropdown-item" href="/logout">Keluar</a></li>
+        </ul>
     </div>
 </div>
 <div class="row p-0 m-0">

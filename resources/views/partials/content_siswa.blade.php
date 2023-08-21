@@ -1,4 +1,4 @@
-{{-- beranda --}}
+{{-- Page 1 --}}
 <div class="col p-0 page active-page" id="page1">
     <div class="grid-tengah">
         <div class="row">
@@ -25,12 +25,11 @@
                     </div>
                 </div>
             </div>
-            @include('partials.footer')
         </div>
     </div>
 </div>
 
-{{-- Akun --}}
+{{-- Page 2 --}}
 <div class="col p-0 page" id="page2">
     <div class="grid-tengah">
         <div class="row">
@@ -57,12 +56,11 @@
                     </div>
                 </div>
             </div>
-            @include('partials.footer')
         </div>
     </div>
 </div>
 
-{{-- Nilai --}}
+{{-- Page 3 --}}
 <div class="col p-0 page" id="page3">
     <div class="grid-tengah">
         <div class="row">
@@ -89,7 +87,6 @@
                     </div>
                 </div>
             </div>
-            @include('partials.footer')
         </div>
     </div>
 </div>

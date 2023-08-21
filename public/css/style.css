@@ -24,7 +24,6 @@ body{
     width: 219px; 
     height: 100vh; 
     background-color: #16498c;
-    float: left; 
 }
 
 .grid-tengah {
@@ -106,21 +105,11 @@ body{
     border-radius: 10px 10px 10px 10px;
 }
 
-.content{
-    min-height: 100vh;
-    width: 100%;
-}
-
 .custom-div2 {
     width: 171%; 
     height: 100vh;
     background-color: #16498c26;
     margin-left: -15px;
-}
-
-.content{
-    min-height: 100vh;
-    width: 100%;
 }
 
 .custom-div3 {
