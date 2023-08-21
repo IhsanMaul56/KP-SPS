@@ -2,10 +2,10 @@ body{
     font-family: 'Poppins';
 }
 .custom-div {
-    width: 17%; /* 1/4 dari ukuran */
-    height: 100vh; /* Memanjang sampai bawah layar */
+    width: 17%; 
+    height: 100vh; 
     background-color: #16498c;
-    float: left; /* Float untuk mengatur posisi */
+    float: left; 
     margin-left: -15px;
 }
 
@@ -15,21 +15,20 @@ body{
 }
 
 .content-kiri {
-    margin-left: 25%; /* Margin untuk menjaga konten di sebelah kanan div */
+    margin-left: 25%; 
     padding: 20px;
 }
 
 .grid-kiri {
-    width: 219px; /* 1/4 dari ukuran */
-    height: 100vh; /* Memanjang sampai bawah layar */
+    width: 219px; 
+    height: 100vh; 
     background-color: #16498c;
-    float: left; /* Float untuk mengatur posisi */
-    /* margin-left: -15px; */
+    float: left; 
 }
 
 .grid-tengah {
-    width: 150%; /* 1/4 dari ukuran */
-    height: 100vh; /* Memanjang sampai bawah layar */
+    width: 150%; 
+    height: 100vh; 
     background-color: #16498c26;
     padding-top: 30px;
     padding-left: 30px;
@@ -38,13 +37,9 @@ body{
 
 .grid-kanan {
     width: 50%;
-    height: 100vh; /* Memanjang sampai bawah layar */
+    height: 100vh;
     float: right;
     background-color: white;
-    /* padding: 30px; */
-    /* padding-right: 15%; */
-    /* padding-left: 10%; */
-    /* margin-right: -12px; */
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
@@ -117,8 +112,8 @@ body{
 }
 
 .custom-div2 {
-    width: 171%; /* 1/4 dari ukuran */
-    height: 100vh; /* Memanjang sampai bawah layar */
+    width: 171%; 
+    height: 100vh;
     background-color: #16498c26;
     margin-left: -15px;
 }
@@ -131,7 +126,7 @@ body{
 .custom-div3 {
     margin-left: auto;
     width: 29%; 
-    height: 100vh; /* Memanjang sampai bawah layar */
+    height: 100vh; 
     float: right;
 }
 
@@ -185,4 +180,14 @@ body{
     padding: 20px;
     border-radius: 100px 0px 0px 100px;
     cursor: pointer;
+}
+.utama{
+    background-color:#16498c;
+    height: 475px;
+}
+.page {
+    display: none;
+}
+.active-page {
+    display: block;
 }
