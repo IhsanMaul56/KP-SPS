@@ -1,6 +1,7 @@
 body{
     font-family: 'Poppins';
 }
+
 .custom-div {
     width: 17%; 
     height: 100vh; 
@@ -105,7 +106,6 @@ body{
     border-radius: 10px 10px 10px 10px;
 }
 
-
 .content{
     min-height: 100vh;
     width: 100%;
@@ -148,12 +148,15 @@ body{
     left: 1350px; 
     bottom: 191px;
 }
+
 .jarak-kiri{
     margin-left: 15px;
 }
+
 .jarak-atas{
     margin-top: 19px;
 }
+
 .footer-fix {
     position: fixed;
     bottom: 0;
@@ -162,24 +165,37 @@ body{
     padding: 20px;
     text-align: center;
 }
+
 .exit{
-    position: fixed;
+    background-color: #D80001;
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 50px;
+    padding: 5px;
+    border-radius: 100px 100px 100px 100px;
+    font-size: 20px;
+    padding: 0px;
+    width: 159px;
+    position: absolute;
     bottom: 0;
-    left: 0;
-    width: 14%;
-    padding: 20px;
-    text-align: center;
 }
+
 .sidebar{
     color: #ffffff;
     cursor: pointer;
+    margin-left: 30px;
+    /* padding: 5px; */
+    border-radius: 100px 0px 0px 100px;
+    font-size: 20px;
 }
+
 .sidebar.active{
     background-color: #ffffff;
     color: #16498c;
-    padding: 20px;
-    border-radius: 100px 0px 0px 100px;
     cursor: pointer;
+
 }
 .utama{
     background-color:#16498c;
@@ -190,4 +206,8 @@ body{
 }
 .active-page {
     display: block;
+    margin-left: 30px;
+    /* padding: 5px; */
+    border-radius: 100px 0px 0px 100px;
+    font-size: 20px;
 }
