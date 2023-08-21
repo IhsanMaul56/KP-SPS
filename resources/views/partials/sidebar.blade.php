@@ -77,7 +77,7 @@
                         </li>
                     </ul>
                 </div>
-            @if(Auth::user()->role == 'kurikulum')
+            @if(Auth::user()->role == 'admin')
                     <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
                     <span class="btn btn-primary">Admin</span><br>
                     <span class="btn btn-primary">Nilai</span><br>
