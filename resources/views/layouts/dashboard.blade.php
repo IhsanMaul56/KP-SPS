@@ -8,7 +8,7 @@
             <div class="grid-tengah">
                 <div class="row">
                     <div class="col">
-                        <span class="h1"><strong style="color: #16498c;">Beranda</strong></span>
+                        <span class="h1 text-biru fw-bold">Beranda</span>
                     </div>
                     <div class="col" style="text-align: right">
                         <span class="h5">Selamat Datang,</span><br>
@@ -37,11 +37,8 @@
         <div class="col p-0">
             <div class="grid-kanan">
                 <div class="row">
-                    <div class="col" style="text-align: right">
-                        <span class="h5"><strong>NIS</strong></span>
-                    </div>
                     <div class="col" style="text-align: right; font-size: 30px;">
-                        <i class="bi bi-person-circle"></i>
+                        <span class="h5" style="margin-right: 15px;"><strong>NIS</strong></span><i class="bi bi-person-circle"></i>
                     </div>
                 </div>
                 <div class="row p-0 m-0">
