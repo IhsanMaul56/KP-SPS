@@ -37,3 +37,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
+Route::prefix('/dashboard/guru')->group(function(){
+    Route::get('/home', [DataGuruController::class, 'index']);
+});

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="container-fluid p-0">
         @include('partials.sidebar')
@@ -29,6 +30,7 @@
                             </div>
                         </div>
                     </div>
+                    @include('partials.footer')
                 </div>
             </div>
         </div>

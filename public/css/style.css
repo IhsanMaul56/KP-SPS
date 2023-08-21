@@ -89,7 +89,7 @@ body{
     margin-top: 20px;
 }
 
-/* .card-tengah {
+.card-tengah {
     display: flex;
     position: absolute;
     z-index: 1;
@@ -108,7 +108,8 @@ body{
     top: 98px;
     background-color: white;
     border-radius: 10px 10px 10px 10px;
-} */
+}
+
 
 .content{
     min-height: 100vh;
@@ -142,10 +143,6 @@ body{
     text-align: end;
 }
 
-.btn-navy {
-    background-color: #16498c;
-}
-
 .card-login{
     display: flex;
     position: absolute;
@@ -161,4 +158,31 @@ body{
 }
 .jarak-atas{
     margin-top: 19px;
+}
+.footer-fix {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.exit{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 14%;
+    padding: 20px;
+    text-align: center;
+}
+.sidebar{
+    color: #ffffff;
+    cursor: pointer;
+}
+.sidebar.active{
+    background-color: #ffffff;
+    color: #16498c;
+    padding: 20px;
+    border-radius: 100px 0px 0px 100px;
+    cursor: pointer;
 }
