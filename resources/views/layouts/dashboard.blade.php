@@ -7,7 +7,7 @@
                 <div class="grid-tengah">
                     <div class="row p-4">
                         <div class="col-md-8">
-                            <span class="h1 p-4"><strong style="color: #16498c">Beranda</strong></span>
+                            <span class="h1 p-4 text-biru fw-bold">Beranda</span>
                         </div>
                         <div class="col-md-4 ">
                             <span class="h5 text-right">Selamat Datang,</span><br>
@@ -87,6 +87,7 @@
                             </div>
                         </div>
                     </div>
+                    @include('partials.footer')
                 </div>
             </div>    
         </div>

@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="grid-kiri">
-        <center>
-            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="90" width="90">
-            <br><h5 class="text-white"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h5>
-        </center>
-        <div class="col">
+    <div class="grid-kiri text-center">
+        {{-- <center> --}}
+            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="125" width="125">
+            <br><h4 class="text-white"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h4>
+        {{-- </center> --}}
+        <div class="col text-center mt-5">
             @if (Auth::user()->role == 'admin')
                 <div>
                     <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id="menu">
@@ -27,33 +27,33 @@
                         </li>
                     </ul>
                 </div>
-                <center>
-                    <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
+                    <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
                     <span class="btn btn-primary">Admin</span><br>
                     <span class="btn btn-primary">Nilai</span><br>
-                    <a href="/logout"><span class="btn btn-danger">Logout</span></a>
-                </center>
+                    {{-- <a href="/logout"><span class="btn btn-danger rounded-pill">Keluar</span></a> --}}
             @elseif (Auth::user()->role == 'kurikulum')
-                <center>
-                    <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
+                    <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
                     <span class="btn btn-primary">Kurikulum</span><br>
                     <span class="btn btn-primary">Nilai</span><br>
-                    <a href="/logout"><span class="btn btn-danger">Logout</span></a>
-                </center>
+                    {{-- <a href="/logout"><span class="btn btn-danger rounded-pill">Keluar</span></a> --}}
             @elseif (Auth::user()->role == 'guru')
-                <center>
-                    <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
+                    <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
                     <span class="btn btn-primary">Guru</span><br>
                     <span class="btn btn-primary">Nilai</span><br>
-                    <a href="/logout"><span class="btn btn-danger">Logout</span></a>
-                </center>
+                    {{-- <a href="/logout"><span class="btn btn-danger rounded-pill">Keluar</span></a> --}}
             @elseif (Auth::user()->role == 'siswa')
-                <center>
-                <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
-                <span class="btn btn-primary">Siswa</span><br>
-                <span class="btn btn-primary">Nilai</span><br>
-                <a href="/logout"><span class="btn btn-danger">Logout</span></a>
-                </center>
+                <div class="row ms-5">
+                    <span class="sidebar active my-5 fs-4"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
+                </div>
+                <div class="row">
+                    <span class="sidebar my-5 fs-4 mt-auto"><i class="bi bi-house fs-4 me-2"></i>Siswa</span><br>
+                </div>
+                <div class="row">
+                    <span class="sidebar my-5 fs-4 mt-auto"><i class="bi bi-house fs-4 me-2"></i>Nilai</span><br>
+                </div>
             @endif
+        </div>
+        <div class="row align-items-end exit">
+            <a href="/logout"><span class="btn btn-danger rounded-pill my-5 text-white fs-4 mt-auto px-4"><i class="bi bi-box-arrow-right fs-4 ps-2 me-2"></i>Keluar</span></a>
         </div>
     </div>

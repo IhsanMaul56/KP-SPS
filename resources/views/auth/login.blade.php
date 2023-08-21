@@ -59,7 +59,7 @@
                         </div>
                         <div class="row justify-content-end ">
                             <div class="col-md-8 d-flex justify-content-end ">
-                                <button type="submit" class="btn btn-navy fw-bold text-white fs-5 px-5">
+                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5">
                                     {{ __('LOGIN') }}
                                 </button>
                             </div>
