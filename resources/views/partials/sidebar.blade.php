@@ -45,10 +45,10 @@
                 <div class="row ms-5">
                     <span class="sidebar active my-5 fs-4"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
                 </div>
-                <div class="row">
+                <div class="row ms-5">
                     <span class="sidebar my-5 fs-4 mt-auto"><i class="bi bi-house fs-4 me-2"></i>Siswa</span><br>
                 </div>
-                <div class="row">
+                <div class="row ms-5">
                     <span class="sidebar my-5 fs-4 mt-auto"><i class="bi bi-house fs-4 me-2"></i>Nilai</span><br>
                 </div>
             @endif
