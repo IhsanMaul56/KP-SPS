@@ -92,7 +92,7 @@
 </div>
 
 {{-- Page 4 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="page4">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -123,7 +123,7 @@
 </div>
 
 {{-- Page 5 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="page5">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
