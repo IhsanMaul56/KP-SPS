@@ -132,10 +132,6 @@ body{
     text-align: end;
 }
 
-.btn-navy {
-    background-color: #16498c;
-}
-
 .card-login{
     position: absolute;
     z-index: 2;
@@ -150,4 +146,31 @@ body{
 }
 .jarak-atas{
     margin-top: 19px;
+}
+.footer-fix {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.exit{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 14%;
+    padding: 20px;
+    text-align: center;
+}
+.sidebar{
+    color: #ffffff;
+    cursor: pointer;
+}
+.sidebar.active{
+    background-color: #ffffff;
+    color: #16498c;
+    padding: 20px;
+    border-radius: 100px 0px 0px 100px;
+    cursor: pointer;
 }
