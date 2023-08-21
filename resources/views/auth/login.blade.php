@@ -8,7 +8,7 @@
                 <h1 class="text-white fw-bold">SMK SANGKURIANG</h1>
                 <h1 class="text-white mt-1 fw-bold">1 CIMAHI</h1>
             <br>
-            <p class="text-white fs-5 jarak-atas">
+            <p class="text-white fs-5 jarak-atas" style="display: flex">
                 Sekolah swasta di Kota Cimahi yang sudah meluluskan <br>
                 ribuan alumni dan sudah bekerja diperusahaan <br>
                 yang bergengsi.

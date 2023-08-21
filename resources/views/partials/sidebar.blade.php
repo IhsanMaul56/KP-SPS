@@ -1,16 +1,10 @@
-<div class="row">
-    <div class="grid-kiri">
+<div class="row m-0">
+    <div class="grid-kiri p-0">
         <center>
-            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="90" width="90">
-            <br><h5 class="text-white"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h5>
+            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="90" width="90" style="margin-top: 30px; margin-bottom: 20px;">
+            <br><h5 class="text-white" style="margin-bottom: 50px;"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h5>
         </center>
         <div class="col">
-            <center>
-                <span class="btn btn-primary"><i class="fa-brands fa-bootstrap"></i>Beranda</span><br>
-                <span class="btn btn-primary">Akun</span><br>
-                <span class="btn btn-primary">Nilai</span><br>
-                <a href="/logout"><span class="btn btn-danger">Keluar</span></a>
-            </center>
             @if (Auth::user()->role == 'admin')
                 <div>
                     <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id="menu">
