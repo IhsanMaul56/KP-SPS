@@ -75,8 +75,10 @@
                                 <i class="bi bi-gear"></i>
                             </div>
                             <div class="col">
-                                <span><strong>NIS</strong></span><br>
-                                <span>{{ Auth::user()->name }}</></span>
+                                @foreach ($dataGuru as $data)
+                                    <span><strong>{{ $data->nip }}</strong></span><br>
+                                    <span>{{ $data->nama_guru }}</span>
+                                @endforeach
                                 <div class="card-kanan" id="shadow">
                                     <div class="card-body">
                                         <p>Pengumuman</p>
@@ -87,6 +89,6 @@
                     </div>
                     @include('partials.footer')
                 </div>
+            </div>    
         </div>
     @endsection
-

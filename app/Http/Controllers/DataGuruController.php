@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_guru;
 use Illuminate\Http\Request;
 
 class DataGuruController extends Controller
 {
     function index() {
-        return view('data_guru');
+        $dataGuru= data_guru::all();
+        return view('layouts.dashboard', ['gurus' => $dataGuru]);
     }
 }
