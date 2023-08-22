@@ -1,9 +1,10 @@
 <div class="row">
-    <div class="col text-end fs-2">
-        <i class="bi bi-person-circle"></i>
-        <span class="fs-5 fw-bold" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>
+    <div class="col text-end fs-2" style="display: flex; align-items: center; padding-left: 120px; padding-right: 0px;">
+        <span class="fs-5 fw-bold">{{ Auth::user()->id }}</span>
+    </div>
+    <div class="col text-end fs-2" style="padding-left: 0px;">
+        <i class="bi bi-person-circle" style="font-size: 40px; cursor: pointer;" data-bs-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-end">
-            {{-- <li><span class="dropdown-item" type="button" id="btnPage6">Profil</span></li> --}}
             <li><a class="dropdown-item" href="#" id="btnPage6">Profil</a></li>
             <li><a class="dropdown-item" href="/logout">Keluar</a></li>
         </ul>

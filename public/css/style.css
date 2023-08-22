@@ -60,17 +60,21 @@ body{
 }
 
 .persegi {
-    width: 125px;
+    width: 180px;
     background-color: #16498c;
-    text-align: center;
     border-radius: 10px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .persegi2 {
-    width: 75px;
+    width: 90px;
     background-color: #16498c;
-    text-align: center;
     border-radius: 10px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-body {

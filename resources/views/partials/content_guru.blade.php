@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="persegi">
-                            <p class="text-white">Jadwal Mengajar</p>
+                            <p class="text-white m-0 fs-5">Jadwal Mengajar</p>
                         </div>
                     </div>
                 </div>
