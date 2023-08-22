@@ -40,3 +40,6 @@ Route::middleware(['auth'])->group(function(){
 Route::prefix('/dashboard/guru')->group(function(){
     Route::get('/home', [DataGuruController::class, 'index']);
 });
+
+Route::get('datatable', 'YourController@index');
+Route::get('datatable/data', 'YourController@getDatatableData')->name('datatable.data');
