@@ -15,6 +15,9 @@
                 <div class="row">
                     <div class="col">
                         <h3>Jadwal Mengajar</h3>
+                        <div class="persegi">
+                            <p class="text-white m-0 fs-5">Jadwal Mengajar</p>
+                        </div>
                     </div>
                     <table class="table" id="example">
                         <thead>
