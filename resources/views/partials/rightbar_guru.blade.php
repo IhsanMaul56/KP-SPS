@@ -1,7 +1,9 @@
 <div class="row">
-    <div class="col text-end fs-2">
+    <div class="col text-end fs-2" style="display: flex; align-items: center; padding-left: 120px; padding-right: 0px;">
         <span class="fs-5 fw-bold">{{ Auth::user()->id }}</span>
-        <i class="bi bi-person-circle"></i>
+    </div>
+    <div class="col text-end fs-2" style="padding-left: 0px;">
+        <i class="bi bi-person-circle" style="font-size: 40px"></i>
     </div>
 </div>
 <div class="row p-0 m-0">
