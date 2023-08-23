@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\data_siswa;
-use App\Http\Requests\Storedata_siswaRequest;
-use App\Http\Requests\Updatedata_siswaRequest;
+use App\Models\data_admin;
+use Illuminate\Http\Request;
 
-class DataSiswaController extends Controller
+class DataAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $dataSiswa = data_siswa::all();
-        return view('layouts.dashboard', ['dataSiswa' => $dataSiswa]);
+        //
     }
 
     /**
@@ -28,7 +26,7 @@ class DataSiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Storedata_siswaRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -36,7 +34,7 @@ class DataSiswaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(data_siswa $data_siswa)
+    public function show(data_admin $data_admin)
     {
         //
     }
@@ -44,7 +42,7 @@ class DataSiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(data_siswa $data_siswa)
+    public function edit(data_admin $data_admin)
     {
         //
     }
@@ -52,7 +50,7 @@ class DataSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updatedata_siswaRequest $request, data_siswa $data_siswa)
+    public function update(Request $request, data_admin $data_admin)
     {
         //
     }
@@ -60,7 +58,7 @@ class DataSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(data_siswa $data_siswa)
+    public function destroy(data_admin $data_admin)
     {
         //
     }

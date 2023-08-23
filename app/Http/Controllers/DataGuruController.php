@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DataGuruController extends Controller
 {
     function index() {
-        $dataGuru= data_guru::all();
-        return view('layouts.dashboard', ['gurus' => $dataGuru]);
-    }
+        $dataGuru = data_guru::all();
+        return view('layouts.dashboard', ['dataGuru' => $dataGuru]);
+    }    
 }

@@ -75,10 +75,23 @@
                                 <i class="bi bi-gear"></i>
                             </div>
                             <div class="col">
-                                @foreach ($dataGuru as $data)
-                                    <span><strong>{{ $data->nip }}</strong></span><br>
-                                    <span>{{ $data->nama_guru }}</span>
-                                @endforeach
+                                @if (Auth::user()->role == 'guru')
+                                    @foreach ($dataGuru as $guru)
+                                        <span><strong>{{ $guru->nip }}</strong></span><br>
+                                    @endforeach
+                                @elseif (Auth::user()->role == 'Admin')
+                                    @foreach ($dataGuru as $admin)
+                                    <span><strong>{{ $admin->nip }}</strong></span><br>
+                                    @endforeach
+                                @elseif (Auth::user()->role == 'Siswa')
+                                    @foreach ($dataSiswa as $siswa)
+                                    <span><strong>{{ $siswa->nis }}</strong></span><br>
+                                    @endforeach
+                                @elseif (Auth::user()->role == 'Kurikulum')
+                                    @foreach ($dataGuru as $kurikulum)
+                                    <span><strong>{{ $kurikulum->nip }}</strong></span><br>
+                                    @endforeach
+                                @endif
                                 <div class="card-kanan" id="shadow">
                                     <div class="card-body">
                                         <p>Pengumuman</p>
