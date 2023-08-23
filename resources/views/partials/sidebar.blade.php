@@ -1,59 +1,77 @@
-<div class="row">
-    <div class="grid-kiri text-center">
-        {{-- <center> --}}
-            <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mt-4 mb-3" alt="logo smk" height="125" width="125">
-            <br><h4 class="text-white"><b>SMK SANGKURIANG <br> 1 CIMAHI</b></h4>
-        {{-- </center> --}}
-        <div class="col text-center mt-5">
+<div class="row m-0">
+    <div class="grid-kiri p-0 text-center">
+    <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="120" width="120" style="margin-top: 20px; margin-bottom: 10px;">
+            <br><h5 class="text-white fw-bold" style="margin-bottom: 0px;">SMK SANGKURIANG <br> 1 CIMAHI</h5>
+        <div class="col" style="margin-top: 40px">
             @if (Auth::user()->role == 'admin')
-                <div>
-                    <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id="menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" aria-current="page">
-                                <i class="fa fa-home"></i><span class="ms-2">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav nav-item">
-                            <a href="#" class="nav-link" aria-current="page">
-                                <i class="fas fa-clipboard"></i>
-                                <span class="ms-2">Nilai</span>
-                            </a>
-                        </li>
-                        <li class="nav nav-item">
-                            <a href="#" class="nav-link" aria-current="page">
-                                <i class="fas fa-user-tie"></i>
-                                <span class="ms-2">Kelola Data Guru</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="row mx-0">
+                    <span class="sidebar active" id="btnPage1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
-                    <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
-                    <span class="btn btn-primary">Admin</span><br>
-                    <span class="btn btn-primary">Nilai</span><br>
-                    {{-- <a href="/logout"><span class="btn btn-danger rounded-pill">Keluar</span></a> --}}
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="dropdownContent">
+                        <span class="sidebar dd-kiri fs-5" id="btnPage4">Data Jurusan</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnPage5">Data Kelas</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnPage6">Jadwal Guru</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnPage7">Jadwal Siswa</span>
+                    </div>
+                    <br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage8" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage9"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                </div>
+
             @elseif (Auth::user()->role == 'kurikulum')
-                    <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
-                    <span class="btn btn-primary">Kurikulum</span><br>
-                    <span class="btn btn-primary">Nilai</span><br>
-                    {{-- <a href="/logout"><span class="btn btn-danger rounded-pill">Keluar</span></a> --}}
+                <div class="row mx-0">
+                    <span class="sidebar active" id="btnPage1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage4"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage5"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                </div>
+
             @elseif (Auth::user()->role == 'guru')
-                    <span class="btn btn-primary"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
-                    <span class="btn btn-primary">Guru</span><br>
-                    <span class="btn btn-primary">Nilai</span><br>
-                    {{-- <a href="/logout"><span class="btn btn-danger rounded-pill">Keluar</span></a> --}}
+                <div class="row mx-0">
+                    <span class="sidebar active" id="btnPage1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage2"><i class="bi bi-journal-text icon-kiri"></i>Data Mata Pelajaran</span><br>
+                </div>
+                {{-- @if --}}
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage3"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
+                </div>
+                {{-- @endif --}}
             @elseif (Auth::user()->role == 'siswa')
-                <div class="row ms-5">
-                    <span class="sidebar active my-5 fs-4"><i class="bi bi-house fs-4 me-2"></i>Beranda</span><br>
+                <div class="row mx-0">
+                    <span class="sidebar active" id="btnPage1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
-                <div class="row">
-                    <span class="sidebar my-5 fs-4 mt-auto"><i class="bi bi-house fs-4 me-2"></i>Siswa</span><br>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage2"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
                 </div>
-                <div class="row">
-                    <span class="sidebar my-5 fs-4 mt-auto"><i class="bi bi-house fs-4 me-2"></i>Nilai</span><br>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnPage3"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
                 </div>
             @endif
         </div>
-        <div class="row align-items-end exit">
-            <a href="/logout"><span class="btn btn-danger rounded-pill my-5 text-white fs-4 mt-auto px-4"><i class="bi bi-box-arrow-right fs-4 ps-2 me-2"></i>Keluar</span></a>
+        <div class="row mx-0">
+            <a href="/logout" class="exit" style="text-decoration: none;"><i class="bi bi-box-arrow-right keluar"></i>Keluar</a>
         </div>
     </div>

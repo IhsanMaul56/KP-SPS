@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid p-5" style="background-color:#16498c; height: 475px;">
+<div class="container-fluid p-3 utama">
     <div class="row">
-        <div class="col-md-4 jarak-kiri mt-4">
-                <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mb-3" alt="logo smk" height="120" width="120" style="margin-top: -55px;">
+        <div class="col-md-4 jarak-kiri ms-5 mt-4">
+                <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid mb-3" alt="logo smk" height="125" width="125">
                 <h1 class="text-white fw-bold">SMK SANGKURIANG</h1>
                 <h1 class="text-white mt-1 fw-bold">1 CIMAHI</h1>
             <br>
-            <p class="text-white fs-5 jarak-atas">
+            <p class="text-white fs-5 jarak-atas" style="display: flex">
                 Sekolah swasta di Kota Cimahi yang sudah meluluskan <br>
                 ribuan alumni dan sudah bekerja diperusahaan <br>
                 yang bergengsi.
             </p>
         </div>
-        <div class="col-md-4">
-            <img src="{{URL::asset('/img/saly10@2x.png')}}" alt="logo smk" height="455" width="455" style="margin-left: 40px; margin-top: -5%;">
+        <div class="col-md-4 ms-3 ">
+            <img src="{{URL::asset('/img/saly10@2x.png')}}" alt="logo smk" height="455" width="455">
         </div>
     </div>
     <div class="row">
@@ -30,26 +30,31 @@
                         <span class="h1 fw-bold mb-5">LOGIN</span>
                         <div class="row mb-4 mt-4">
                             <label for="email" class="mb-2">{{ __('Masukkan Username atau Email Address') }}</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Username atau Email Address">
+                            <div class="input-group">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Username atau Email Address">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
                         </div>
                         
                         <div class="row mb-3">
                             <label for="password" class="mb-2">{{ __('Masukkan Password') }}</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                            <div class="input-group">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                <span class="input-group-text" id="showPasswordToggle"><i class="bi bi-eye"></i></span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
                         </div>
             
-                        <div class="row mb-5 justify-content-end">
-                            <div class="col-md-8 mb-1 d-flex justify-content-end">
+                        <div class="row mb-4 justify-content-end">
+                            <div class="col-md-8 mb-2 d-flex justify-content-end">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration:none">
                                         {{ __('Lupa Password') }}
@@ -57,9 +62,9 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="row justify-content-end ">
-                            <div class="col-md-8 d-flex justify-content-end ">
-                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5">
+                        <div class="row justify-content-end">
+                            <div class="col-md-8 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-5">
                                     {{ __('LOGIN') }}
                                 </button>
                             </div>
@@ -71,7 +76,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    <img src="{{URL::asset('/img/pemanis.png')}}" class="img-fluid mb-3" alt="logo smk" width="64%" style="margin-top: 40px;">
+<div class="container-fluid mt-4">
+    <img src="{{URL::asset('/img/pemanis.png')}}" class="img-fluid mb-3" alt="logo smk" width="64%">
 </div>
 @endsection
