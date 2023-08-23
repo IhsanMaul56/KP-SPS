@@ -15,19 +15,16 @@
                 <div class="row">
                     <div class="col">
                         <h3>Jadwal Mengajar</h3>
-                        <div class="persegi">
-                            <p class="text-white m-0 fs-5">Jadwal Mengajar</p>
-                        </div>
+                        <table class="table" id="datatable" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <!-- Add more columns as needed -->
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                    <table class="table" id="example">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Created At</th>
-                            </tr>
-                        </thead>
-                    </table>
                 </div>
             </div>
         </div>
