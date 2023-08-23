@@ -149,15 +149,3 @@ btnPage9.addEventListener('click', () => {
 });
 
 // datatable
-$(document).ready(function() {
-    $('#example').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{ route("data") }}',
-        columns: [
-            { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
-            { data: 'created_at', name: 'created_at' },
-        ]
-    });
-});

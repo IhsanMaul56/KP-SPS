@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\DataTableGuru;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -41,3 +42,5 @@ Route::middleware(['auth'])->group(function(){
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });
+
+Route::get('/dashboard/guru/datadatapenting', [DataGuruController::class, 'coba'])->name('lihatdt');
