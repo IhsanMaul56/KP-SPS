@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('data_mapels', function (Blueprint $table) {
             $table->id('kode_mapel');
             $table->string('nama_mapel');
-            $table->string('nip');
-            $table->string('nama_guru');
             $table->timestamps();
         });
     }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class data_siswa extends Model
 {
@@ -35,6 +37,27 @@ class data_siswa extends Model
         'rt_ortu',
         'rw_ortu',
         'alamat_ortu',
-        'foto_siswa'
+        'foto_siswa',
+        'kelas_id'
     ];
+
+    //cardinality
+    public function user() : HasOne
+    {
+        return $this->hasOne(User::class, 'siswa_id', 'nis');
+    }
+
+    public function nilaiSementara() : HasOne{
+        return $this->hasOne(data_nilai_sementara::class, 'siswa_id', 'nis');
+    }
+
+    public function nilaiAkhir() : HasOne{
+        return $this->hasOne(data_nilai_akhir::class, 'siswa_id', 'nis');
+    }
+
+    //invers cardinality
+    public function kelas() : BelongsTo{
+        return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
 }

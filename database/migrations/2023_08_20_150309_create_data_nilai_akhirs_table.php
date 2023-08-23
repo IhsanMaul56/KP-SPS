@@ -12,22 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('data_nilai_akhirs', function (Blueprint $table) {
-            $table->id();
-            $table->string('nis')->unique();
-            $table->string('nama_siswa');
-            $table->string('jurusan');
-            $table->string('kelas');
+            $table->id('kode_nilai_akhir');
+            $table->foreignId('siswa_id')->constrained('data_siswas', 'nis');
+            $table->foreignId('kelas_id')->nullable()->constrained('data_kelas', 'kode_kelas');
             $table->string('tahun_ajar');
-            $table->string('kode_mapel')->unique();
-            $table->string('nama_mapel');
-            $table->string('nip_pengampu')->unique();
-            $table->string('nama_pengampu');
-            $table->string('nip_guru_wali')->unique();
-            $table->string('nama_guru_wali');
-            $table->string('nilai_kehadiran');
-            $table->string('nilai_tugas');
-            $table->string('nilai_uts');
-            $table->string('nilai_uas');
+            $table->foreignId('mapel_id')->constrained('data_mapels', 'kode_mapel');
+            $table->foreignId('pengampu_id')->constrained('data_gurus', 'nip');
+            $table->foreignId('wali_id')->constrained('data_gurus', 'nip');
             $table->string('kb_pengetahuan');
             $table->string('nilai_pengetahuan');
             $table->longText('desc_pengetahuan');

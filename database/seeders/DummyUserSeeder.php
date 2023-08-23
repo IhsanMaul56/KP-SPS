@@ -16,25 +16,36 @@ class DummyUserSeeder extends Seeder
         $userData = [
             [
                 'name' => 'Admin',
+                'admin_id' => '1',
                 'email' => 'admin@gmail.com',
                 'password' => '12345',
                 'role' => 'admin'
             ],
             [
-                'name' => 'Kurikulum',
-                'email' => 'kurikulum@gmail.com',
+                'name' => 'Nasrullah Nurul R',
+                'guru_id' => '1000',
+                'email' => 'nasrul@gmail.com',
                 'password' => '12345',
                 'role' => 'kurikulum'
             ],
             [
-                'name' => 'Guru',
-                'email' => 'guru@gmail.com',
+                'name' => 'Samsori',
+                'guru_id' => '2000',
+                'email' => 'samsori@gmail.com',
                 'password' => '12345',
                 'role' => 'guru'
             ],
             [
-                'name' => 'Siswa',
-                'email' => 'Siswa@gmail.com',
+                'name' => 'Ihsan',
+                'siswa_id' => '1000',
+                'email' => 'ihsan@gmail.com',
+                'password' => '12345',
+                'role' => 'siswa'
+            ],
+            [
+                'name' => 'Nisa',
+                'siswa_id' => '2000',
+                'email' => 'nisa@gmail.com',
                 'password' => '12345',
                 'role' => 'siswa'
             ],
