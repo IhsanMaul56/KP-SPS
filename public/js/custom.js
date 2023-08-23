@@ -33,6 +33,7 @@ const btnPage3 = document.getElementById('btnPage3');
 const btnPage4 = document.getElementById('btnPage4');
 const btnPage5 = document.getElementById('btnPage5');
 const btnPage6 = document.getElementById('btnPage6');
+
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
 const page3 = document.getElementById('page3');
