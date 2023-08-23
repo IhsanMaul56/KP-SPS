@@ -2,33 +2,50 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class data_nilai_akhir extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nis',
-        'jurusan',
-        'kelas',
+        'siswa_id',
+        'kelas_id',
         'tahun_ajar',
-        'kode_mapel',
-        'nama_mapel',
-        'nip_pengampu',
-        'nama_pengampu',
-        'nip_guru_wali',
-        'nama_guru_wali',
-        'nilai_kehadiran',
-        'nilai_tugas',
+        'mapel_id',
+        'pengampu_id',
+        'wali_id',
         'kb_pengetahuan',
         'nilai_pengetahuan',
         'desc_pengetahuan',
         'kb_keterampilan',
         'nilai_keterampilan',
-        'desc_keterampilan',
-        'nilai_uts',
-        'nilai_uas'
+        'desc_keterampilan'
     ];
+
+    //cardinality
+
+
+    //invers cardinality
+    public function kelas() : BelongsTo{
+        return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
+    public function siswa() : BelongsTo{
+        return $this->belongsTo(data_siswa::class, 'siswa_id', 'nis');
+    }
+
+    public function mapel() : BelongsTo{
+        return $this->belongsTo(data_mapel::class, 'mapel_id', 'kode_mapel');
+    }
+
+    public function pengampu() : BelongsTo{
+        return $this->belongsTo(data_guru::class, 'pengampu_id', 'nip');
+    }
+
+    public function wali() : BelongsTo{
+        return $this->belongsTo(data_guru::class, 'wali_id', 'nip');
+    }
 }

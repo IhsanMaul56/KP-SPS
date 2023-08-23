@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DataSiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,12 @@ Route::get('/home', function(){
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
-    Route::get('/dashboard/guru', [DashboardController::class, 'index']);
-    Route::get('/dashboard/siswa', [DashboardController::class, 'index']);
+    Route::prefix('/dashboard')->group(function(){
+        Route::get('/guru', [DataGuruController::class, 'index']);
+    });
+    Route::prefix('dashboard')->group(function(){
+        Route::get('/siswa', [DataSiswaController::class, 'index']);
+    });
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 

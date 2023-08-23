@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-3">
     <div class="col fs-2 justify-content-end d-flex align-items-center">
         <i class="bi bi-person-circle"></i>
         <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>

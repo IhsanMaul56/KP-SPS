@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role',['guru','kurikulum', 'admin', 'siswa']);
+            $table->foreignId('admin_id')->nullable()->constrained('data_admins', 'kode_admin');
+            $table->foreignId('guru_id')->nullable()->constrained('data_gurus', 'nip');
+            $table->foreignId('siswa_id')->nullable()->constrained('data_siswas', 'nis');
             $table->rememberToken();
             $table->timestamps();
         });

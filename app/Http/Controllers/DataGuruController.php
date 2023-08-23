@@ -15,5 +15,4 @@ class DataGuruController extends Controller
     function coba() {
         return DataTables::eloquent(data_guru::query())->toJson();
     }
-
 }
