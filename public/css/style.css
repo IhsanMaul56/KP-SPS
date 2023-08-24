@@ -60,7 +60,7 @@ body{
 }
 
 .persegi {
-    width: 180px;
+    width: 190px;
     background-color: #16498c;
     border-radius: 10px 10px 10px 10px;
     display: flex;
@@ -207,22 +207,39 @@ body{
     align-items: center; 
 
 }
+
 .utama{
     background-color:#16498c;
     height: 475px;
 }
+
 .page {
     display: none;
 }
+
 .active-page {
     display: block;
     border-radius: 100px 0px 0px 100px;
     font-size: 20px;
 }
+
 .icon-kiri{
     padding-right: 15px;
     font-size: 30px;   
 }
+
+.simpan-data {
+    background-color: #16498c;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+    font-size: 20px;
+    width: 169px;
+    position: relative;
+    text-align: center;
+}
+
 .dd-kiri{
     margin-left: 27%;
 }
