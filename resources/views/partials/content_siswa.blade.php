@@ -78,10 +78,11 @@
                             <span>Jenis Kelamin</span>
                         </div>
                         <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                                <button href="#" class="input-group-text" style="border-color: rgba(168, 168, 168, 1);"><i class="bi bi-caret-down-fill"></i></button>
-                            </div>
+                            <select id="jeniskelamin" class="form-select" style="border-color: rgba(168, 168, 168, 1);">
+                                <option selected></option>
+                                <option>Laki-laki</option>
+                                <option>Perempuan</option>
+                            </select>
                         </div>
                     </div>
 
@@ -96,8 +97,9 @@
                         </div>
                         <div class="col-3">
                             <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
+                                <input id="nama" type="nama" class="form-control" placeholder="dd/mm/yyyy" style="border-color: rgba(168, 168, 168, 1);">
                                 <button class="input-group-text" style="border-color: rgba(168, 168, 168, 1);"><i class="bi bi-calendar-event"></i></button>
+                                
                             </div>
                         </div>
                     </div>
@@ -154,16 +156,18 @@
         </div>
         <div class="row p-0 m-0">
             <div class="card-body" id="shadow">
-                <div class="row">
+                <div class="row mb-2">
+                    <p class="m-0 fs-5">Pilih Tahun Akademik:</p>
+                </div>
+                <div class="row" style="display: flex; align-items: center;">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Siswa</p>
-                        </div>
+                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
+                            <option selected>Semester Ganjil</option>
+                            <option>Semester Genap</option>
+                        </select>
                     </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                    <div class="col-3" style="width: max-content;">
+                        <button class="btn btn-danger m-0" onclick="pdf();" id="shadow">Cetak Rapor</button>
                     </div>
                 </div>
             </div>
