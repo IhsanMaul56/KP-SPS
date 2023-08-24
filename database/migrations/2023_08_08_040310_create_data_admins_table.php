@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_jurusans', function (Blueprint $table) {
-            $table->id('kode_jurusan');
-            $table->string('nama_jurusan');
-            $table->string('nip')->unique();
-            $table->string('nama_kepala_jurusan');
+        Schema::create('data_admins', function (Blueprint $table) {
+            $table->id('kode_admin');
+            $table->string('nama_admin');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_jurusans');
+        Schema::dropIfExists('data_admins');
     }
 };

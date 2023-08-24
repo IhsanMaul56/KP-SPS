@@ -34,12 +34,19 @@ const btnPage4 = document.getElementById('btnPage4');
 const btnPage5 = document.getElementById('btnPage5');
 const btnPage6 = document.getElementById('btnPage6');
 
+const btnPage7 = document.getElementById('btnPage7');
+const btnPage8 = document.getElementById('btnPage8');
+const btnPage9 = document.getElementById('btnPage9');
+
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
 const page3 = document.getElementById('page3');
 const page4 = document.getElementById('page4');
 const page5 = document.getElementById('page5');
 const page6 = document.getElementById('page6');
+const page7 = document.getElementById('page7');
+const page8 = document.getElementById('page8');
+const page9 = document.getElementById('page9');
 
 btnPage1.addEventListener('click', () => {
     page1.classList.add('active-page');
@@ -48,6 +55,9 @@ btnPage1.addEventListener('click', () => {
     page4.classList.remove('active-page');
     page5.classList.remove('active-page');
     page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
 });
 btnPage2.addEventListener('click', () => {
     page1.classList.remove('active-page');
@@ -56,6 +66,9 @@ btnPage2.addEventListener('click', () => {
     page4.classList.remove('active-page');
     page5.classList.remove('active-page');
     page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
 });
 btnPage3.addEventListener('click', () => {
     page1.classList.remove('active-page');
@@ -64,6 +77,9 @@ btnPage3.addEventListener('click', () => {
     page4.classList.remove('active-page');
     page5.classList.remove('active-page');
     page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
 });
 btnPage4.addEventListener('click', () => {
     page1.classList.remove('active-page');
@@ -72,6 +88,9 @@ btnPage4.addEventListener('click', () => {
     page4.classList.add('active-page');
     page5.classList.remove('active-page');
     page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
 });
 btnPage5.addEventListener('click', () => {
     page1.classList.remove('active-page');
@@ -80,6 +99,9 @@ btnPage5.addEventListener('click', () => {
     page4.classList.remove('active-page');
     page5.classList.add('active-page');
     page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
 });
 btnPage6.addEventListener('click', () => {
     page1.classList.remove('active-page');
@@ -88,4 +110,42 @@ btnPage6.addEventListener('click', () => {
     page4.classList.remove('active-page');
     page5.classList.remove('active-page');
     page6.classList.add('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
 });
+btnPage7.addEventListener('click', () => {
+    page1.classList.remove('active-page');
+    page2.classList.remove('active-page');
+    page3.classList.remove('active-page');
+    page4.classList.remove('active-page');
+    page5.classList.remove('active-page');
+    page6.classList.remove('active-page');
+    page7.classList.add('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.remove('active-page');
+});
+btnPage8.addEventListener('click', () => {
+    page1.classList.remove('active-page');
+    page2.classList.remove('active-page');
+    page3.classList.remove('active-page');
+    page4.classList.remove('active-page');
+    page5.classList.remove('active-page');
+    page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.add('active-page');
+    page9.classList.remove('active-page');
+});
+btnPage9.addEventListener('click', () => {
+    page1.classList.remove('active-page');
+    page2.classList.remove('active-page');
+    page3.classList.remove('active-page');
+    page4.classList.remove('active-page');
+    page5.classList.remove('active-page');
+    page6.classList.remove('active-page');
+    page7.classList.remove('active-page');
+    page8.classList.remove('active-page');
+    page9.classList.add('active-page');
+});
+
+// datatable

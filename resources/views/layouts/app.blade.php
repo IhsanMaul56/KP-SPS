@@ -25,7 +25,23 @@
     </main>
     
     @include('partials.footer')
+    <script src="{{ asset('datatables/css/jquery.dataTables.min.css') }}"></script>
+    <script src="{{ asset('datatables/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+        $('#datatable').DataTable({
+            serverSide: true,
+            ajax: '{!! route('lihatdt') !!}',
+            columns: [
+                { data: 'nip', name: 'nip' },
+                { data: 'nama_guru', name: 'nama_guru' },
+                // Add more columns as needed
+            ],
+            });
+        });
+    </script>
     @livewireScripts
 </body>
 </html>

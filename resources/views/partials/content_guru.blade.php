@@ -14,9 +14,16 @@
             <div class="card-body" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white m-0 fs-5">Jadwal Mengajar</p>
-                        </div>
+                        <h3>Jadwal Mengajar</h3>
+                        <table class="table" id="datatable" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <!-- Add more columns as needed -->
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -29,7 +36,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Data Siswa</span>
+                <span class="h1 fw-bold text-biru">Data Mata Pelajaran</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -60,7 +67,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">AKun</span>
+                <span class="h1 fw-bold text-biru">Data Kelas</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

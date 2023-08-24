@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -19,6 +21,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'admin_id',
+        'guru_id',
+        'siswa_id',
         'password',
         'role',
         'email'
@@ -43,4 +48,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    //invers cadinality
+    public function admin() : BelongsTo
+    {
+        return $this->belongsTo(data_admin::class, 'admin_id', 'kode_admin');
+    }
+
+    public function guru() : BelongsTo
+    {
+        return $this->belongsTo(data_guru::class, 'guru_id', 'nip');
+    }
+
+    public function siswa() : BelongsTo
+    {
+        return $this->belongsTo(data_siswa::class, 'siswa_id', 'nis');
+    }
+
 }
