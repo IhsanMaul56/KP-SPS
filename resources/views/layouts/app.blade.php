@@ -29,19 +29,14 @@
     <script src="{{ asset('datatables/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    {{-- @push('scripts')
     <script>
-        $(document).ready(function() {
-        $('#datatable').DataTable({
-            serverSide: true,
-            ajax: '{!! route('lihatdt') !!}',
-            columns: [
-                { data: 'nip', name: 'nip' },
-                { data: 'nama_guru', name: 'nama_guru' },
-                // Add more columns as needed
-            ],
-            });
+        $(document).ready(function () {
+            $('#myDataTable').DataTable();
         });
     </script>
+    @endpush --}}
+    
     @livewireScripts
 </body>
 </html>

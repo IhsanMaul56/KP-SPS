@@ -15,14 +15,23 @@
                 <div class="row">
                     <div class="col">
                         <h3>Jadwal Mengajar</h3>
-                        <table class="table" id="datatable" style="width: 100%;">
+                        <table id="myDataTable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <!-- Add more columns as needed -->
+                                    <!-- Tambahkan kolom lain di sini -->
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{ $item->nip }}</td>
+                                        <td>{{ $item->nama_guru }}</td>
+                                        <!-- Tambahkan kolom lain di sini -->
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -30,6 +39,7 @@
         </div>
     </div>
 </div>
+
 
 {{-- Page 2 --}}
 <div class="col p-0 page" id="page2">

@@ -8,6 +8,7 @@ use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataSiswaController;
+use App\Http\Livewire\DataTablesExample;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,6 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'login']);
 });
-
 Route::get('/home', function(){
     return redirect('/dashboard');
 });
@@ -35,7 +35,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/guru', [DataGuruController::class, 'index']);
+        // Route::get('/guru', [DataGuruController::class, 'index']);
+        Route::get('/guru', DataTablesExample::class);
     });
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index']);
@@ -44,3 +45,4 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::get('/dashboard/guru/datadatapenting', [DataGuruController::class, 'coba'])->name('lihatdt');
+
