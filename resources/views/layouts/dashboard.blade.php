@@ -8,7 +8,7 @@
         @elseif (Auth::user()->role == 'kurikulum')
             @include('partials.content_kurikulum')
         @elseif (Auth::user()->role == 'guru')
-            @include('partials.content_guru')
+            @include('livewire.content_guru')
         @elseif (Auth::user()->role == 'siswa')
             @include('partials.content_siswa')
         @endif

@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="row mb-3 page active-page" id="page1">
+<div class="row mb-3 page active-page">
     <div class="col fs-2 justify-content-end d-flex align-items-center">
         <i class="bi bi-person-circle"></i>
         <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>
@@ -24,7 +24,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="row mb-3 page" id="page2">
+<div class="row mb-3 page">
     <div class="col fs-2 justify-content-end d-flex align-items-center">
         <i class="bi bi-person-circle"></i>
         <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>
