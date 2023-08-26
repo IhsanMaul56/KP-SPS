@@ -47,17 +47,8 @@ class data_siswa extends Model
         return $this->hasOne(User::class, 'siswa_id', 'nis');
     }
 
-    public function nilaiSementara() : HasOne{
-        return $this->hasOne(data_nilai_sementara::class, 'siswa_id', 'nis');
-    }
-
-    public function nilaiAkhir() : HasOne{
-        return $this->hasOne(data_nilai_akhir::class, 'siswa_id', 'nis');
-    }
-
     //invers cardinality
     public function kelas() : BelongsTo{
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
     }
-
 }
