@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('pengampu_id')->constrained('data_pengampus', 'kode_pengampu');
             $table->string('nama_pengampu');
             $table->string('hari');
-            $table->string('waktu');
+            $table->time('waktu');
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@ class DummyUserSeeder extends Seeder
                 'guru_id' => '1000',
                 'email' => 'nasrul@gmail.com',
                 'password' => '12345',
-                'role' => 'kurikulum'
+                'role' => 'guru'
             ],
             [
                 'name' => 'Samsori',
@@ -34,6 +34,48 @@ class DummyUserSeeder extends Seeder
                 'email' => 'samsori@gmail.com',
                 'password' => '12345',
                 'role' => 'guru'
+            ],
+            [
+               'name' => 'Lukman',
+                'guru_id' => '3000',
+                'email' => 'lukman@gmail.com',
+                'password' => '12345',
+                'role' => 'guru'
+            ],
+            [
+                'name' => 'Farhan',
+                'guru_id' => '4000',
+                'email' => 'farhan@gmail.com',
+                'password' => '12345',
+                'role' => 'guru'
+            ],
+            [
+                'name' => 'Diyah',
+                'guru_id' => '5000',
+                'email' => 'diyah@gmail.com',
+                'password' => '12345',
+                'role' => 'guru'
+            ],
+            [
+                'name' => 'Sopi',
+                'guru_id' => '6000',
+                'email' => 'sopi@gmail.com',
+                'password' => '12345',
+                'role' => 'guru'
+            ],
+            [
+                'name' => 'Alya',
+                'guru_id' => '7000',
+                'email' => 'alya@gmail.com',
+                'password' => '12345',
+                'role' => 'guru'
+            ],
+            [
+                'name' => 'Hakim',
+                'guru_id' => '4000',
+                'email' => 'hakim@gmail.com',
+                'password' => '12345',
+                'role' => 'kurikulum'
             ],
             [
                 'name' => 'Ihsan',
@@ -46,6 +88,20 @@ class DummyUserSeeder extends Seeder
                 'name' => 'Nisa',
                 'siswa_id' => '2000',
                 'email' => 'nisa@gmail.com',
+                'password' => '12345',
+                'role' => 'siswa'
+            ],
+            [
+                'name' => 'Afuza',
+                'siswa_id' => '3000',
+                'email' => 'afuza@gmail.com',
+                'password' => '12345',
+                'role' => 'siswa'
+            ],
+            [
+                'name' => 'Siti',
+                'siswa_id' => '4000',
+                'email' => 'siti@gmail.com',
                 'password' => '12345',
                 'role' => 'siswa'
             ],
