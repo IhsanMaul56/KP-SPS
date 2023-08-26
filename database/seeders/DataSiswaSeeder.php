@@ -40,7 +40,8 @@ class DataSiswaSeeder extends Seeder
                 'rt_ortu' => '11',
                 'rw_ortu' => '03',
                 'alamat_ortu' => 'kp. Sukamaju',
-                'foto_siswa' => ''
+                'foto_siswa' => '',
+                'kelas_id' => '1'
             ],
             [
                 'nis' => '2000',
@@ -68,7 +69,8 @@ class DataSiswaSeeder extends Seeder
                 'rt_ortu' => '11',
                 'rw_ortu' => '03',
                 'alamat_ortu' => 'kp. Sukamaju',
-                'foto_siswa' => ''
+                'foto_siswa' => '',
+                'kelas_id' => '2'
             ],
         ];
 

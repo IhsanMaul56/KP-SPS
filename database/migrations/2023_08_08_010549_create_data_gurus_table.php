@@ -26,8 +26,6 @@ return new class extends Migration
             $table->string('rw');
             $table->string('alamat');
             $table->binary('foto_guru');
-            $table->foreignId('kelas_id')->nullable()->constrained('data_kelas', 'kode_kelas');
-            $table->foreignId('pengampu_id')->nullable()->constrained('data_mapels', 'kode_mapel');
             $table->timestamps();
         });
     }

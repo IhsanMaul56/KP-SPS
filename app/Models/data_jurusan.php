@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class data_jurusan extends Model
@@ -12,8 +13,8 @@ class data_jurusan extends Model
 
     protected $fillable = [
         'nama_jurusan',
-        'nip',
-        'nama_kepala_jurusan'
+        'kajur_id',
+        'nama_guru'
     ];
 
     //cardinality
@@ -22,4 +23,7 @@ class data_jurusan extends Model
     }
 
     //invers cardinality
+    public function kajur() : BelongsTo{
+        return $this->belongsTo(data_kajur::class, 'kajur_id', 'kode_kajur');
+    }
 }
