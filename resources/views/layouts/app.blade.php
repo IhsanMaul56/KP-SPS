@@ -17,7 +17,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    @livewireStyles
+
     @stack('styles')
+
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
     <main class="py-0">
