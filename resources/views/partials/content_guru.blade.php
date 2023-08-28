@@ -11,25 +11,15 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
-                    <div class="col">
-                        <h3>Jadwal Mengajar</h3>
-                        <table class="table" id="datatable" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <!-- Add more columns as needed -->
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                        @livewire('table-guru')
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 {{-- Page 2 --}}
 <div class="col p-0 page" id="page2">

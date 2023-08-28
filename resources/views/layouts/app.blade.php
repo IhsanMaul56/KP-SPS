@@ -17,8 +17,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     @livewireStyles
+
+    @stack('styles')
+
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
     <main class="py-0">
@@ -26,23 +30,8 @@
     </main>
     
     @include('partials.footer')
-    <script src="{{ asset('datatables/css/jquery.dataTables.min.css') }}"></script>
-    <script src="{{ asset('datatables/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-        $('#datatable').DataTable({
-            serverSide: true,
-            ajax: '{!! route('lihatdt') !!}',
-            columns: [
-                { data: 'nip', name: 'nip' },
-                { data: 'nama_guru', name: 'nama_guru' },
-                // Add more columns as needed
-            ],
-            });
-        });
-    </script>
-    @livewireScripts
+    
+    @stack('script')
 </body>
 </html>

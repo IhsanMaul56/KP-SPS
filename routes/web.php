@@ -8,6 +8,7 @@ use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataSiswaController;
+use App\Http\Livewire\DataTablesExample;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,6 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'login']);
 });
-
 Route::get('/home', function(){
     return redirect('/dashboard');
 });
@@ -43,4 +43,3 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
-Route::get('/dashboard/guru/datadatapenting', [DataGuruController::class, 'coba'])->name('lihatdt');

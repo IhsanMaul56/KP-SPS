@@ -33,11 +33,11 @@ const btnPage3 = document.getElementById('btnPage3');
 const btnPage4 = document.getElementById('btnPage4');
 const btnPage5 = document.getElementById('btnPage5');
 const btnPage6 = document.getElementById('btnPage6');
-
 const btnPage7 = document.getElementById('btnPage7');
 const btnPage8 = document.getElementById('btnPage8');
 const btnPage9 = document.getElementById('btnPage9');
-
+// const btnPakun1 = document.getElementById('btnPakun1');
+// const btnPakun2 = document.getElementById('btnPakun2');
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
 const page3 = document.getElementById('page3');
@@ -47,6 +47,8 @@ const page6 = document.getElementById('page6');
 const page7 = document.getElementById('page7');
 const page8 = document.getElementById('page8');
 const page9 = document.getElementById('page9');
+// const pakun1 = document.getElementById('pakun1');
+// const pakun2 = document.getElementById('pakun2');
 
 btnPage1.addEventListener('click', () => {
     page1.classList.add('active-page');
@@ -147,8 +149,14 @@ btnPage9.addEventListener('click', () => {
     page8.classList.remove('active-page');
     page9.classList.add('active-page');
 });
-
-// datatable
+btnPakun1.addEventListener('click', () =>{
+    pakun1.classList.add('active-page');
+    pakun2.classList.remove('active-page');
+});
+btnPakun1.addEventListener('click', () =>{
+    pakun1.classList.remove('active-page');
+    pakun2.classList.add('active-page');
+});
 
 //js dashboard admin
 let valueDisplays = document.querySelectorAll(".num");
