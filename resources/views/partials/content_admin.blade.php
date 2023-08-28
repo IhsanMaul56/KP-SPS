@@ -1,7 +1,7 @@
 {{-- Page 1 --}}
 <div class="col p-0 page active-page" id="page1">
     <div class="grid-tengah">
-        <div class="row">
+        <div class="row" style="margin-bottom: 30px;">
             <div class="col">
                 <span class="h1 fw-bold text-biru">Beranda</span>
             </div>
@@ -10,7 +10,29 @@
                 <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
             </div>
         </div>
-        <div class="row p-0 m-0">
+        <div class="row p-0 m-0" style="display: flex; justify-content: center;">
+            {{-- <div class="wrapper"> --}}
+                <div class="container m-2">
+                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
+                    <span class="num" data-val="3"></span>
+                    <span class="text">Admin</span>
+                </div>
+                <div class="container m-2">
+                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
+                    <span class="num" data-val="64"></span>
+                    <span class="text">Guru</span>
+                </div>
+                <div class="container m-2">
+                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
+                    <span class="num" data-val="1100"></span>
+                    <span class="text">Siswa</span>
+                </div>
+                <div class="container m-2">
+                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
+                    <span class="num" data-val="1"></span>
+                    <span class="text">Kurikulum</span>
+                </div>
+            {{-- </div> --}}
         </div>
     </div>
 </div>
