@@ -11,8 +11,4 @@ class DataGuruController extends Controller
         $dataGuru= data_guru::all();
         return view('layouts.dashboard', ['gurus' => $dataGuru]);
     }
-
-    function coba() {
-        return DataTables::eloquent(data_guru::query())->toJson();
-    }
 }

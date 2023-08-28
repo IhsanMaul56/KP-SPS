@@ -17,7 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
-    @livewireStyles
+    @stack('styles')
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
     <main class="py-0">
@@ -25,18 +25,8 @@
     </main>
     
     @include('partials.footer')
-    <script src="{{ asset('datatables/css/jquery.dataTables.min.css') }}"></script>
-    <script src="{{ asset('datatables/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
-    {{-- @push('scripts')
-    <script>
-        $(document).ready(function () {
-            $('#myDataTable').DataTable();
-        });
-    </script>
-    @endpush --}}
     
-    @livewireScripts
+    @stack('script')
 </body>
 </html>
