@@ -35,14 +35,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DashboardController::class, 'index']);
     Route::prefix('/dashboard')->group(function(){
-        // Route::get('/guru', [DataGuruController::class, 'index']);
-        Route::get('/guru', DataTablesExample::class);
+        Route::get('/guru', [DataGuruController::class, 'index']);
     });
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index']);
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });
-
-Route::get('/dashboard/guru/datadatapenting', [DataGuruController::class, 'coba'])->name('lihatdt');
 

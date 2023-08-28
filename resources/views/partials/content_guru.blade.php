@@ -11,29 +11,9 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
-                    <div class="col">
-                        <h3>Jadwal Mengajar</h3>
-                        <table id="myDataTable">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <!-- Tambahkan kolom lain di sini -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{ $item->nip }}</td>
-                                        <td>{{ $item->nama_guru }}</td>
-                                        <!-- Tambahkan kolom lain di sini -->
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                        @livewire('table-guru')
                 </div>
             </div>
         </div>
