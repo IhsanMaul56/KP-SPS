@@ -248,31 +248,11 @@ body{
     padding-right: 15px;
 }
 
-/* * {
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-font-family: "Poppins", sans-serif;
-} */
-
-/* .wrapper {
-    position: absolute;
-    width: 60vw;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 696px;
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-} */
-
+/* beranda admin */
 .container {
     width: 25vmin;
-    /* height: 20vmin; */
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-evenly;
-    /* padding: 1em 0; */
     position: relative;
     font-size: 16px;
     border-radius: 0.5em;
@@ -309,3 +289,4 @@ span.text {
         font-size: 12px;
     }
 }
+/* batas beranda admin */

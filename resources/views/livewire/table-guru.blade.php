@@ -1,7 +1,7 @@
 <div class="col">
     <h3>Jadwal Mengajar</h3>
     <div class="mb-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Cari Jadwal">
+        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
     </div>
     <table class="table">
         <thead>
