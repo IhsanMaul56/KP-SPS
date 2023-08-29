@@ -69,6 +69,7 @@ btnPage2.addEventListener('click', () => {
     page7.classList.remove('active-page');
     page8.classList.remove('active-page');
     page9.classList.remove('active-page');
+    pakun1.classList.add('active-page');
 });
 btnPage3.addEventListener('click', () => {
     page1.classList.remove('active-page');
@@ -148,6 +149,7 @@ btnPage9.addEventListener('click', () => {
     page9.classList.add('active-page');
 });
 
+
 //js dashboard admin
 let valueDisplays = document.querySelectorAll(".num");
 let interval = 1000;
@@ -164,3 +166,4 @@ valueDisplays.forEach((valueDisplay) => {
         }
     }, duration);
 });
+
