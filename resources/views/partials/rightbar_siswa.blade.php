@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="row mb-3 page active-page">
+<div class="row mb-3 page active-page" id=" ">
     <div class="col fs-2 justify-content-end d-flex align-items-center">
         <i class="bi bi-person-circle"></i>
         <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>
@@ -9,8 +9,8 @@
         </ul>
     </div>
 </div>
-<div class="row p-0 m-0">
-    <div class="card-body" id="shadow">
+<div class="row p-0 m-0 page" id="">
+    <div class="card-body h-100 overflow-auto" id="shadow">
         <div class="row">
             <div class="col">
                 <p><i class="bi bi-megaphone-fill"><u style="padding-left: 10px;">Pengumuman</u></i></p>
@@ -24,7 +24,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="row mb-3 page">
+<div class="row mb-3 page" id="page2">
     <div class="col fs-2 justify-content-end d-flex align-items-center">
         <i class="bi bi-person-circle"></i>
         <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->id }}</span>
@@ -34,8 +34,8 @@
         </ul>
     </div>
 </div>
-<div class="row p-0 m-0">
-    <div class="card-body" id="shadow">
+<div class="row p-0 m-0 page" id="page2">
+    <div class="card-body h-100 overflow-auto" id="shadow">
         <div class="row m-0 p-0">
             <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>
         </div>

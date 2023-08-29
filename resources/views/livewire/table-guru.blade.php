@@ -1,23 +1,25 @@
 <div class="col">
-    <h3>Jadwal Mengajar</h3>
+    <h3>Data Guru</h3>
     <div class="mb-3">
         <input type="text" class="form-control" wire:model="search" placeholder="Cari Jadwal">
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>No. HP</th>
                 <!-- Tambahkan kolom lain di sini -->
             </tr>
         </thead>
         <tbody>
-            @foreach ($dagur as $item)
+            @foreach ($dagur as $index => $item)
                 <tr>
-                    <td>{{ $item->nip }}</td>
+                    <td>{{ $dagur->firstItem() + $index }}</td>
                     <td>{{ $item->nama_guru }}</td>
-                    
-                    <!-- Tambahkan kolom lain di sini -->
+                    <td>{{ $item->jenis_kelamin }}</td>
+                    <td>{{ $item->no_hp }}</td>
                 </tr>
             @endforeach
         </tbody>

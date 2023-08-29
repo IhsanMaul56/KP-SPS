@@ -43,7 +43,7 @@
         </div>
         <div class="row p-0 m-0">
             <div class="card-body" id="shadow" style="height: 575px">
-                <form method="POST">
+                <form action="#" method="POST">
                     <div class="row">
                         <div class="col" style="margin-bottom: 20px">
                             <div class="persegi">
@@ -97,9 +97,9 @@
                         </div>
                         <div class="col-3">
                             <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" placeholder="dd/mm/yyyy" style="border-color: rgba(168, 168, 168, 1);">
-                                <button class="input-group-text" style="border-color: rgba(168, 168, 168, 1);"><i class="bi bi-calendar-event"></i></button>
-                                
+                                {{-- <input id="datepicker" type="input-group date" class="form-control" placeholder="dd/mm/yyyy" style="border-color: rgba(168, 168, 168, 1);"> --}}
+                                @livewire('date-picker')
+                                {{-- <span><i class="bi bi-calendar-event"></i></span> --}}
                             </div>
                         </div>
                     </div>
