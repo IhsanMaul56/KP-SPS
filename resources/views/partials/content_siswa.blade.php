@@ -159,7 +159,7 @@
                 <div class="row mb-2">
                     <p class="m-0 fs-5">Pilih Tahun Akademik:</p>
                 </div>
-                <div class="row" style="display: flex; align-items: center;">
+                <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
                         <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
                             <option selected>Semester Ganjil</option>

@@ -52,7 +52,7 @@
                     <span class="sidebar active" id="btnPage1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnPage2"><i class="bi bi-journal-text icon-kiri"></i>Data Mata Pelajaran</span><br>
+                    <span class="sidebar" id="btnPage2"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</span><br>
                 </div>
                 {{-- @if --}}
                 <div class="row mx-0">

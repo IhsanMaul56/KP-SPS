@@ -34,7 +34,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Ukan</span>
+                <span class="h1 fw-bold text-biru">Data Guru</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -45,14 +45,7 @@
             <div class="card-body" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Guru</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
                     </div>
                 </div>
             </div>
@@ -65,7 +58,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">AKun</span>
+                <span class="h1 fw-bold text-biru">Data Siswa</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -76,14 +69,7 @@
             <div class="card-body" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Guru</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
                     </div>
                 </div>
             </div>
@@ -96,7 +82,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">AKun</span>
+                <span class="h1 fw-bold text-biru">Akademik</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -127,7 +113,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">AKun</span>
+                <span class="h1 fw-bold text-biru">Akun</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

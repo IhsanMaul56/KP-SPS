@@ -44,7 +44,7 @@
             <span class="fw-bold" style="text-align: center; font-size: 20px;">{{ Auth::user()->email }}</span>
         </div>
         <div class="row justify-content-center" style="margin-top: 115px;">
-            <span class="simpan-data fw-bold" id="shadow"></i>Simpan Data</span>
+            <span class="simpan-data fw-bold" id="shadow">Simpan Data</span>
         </div>
     </div>
 </div>
