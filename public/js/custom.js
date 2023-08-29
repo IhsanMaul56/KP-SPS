@@ -36,6 +36,7 @@ const btnPage6 = document.getElementById('btnPage6');
 const btnPage7 = document.getElementById('btnPage7');
 const btnPage8 = document.getElementById('btnPage8');
 const btnPage9 = document.getElementById('btnPage9');
+
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
 const page3 = document.getElementById('page3');
@@ -45,6 +46,7 @@ const page6 = document.getElementById('page6');
 const page7 = document.getElementById('page7');
 const page8 = document.getElementById('page8');
 const page9 = document.getElementById('page9');
+
 
 btnPage1.addEventListener('click', () => {
     page1.classList.add('active-page');
@@ -147,13 +149,21 @@ btnPage9.addEventListener('click', () => {
     page9.classList.add('active-page');
 });
 
-// custom rightbar
-// const rightbars = document.querySelectorAll('.page');
-// rightbars.forEach(button => {
-//     button.addEventListener('click', () => {
-//         rightbars.forEach(page => page.classList.remove('active'));
-//         button.classList.add('active');
-//     });
-// });
 
-// 
+//js dashboard admin
+let valueDisplays = document.querySelectorAll(".num");
+let interval = 1000;
+
+valueDisplays.forEach((valueDisplay) => {
+    let startValue = 0;
+    let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+    let duration = Math.floor(interval / endValue);
+    let counter = setInterval(function () {
+        startValue += 1;
+        valueDisplay.textContent = startValue;
+        if (startValue == endValue) {
+            clearInterval(counter);
+        }
+    }, duration);
+});
+
