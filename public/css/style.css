@@ -290,3 +290,6 @@ span.text {
     }
 }
 /* batas beranda admin */
+.hidden {
+    display: none;
+}

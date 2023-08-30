@@ -14,12 +14,13 @@
             {{-- <div class="wrapper"> --}}
                 <div class="container m-2">
                     <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
-                    <span class="num" data-val="3"></span>
+                    @livewire('data-admin')
                     <span class="text">Admin</span>
                 </div>
                 <div class="container m-2">
                     <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
-                    <span class="num" data-val="64"></span>
+                    {{-- <span class="num" data-val="{{ $dataCount }}"></span> --}}
+                    @livewire('hitung-guru')
                     <span class="text">Guru</span>
                 </div>
                 <div class="container m-2">
@@ -77,7 +78,7 @@
             <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        {{-- @livewire('table-siswa') --}}
+                        @livewire('data-siswa')
                     </div>
                 </div>
             </div>
@@ -101,14 +102,7 @@
             <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Admin</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                    @livewire('data-jurusan')    
                     </div>
                 </div>
             </div>
@@ -132,14 +126,7 @@
             <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Admin</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                        @livewire('data-kelas')
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow" style="height: 575px">
+            <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
                 <form action="#" method="POST">
                     <div class="row">
                         <div class="col" style="margin-bottom: 20px">
@@ -96,11 +96,7 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <div class="input-group">
-                                {{-- <input id="datepicker" type="input-group date" class="form-control" placeholder="dd/mm/yyyy" style="border-color: rgba(168, 168, 168, 1);"> --}}
-                                @livewire('date-picker')
-                                {{-- <span><i class="bi bi-calendar-event"></i></span> --}}
-                            </div>
+                            @livewire('date-picker')
                         </div>
                     </div>
 
@@ -132,8 +128,13 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="height: 150px; border-color: rgba(168, 168, 168, 1);">
+                                <textarea name="alamat" id="" cols="30" rows="10" class="form-control"></textarea>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col text-end">
+                            <span class="simpan-data fw-bold" id="shadow">Simpan Data</span>
                         </div>
                     </div>
                 </form>
