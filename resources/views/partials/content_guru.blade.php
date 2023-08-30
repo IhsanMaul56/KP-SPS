@@ -78,13 +78,8 @@
             <div class="card-body" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Guru</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
+                        <div class="persegi2 m-0">
+                            <p class="text-white m-0 fs-5">X RPL 1</p>
                         </div>
                     </div>
                 </div>

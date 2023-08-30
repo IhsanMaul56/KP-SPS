@@ -1,8 +1,6 @@
 <div class="col">
-    <h3>Data Guru</h3>
-    <div class="mb-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
-    </div>
+    <h3 class="fs-5 mb-2">Jadwal Mengajar</h3>
+    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
     <table class="table">
         <thead>
             <tr>
