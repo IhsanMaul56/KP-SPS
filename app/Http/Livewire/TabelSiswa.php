@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\data_jadwal;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +10,6 @@ class TabelSiswa extends Component
 {
     public $kelas;
     public $jadwal;
-    // public $nis;
 
     public function render()
     {

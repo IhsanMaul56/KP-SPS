@@ -38,7 +38,8 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/guru', [DataGuruController::class, 'index']);
     });
     Route::prefix('dashboard')->group(function(){
-        Route::get('/siswa', [DataSiswaController::class, 'index']);
+        Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
+        Route::post('/siswa', [DataSiswaController::class, 'edit']);
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });
