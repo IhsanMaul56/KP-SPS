@@ -19,6 +19,7 @@ class TableGuru extends Component
             'dagur' => data_guru::where('nama_guru','like','%'.$this->search.'%')->paginate(5)
         ]);
     }
+
     public function updatingSearch(){
         $this->resetPage();
     }

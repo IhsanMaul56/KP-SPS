@@ -11,18 +11,9 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
-                    <div class="col-3" style="width: 200px">
-                        <div class="persegi">
-                            <p class="text-white m-0 fs-5">Semester Siswa</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2 m-0">
-                            <p class="text-white m-0 fs-5">X RPL 1</p>
-                        </div>
-                    </div>
+                    @livewire('tabel-siswa')
                 </div>
             </div>
         </div>
