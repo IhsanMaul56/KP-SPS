@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\data_jadwal;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -95,5 +96,9 @@ class DataJadwalSeeder extends Seeder
             ],
             
         ];
+
+        foreach($dataJadwal as $key => $val){
+            data_jadwal::create($val);
+        }
     }
 }
