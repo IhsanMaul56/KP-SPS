@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class TableGuru extends Component
 {
     public $search = '';
+    public $dataCount;
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -23,4 +24,5 @@ class TableGuru extends Component
     public function updatingSearch(){
         $this->resetPage();
     }
+
 }

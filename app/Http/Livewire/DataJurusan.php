@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\data_siswa;
+use App\Models\data_jurusan;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class DataSiswa extends Component
+class DataJurusan extends Component
 {
     public $search = '';
 
@@ -15,8 +15,8 @@ class DataSiswa extends Component
 
     public function render()
     {
-        return view('livewire.data-siswa', [
-            'dasis' => data_siswa::where('nama_siswa','like','%'.$this->search.'%')->paginate(5)
+        return view('livewire.data-jurusan', [
+            'dajur' => data_jurusan::where('nama_jurusan','like','%'.$this->search.'%')->paginate(5)
         ]);
     }
     public function updatingSearch(){

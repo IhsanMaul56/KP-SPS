@@ -1,5 +1,5 @@
 <div class="col">
-    <h3>Data Siswa</h3>
+    <h3>Data Jurusan</h3>
     <div class="mb-3">
         <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
     </div>
@@ -7,22 +7,20 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>No. HP</th>
+                <th>Nama Jurusan</th>
+                <th>Kepala Jurusan</th>
                 <!-- Tambahkan kolom lain di sini -->
             </tr>
         </thead>
         <tbody>
-            @foreach ($dasis as $index => $item)
+            @foreach ($dajur as $index => $item)
                 <tr>
-                    <td>{{ $dasis->firstItem() + $index }}</td>
-                    <td>{{ $item->nama_siswa }}</td>
-                    <td>{{ $item->jenis_kelamin }}</td>
-                    <td>{{ $item->no_hp }}</td>
+                    <td>{{ $dajur->firstItem() + $index }}</td>
+                    <td>{{ $item->nama_jurusan}}</td>
+                    <td>{{ $item->nama_guru}}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{ $dasis->links() }}   
+    {{ $dajur->links() }}   
 </div>
