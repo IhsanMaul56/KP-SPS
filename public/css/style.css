@@ -248,7 +248,6 @@ body{
     padding-right: 15px;
 }
 
-/* beranda admin */
 .container {
     width: 25vmin;
     display: flex;
@@ -289,4 +288,27 @@ span.text {
         font-size: 12px;
     }
 }
-/* batas beranda admin */
+
+.edit-data {
+    background-color: #16498c;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+    font-size: 15px;
+    width: 169px;
+    position: relative;
+    /* text-align: center; */
+}
+
+.cetak-rapor {
+    background-color: #D80001;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+    font-size: 15px;
+    width: 169px;
+    position: relative;
+    /* text-align: center; */
+}

@@ -161,13 +161,13 @@
                 </div>
                 <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
-                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
+                        <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
                             <option selected>Semester Ganjil</option>
                             <option>Semester Genap</option>
                         </select>
                     </div>
                     <div class="col-3" style="width: max-content;">
-                        <button class="btn btn-danger m-0" onclick="pdf();" id="shadow">Cetak Rapor</button>
+                        <span class="cetak-rapor" onclick="pdf();" id="shadow"><i class="bi bi-printer" style="margin-right: 5px"></i>Cetak Rapor</span>
                     </div>
                 </div>
             </div>
