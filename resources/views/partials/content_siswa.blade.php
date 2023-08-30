@@ -11,18 +11,9 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
-                    <div class="col-3" style="width: 200px">
-                        <div class="persegi">
-                            <p class="text-white m-0 fs-5">Semester Siswa</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2 m-0">
-                            <p class="text-white m-0 fs-5">X RPL 1</p>
-                        </div>
-                    </div>
+                    @livewire('tabel-siswa')
                 </div>
             </div>
         </div>
@@ -42,8 +33,8 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow" style="height: 575px">
-                <form method="POST">
+            <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
+                <form action="#" method="POST">
                     <div class="row">
                         <div class="col" style="margin-bottom: 20px">
                             <div class="persegi">
@@ -96,11 +87,7 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" placeholder="dd/mm/yyyy" style="border-color: rgba(168, 168, 168, 1);">
-                                <button class="input-group-text" style="border-color: rgba(168, 168, 168, 1);"><i class="bi bi-calendar-event"></i></button>
-                                
-                            </div>
+                            @livewire('date-picker')
                         </div>
                     </div>
 
@@ -132,8 +119,13 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="height: 150px; border-color: rgba(168, 168, 168, 1);">
+                                <textarea name="alamat" id="" cols="30" rows="10" class="form-control"></textarea>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col text-end">
+                            <span class="simpan-data fw-bold" id="shadow">Simpan Data</span>
                         </div>
                     </div>
                 </form>

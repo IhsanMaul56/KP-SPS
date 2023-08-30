@@ -12,7 +12,7 @@
     <div class="container-fluid p-0">
         @include('partials.sidebar')
         @if (Auth::user()->role == 'admin')
-            @include('partials.content_admin')
+            @include('livewire.content_admin')
         @elseif (Auth::user()->role == 'kurikulum')
             @include('partials.content_kurikulum')
         @elseif (Auth::user()->role == 'guru')
@@ -29,7 +29,20 @@
                 @elseif (Auth::user()->role == 'guru')
                     @include('partials.rightbar_guru')
                 @elseif (Auth::user()->role == 'siswa')
-                    @include('partials.rightbar_siswa')
+                    {{-- @switch($Id)
+                        @case(page1)
+                            @include('partials.rightbar_siswa')
+                            @break
+                        @case(page2)
+                            @include('partials.rightbar_siswa_profile')
+                            @break
+                        @default
+                    @endswitch     --}}
+                {{-- @if ()
+                        
+                    @elseif()
+                        @include('partials.rightbar_siswa_profile') --}}
+                        @include('partials.rightbar_siswa')
                 @endif
             </div>
         </div>

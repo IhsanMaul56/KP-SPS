@@ -1,6 +1,8 @@
 <div class="col">
-    <h3 class="fs-5 mb-2">Jadwal Mengajar</h3>
-    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
+    <h3>Data Siswa</h3>
+    <div class="mb-3">
+        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -12,15 +14,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($dagur as $index => $item)
+            @foreach ($dasis as $index => $item)
                 <tr>
-                    <td>{{ $dagur->firstItem() + $index }}</td>
-                    <td>{{ $item->nama_guru }}</td>
+                    <td>{{ $dasis->firstItem() + $index }}</td>
+                    <td>{{ $item->nama_siswa }}</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{ $dagur->links() }}   
+    {{ $dasis->links() }}   
 </div>

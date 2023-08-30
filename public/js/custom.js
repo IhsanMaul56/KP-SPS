@@ -46,10 +46,14 @@ const page6 = document.getElementById('page6');
 const page7 = document.getElementById('page7');
 const page8 = document.getElementById('page8');
 const page9 = document.getElementById('page9');
+// const rightbar1 = document.getElementById('rightbar1');
+// const rightbar2 = document.getElementById('rightbar2')
 
 
 btnPage1.addEventListener('click', () => {
     page1.classList.add('active-page');
+    // rightbar1.classList.add('active-page');
+    // rightbar2.classList.remove('active-page');
     page2.classList.remove('active-page');
     page3.classList.remove('active-page');
     page4.classList.remove('active-page');
@@ -62,6 +66,8 @@ btnPage1.addEventListener('click', () => {
 btnPage2.addEventListener('click', () => {
     page1.classList.remove('active-page');
     page2.classList.add('active-page');
+    // rightbar1.classList.remove('active-page');
+    // rightbar2.classList.add('active-page');
     page3.classList.remove('active-page');
     page4.classList.remove('active-page');
     page5.classList.remove('active-page');
@@ -74,6 +80,8 @@ btnPage3.addEventListener('click', () => {
     page1.classList.remove('active-page');
     page2.classList.remove('active-page');
     page3.classList.add('active-page');
+    // rightbar1.classList.add('active-page');
+    // rightbar2.classList.remove('active-page');
     page4.classList.remove('active-page');
     page5.classList.remove('active-page');
     page6.classList.remove('active-page');
@@ -150,7 +158,7 @@ btnPage9.addEventListener('click', () => {
 
 //js dashboard admin
 let valueDisplays = document.querySelectorAll(".num");
-let interval = 1000;
+let interval = 500;
 
 valueDisplays.forEach((valueDisplay) => {
     let startValue = 0;
@@ -164,3 +172,18 @@ valueDisplays.forEach((valueDisplay) => {
         }
     }, duration);
 });
+
+// rightbar
+// Ambil semua elemen dengan kelas "show-hide"
+var elements = document.querySelectorAll('.rightbars');
+
+// Loop melalui setiap elemen
+elements.forEach(function(element) {
+    element.addEventListener('click', function() {
+        // Toggle kelas "hidden" pada elemen saat diklik
+        element.classList.toggle('hidden');
+    });
+});
+
+
+
