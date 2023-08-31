@@ -77,11 +77,7 @@
         <div class="row p-0 m-0">
             <div class="card-body" id="shadow">
                 <div class="row">
-                    <div class="col">
-                        <div class="persegi2 m-0">
-                            <p class="text-white m-0 fs-5">X RPL 1</p>
-                        </div>
-                    </div>
+                    @livewire('guru-wali')
                 </div>
             </div>
         </div>
