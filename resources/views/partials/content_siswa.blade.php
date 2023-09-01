@@ -11,18 +11,9 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
-                    <div class="col-3" style="width: 200px">
-                        <div class="persegi">
-                            <p class="text-white m-0 fs-5">Semester Siswa</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2 m-0">
-                            <p class="text-white m-0 fs-5">X RPL 1</p>
-                        </div>
-                    </div>
+                    @livewire('tabel-siswa')
                 </div>
             </div>
         </div>
@@ -43,101 +34,7 @@
         </div>
         <div class="row p-0 m-0">
             <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
-                <form action="#" method="POST">
-                    <div class="row">
-                        <div class="col" style="margin-bottom: 20px">
-                            <div class="persegi">
-                                <p class="text-white m-0 fs-5">Ubah Data | Akun</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Nama</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>NIS</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Jenis Kelamin</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <select id="jeniskelamin" class="form-select" style="border-color: rgba(168, 168, 168, 1);">
-                                <option selected></option>
-                                <option>Laki-laki</option>
-                                <option>Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Tempat, Tanggal Lahir</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            @livewire('date-picker')
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Telepon/HP</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>E-mail</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Alamat Lengkap</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <textarea name="alamat" id="" cols="30" rows="10" class="form-control"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col text-end">
-                            <span class="simpan-data fw-bold" id="shadow">Simpan Data</span>
-                        </div>
-                    </div>
-                </form>
+                @livewire('akun-siswa')
             </div>
         </div>
     </div>
@@ -162,13 +59,13 @@
                 </div>
                 <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
-                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
+                        <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
                             <option selected>Semester Ganjil</option>
                             <option>Semester Genap</option>
                         </select>
                     </div>
                     <div class="col-3" style="width: max-content;">
-                        <button class="btn btn-danger m-0" onclick="pdf();" id="shadow">Cetak Rapor</button>
+                        <span class="cetak-rapor" onclick="pdf();" id="shadow"><i class="bi bi-printer" style="margin-right: 5px"></i>Cetak Rapor</span>
                     </div>
                 </div>
             </div>
