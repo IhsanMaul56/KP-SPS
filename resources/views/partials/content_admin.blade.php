@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="col p-0 page active-page" id="page1">
+<div class="col p-0 page active-page" id="page11">
     <div class="grid-tengah">
         <div class="row" style="margin-bottom: 30px;">
             <div class="col">
@@ -19,7 +19,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="col p-0 page" id="page2">
+<div class="col p-0 page" id="page22">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -43,7 +43,7 @@
 </div>
 
 {{-- Page 3 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="page33">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">

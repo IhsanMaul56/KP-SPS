@@ -1,5 +1,5 @@
-{{-- Page 1 --}}
-<div class="">
+{{-- pengumuman --}}
+<div class="rightbar active-page" id="rightbar1">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
@@ -25,7 +25,8 @@
     </div>
 </div>
 
-<div class="">
+{{-- akun --}}
+<div class="rightbar" id="rightbar2">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
