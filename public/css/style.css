@@ -290,6 +290,11 @@ span.text {
     }
 }
 /* batas beranda admin */
-.hidden {
+
+.rightbar {
     display: none;
+}
+
+.rightbar.active-page {
+    display: block;
 }

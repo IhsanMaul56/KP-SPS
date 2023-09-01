@@ -31,7 +31,7 @@
     
     @include('partials.footer')
     <script src="{{ asset('js/custom.js') }}"></script>
-    
+    <script src="{{ asset('js/halaman.js') }}"></script>
     @stack('script')
 </body>
 </html>

@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="col p-0 page active-page" id="page1">
+<div class="col p-0 page active-page" id="page11">
     <div class="grid-tengah">
         <div class="row" style="margin-bottom: 30px;">
             <div class="col">
@@ -20,7 +20,7 @@
                 <div class="container m-2">
                     <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
                     {{-- <span class="num" data-val="{{ $dataCount }}"></span> --}}
-                    @livewire('hitung-guru')
+                    {{-- @livewire('hitung-guru') --}}
                     <span class="text">Guru</span>
                 </div>
                 <div class="container m-2">
@@ -39,7 +39,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="col p-0 page" id="page2">
+<div class="col p-0 page" id="page22">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -63,7 +63,7 @@
 </div>
 
 {{-- Page 3 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="page33">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
