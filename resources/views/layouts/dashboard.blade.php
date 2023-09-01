@@ -12,7 +12,7 @@
     <div class="container-fluid p-0">
         @include('partials.sidebar')
         @if (Auth::user()->role == 'admin')
-            @include('livewire.content_admin')
+            @include('partials.content_admin')
         @elseif (Auth::user()->role == 'kurikulum')
             @include('partials.content_kurikulum')
         @elseif (Auth::user()->role == 'guru')
