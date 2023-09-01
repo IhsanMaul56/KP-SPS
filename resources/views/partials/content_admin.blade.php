@@ -12,27 +12,7 @@
         </div>
         <div class="row p-0 m-0" style="display: flex; justify-content: center;">
             {{-- <div class="wrapper"> --}}
-                <div class="container m-2">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
-                    @livewire('data-admin')
-                    <span class="text">Admin</span>
-                </div>
-                <div class="container m-2">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
-                    {{-- <span class="num" data-val="{{ $dataCount }}"></span> --}}
-                    @livewire('hitung-guru')
-                    <span class="text">Guru</span>
-                </div>
-                <div class="container m-2">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
-                    <span class="num" data-val="1100"></span>
-                    <span class="text">Siswa</span>
-                </div>
-                <div class="container m-2">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 40px; text-align: center;"></i>
-                    <span class="num" data-val="1"></span>
-                    <span class="text">Kurikulum</span>
-                </div>
+                @livewire('data-admin')
             {{-- </div> --}}
         </div>
     </div>
