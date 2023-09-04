@@ -98,7 +98,7 @@
         </div>
         <div class="row p-0 m-0">
             <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
-                {{-- @livewire('akun-siswa') --}}
+                @livewire('akun-guru')
             </div>
         </div>
     </div>
