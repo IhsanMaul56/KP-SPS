@@ -1,5 +1,5 @@
 {{-- pengumuman --}}
-<div class="rightbar active-page" id="rightbar1">
+<div class="rightbar active-page" id="rightguru1">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
@@ -26,7 +26,7 @@
 </div>
 
 {{-- akun --}}
-<div class="rightbar" id="rightbar2">
+<div class="rightbar" id="rightguru2">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
@@ -46,9 +46,9 @@
                 <span class="fw-bold mb-2" style="text-align: center; font-size: 20px;">{{ Auth::user()->name }}</span>
                 <span class="fw-bold" style="text-align: center; font-size: 20px;">{{ Auth::user()->email }}</span>
             </div>
-            <div class="row justify-content-center" style="margin-top: 115px;">
+            {{-- <div class="row justify-content-center" style="margin-top: 115px;">
                 <span class="simpan-data fw-bold" id="shadow">Simpan Data</span>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
