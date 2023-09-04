@@ -1,4 +1,4 @@
-{{-- <form action="{{ route('siswa') }}" method="POST">
+<form action="{{ route('siswa') }}" method="POST">
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
             <div class="persegi">
@@ -6,14 +6,14 @@
             </div>
         </div>
     </div>
-    @foreach ($siswa2 as $data) 
+    @foreach ($akun as $data) 
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
                 <span>Nama</span>
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->nama_siswa }}" disabled>
+                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->nama_guru }}" disabled>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->nis }}" disabled>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->nip }}" disabled>
                 </div>
             </div>
         </div>
@@ -70,9 +70,9 @@
                 <span>E-mail</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                @if ($siswa1)
+                @if ($guru)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}" disabled>
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" disabled>
                     </div>
                 @endif
             </div>
@@ -94,4 +94,4 @@
             <button class="simpan-data fw-bold" id="shadow" type="submit">Simpan Data</button>
         </div>
     </div>
-</form> --}}
+</form>
