@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="col p-0 page active-page" id="page11">
+<div class="col p-0 page active-page" id="admin1">
     <div class="grid-tengah">
         <div class="row" style="margin-bottom: 30px;">
             <div class="col">
@@ -19,7 +19,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="col p-0 page" id="page22">
+<div class="col p-0 page" id="admin2">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -43,7 +43,7 @@
 </div>
 
 {{-- Page 3 --}}
-<div class="col p-0 page" id="page33">
+<div class="col p-0 page" id="admin3">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -67,7 +67,7 @@
 </div>
 
 {{-- Page 4 --}}
-<div class="col p-0 page" id="page4">
+<div class="col p-0 page" id="admin4">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -91,7 +91,7 @@
 </div>
 
 {{-- Page 5 --}}
-<div class="col p-0 page" id="page5">
+<div class="col p-0 page" id="admin5">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -115,7 +115,7 @@
 </div>
 
 {{-- Page 6 --}}
-<div class="col p-0 page" id="page6">
+<div class="col p-0 page" id="admin6">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -146,7 +146,7 @@
 </div>
 
 {{-- Page 7 --}}
-<div class="col p-0 page" id="page7">
+<div class="col p-0 page" id="admin7">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -177,7 +177,7 @@
 </div>
 
 {{-- Page 8 --}}
-<div class="col p-0 page" id="page8">
+<div class="col p-0 page" id="admin8">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -208,7 +208,7 @@
 </div>
 
 {{-- Page 9 --}}
-<div class="col p-0 page" id="page9">
+<div class="col p-0 page" id="admin9">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">

@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="col p-0 page active-page" id="page1">
+<div class="col p-0 page active-page" id="siswa1">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -21,27 +21,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="col p-0 page" id="page2">
-    <div class="grid-tengah">
-        <div class="row">
-            <div class="col">
-                <span class="h1 fw-bold text-biru">Akun</span>
-            </div>
-            <div class="col text-end">
-                <span class="h5">Selamat Datang,</span><br>
-                <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
-            </div>
-        </div>
-        <div class="row p-0 m-0">
-            <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
-                @livewire('akun-siswa')
-            </div>
-        </div>
-    </div>
-</div>
-
-{{-- Page 3 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="siswa2">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -68,6 +48,26 @@
                         <span class="cetak-rapor" onclick="pdf();" id="shadow"><i class="bi bi-printer" style="margin-right: 5px"></i>Cetak Rapor</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Page 3 --}}
+<div class="col p-0 page" id="siswa3">
+    <div class="grid-tengah">
+        <div class="row">
+            <div class="col">
+                <span class="h1 fw-bold text-biru">Pengaturan Akun</span>
+            </div>
+            <div class="col text-end">
+                <span class="h5">Selamat Datang,</span><br>
+                <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
+            </div>
+        </div>
+        <div class="row p-0 m-0">
+            <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
+                @livewire('akun-siswa')
             </div>
         </div>
     </div>
