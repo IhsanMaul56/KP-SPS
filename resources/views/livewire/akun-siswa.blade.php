@@ -1,4 +1,5 @@
 <form wire:submit.prevent='update'>
+  @csrf
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
             <div class="persegi">
