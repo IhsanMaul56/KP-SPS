@@ -249,7 +249,8 @@ body{
 }
 
 .container {
-    width: 25vmin;
+    width: 29vmin;
+    height: 13vmin;
     display: flex;
     justify-content: space-evenly;
     position: relative;
@@ -259,6 +260,7 @@ body{
     border-bottom: 10px solid #16498c;
     padding-top: 0px;
     align-items: center;
+    margin: 0;
 }
 
 span.num {
@@ -271,7 +273,7 @@ span.num {
 
 span.text {
     color: #16498c;
-    font-size: 1em;
+    font-size: 20px;
     text-align: center;
     pad: 0.7em 0;
     font-weight: 400;
