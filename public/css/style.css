@@ -290,7 +290,15 @@ span.text {
         font-size: 12px;
     }
 }
+/* batas beranda admin */
 
+.rightbar {
+    display: none;
+}
+
+.rightbar.active-page {
+    display: block;
+}
 .edit-data {
     background-color: #16498c;
     color: #ffffff;

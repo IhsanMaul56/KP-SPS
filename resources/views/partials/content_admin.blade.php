@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="col p-0 page active-page" id="page1">
+<div class="col p-0 page active-page" id="admin1">
     <div class="grid-tengah">
         <div class="row" style="margin-bottom: 30px;">
             <div class="col">
@@ -12,6 +12,7 @@
         </div>
         <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">
             {{-- <div class="wrapper"> --}}
+<<<<<<< HEAD
                 <div class="container" id="shadow">
                     <i class="bi bi-person" style="color: #16498c; font-size: 50px; text-align: center;"></i>
                     <span class="text">Admin</span>
@@ -32,13 +33,16 @@
                     <span class="text">Kurikulum</span>
                     <span class="num" data-val="1"></span>
                 </div>
+=======
+                @livewire('data-admin')
+>>>>>>> 5af5a4a56494226deedceae581806632a0598ea2
             {{-- </div> --}}
         </div>
     </div>
 </div>
 
 {{-- Page 2 --}}
-<div class="col p-0 page" id="page2">
+<div class="col p-0 page" id="admin2">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -50,17 +54,10 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Admin</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                        @livewire('table-guru')
                     </div>
                 </div>
             </div>
@@ -69,7 +66,7 @@
 </div>
 
 {{-- Page 3 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="admin3">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -81,17 +78,10 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Admin</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                        @livewire('data-siswa')
                     </div>
                 </div>
             </div>
@@ -100,7 +90,7 @@
 </div>
 
 {{-- Page 4 --}}
-<div class="col p-0 page" id="page4">
+<div class="col p-0 page" id="admin4">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -112,17 +102,10 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Admin</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                    @livewire('data-jurusan')    
                     </div>
                 </div>
             </div>
@@ -131,7 +114,7 @@
 </div>
 
 {{-- Page 5 --}}
-<div class="col p-0 page" id="page5">
+<div class="col p-0 page" id="admin5">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -143,17 +126,10 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        <div class="persegi">
-                            <p class="text-white">Semester Admin</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white">X RPL 1</p>
-                        </div>
+                        @livewire('data-kelas')
                     </div>
                 </div>
             </div>
@@ -162,7 +138,7 @@
 </div>
 
 {{-- Page 6 --}}
-<div class="col p-0 page" id="page6">
+<div class="col p-0 page" id="admin6">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -174,7 +150,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
                         <div class="persegi">
@@ -193,7 +169,7 @@
 </div>
 
 {{-- Page 7 --}}
-<div class="col p-0 page" id="page7">
+<div class="col p-0 page" id="admin7">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -205,7 +181,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
                         <div class="persegi">
@@ -224,7 +200,7 @@
 </div>
 
 {{-- Page 8 --}}
-<div class="col p-0 page" id="page8">
+<div class="col p-0 page" id="admin8">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -236,7 +212,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
                         <div class="persegi">
@@ -255,7 +231,7 @@
 </div>
 
 {{-- Page 9 --}}
-<div class="col p-0 page" id="page9">
+<div class="col p-0 page" id="admin9">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -267,7 +243,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
                         <div class="persegi">

@@ -1,5 +1,5 @@
 {{-- Page 1 --}}
-<div class="col p-0 page active-page" id="page1">
+<div class="col p-0 page active-page" id="kurlum1">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -30,7 +30,7 @@
 </div>
 
 {{-- Page 2 --}}
-<div class="col p-0 page" id="page2">
+<div class="col p-0 page" id="kurlum2">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -57,7 +57,7 @@
 </div>
 
 {{-- Page 3 --}}
-<div class="col p-0 page" id="page3">
+<div class="col p-0 page" id="kurlum3">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -81,7 +81,7 @@
 </div>
 
 {{-- Page 4 --}}
-<div class="col p-0 page" id="page4">
+<div class="col p-0 page" id="kurlum4">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -101,7 +101,7 @@
 </div>
 
 {{-- Page 5 --}}
-<div class="col p-0 page" id="page5">
+<div class="col p-0 page" id="kurlum5">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
