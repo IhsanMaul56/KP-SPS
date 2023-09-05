@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function(){
     });
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
-        Route::post('/siswa', [DataSiswaController::class, 'edit']);
+        Route::post('/siswa', [DataSiswaController::class, 'edit'])->name('siswa.edit');
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });

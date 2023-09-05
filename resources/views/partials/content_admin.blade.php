@@ -34,7 +34,7 @@
             <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row">
                     <div class="col">
-                        @livewire('table-guru')
+                        @livewire('data-guru')
                     </div>
                 </div>
             </div>
