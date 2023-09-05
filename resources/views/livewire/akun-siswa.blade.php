@@ -1,5 +1,5 @@
-<form action="{{ route('siswa') }}" method="POST">
-    @csrf
+<form wire:submit.prevent='update'>
+  @csrf
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
             <div class="persegi">
@@ -92,7 +92,9 @@
     @endforeach
     <div class="row mt-5">
         <div class="col text-end">
-            <button class="simpan-data fw-bold" id="shadow" type="submit">Simpan Data</button>
+            <button class="simpan-data fw-bold" id="shadow" type="submit">
+                <a href="{{ route('siswa.edit') }}"></a>Update Data
+            </button>
         </div>
     </div>
 </form>

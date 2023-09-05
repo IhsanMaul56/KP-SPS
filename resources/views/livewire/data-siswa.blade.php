@@ -49,5 +49,5 @@
             @endforeach
         </tbody>
     </table>
-    {{ $dasis->links() }}   
+    {{ $dasis->links() }}  
 </div>

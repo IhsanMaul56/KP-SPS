@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\data_siswa;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +10,8 @@ class AkunSiswa extends Component
 {
     public $siswa1;
     public $siswa2;
-
+    public $data;
+    
     public function render()
     {
         $user = Auth::user();
@@ -31,30 +31,29 @@ class AkunSiswa extends Component
 
         return view('livewire.akun-siswa');
     }
-
-    public function update(){
+    
+    public function mount(){
         $user = Auth::user();
+    
         if ($user && $user->siswa_id) {
-            $siswa = DB::table('data_siswas')
+            $this->data = DB::table('data_siswas')
                 ->where('nis', $user->siswa_id)
-                ->first();
-
-            if ($siswa) {
-                // Lakukan pembaruan alamat di sini sesuai kebutuhan
-                // Misalnya, Anda ingin mengganti alamat dengan nilai baru 'Alamat Baru'
-                $newAlamat = $siswa->alamat;
-
-                // Lakukan update pada tabel data_siswas
-                DB::table('data_siswas')
-                    ->where('nis', $user->siswa_id)
-                    ->update(['alamat' => $newAlamat]);
-
-                // Anda juga dapat memberikan pesan sukses atau lainnya jika diperlukan
-                session()->flash('message', 'Alamat berhasil diperbarui.');
-            } else {
-                // Handle jika data siswa tidak ditemukan
-                session()->flash('message', 'Data siswa tidak ditemukan.');
-            }
+                ->select('nis', 'alamat', 'no_hp')
+                ->get();
         }
+    }
+    
+    public function update(){
+        foreach ($this->data as $row) {
+            DB::table('data_siswas')
+                ->where('nis', $row->nis)
+                ->update([
+                    'alamat' => $row->alamat,
+                    'no_hp' => $row->no_hp
+                ]);
+        }
+    
+        // Setelah update, kosongkan data
+        $this->data = [];
     }
 }
