@@ -8,6 +8,7 @@ use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataSiswaController;
+use App\Http\Livewire\AkunGuru;
 use App\Http\Livewire\AkunSiswa;
 use App\Http\Livewire\DataTablesExample;
 
@@ -36,11 +37,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/guru', [DataGuruController::class, 'index']);
+        Route::get('/guru', [DataGuruController::class, 'index'])->name('guru');
+        Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');
     });
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
-        Route::post('/siswa', AkunSiswa::class)->name('siswa.edit');
+        Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });

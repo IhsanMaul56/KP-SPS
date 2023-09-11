@@ -1,4 +1,18 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
 <form wire:submit.prevent="update" method="POST">
+    @if (Session::has('message'))
+    <div class="alert alert-success">
+        {{ Session::get('message') }}
+    </div>
+    @endif
+    
     @csrf
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
@@ -61,7 +75,7 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
                 </div>
             </div>
         </div>
@@ -85,7 +99,7 @@
                     <span>Alamat Lengkap</span>
                 </div>
                 <div class="col">
-                    <div class="input-group">
+                    <div class="input-group" >
                         <input wire:model="data.alamat" id="alamat" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->alamat }}">
                     </div>
                 </div>

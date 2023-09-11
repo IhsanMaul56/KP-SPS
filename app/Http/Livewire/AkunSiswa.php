@@ -48,9 +48,12 @@ class AkunSiswa extends Component
                     'alamat' => $this->data['alamat'],
                     'no_hp' => $this->data['no_hp'],
                 ]);
+            
+            $this->siswa2 = DB::table('data_siswas')
+                ->where('nis', $user->siswa_id)
+                ->get();
 
-            // Set a success message
-            Session::flash('message', 'Data updated successfully.');
+            Session::flash('message', 'Data berhasil di update');
         }
 
         // Reset Livewire data properties
