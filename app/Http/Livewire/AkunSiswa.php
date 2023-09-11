@@ -5,12 +5,16 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AkunSiswa extends Component
 {
     public $siswa1;
     public $siswa2;
-    public $data;
+    public $data = [
+        'alamat' => '',
+        'no_hp' => '',
+    ];
     
     public function render()
     {
@@ -19,8 +23,8 @@ class AkunSiswa extends Component
         if ($user && $user->siswa_id) {
             // Mengambil email dari tabel users
             $this->siswa1 = DB::table('users')
-                ->where('id', $user->id) // Mengganti dengan kondisi yang sesuai
-                ->value('email'); // Mengambil nilai langsung dari kolom email
+                ->where('id', $user->id)
+                ->value('email');
         
             if ($this->siswa1) {
                 $this->siswa2 = DB::table('data_siswas')
@@ -32,28 +36,22 @@ class AkunSiswa extends Component
         return view('livewire.akun-siswa');
     }
     
-    public function mount(){
+    public function update()
+    {
         $user = Auth::user();
-    
+
         if ($user && $user->siswa_id) {
-            $this->data = DB::table('data_siswas')
-                ->where('nis', $user->siswa_id)
-                ->select('nis', 'alamat', 'no_hp')
-                ->get();
-        }
-    }
-    
-    public function update(){
-        foreach ($this->data as $row) {
+            
             DB::table('data_siswas')
-                ->where('nis', $row->nis)
+                ->where('nis', $user->siswa_id)
                 ->update([
-                    'alamat' => $row->alamat,
-                    'no_hp' => $row->no_hp
+                    'alamat' => $this->data['alamat'],
+                    'no_hp' => $this->data['no_hp'],
                 ]);
+
+            Session::flash('message', 'Data berhasil di update');
+            
         }
-    
-        // Setelah update, kosongkan data
-        $this->data = [];
+        
     }
 }
