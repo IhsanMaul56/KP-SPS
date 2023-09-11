@@ -25,3 +25,5 @@
     </table>
     {{ $dagur->links() }}  
 </div>
+
+
