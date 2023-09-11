@@ -34,7 +34,7 @@
 
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
-                <span>NIS</span>
+                <span>NIP</span>
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
@@ -48,7 +48,7 @@
                 <span>Jenis Kelamin</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->jenis_kelamin }}" disabled>
+                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->jenis_kelamin }}">
             </div>
         </div>
 
@@ -58,12 +58,12 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tempat_lahir }}" disabled>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tempat_lahir }}">
                 </div>
             </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tanggal_lahir }}" disabled>
+                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tanggal_lahir }}">
                 </div>
             </div>
         </div>
@@ -86,12 +86,12 @@
             <div class="col-3" style="width: 40%;">
                 @if ($guru)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" disabled>
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}">
                     </div>
                 @endif
             </div>
         </div>
-        
+
         @if (isset($data->alamat))
             <div class="row">
                 <div class="col-3" style="width: 30%;">

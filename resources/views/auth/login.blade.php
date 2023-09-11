@@ -29,9 +29,9 @@
                         <br>
                         <span class="h1 fw-bold mb-5">LOGIN</span>
                         <div class="row mb-4 mt-4">
-                            <label for="email" class="mb-2">{{ __('Masukkan Username atau Email Address') }}</label>
+                            <label for="email" class="mb-2">{{ __('Masukkan Email Address') }}</label>
                             <div class="input-group">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Username atau Email Address">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-md-8 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-5">
+                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-5" style="background-color: #16498c; border-radius: 10px 10px 10px 10px">
                                     {{ __('LOGIN') }}
                                 </button>
                             </div>

@@ -10,10 +10,8 @@
                 <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
             </div>
         </div>
-        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">
-            {{-- <div class="wrapper"> --}}
-                @livewire('data-admin')
-            {{-- </div> --}}
+        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">    
+            @livewire('data-admin')
         </div>
     </div>
 </div>
