@@ -46,13 +46,7 @@ class DataSiswaController extends Controller
      */
     public function edit(data_siswa $data_siswa)
     {
-        $siswa = data_siswa::find($data_siswa->nis);
-
-        if (!$siswa) {
-            return redirect()->route('/dashboard/siswa');
-        }
-
-        return view('layouts.dashboard', compact('laravel.akun-siswa'));
+        return view('layouts.dashboard');
     }
 
     /**

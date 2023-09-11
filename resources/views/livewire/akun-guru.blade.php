@@ -1,4 +1,18 @@
-<form action="{{ route('siswa') }}" method="POST">
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
+<form wire:submit.prevent="update" method="POST">
+    @if (Session::has('message'))
+    <div class="alert alert-success">
+        {{ Session::get('message') }}
+    </div>
+    @endif
+
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
             <div class="persegi">
@@ -60,7 +74,7 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}">
+                    <input wire:model="data.no_hp" id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}">
                 </div>
             </div>
         </div>
@@ -77,17 +91,21 @@
                 @endif
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-3" style="width: 30%;">
-                <span>Alamat Lengkap</span>
-            </div>
-            <div class="col">
-                <div class="input-group">
-                    <textarea name="alamat" id="" cols="30" rows="10" class="form-control" style="border-color: rgba(168, 168, 168, 1);">{{ $data->alamat }}</textarea>
+
+        @if (isset($data->alamat))
+            <div class="row">
+                <div class="col-3" style="width: 30%;">
+                    <span>Alamat Lengkap</span>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <input wire:model="data.alamat" id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}">
+                    </div>
                 </div>
             </div>
-        </div>
+        @else
+            <p>Data alamat tidak tersedia.</p>
+        @endif
     @endforeach
     <div class="row mt-5">
         <div class="col text-end">
