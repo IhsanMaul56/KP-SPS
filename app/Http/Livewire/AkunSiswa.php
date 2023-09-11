@@ -12,6 +12,9 @@ class AkunSiswa extends Component
     public $siswa1;
     public $siswa2;
     public $data = [
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
         'alamat' => '',
         'no_hp' => '',
     ];   

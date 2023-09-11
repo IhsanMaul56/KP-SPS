@@ -86,7 +86,7 @@
             <div class="col-3" style="width: 40%;">
                 @if ($guru)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}">
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" disabled>
                     </div>
                 @endif
             </div>
