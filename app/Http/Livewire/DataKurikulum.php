@@ -2,26 +2,28 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\data_jurusan;
+use App\Models\data_kelas;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 class DataKurikulum extends Component
 {
-    public $countAdmin;
+    public $countKelas;
+    public $countJurusan;
     public $countGuru;
     public $countSiswa;
-    public $countKurikulum;
 
     public function mount()
     {
         $user = Auth::user();
 
         if ($user) {
-            $this->countAdmin = User::where('role', 'admin')->count();
             $this->countGuru = User::where('role', 'guru')->count();
             $this->countSiswa = User::where('role', 'siswa')->count();
-            $this->countKurikulum = User::where('role', 'kurikulum')->count();
+            $this->countJurusan = data_jurusan::count();
+            $this->countKelas = data_kelas::count();
         } else {
             $user = null;
         }
