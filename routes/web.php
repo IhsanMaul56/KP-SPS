@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function(){
     });
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
-        Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
+        Route::post('/siswa', AkunSiswa::class)->name('siswa.edit');
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });

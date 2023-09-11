@@ -46,10 +46,6 @@ class AkunGuru extends Component
                     'alamat' => $this->data['alamat'],
                     'no_hp' => $this->data['no_hp'],
                 ]);
-            
-            $this->akun = DB::table('data_gurus')
-                ->where('nip', $user->guru_id)
-                ->get();
 
             Session::flash('message', 'Data berhasil di update');
         }
