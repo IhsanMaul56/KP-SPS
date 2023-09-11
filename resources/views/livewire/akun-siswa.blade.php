@@ -6,11 +6,11 @@
     @livewireScripts
 @endpush
 
-<form wire:submit.prevent="update" method="POST">
+<form wire:submit.prevent="update" method="POST" action="{{ route('siswa.edit') }}">
     @if (Session::has('message'))
-    <div class="alert alert-success">
-        {{ Session::get('message') }}
-    </div>
+        <div class="alert alert-success">
+            {{ Session::get('message') }}
+        </div>
     @endif
     
     @csrf
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    @foreach ($siswa2 as $item) 
+    @foreach ($siswa2 as $item)
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
                 <span>Nama</span>
@@ -74,8 +74,12 @@
                 <span>Telepon/HP</span>
             </div>
             <div class="col-3" style="width: 40%;">
+                
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
+                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <?php 
+                    // dd($item->no_hp);
+                    ?>
                 </div>
             </div>
         </div>
