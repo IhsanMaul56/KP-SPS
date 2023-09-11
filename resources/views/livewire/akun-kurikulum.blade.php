@@ -1,45 +1,30 @@
-@push('styles')
-    @livewireStyles
-@endpush
-
-@push('script')
-    @livewireScripts
-@endpush
-
-<form wire:submit.prevent="update" method="POST" action="{{ route('siswa.edit') }}">
-    @if (Session::has('message'))
-        <div class="alert alert-success">
-            {{ Session::get('message') }}
-        </div>
-    @endif
-    
-    @csrf
+<form action="{{ route('siswa') }}" method="POST">
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
             <div class="persegi">
-                <p class="text-white m-0 fs-5" id="shadow">Ubah Data | Akun</p>
+                <p class="text-white m-0 fs-5">Ubah Data | Akun</p>
             </div>
         </div>
     </div>
-    @foreach ($siswa2 as $item)
+    @foreach ($akun as $data) 
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
                 <span>Nama</span>
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nama_siswa }}" disabled>
+                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->nama_guru }}" disabled>
                 </div>
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
-                <span>NIS</span>
+                <span>NIP</span>
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nis }}" disabled>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->nip }}" disabled>
                 </div>
             </div>
         </div>
@@ -74,12 +59,8 @@
                 <span>Telepon/HP</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
-                    <?php 
-                    // dd($item->no_hp);
-                    ?>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}">
                 </div>
             </div>
         </div>
@@ -89,33 +70,28 @@
                 <span>E-mail</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                @if ($siswa1)
+                @if ($guru)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}">
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}">
                     </div>
                 @endif
             </div>
         </div>
         
-        @if (isset($item->alamat))
-            <div class="row">
-                <div class="col-3" style="width: 30%;">
-                    <span>Alamat Lengkap</span>
-                </div>
-                <div class="col">
-                    <div class="input-group" >
-                        <input wire:model="data.alamat" id="alamat" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->alamat }}">
-                    </div>
+        <div class="row">
+            <div class="col-3" style="width: 30%;">
+                <span>Alamat Lengkap</span>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                    <textarea name="alamat" id="" cols="30" rows="10" class="form-control" style="border-color: rgba(168, 168, 168, 1);">{{ $data->alamat }}</textarea>
                 </div>
             </div>
-        @else
-            <p>Data alamat tidak tersedia.</p>
-        @endif
-
+        </div>
     @endforeach
     <div class="row mt-5">
         <div class="col text-end">
-            <button class="simpan-data fw-bold" id="shadow" type="submit">Update Data</button>
+            <button class="simpan-data fw-bold" id="shadow" type="submit">Simpan Data</button>
         </div>
     </div>
 </form>

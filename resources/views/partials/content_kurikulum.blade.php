@@ -1,7 +1,7 @@
 {{-- Page 1 --}}
 <div class="col p-0 page active-page" id="kurlum1">
     <div class="grid-tengah">
-        <div class="row">
+        <div class="row" style="margin-bottom: 30px;">
             <div class="col">
                 <span class="h1 fw-bold text-biru">Beranda</span>
             </div>
@@ -10,21 +10,8 @@
                 <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
             </div>
         </div>
-        <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
-                <div class="row">
-                    <div class="col">
-                        <div class="persegi">
-                            <p class="text-white m-0 fs-5">Semester Guru</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="persegi2">
-                            <p class="text-white m-0 fs-5">X RPL 1</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">
+            @livewire('data-kurikulum')
         </div>
     </div>
 </div>
@@ -113,101 +100,8 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow" style="height: 575px">
-                <form method="POST">
-                    <div class="row">
-                        <div class="col" style="margin-bottom: 20px">
-                            <div class="persegi">
-                                <p class="text-white m-0 fs-5">Ubah Data | Akun</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Nama</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>NIS</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Jenis Kelamin</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <select id="jeniskelamin" class="form-select" style="border-color: rgba(168, 168, 168, 1);">
-                                <option selected></option>
-                                <option>Laki-laki</option>
-                                <option>Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Tempat, Tanggal Lahir</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" placeholder="dd/mm/yyyy" style="border-color: rgba(168, 168, 168, 1);">
-                                <button class="input-group-text" style="border-color: rgba(168, 168, 168, 1);"><i class="bi bi-calendar-event"></i></button>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Telepon/HP</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-3" style="width: 30%;">
-                            <span>E-mail</span>
-                        </div>
-                        <div class="col-3" style="width: 40%;">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-3" style="width: 30%;">
-                            <span>Alamat Lengkap</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input id="nama" type="nama" class="form-control" style="height: 150px; border-color: rgba(168, 168, 168, 1);">
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <div class="card-body h-100 overflow-auto" id="shadow" style="height: 575px">
+                @livewire('akun-guru')
             </div>
         </div>
     </div>

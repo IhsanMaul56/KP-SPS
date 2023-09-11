@@ -46,13 +46,13 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $infologin = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ],[
-            'email.required' => 'Email tidak boleh kosong',
-            'password.required' => 'Password tidak boleh kosong',
-        ]
-    );
+                'email' => 'required',
+                'password' => 'required'
+            ],[
+                'email.required' => 'Email tidak boleh kosong',
+                'password.required' => 'Password tidak boleh kosong',
+            ]
+        );
 
         $infologin = [
             'email' => $request->email,

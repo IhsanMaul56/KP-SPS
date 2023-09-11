@@ -29,20 +29,7 @@
                 @elseif (Auth::user()->role == 'guru')
                     @include('partials.rightbar_guru')
                 @elseif (Auth::user()->role == 'siswa')
-                    {{-- @switch($Id)
-                        @case(page1)
-                            @include('partials.rightbar_siswa')
-                            @break
-                        @case(page2)
-                            @include('partials.rightbar_siswa_profile')
-                            @break
-                        @default
-                    @endswitch     --}}
-                {{-- @if ()
-                        
-                    @elseif()
-                        @include('partials.rightbar_siswa_profile') --}}
-                        @include('partials.rightbar_siswa')
+                    @include('partials.rightbar_siswa')
                 @endif
             </div>
         </div>

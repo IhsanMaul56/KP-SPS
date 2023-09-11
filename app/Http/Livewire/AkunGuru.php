@@ -5,11 +5,16 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AkunGuru extends Component
 {
     public $guru;
     public $akun;
+    public $data = [
+        'alamat' => '',
+        'no_hp' => ''
+    ];
 
     public function render()
     {
@@ -28,5 +33,24 @@ class AkunGuru extends Component
         }
         
         return view('livewire.akun-guru');
+    }
+
+    public function update()
+    {
+        $user = Auth::user();
+
+        if($user && $user->guru_id){
+            DB::table('data_gurus')
+                ->where('nip', $user->guru_id)
+                ->update([
+                    'alamat' => $this->data['alamat'],
+                    'no_hp' => $this->data['no_hp'],
+                ]);
+
+            Session::flash('message', 'Data berhasil di update');
+        }
+
+        // $this->reset(['data']);
+        $this->emit('refreshComponent');
     }
 }

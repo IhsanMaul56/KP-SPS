@@ -10,33 +10,8 @@
                 <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
             </div>
         </div>
-        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">
-            {{-- <div class="wrapper"> --}}
-<<<<<<< HEAD
-                <div class="container" id="shadow">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 50px; text-align: center;"></i>
-                    <span class="text">Admin</span>
-                    <span class="num" data-val="3"></span>
-                </div>
-                <div class="container" id="shadow">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 50px; text-align: center;"></i>
-                    <span class="text">Guru</span>
-                    <span class="num" data-val="64"></span>
-                </div>
-                <div class="container" id="shadow">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 50px; text-align: center;"></i>
-                    <span class="text">Siswa</span>
-                    <span class="num" data-val="1100"></span>
-                </div>
-                <div class="container" id="shadow">
-                    <i class="bi bi-person" style="color: #16498c; font-size: 50px; text-align: center;"></i>
-                    <span class="text">Kurikulum</span>
-                    <span class="num" data-val="1"></span>
-                </div>
-=======
-                @livewire('data-admin')
->>>>>>> 5af5a4a56494226deedceae581806632a0598ea2
-            {{-- </div> --}}
+        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">    
+            @livewire('data-admin')
         </div>
     </div>
 </div>
