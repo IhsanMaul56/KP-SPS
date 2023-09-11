@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//js dashboard admin
+// beranda admin
 let valueDisplays = document.querySelectorAll(".num");
 let interval = 500;
 

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col" style="margin-bottom: 20px">
             <div class="persegi">
-                <p class="text-white m-0 fs-5">Ubah Data | Akun</p>
+                <p class="text-white m-0 fs-5" id="shadow">Ubah Data | Akun</p>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 <span>Jenis Kelamin</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->jenis_kelamin }}" disabled>
+                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->jenis_kelamin }}">
             </div>
         </div>
 
@@ -44,12 +44,12 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tempat_lahir }}" disabled>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tempat_lahir }}">
                 </div>
             </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tanggal_lahir }}" disabled>
+                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tanggal_lahir }}">
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
             <div class="col-3" style="width: 40%;">
                 @if ($siswa1)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}" disabled>
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}">
                     </div>
                 @endif
             </div>
@@ -84,7 +84,7 @@
             </div>
             <div class="col">
                 <div class="input-group">
-                    <textarea name="alamat" id="" cols="30" rows="10" class="form-control">{{ $data->alamat }}</textarea>
+                    <textarea name="alamat" id="" cols="30" rows="10" class="form-control" style="border-color: rgba(168, 168, 168, 1);">{{ $data->alamat }}</textarea>
                 </div>
             </div>
         </div>
