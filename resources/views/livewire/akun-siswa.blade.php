@@ -49,7 +49,7 @@
                 <span>Jenis Kelamin</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->jenis_kelamin }}">
+                <input id="jenis_kelamin" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->jenis_kelamin }}" disabled>
             </div>
         </div>
 
@@ -59,12 +59,12 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tempat_lahir }}">
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tempat_lahir }}" disabled>
                 </div>
             </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->tanggal_lahir }}">
+                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tanggal_lahir }}" disabled>
                 </div>
             </div>
         </div>
@@ -73,13 +73,9 @@
             <div class="col-3" style="width: 30%;">
                 <span>Telepon/HP</span>
             </div>
-            <div class="col-3" style="width: 40%;">
-                
+            <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
                     <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
-                    <?php 
-                    // dd($item->no_hp);
-                    ?>
                 </div>
             </div>
         </div>
@@ -91,7 +87,7 @@
             <div class="col-3" style="width: 40%;">
                 @if ($siswa1)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}">
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}" disabled>
                     </div>
                 @endif
             </div>
