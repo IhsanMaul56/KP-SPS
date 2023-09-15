@@ -9,31 +9,29 @@
             </ul>
         </div>
     </div>
-    <div class="row p-0 m-0">
+    <div class="row">
         <div class="card-body h-100 overflow-auto" id="shadow">
             <div class="row m-0 p-0">
-                <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>
-                @if (session()->has('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
-    @endif
+                    @if ($foto->foto_siswa == "")
+                        <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>
+                    @else
+                        <center>
+                            <img src="{{ asset('storage/profile-pictures/'.$foto->foto_siswa) }}" alt="Foto Profil" width="250" class="rounded-circle mb-5">
+                        </center>    
+                    @endif
 
-    @if (Auth::user()->siswa())
-        <form wire:submit.prevent="updatedPhoto">
-            <input wire:model="photo" type="file" wire:model="photo">
-            
-            @error('photo') <span class="error">{{ $message }}</span> @enderror
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">{{ session('message') }}</div>
+                    @endif
 
-            <button type="submit">Upload Foto Profil</button>
-        </form>
-    @else
-        <p>Anda tidak memiliki izin untuk mengunggah foto profil.</p>
-    @endif
-
-    @if (Auth::user()->profile_picture)
-        <img src="{{ asset('storage/profile-pictures/' . Auth::user()->profile_picture) }}" alt="Foto Profil" width="100">
-    @else
-        <p>Foto profil belum diunggah.</p>
-    @endif
+                    @if (Auth::user()->siswa())
+                        <form wire:submit.prevent="updatedPhoto()">
+                            <input wire:model="photo" type="file" wire:model="photo" class="input-group">
+                            @error('photo') <span class="error">{{ $message }}</span> @enderror
+                        </form>
+                    @else
+                        <p>Anda tidak memiliki izin untuk mengunggah foto profil.</p>
+                    @endif
             </div>
             <div class="row">
                 <span class="fw-bold mb-2" style="text-align: center; font-size: 20px;">{{ Auth::user()->name }}</span>

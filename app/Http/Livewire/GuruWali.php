@@ -5,9 +5,16 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithPagination;
+use App\Models\data_siswa;
 
 class GuruWali extends Component
 {
+    public $search = '';
+
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $wali;
     public $kelas;
     public $dataSiswa;
@@ -49,6 +56,12 @@ class GuruWali extends Component
             $this->wali = null;
         }
 
-        return view('livewire.guru-wali');
+        return view('livewire.guru-wali', [
+            'dataSiswa' => data_siswa::where('nama_siswa','like','%'.$this->search.'%')->paginate(5)
+        ]);
+    }
+
+    public function updatingSearch(){
+        $this->resetPage();
     }
 }
