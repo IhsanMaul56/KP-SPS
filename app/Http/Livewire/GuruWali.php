@@ -10,6 +10,7 @@ class GuruWali extends Component
 {
     public $wali;
     public $kelas;
+    public $tingkat;
     public $dataSiswa;
 
     public function render()
@@ -29,8 +30,11 @@ class GuruWali extends Component
                     ->where('kode_kelas', '=', $kelasId)
                     ->value('nama_kelas');
                 
+                $this->tingkat = DB::table('data_tingkats')
+                    ->where('kode_tingkat', '=', $kelasId)
+                    ->value('nama_tingkat');
+
                 if($this->kelas){
-                    // $siswaId = $this->kelas->pluck('kode_kelas')->toArray();
 
                     $this->dataSiswa = DB::table('data_siswas')
                         ->where('kelas_id', '=', $kelasId)

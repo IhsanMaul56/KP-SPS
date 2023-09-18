@@ -25,16 +25,17 @@ class TableGuru extends Component
         if ($user && $user->guru_id) {
             $this->pengampu = DB::table('data_pengampus')
                 ->where('pengampu_id', '=', $user->guru_id)
-                ->select('kode_pengampu')
+                ->select('data_pengampus.*')
                 ->get();
         
             if ($this->pengampu->isNotEmpty()) { // Periksa apakah ada data pengampu
                 $kodePengampu = $this->pengampu->pluck('kode_pengampu')->toArray();
-        
+
                 $this->jadwal = DB::table('data_jadwals')
                     ->whereIn('pengampu_id', $kodePengampu)
                     ->select('data_jadwals.*')
                     ->get();
+                
             } else {
                 // Jika tidak ada pengampu yang sesuai, atur $this->jadwal menjadi null
                 $this->jadwal = null;

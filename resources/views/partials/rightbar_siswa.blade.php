@@ -11,14 +11,14 @@
         </div>
     </div>
     <div class="row p-0 m-0">
-        <div class="card-body h-100 overflow-auto" id="shadow">
+        <div class="card-body overflow-auto" id="shadow">
             <div class="row">
                 <div class="col">
-                    <p><i class="bi bi-megaphone-fill"><u style="padding-left: 10px;">Pengumuman</u></i></p>
+                    <p><i class="bi bi-megaphone-fill fs-5"><u style="padding-left: 10px;">Pengumuman</u></i></p>
                 </div>
                 <div class="row m-0 p-0">
                     <img src="{{URL::asset('/img/no-data.png')}}" alt="clipboard" width="150px"><br>
-                    <span style="text-align: center">Tidak Ada Pengumuman Saat Ini</span>
+                    <span class="fs-5" style="text-align: center; color: grey;">Tidak Ada Pengumuman Saat Ini</span>
                 </div>
             </div>
         </div>

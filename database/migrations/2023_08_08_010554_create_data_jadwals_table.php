@@ -14,14 +14,14 @@ return new class extends Migration
     {
         Schema::create('data_jadwals', function (Blueprint $table) {
             $table->id('kode_jadwal');
+            $table->string('hari');
+            $table->time('waktu_masuk');
+            $table->time('waktu_keluar');
+            $table->foreignId('tingkat_id')->constrained('data_tingkats', 'kode_tingkat');
+            $table->string('nama_tingkat');
             $table->foreignId('kelas_id')->constrained('data_kelas', 'kode_kelas');
             $table->string('nama_kelas');
-            $table->foreignId('mapel_id')->constrained('data_mapels', 'kode_mapel');
-            $table->string('nama_mapel');
             $table->foreignId('pengampu_id')->constrained('data_pengampus', 'kode_pengampu');
-            $table->string('nama_pengampu');
-            $table->string('hari');
-            $table->time('waktu');
             $table->timestamps();
         });
     }

@@ -11,14 +11,14 @@ class data_jadwal extends Model
     use HasFactory;
 
     protected $fillable = [
+        'hari',
+        'waktu_masuk',
+        'waktu_keluar',
+        'tingkat_id',
+        'nama_tingkat',
         'kelas_id',
         'nama_kelas',
-        'mapel_id',
-        'nama_mapel',
         'pengampu_id',
-        'nama_pengampu',
-        'hari',
-        'waktu'
     ];
 
     //invers cardinality
@@ -26,11 +26,11 @@ class data_jadwal extends Model
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
     }
 
-    public function mapel() : BelongsTo{
-        return $this->belongsTo(data_mapel::class, 'mapel_id', 'kode_mapel');
-    }
-
     public function pengampu() : BelongsTo{
         return $this->belongsTo(data_pengampu::class, 'pengampu_id', 'kode_pengampu');
+    }
+
+    public function tingkat() : BelongsTo{
+        return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
     }
 }

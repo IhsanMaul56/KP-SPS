@@ -15,31 +15,55 @@ class DataMapelSeeder extends Seeder
     {
         $dataMapel = [
             [
-                'nama_mapel' => 'Akuntansi Keuangan'
+                'nama_mapel' => 'SEJARAH',
             ],
             [
-                'nama_mapel' => 'Bahasa Inggris',
+                'nama_mapel' => 'INFORMATIKA',
             ],
             [
-                'nama_mapel' => 'Pendidikan Pancasila dan Kewarganegaraan',
+                'nama_mapel' => 'BAHASA INGGRIS',
             ],
             [
-                'nama_mapel' => 'Praktikum Akuntansi Perusahaan Jasa/Dagang/Manufaktur',
+                'nama_mapel' => 'PPKN',
             ],
             [
-                'nama_mapel' => 'Pendidikan Agama dan Budi Pekerti',
+                'nama_mapel' => 'BABP ISLAM',
             ],
             [
-                'nama_mapel' => 'Otomatisasi Tata Kelola Humas dan Keprotokolan',
+                'nama_mapel' => 'DASAR-DASAR MANAJEMEN PERKANTORAN DAN LAYANAN BISNIS',
             ],
             [
-                'nama_mapel' => 'Produk Kreatif dan Kewirausahaan',
+                'nama_mapel' => 'PJOK',
             ],
             [
-                'nama_mapel' => 'Bahasa Indonesia',
+                'nama_mapel' => 'DASAR-DASAR PEMASARAN',
             ],
             [
-                'nama_mapel' => 'Praktikum Akuntansi Lembaga/Instansi Pemerintah',
+                'nama_mapel' => 'MATEMATIKA',
+            ],
+            [
+                'nama_mapel' => 'SENI BUDAYA',
+            ],
+            [
+                'nama_mapel' => 'PROJEK ILMU PENGETAHUAN ALAM DAN SOSIAL',
+            ],
+            [
+                'nama_mapel' => 'BAHASA SUNDA',
+            ],
+            [
+                'nama_mapel' => 'BIMBINGAN KONSELING',
+            ],
+            [
+                'nama_mapel' => 'DASAR-DASAR AKUNTANSI DAN KEUANGAN LEMBAGA',
+            ],
+            [
+                'nama_mapel' => 'DASAR-DASAR PENGEMBANGAN PERANGKAT LUNAK DAN GIM',
+            ],
+            [
+                'nama_mapel' => 'DASAR-DASAR PENGEMBANGAN PERANGKAT LUNAK',
+            ],
+            [
+                'nama_mapel' => 'BAHASA INDONESIA',
             ],
         ];
 

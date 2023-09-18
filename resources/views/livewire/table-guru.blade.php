@@ -18,9 +18,19 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->hari }}</td>
-                        <td>{{ $item->waktu }}</td>
-                        <td>{{ $item->nama_mapel }}</td>
-                        <td>{{ $item->nama_kelas }}</td>
+                        <td>{{ $item->waktu_masuk }} - {{ $item->waktu_keluar }}</td>
+                        @if ($pengampu)
+                            @php
+                                // Cari data pengampu yang sesuai dengan pengampu_id pada jadwal
+                                $matchingPengampu = $pengampu->firstWhere('kode_pengampu', $item->pengampu_id);
+                            @endphp
+                            @if ($matchingPengampu)
+                                <td>{{ $matchingPengampu->nama_mapel }}</td>
+                            @else
+                                <td>Tidak Ditemukan</td>
+                            @endif
+                        @endif
+                        <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
                     </tr>
                 @endforeach
             </tbody>

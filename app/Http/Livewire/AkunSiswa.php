@@ -57,4 +57,22 @@ class AkunSiswa extends Component
         }
         
     }
+
+    public function mount()
+    {
+        $user = Auth::user();
+
+        if ($user && $user->siswa_id) {
+            // Mengambil data dari database dan mengisi properti $data
+            $siswaData = DB::table('data_siswas')
+                ->where('nis', $user->siswa_id)
+                ->first();
+
+            if ($siswaData) {
+                $this->data['alamat'] = $siswaData->alamat;
+                $this->data['no_hp'] = $siswaData->no_hp;
+            }
+        }
+    }
+
 }

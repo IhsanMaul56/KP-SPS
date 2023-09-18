@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_siswa');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->enum('jenis_kelamin',['Pria','Wanita']);
+            $table->enum('jenis_kelamin',['Laki-laki','Perempuan']);
             $table->string('agama');
             $table->string('provinsi');
             $table->string('kota');
@@ -39,6 +39,7 @@ return new class extends Migration
             $table->string('alamat_ortu');
             $table->binary('foto_siswa');
             $table->foreignId('kelas_id')->constrained('data_kelas', 'kode_kelas');
+            $table->foreignId('tingkat_id')->constrained('data_tingkats', 'kode_tingkat');
             $table->timestamps();
         });
     }

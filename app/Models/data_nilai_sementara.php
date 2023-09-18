@@ -12,15 +12,24 @@ class data_nilai_sementara extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tahun_ajar',
-        'nilai_kehadiran',
-        'nilai_tugas',
-        'nilai_uts',
-        'nilai_uas'
+        'kelas_id',
+        'nama_kelas',
+        'formatif_id',
+        'sumatif_id'
     ];
 
     //cardinality
-    
 
     //invers cardinality
+    public function kelas() : BelongsTo{
+        return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
+    public function formatif() : BelongsTo{
+        return $this->belongsTo(nilai_formatif::class, 'formatif_id', 'kode_formatif');
+    }
+
+    public function sumatif() : BelongsTo{
+        return $this->belongsTo(nilai_sumatif::class, 'sumatif_id', 'kode_sumatif');
+    }
 }

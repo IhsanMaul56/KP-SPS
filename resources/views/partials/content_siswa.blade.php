@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body h-100 overflow-auto" id="shadow">
+            <div class="card-body overflow-auto" id="shadow">
                 <div class="row">
                     @livewire('tabel-siswa')
                 </div>
