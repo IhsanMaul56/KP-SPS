@@ -38,7 +38,8 @@ class data_siswa extends Model
         'rw_ortu',
         'alamat_ortu',
         'foto_siswa',
-        'kelas_id'
+        'kelas_id',
+        'tingkat_id'
     ];
 
     //cardinality
@@ -50,5 +51,9 @@ class data_siswa extends Model
     //invers cardinality
     public function kelas() : BelongsTo{
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
+    public function tingkat() : BelongsTo{
+        return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
     }
 }

@@ -13,6 +13,8 @@ class data_wali extends Model
     protected $fillable = [
         'wali_id',
         'nama_guru',
+        'tingkat_id',
+        'nama_tingkat',
         'kelas_id',
         'nama_kelas'
     ];
@@ -26,5 +28,9 @@ class data_wali extends Model
 
     public function kelas() : BelongsTo {
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
+    public function tingkat() : BelongsTo {
+        return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
     }
 }

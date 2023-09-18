@@ -53,4 +53,21 @@ class AkunGuru extends Component
         // $this->reset(['data']);
         $this->emit('refreshComponent');
     }
+
+    public function mount()
+    {
+        $user = Auth::user();
+
+        if ($user && $user->guru_id) {
+            // Mengambil data dari database dan mengisi properti $data
+            $guruData = DB::table('data_gurus')
+                ->where('nip', $user->guru_id)
+                ->first();
+
+            if ($guruData) {
+                $this->data['alamat'] = $guruData->alamat;
+                $this->data['no_hp'] = $guruData->no_hp;
+            }
+        }
+    }
 }

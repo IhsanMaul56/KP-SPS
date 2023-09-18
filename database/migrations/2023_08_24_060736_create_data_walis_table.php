@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('kode_wali');
             $table->foreignId('wali_id')->constrained('data_gurus', 'nip');
             $table->string('nama_guru');
+            $table->foreignId('tingkat_id')->constrained('data_tingkats', 'kode_tingkat');
+            $table->string('nama_tingkat');
             $table->foreignId('kelas_id')->constrained('data_kelas', 'kode_kelas');
             $table->string('nama_kelas');
             $table->timestamps();

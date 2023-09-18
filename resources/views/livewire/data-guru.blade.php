@@ -13,15 +13,15 @@
     </script> --}}
 @endpush
 
-<div class="col">
-    <h3>Data Guru</h3>
-    <div class="mb-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
-    </div>
+<div class="row">
+    {{-- <div class="mb-3"> --}}
+        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
+    {{-- </div> --}}
     <div class="col-3" style="width: max-content;">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
-            Tambah Data
+            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
         </button>
+    </div>
             <!-- Modal Edit Siswa-->
             <div class="modal fade" id="insertData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -198,7 +198,7 @@
                 </div>
                 </div>
             </div>
-    </div>
+    {{-- </div> --}}
     <table class="table">
         <thead>
             <tr>
@@ -219,5 +219,5 @@
             @endforeach
         </tbody>
     </table>
-    {{ $dagur->links() }}  
+    {{ $dagur->links() }}
 </div>
