@@ -22,8 +22,8 @@
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSiswa">
-                            Edit Data Siswa
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSiswa" style="">
+                            Edit Siswa Data
                         </button>
                             <!-- Modal Edit Siswa-->
                             <div class="modal fade" id="editSiswa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
