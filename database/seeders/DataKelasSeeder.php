@@ -15,24 +15,81 @@ class DataKelasSeeder extends Seeder
     {
         $dataKelas = [
             [
-                'nama_kelas' => 'X OTKP 1',
+                'nama_kelas' => 'PPLG 1',
                 'jurusan_id' => '1',
-                'nama_jurusan' => 'Otomasisasi dan Tatakelola Perkantoran'
+                'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
             ],
             [
-                'nama_kelas' => 'X RPL 1',
+                'nama_kelas' => 'PPLG 2',
+                'jurusan_id' => '1',
+                'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'PPLG 3',
+                'jurusan_id' => '1',
+                'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'PM 1',
                 'jurusan_id' => '2',
-                'nama_jurusan' => 'Rekayasa Perangkat Lunak'
+                'nama_jurusan' => 'pemasaran',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
             ],
             [
-                'nama_kelas' => 'X BDP 1',
+                'nama_kelas' => 'PM 2',
+                'jurusan_id' => '2',
+                'nama_jurusan' => 'Pemasaran',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'PM 3',
+                'jurusan_id' => '2',
+                'nama_jurusan' => 'Pemasaran',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'MPLB 1',
                 'jurusan_id' => '3',
-                'nama_jurusan' => 'Bisnis Daring dan Pemasaran'
+                'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
             ],
             [
-                'nama_kelas' => 'X AKL 1',
+                'nama_kelas' => 'MPLB 2',
+                'jurusan_id' => '3',
+                'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'MPLB 3',
+                'jurusan_id' => '3',
+                'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'AKL 1',
                 'jurusan_id' => '4',
-                'nama_jurusan' => 'Akuntansi dan Keuangan Lembaga'
+                'nama_jurusan' => 'Akutansi dan Keuangan Lembaga',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
+            ],
+            [
+                'nama_kelas' => 'AKL 2',
+                'jurusan_id' => '4',
+                'nama_jurusan' => 'Akutansi dan Keuangan Lembaga',
+                'tahun_id' => '1',
+                'nama_tahun' => '2023/2024'
             ],
         ];
 

@@ -1,6 +1,6 @@
 <div class="col">
     <div class="persegi2 m-0">
-        <p class="text-white m-0 fs-5">{{ $kelas }}</p>
+        <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
     </div>
     <div class="my-3">
         <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">

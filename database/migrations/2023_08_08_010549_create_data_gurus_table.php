@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_guru');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->enum('jenis_kelamin',['Pria','Wanita']);
+            $table->enum('jenis_kelamin',['Laki-laki','Perempuan']);
             $table->string('agama');
             $table->string('no_hp');
             $table->string('provinsi');

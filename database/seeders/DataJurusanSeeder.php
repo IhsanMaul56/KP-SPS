@@ -15,25 +15,25 @@ class DataJurusanSeeder extends Seeder
     {
         $dataJurusan = [
             [
-                'nama_jurusan' => 'Otomatisasi dan Tata Kelola Perkantosan',
+                'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
                 'kajur_id' => '1',
-                'nama_guru' => 'Nasrullah Nurul R, S.Pd., M.Pd.'
+                'nama_guru' => 'DENIS AJI MUHAMAD JABAR, S.Kom.'
             ],
             [
-                'nama_jurusan' => 'Rekayasa Perangkat Lunak',
+                'nama_jurusan' => 'Pemasaran',
                 'kajur_id' => '2',
-                'nama_guru' => 'Dr. Samsori, S.Pd., M.Pd'
+                'nama_guru' => 'ENUNG SARIFAH, S.Pd'
             ],
             [
-                'nama_jurusan' => 'Bisnis Daring dan Pemasaran',
+                'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
                 'kajur_id' => '3',
-                'nama_guru' => 'Lukman S.Pd'
+                'nama_guru' => 'AGUS HERYANA,S.Pd.,Gr'
 
             ],
             [
-                'nama_jurusan' => 'Akuntansi dan Keuangan Lembaga',
-                'kajur_id' => '3',
-                'nama_guru' => 'farhan S.Pd'
+                'nama_jurusan' => 'Akutansi dan Keuangan Lembaga',
+                'kajur_id' => '4',
+                'nama_guru' => 'ENDRIYANTO TRILAKSONO, S.Pd'
             ]
         ];
 
