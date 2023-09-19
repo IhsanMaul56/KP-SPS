@@ -34,30 +34,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
-                <div class="row mb-2" style="width: 75%">
-                    <div class="col">
-                        <p class="m-0 fs-5">Mata Pelajaran</p>
-                    </div>
-                    <div class="col">
-                        <p class="m-0 fs-5">Kelas</p>
-                    </div>
-                </div>
-                <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
-                    <div class="col">
-                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
-                            <option selected>Bahasa Inggris</option>
-                            <option>Bahasa Indonesia</option></option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
-                            <option selected>X RPL</option>
-                            <option>XI Multimedia</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+            @livewire('data-nilai-guru')
         </div>
     </div>
 </div>
