@@ -3,6 +3,7 @@
         <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
     </div>
     <div class="my-3">
+        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
         @if ($dataSiswa != null)    
             <table class="table">
                 <thead>
@@ -10,6 +11,7 @@
                         <th>No</th>
                         <th>Nama Siswa</th>
                         <th>Jenis Kelamin</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,6 +21,10 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
+                            <td>
+                                <span class="btn btn-primary">Edit</span>
+                                <span class="btn btn-danger">Hapus</span>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

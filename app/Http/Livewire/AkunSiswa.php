@@ -17,8 +17,8 @@ class AkunSiswa extends Component
         'tanggal_lahir',
         'alamat' => '',
         'no_hp' => '',
-    ];
-    
+    ];   
+
     public function render()
     {
         $user = Auth::user();
@@ -35,7 +35,7 @@ class AkunSiswa extends Component
                     ->get();
             }
         }
-
+        
         return view('livewire.akun-siswa');
     }
     
@@ -74,5 +74,4 @@ class AkunSiswa extends Component
             }
         }
     }
-
 }

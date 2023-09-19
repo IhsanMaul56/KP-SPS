@@ -1,1 +1,0 @@
-<input type="file" wire:model="image">

@@ -54,11 +54,9 @@
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru2"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</span><br>
                 </div>
-                {{-- @if --}}
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru3"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
                 </div>
-                {{-- @endif --}}
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru4"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
                 </div>

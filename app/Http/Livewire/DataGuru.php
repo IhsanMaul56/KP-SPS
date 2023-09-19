@@ -64,4 +64,8 @@ class DataGuru extends Component
     public function insert(){
 
     }
+
+    public function showTambahGuru(){
+        
+    }
 }

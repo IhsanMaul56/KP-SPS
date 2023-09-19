@@ -26,7 +26,7 @@
 
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
-    <main class="py-0">
+    <main class="py-0 h-100 overflow-auto">
         @yield('content')
     </main>
     
