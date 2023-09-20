@@ -49,9 +49,9 @@
                 <span>Jenis Kelamin</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->jenis_kelamin }}">
+                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->jenis_kelamin }}" disabled>
             </div>
-        </div>
+        </div>
 
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
@@ -59,12 +59,12 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tempat_lahir }}">
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tempat_lahir }}" disabled>
                 </div>
             </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tanggal_lahir }}">
+                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tanggal_lahir }}" disabled>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input id="agama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->agama }}" disabled>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->provinsi }}" disabled>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->kota }}" disabled>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->desa }}" disabled>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input id="rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rt }}" disabled>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}">
+                    <input id="rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rw }}" disabled>
                 </div>
             </div>
         </div>
