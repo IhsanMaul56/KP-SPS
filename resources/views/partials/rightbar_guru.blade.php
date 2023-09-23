@@ -44,7 +44,7 @@
                 <span>Foto Profil</span>
                 <hr>
                 <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>
-                <input type="file" wire:model="image">
+                @livewire('profile-akun')
             </div>
         </div>
     </div>

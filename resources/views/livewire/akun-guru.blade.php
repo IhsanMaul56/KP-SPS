@@ -85,6 +85,32 @@
             </div>
         </div>
 
+        <div class="row mb-3">
+            <div class="col-3" style="width: 30%;">
+                <span>E-mail</span>
+            </div>
+            <div class="col-3" style="width: 40%;">
+                @if ($guru)
+                    <div class="input-group">
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" disabled>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-3" style="width: 30%;">
+                <span>E-mail</span>
+            </div>
+            <div class="col-3" style="width: 40%;">
+                @if ($guru)
+                    <div class="input-group">
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" disabled>
+                    </div>
+                @endif
+            </div>
+        </div>
+
         @if (isset($data->alamat))
             <div class="row">
                 <div class="col-3" style="width: 30%;">

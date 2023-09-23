@@ -9,6 +9,7 @@
         </div>
     </div>
     <div class="my-3">
+        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
         @if ($dataSiswa != null)    
             <table class="table">
                 <thead>
@@ -30,6 +31,10 @@
                             <td></td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
+                            <td>
+                                <span class="btn btn-primary">Edit</span>
+                                <span class="btn btn-danger">Hapus</span>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

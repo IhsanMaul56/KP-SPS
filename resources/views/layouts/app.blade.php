@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,7 +26,7 @@
 
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
-    <main class="py-0">
+    <main class="py-0 h-100 overflow-auto">
         @yield('content')
     </main>
     

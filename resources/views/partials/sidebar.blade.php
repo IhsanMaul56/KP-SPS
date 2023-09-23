@@ -5,7 +5,7 @@
         <div class="col" style="margin-top: 40px">
             @if (Auth::user()->role == 'admin')
                 <div class="row mx-0">
-                    <span class="sidebar active" id="btnAdmin1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                    <a href="{{ route('beranda') }}" id="btnAdmin1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnAdmin2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
@@ -23,7 +23,7 @@
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin8" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
+                    <span class="sidebar" id="btnAdmin7" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnAdmin9"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
@@ -53,11 +53,9 @@
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru2"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</span><br>
                 </div>
-                {{-- @if --}}
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru3"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
                 </div>
-                {{-- @endif --}}
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru4"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
