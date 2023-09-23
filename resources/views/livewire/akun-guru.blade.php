@@ -13,13 +13,6 @@
     </div>
     @endif
 
-    <div class="row">
-        <div class="col" style="margin-bottom: 20px">
-            <div class="persegi">
-                <p class="text-white m-0 fs-5">Ubah Data | Akun</p>
-            </div>
-        </div>
-    </div>
     @foreach ($akun as $data) 
         <div class="row mb-3">
             <div class="col-3" style="width: 30%;">
@@ -133,9 +126,7 @@
             <p>Data alamat tidak tersedia.</p>
         @endif
     @endforeach
-    <div class="row mt-5">
-        <div class="col text-end">
-            <button class="simpan-data fw-bold" id="shadow" type="submit">Simpan Data</button>
-        </div>
+    <div class="col text-end mt-5">
+        <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c;">Update Data</button>
     </div>
 </form>

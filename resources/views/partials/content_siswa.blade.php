@@ -39,13 +39,10 @@
                 </div>
                 <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
-                        <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
-                            <option selected>Semester Ganjil</option>
-                            <option>Semester Genap</option>
+                        <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: max-content; border-radius: 10px 10px 10px 10px">
+                            <option selected>2023/2024 Semester Ganjil</option>
+                            <option>2024/2025 Semester Genap</option>
                         </select>
-                    </div>
-                    <div class="col-3" style="width: max-content;">
-                        <span class="cetak-rapor" onclick="pdf();" id="shadow"><i class="bi bi-printer" style="margin-right: 5px"></i>Cetak Rapor</span>
                     </div>
                 </div>
             </div>
@@ -58,7 +55,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Pengaturan Akun</span>
+                <span class="h1 fw-bold text-biru">Profil |</span><span class="h2 text-biru" style="padding-left: 10px;">Data Diri</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

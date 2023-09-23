@@ -1,14 +1,16 @@
 <div class="col">
-    <h3>Data Jurusan</h3>
-    <div class="mb-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
+    <div class="col mb-3 text-end">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+        </button>
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>No.</th>
+                <th>No</th>
                 <th>Nama Jurusan</th>
                 <th>Kepala Jurusan</th>
+                <th>Kelas</th>
                 <th>Aksi</th>
                 <!-- Tambahkan kolom lain di sini -->
             </tr>
@@ -19,9 +21,10 @@
                     <td>{{ $dajur->firstItem() + $index }}</td>
                     <td>{{ $item->nama_jurusan}}</td>
                     <td>{{ $item->nama_guru}}</td>
+                    <td></td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editJurusan">
-                            Edit
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                            <i class="bi bi-pencil-square text-white"></i>
                         </button>
                             <!-- Modal Edit Jurusan-->
                             <div class="modal fade" id="editJurusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -41,7 +44,7 @@
                                 </div>
                                 </div>
                             </div>
-                        <span class="btn btn-danger">Hapus</span>
+                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                     </td>
                 </tr>
             @endforeach

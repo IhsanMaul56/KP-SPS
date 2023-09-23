@@ -14,7 +14,8 @@
         <div class="card-body overflow-auto" id="shadow">
             <div class="row">
                 <div class="col">
-                    <p><i class="bi bi-megaphone-fill fs-5"><u style="padding-left: 10px;">Pengumuman</u></i></p>
+                    <i class="bi bi-megaphone-fill"><span style="padding-left: 10px;"></span></i>Pengumuman
+                    <hr>
                 </div>
                 <div class="row m-0 p-0">
                     <img src="{{URL::asset('/img/no-data.png')}}" alt="clipboard" width="150px"><br>

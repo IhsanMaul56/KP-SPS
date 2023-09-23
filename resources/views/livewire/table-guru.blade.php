@@ -1,14 +1,14 @@
 <div class="col">
     <h3 class="fs-5 mb-2">Jadwal Mengajar</h3>
-    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
+    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px;">
     @if ($jadwal != null)    
         <table class="table">
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Mata Pelajaran</th>
                     <th>Hari</th>
                     <th>Waktu</th>
-                    <th>Mata Pelajaran</th>
                     <th>Kelas</th>
                 </tr>
             </thead>

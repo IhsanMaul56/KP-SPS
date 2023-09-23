@@ -13,9 +13,9 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Mata Pelajaran</th>
                 <th>Hari</th>
                 <th>Waktu</th>
-                <th>Mata Pelajaran</th>
                 <th>Nama Guru</th>
             </tr>
         </thead>
