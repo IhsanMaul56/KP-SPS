@@ -28,7 +28,7 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nama_siswa }}" disabled>
+                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nama_siswa }}" readonly>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nis }}" disabled>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nis }}" readonly>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                 <span>Jenis Kelamin</span>
             </div>
             <div class="col-3" style="width: 40%;">
-                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->jenis_kelamin }}" disabled>
+                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->jenis_kelamin }}" readonly>
             </div>
         </div>
 
@@ -59,12 +59,12 @@
             </div>
             <div class="col-3" style="width: 40%;">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tempat_lahir }}" disabled>
+                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tempat_lahir }}" readonly>
                 </div>
             </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tanggal_lahir }}" disabled>
+                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tanggal_lahir }}" readonly>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input id="agama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->agama }}" disabled>
+                    <input id="agama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->agama }}" readonly>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->provinsi }}" disabled>
+                    <input id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->provinsi }}" readonly>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->kota }}" disabled>
+                    <input id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->kota }}" readonly>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->desa }}" disabled>
+                    <input id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->desa }}" readonly>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input id="rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rt }}" disabled>
+                    <input id="rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rt }}" readonly>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
             </div>
             <div class="col-3" style="width: 40%;">          
                 <div class="input-group">
-                    <input id="rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rw }}" disabled>
+                    <input id="rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rw }}" readonly>
                 </div>
             </div>
         </div>
@@ -153,7 +153,7 @@
             <div class="col-3" style="width: 40%;">
                 @if ($siswa1)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}" disabled>
+                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}" readonly>
                     </div>
                 @endif
             </div>

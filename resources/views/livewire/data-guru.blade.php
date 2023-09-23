@@ -7,13 +7,11 @@
 @endpush
 
 <div class="row">
-    {{-- <div class="mb-3"> --}}
-        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
-    {{-- </div> --}}
+    <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
     <div class="col-3" style="width: max-content;">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+        <a href="{{ route('tambah-data-guru') }}" class="btn btn-primary" style="text-decoration:none">
             <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-        </button>
+        </a>
     </div>
     
     <table class="table">
@@ -23,6 +21,7 @@
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
                 <th>No. HP</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +31,10 @@
                     <td>{{ $item->nama_guru }}</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
+                    <td>
+                        <a href="" class="btn btn-primary" style="text-decoration: none">Edit</a>
+                        <a href="" class="btn btn-danger" style="text-decoration: none">Hapus</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
