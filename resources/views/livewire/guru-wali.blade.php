@@ -1,6 +1,12 @@
-<div class="col">
-    <div class="persegi2 m-0">
-        <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
+    <div class="col-3" style="width: 200px">
+        <div class="persegi">
+            <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+        </div>
+    </div>
+    <div class="col">
+        <div class="persegi2 m-0 px-3">
+            <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
+        </div>
     </div>
     <div class="my-3">
         @if ($dataSiswa != null)    
@@ -8,8 +14,12 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>NIS</th>
                         <th>Nama Siswa</th>
                         <th>Jenis Kelamin</th>
+                        <th>Nilai</th>
+                        <th>Keterangan</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,6 +27,7 @@
                     @foreach ($dataSiswa as $item)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td></td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
                         </tr>
@@ -24,7 +35,11 @@
                 </tbody>
             </table>
         @else
-            <p>Anda tidak menjadi wali kelas</p>
+            <div class="col text-center">
+                <img src="{{URL::asset('/img/warning.png')}}" alt="warning" width="125px;">
+            </div>
+            <div class="col text-center pt-3">
+                <span class="mt-3">Halaman Belum Bisa Diakses</span>
+            </div>
         @endif
     </div>
-</div>

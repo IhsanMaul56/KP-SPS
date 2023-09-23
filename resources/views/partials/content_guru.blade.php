@@ -45,13 +45,13 @@
                 </div>
                 <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
                     <div class="col">
-                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
+                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 10px 10px 10px 10px">
                             <option selected>Bahasa Inggris</option>
                             <option>Bahasa Indonesia</option></option>
                         </select>
                     </div>
                     <div class="col">
-                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 100px">
+                        <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 300px; border-radius: 10px 10px 10px 10px">
                             <option selected>X RPL</option>
                             <option>XI Multimedia</option>
                         </select>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body" id="shadow" style="height: max-content">
                 <div class="row">
                     @livewire('guru-wali')
                 </div>
@@ -89,7 +89,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Pengaturan Akun</span>
+                <span class="h1 fw-bold text-biru">Profil |</span><span class="h2 text-biru" style="padding-left: 10px;">Data Diri</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

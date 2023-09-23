@@ -16,10 +16,9 @@
                 <div class="row mx-0">
                     <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
                     <div class="row mx-0 collapse" id="dropdownContent">
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin4">Data Jurusan</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin5">Data Kelas</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin6">Jadwal Guru</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin7">Jadwal Siswa</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnAdmin6">Jadwal Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnAdmin4">Jurusan</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnAdmin5">Kelas</span>
                     </div>
                     <br>
                 </div>
@@ -27,7 +26,7 @@
                     <span class="sidebar" id="btnAdmin8" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin9"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                    <span class="sidebar" id="btnAdmin9"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
 
             @elseif (Auth::user()->role == 'kurikulum')
@@ -44,7 +43,7 @@
                     <span class="sidebar" id="btnKurlum4"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum5"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                    <span class="sidebar" id="btnKurlum5"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
 
             @elseif (Auth::user()->role == 'guru')
@@ -60,7 +59,7 @@
                 </div>
                 {{-- @endif --}}
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnGuru4"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                    <span class="sidebar" id="btnGuru4"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
             @elseif (Auth::user()->role == 'siswa')
                 <div class="row mx-0">
@@ -70,7 +69,7 @@
                     <span class="sidebar" id="btnSiswa2"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnSiswa3"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                    <span class="sidebar" id="btnSiswa3"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
             @endif
         </div>

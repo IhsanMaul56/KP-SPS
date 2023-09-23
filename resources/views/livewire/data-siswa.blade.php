@@ -1,13 +1,17 @@
-<div class="col">
-    <h3>Data Siswa</h3>
-    <div class="mb-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
+<div class="row">
+    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
+    <div class="col-3" style="width: max-content;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+        </button>
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>No.</th>
-                <th>Nama</th>
+                <th>No</th>
+                <th>NIS</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
                 <th>Jenis Kelamin</th>
                 <th>No. HP</th>
                 <th>Aksi</th>
@@ -18,12 +22,14 @@
             @foreach ($dasis as $index => $item)
                 <tr>
                     <td>{{ $dasis->firstItem() + $index }}</td>
+                    <td></td>
                     <td>{{ $item->nama_siswa }}</td>
+                    <td></td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSiswa">
-                            Edit Data Siswa
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                            <i class="bi bi-pencil-square text-white"></i>
                         </button>
                             <!-- Modal Edit Siswa-->
                             <div class="modal fade" id="editSiswa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -43,7 +49,7 @@
                                 </div>
                                 </div>
                             </div>
-                        <span class="btn btn-danger">Hapus</span>
+                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                     </td>
                 </tr>
             @endforeach

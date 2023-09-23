@@ -32,10 +32,12 @@
             <div class="card-body" id="shadow">
                 <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
-                        <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
+                        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
                     </div>
                     <div class="col-3" style="width: max-content;">
-                        <span class="edit-data" id="shadow"><i class="bi bi-plus-lg" style="margin-right: 5px"></i>Tambah</span>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+                        </button>
                     </div>
                 </div>
             </div>
@@ -59,7 +61,12 @@
             <div class="card-body" id="shadow">
                 <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
-                        <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
+                        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
+                    </div>
+                    <div class="col-3" style="width: max-content;">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+                        </button>
                     </div>
                 </div>
             </div>
@@ -81,7 +88,16 @@
         </div>
         <div class="row p-0 m-0">
             <div class="card-body" id="shadow">
-                
+                <div class="row mb-1" style="display: flex; align-items: center;">
+                    <div class="col">
+                        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
+                    </div>
+                    <div class="col-3" style="width: max-content;">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

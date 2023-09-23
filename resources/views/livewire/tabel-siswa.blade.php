@@ -13,34 +13,14 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Mata Pelajaran</th>
                 <th>Hari</th>
                 <th>Waktu</th>
-                <th>Mata Pelajaran</th>
                 <th>Nama Guru</th>
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1; ?>
-            @foreach ($jadwal as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $item->hari }}</td>
-                    <td>{{ date('H:i', strtotime($item->waktu_masuk)) }} - {{ date('H:i', strtotime($item->waktu_keluar)) }}</td>
-                    {{-- <td>{{ $item->waktu_masuk }} - {{ $item->waktu_keluar }}</td> --}}
-                    @if ($pengampu)
-                        @php
-                            $matchingPengampu = $pengampu->firstWhere('kode_pengampu', $item->pengampu_id);
-                        @endphp
-                        @if ($matchingPengampu)
-                            <td>{{ $matchingPengampu->nama_mapel }}</td>
-                            <td>{{ $matchingPengampu->nama_guru }}</td>
-                        @else
-                            <td>Tidak Ditemukan</td>
-                            <td>Tidak Ditemukan</td> <!-- Tambahkan pesan "Tidak Ditemukan" untuk nama_pengampu juga -->
-                        @endif
-                    @endif
-                </tr>
-            @endforeach
+            
         </tbody>
     </table>
 </div>
