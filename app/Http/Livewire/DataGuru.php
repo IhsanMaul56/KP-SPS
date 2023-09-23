@@ -17,7 +17,7 @@ class DataGuru extends Component
     public function render()
     {
         return view('livewire.data-guru', [
-            'dagur' => data_guru::where('nama_guru', 'like', '%'.$this->search.'%')->paginate(5)
+            'dagur' => data_guru::where('nama_guru', 'like', '%'.$this->search.'%')->paginate(10)
         ]);
     }
 
