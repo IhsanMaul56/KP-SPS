@@ -13,7 +13,7 @@
             <div class="grid-tengah">
                 <div class="row" style="margin-bottom: 30px;">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Tambah Guru</span>
+                        <span class="h1 fw-bold text-biru">Tambah Siswa</span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>
@@ -25,11 +25,11 @@
                         <div class="card-body overflow-auto h-100 fs-5">
                             <div class="row mb-2">
                                 <div class="col-3">
-                                    <span>NIP</span>
+                                    <span>NIS</span>
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan NIP">
+                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan NIS">
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,9 @@
-<div class="col">
-    <h3>Data Siswa</h3>
-    <div class="mb-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
+<div class="row">
+    <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="width: 25%; border-color: black;">
+    <div class="col-3" style="width: max-content;">
+        <a href="{{ route('tambah-data-siswa') }}" class="btn btn-primary" style="text-decoration:none">
+            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+        </a>
     </div>
     <table class="table">
         <thead>
@@ -22,28 +24,8 @@
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSiswa" style="">
-                            Edit Siswa Data
-                        </button>
-                            <!-- Modal Edit Siswa-->
-                            <div class="modal fade" id="editSiswa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data Siswa</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        <button type="button" class="btn btn-primary">Simpan Data</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        <span class="btn btn-danger">Hapus</span>
+                        <a href="" class="btn btn-primary" style="text-decoration: none">Edit</a>
+                        <a href="#" class="btn btn-danger" style="text-decoration: none">Hapus</a>
                     </td>
                 </tr>
             @endforeach

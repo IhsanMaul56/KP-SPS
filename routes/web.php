@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataSiswaController;
 use App\Http\Livewire\AkunGuru;
 use App\Http\Livewire\AkunSiswa;
+use App\Http\Livewire\TambahDataGuru;
+use App\Http\Livewire\TambahDataSiswa;
 use App\Http\Livewire\DataTablesExample;
 
 /*
@@ -34,7 +36,7 @@ Route::get('/home', function(){
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('beranda');
     Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
     Route::prefix('/dashboard')->group(function(){
         Route::get('/guru', [DataGuruController::class, 'index'])->name('guru');
@@ -42,8 +44,12 @@ Route::middleware(['auth'])->group(function(){
     });
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
-        Route::post('/siswa', AkunSiswa::class)->name('siswa.edit');
+        Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
     });
     Route::get('/logout', [LoginController::class, 'logout']);
 });
+
+Route::get('/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
+Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
+
 

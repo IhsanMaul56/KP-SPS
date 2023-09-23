@@ -5,7 +5,7 @@
         <div class="col" style="margin-top: 40px">
             @if (Auth::user()->role == 'admin')
                 <div class="row mx-0">
-                    <span class="sidebar active" id="btnAdmin1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                    <a href="{{ route('beranda') }}" id="btnAdmin1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnAdmin2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
@@ -18,16 +18,15 @@
                     <div class="row mx-0 collapse" id="dropdownContent">
                         <span class="sidebar dd-kiri fs-5" id="btnAdmin4">Data Jurusan</span>
                         <span class="sidebar dd-kiri fs-5" id="btnAdmin5">Data Kelas</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin6">Jadwal Guru</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin7">Jadwal Siswa</span>
+                        <span class="sidebar dd-kiri fs-6" id="btnAdmin6" >Jadwal Pelajaran</span>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin8" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
+                    <span class="sidebar" id="btnAdmin7" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin9"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
+                    <span class="sidebar" id="btnAdmin8"><i class="bi bi-person-circle icon-kiri"></i>Akun</span><br>
                 </div>
 
             @elseif (Auth::user()->role == 'kurikulum')
