@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class DataNilaiGuru extends Component
@@ -45,11 +46,13 @@ class DataNilaiGuru extends Component
                         ->whereIn('kode_tingkat', $tingkatIds)
                         ->select('nama_tingkat')
                         ->get();
-                        
-                    $this->kelas = DB::table('data_kelas')
-                        ->whereIn('kode_kelas', $kelasIds)
-                        ->select('nama_kelas')
-                        ->get();
+                    
+                    if($this->tingkat){
+                        $this->kelas = DB::table('data_kelas')
+                            ->whereIn('kode_kelas', $kelasIds)
+                            ->select('nama_kelas')
+                            ->get();
+                    }
                 }
             }
         }
@@ -57,17 +60,34 @@ class DataNilaiGuru extends Component
         return view('livewire.data-nilai-guru');
     }
 
+    public function updatedMapelSelected()
+    {
+        // Set tingkat menjadi kosong ketika mata pelajaran diubah
+        $this->tingkatSelected = null;
+        // Reset pilihan kelas
+        $this->kelasSelected = null;
+    }
+
+    public function updatedTingkatSelected()
+    {
+        // Set kelas menjadi kosong ketika tingkat diubah
+        $this->kelasSelected = null;
+    }
+
     public function cari()
     {
-        if ($this->mapelSelected && $this->kelasSelected) {
+        if ($this->mapelSelected && $this->kelasSelected && $this->tingkatSelected) {
             $results = DB::table('data_siswas')
                 ->join('data_jadwals', 'data_siswas.kelas_id', '=', 'data_jadwals.kelas_id')
                 ->join('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
                 ->where('data_pengampus.nama_mapel', '=', $this->mapelSelected)
+                ->where('data_jadwals.nama_tingkat', 'LIKE', '%' . $this->tingkatSelected . '%')
                 ->where('data_jadwals.nama_kelas', 'LIKE', '%' . $this->kelasSelected . '%')
                 ->select('data_siswas.*')
+                ->distinct()
                 ->get();
 
+            // dd($results);
             // Convert the results to a collection
             $this->siswa = collect($results);
         } else {
@@ -75,5 +95,4 @@ class DataNilaiGuru extends Component
             $this->siswa = collect();
         }
     }
-   
 }

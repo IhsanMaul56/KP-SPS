@@ -28,5 +28,9 @@ class data_tingkat extends Model
         return $this->hasMany(data_jadwal::class, 'tingkat_id', 'kode_tingkat');
     }
 
+    // public function kelas() : HasMany{
+    //     return $this->hasMany(data_kelas::class, 'tingkat_id', 'kode_tingkat');
+    // }
+
     //invers cardinality
 }

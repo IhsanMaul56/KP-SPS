@@ -15,6 +15,7 @@ class DataKelasSeeder extends Seeder
     {
         $dataKelas = [
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'PPLG 1',
                 'jurusan_id' => '1',
                 'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
@@ -22,6 +23,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'PPLG 2',
                 'jurusan_id' => '1',
                 'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
@@ -29,6 +31,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'PPLG 3',
                 'jurusan_id' => '1',
                 'nama_jurusan' => 'Pengembangan Perangkat Lunak dan Game',
@@ -36,6 +39,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'PM 1',
                 'jurusan_id' => '2',
                 'nama_jurusan' => 'pemasaran',
@@ -43,6 +47,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'PM 2',
                 'jurusan_id' => '2',
                 'nama_jurusan' => 'Pemasaran',
@@ -50,6 +55,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'PM 3',
                 'jurusan_id' => '2',
                 'nama_jurusan' => 'Pemasaran',
@@ -57,6 +63,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'MPLB 1',
                 'jurusan_id' => '3',
                 'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
@@ -64,6 +71,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'MPLB 2',
                 'jurusan_id' => '3',
                 'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
@@ -71,6 +79,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'MPLB 3',
                 'jurusan_id' => '3',
                 'nama_jurusan' => 'Manajemen Perkantoran dan Layanan Bisnis',
@@ -78,6 +87,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'AKL 1',
                 'jurusan_id' => '4',
                 'nama_jurusan' => 'Akutansi dan Keuangan Lembaga',
@@ -85,6 +95,7 @@ class DataKelasSeeder extends Seeder
                 'nama_tahun' => '2023/2024'
             ],
             [
+                // 'tingkat_id' => '1',
                 'nama_kelas' => 'AKL 2',
                 'jurusan_id' => '4',
                 'nama_jurusan' => 'Akutansi dan Keuangan Lembaga',
