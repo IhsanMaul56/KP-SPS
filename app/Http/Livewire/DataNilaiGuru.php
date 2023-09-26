@@ -77,17 +77,24 @@ class DataNilaiGuru extends Component
     public function cari()
     {
         if ($this->mapelSelected && $this->kelasSelected && $this->tingkatSelected) {
+            $user = Auth::user();
+            $guruId = $user->guru_id;
+
             $results = DB::table('data_siswas')
                 ->join('data_jadwals', 'data_siswas.kelas_id', '=', 'data_jadwals.kelas_id')
                 ->join('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
                 ->where('data_pengampus.nama_mapel', '=', $this->mapelSelected)
                 ->where('data_jadwals.nama_tingkat', 'LIKE', '%' . $this->tingkatSelected . '%')
                 ->where('data_jadwals.nama_kelas', 'LIKE', '%' . $this->kelasSelected . '%')
+                ->whereIn('data_jadwals.pengampu_id', function ($query) use ($guruId) {
+                    $query->select('kode_pengampu')
+                        ->from('data_pengampus')
+                        ->where('pengampu_id', $guruId);
+                })
                 ->select('data_siswas.*')
                 ->distinct()
                 ->get();
 
-            // dd($results);
             // Convert the results to a collection
             $this->siswa = collect($results);
         } else {
