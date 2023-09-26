@@ -31,6 +31,8 @@
                             <td></td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
+                            <td>0</td>
+                            <td>-</td>
                             <td>
                                 <span class="btn btn-primary">Edit</span>
                                 <span class="btn btn-danger">Hapus</span>

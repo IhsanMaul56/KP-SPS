@@ -37,12 +37,13 @@
 
     <div class="row mt-3">
         @if (!$siswa->isEmpty())
-            <table class="table">
+            <table class="table text-center">
                 <thead>
                     <th>No</th>
                     <th>NIS</th>
                     <th>Nama Siswa</th>
                     <th>Nilai Akhir</th>
+                    <th>Aksi</th>
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>
@@ -52,6 +53,9 @@
                             <td>{{ $item->nis }}</td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>0</td>
+                            <td>
+                                <a href="#" class="btn btn-primary" style="text-decoration: none">Tambah Nilai</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

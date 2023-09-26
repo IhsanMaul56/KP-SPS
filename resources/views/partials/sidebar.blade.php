@@ -40,10 +40,16 @@
                     <span class="sidebar" id="btnKurlum3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum4"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span><br>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="dropdownContent">
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum4">Jadwal Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum5">Jurusan</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum6">Kelas</span>
+                    </div>
+                    <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum5"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <span class="sidebar" id="btnKurlum7"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
 
             @elseif (Auth::user()->role == 'guru')
