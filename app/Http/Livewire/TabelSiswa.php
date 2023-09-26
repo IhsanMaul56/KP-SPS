@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class TabelSiswa extends Component
 {
     public $kelas;
+    public $siswa;
     public $tingkat;
     public $jadwal;
     public $pengampu;
@@ -19,16 +20,17 @@ class TabelSiswa extends Component
         $this->jadwal = [];
 
         if ($user && $user->siswa_id) {
-            $siswa = DB::table('data_siswas')
+            $this->siswa = DB::table('data_siswas')
                 ->where('nis', '=', $user->siswa_id)
                 ->select('data_siswas.*')
-                ->first();
+                ->get();
     
-            if ($siswa) {
-                $kelasId = $siswa->kelas_id;
+            if ($this->siswa) {
+                $tingkatId = $this->siswa->pluck('tingkat_id')->toArray();
+                $kelasId = $this->siswa->pluck('kelas_id')->toArray();
     
                 $this->tingkat = DB::table('data_tingkats')
-                    ->where('kode_tingkat', '=', $kelasId)
+                    ->where('kode_tingkat', '=', $tingkatId)
                     ->value('nama_tingkat');
     
                 $this->kelas = DB::table('data_kelas')
@@ -40,6 +42,8 @@ class TabelSiswa extends Component
                         ->where('kelas_id', '=', $kelasId)
                         ->select('data_jadwals.*')
                         ->get();
+
+                        // dd($this->jadwal);
     
                     $this->pengampu = DB::table('data_pengampus')
                         ->select('data_pengampus.*')

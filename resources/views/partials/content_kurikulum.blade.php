@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body h-100 overflow-auto" id="shadow">
                 <div class="row mb-1" style="display: flex; align-items: center;">
                     <div class="col">
                         <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
@@ -82,7 +82,7 @@
                         </button>
                     </div>
                 </div>
-                {{-- @livewire('data-jadwal') --}}
+                @livewire('data-jadwal')
             </div>
         </div>
     </div>
