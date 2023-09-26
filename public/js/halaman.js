@@ -105,12 +105,16 @@ const btnKurlum2 = document.getElementById('btnKurlum2');
 const btnKurlum3 = document.getElementById('btnKurlum3');
 const btnKurlum4 = document.getElementById('btnKurlum4');
 const btnKurlum5 = document.getElementById('btnKurlum5');
+const btnKurlum6 = document.getElementById('btnKurlum6');
+const btnKurlum7 = document.getElementById('btnKurlum7');
 
 const kurlum1 = document.getElementById('kurlum1');
 const kurlum2 = document.getElementById('kurlum2');
 const kurlum3 = document.getElementById('kurlum3');
 const kurlum4 = document.getElementById('kurlum4');
 const kurlum5 = document.getElementById('kurlum5');
+const kurlum6 = document.getElementById('kurlum6');
+const kurlum7 = document.getElementById('kurlum7');
 const rightkurlum1 = document.getElementById('rightkurlum1');
 const rightkurlum2 = document.getElementById('rightkurlum2');
 
@@ -152,6 +156,20 @@ document.addEventListener("DOMContentLoaded", function() {
             resetPage(activePage); // Menghapus tampilan sebelumnya
             activePage = kurlum5; // Memperbarui halaman yang sedang aktif
             kurlum5.classList.add('active-page');
+            rightkurlum1.classList.add('active-page');
+        });
+
+        btnKurlum6.addEventListener('click', () => {
+            resetPage(activePage); // Menghapus tampilan sebelumnya
+            activePage = kurlum6; // Memperbarui halaman yang sedang aktif
+            kurlum6.classList.add('active-page');
+            rightkurlum1.classList.add('active-page');
+        });
+
+        btnKurlum7.addEventListener('click', () => {
+            resetPage(activePage); // Menghapus tampilan sebelumnya
+            activePage = kurlum7; // Memperbarui halaman yang sedang aktif
+            kurlum7.classList.add('active-page');
             rightkurlum2.classList.add('active-page');
         });
 

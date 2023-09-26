@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            <div class="card-body" id="shadow">
+            <div class="card-body" id="shadow" style="height: max-content">
                 <div class="row">
                     @livewire('guru-wali')
                 </div>
@@ -66,7 +66,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Pengaturan Akun</span>
+                <span class="h1 fw-bold text-biru">Profil |</span><span class="h2 text-biru" style="padding-left: 10px;">Data Diri</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

@@ -12,9 +12,6 @@
         {{ Session::get('message') }}
     </div>
     @endif
-
-    <div class="row">
-    </div>
     @foreach ($akun as $data) 
         <div class="row mb-2">
             <div class="col-3">
@@ -148,9 +145,9 @@
             <p>Data alamat tidak tersedia.</p>
         @endif
     @endforeach
-    <div class="row mt-5">
-        <div class="col text-end">
-            <button class="btn btn-primary" id="shadow" type="submit">Simpan Data</button>
-        </div>
+
+    <div class="col text-end mt-5">
+        <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c;">Update Data</button>
+
     </div>
 </form>

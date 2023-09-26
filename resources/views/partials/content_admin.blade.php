@@ -21,7 +21,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Data Guru</span>
+                <span class="h1 fw-bold text-biru">Data Guru |</span><span class="h2 text-biru" style="padding-left: 10px;">Master Guru</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -69,7 +69,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Data Jurusan</span>
+                <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Jurusan</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -93,7 +93,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Data Kelas</span>
+                <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Kelas</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -117,7 +117,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Akademik | Jadwal Pelajaran</span>
+                <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px">Jadwal Mapel</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -166,7 +166,7 @@
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Akun</span>
+                <span class="h1 fw-bold text-biru">Profil |</span><span class="h2 text-biru" style="padding-left: 10px">Data Diri</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

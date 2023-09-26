@@ -14,13 +14,6 @@
     @endif
     
     @csrf
-    <div class="row">
-        <div class="col" style="margin-bottom: 20px">
-            <div class="persegi">
-                <p class="text-white m-0 fs-5 px-3" id="shadow">Ubah Data | Akun</p>
-            </div>
-        </div>
-    </div>
     @foreach ($siswa2 as $item)
         <div class="row mb-2">
             <div class="col-3">
