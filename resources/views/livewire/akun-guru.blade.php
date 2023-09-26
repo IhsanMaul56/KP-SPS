@@ -65,8 +65,17 @@
                 <span>Agama</span>
             </div>
             <div class="col-3">
+                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->agama }}" readonly>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-3">
+                <span>Nomor HP</span>
+            </div>
+            <div class="col-3">
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}">
+                    <input wire:model="data.no_hp" id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
             </div>
         </div>
@@ -76,11 +85,7 @@
                 <span>Provinsi</span>
             </div>
             <div class="col-3">
-                @if ($guru)
-                    <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" readonly>
-                    </div>
-                @endif
+                <input wire:model="data.provinsi" id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->provinsi }}">
             </div>
         </div>
 
@@ -89,11 +94,7 @@
                 <span>Kota</span>
             </div>
             <div class="col-3">
-                @if ($guru)
-                    <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" readonly>
-                    </div>
-                @endif
+                <input wire:model="data.kota" id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->kota }}">
             </div>
         </div>
 
@@ -102,11 +103,7 @@
                 <span>Desa</span>
             </div>
             <div class="col-3">
-                @if ($guru)
-                    <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" readonly>
-                    </div>
-                @endif
+                <input wire:model="data.desa" id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->desa }}">
             </div>
         </div>
 
@@ -115,18 +112,14 @@
                 <span>RT/RW</span>
             </div>
             <div class="col-3">
-                @if ($guru)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" readonly>
+                        <input wire:model="data.rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->rt }}">
                     </div>
-                @endif
             </div>
             <div class="col-3">
-                @if ($guru)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $guru }}" readonly>
+                        <input wire:model="data.rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->rw }}">
                     </div>
-                @endif
             </div>
         </div>
 
@@ -137,7 +130,7 @@
                 </div>
                 <div class="col">
                     <div class="input-group">
-                        <input wire:model="data.alamat" id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->no_hp }}">
+                        <input wire:model="data.alamat" id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $data->alamat }}">
                     </div>
                 </div>
             </div>
