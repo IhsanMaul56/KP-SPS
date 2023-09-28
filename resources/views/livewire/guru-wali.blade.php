@@ -6,23 +6,26 @@
     @livewireScripts
 @endpush
 
-    <div class="col-3" style="width: 200px">
-        <div class="persegi">
-            @if(count($akademik) > 0)
-                <p class="text-white m-0 fs-5 px-3">{{ $akademik[0]->tahun_akademik }}</p>
-            @else
-                <p class="text-white m-0 fs-5 px-3">Tidak ada data tahun akademik.</p>
-            @endif
-        </div>
-    </div>
+<div class="row">
     <div class="col">
-        <div class="persegi2 m-0 px-3">
-            <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
-        </div>
-    </div>
-    <div class="my-3">
-        <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: black;">
-        @if ($dataSiswa != null)    
+        @if ($dataSiswa != null)
+            <div class="row mb-3">
+                <div class="col-3" style="width: 200px">
+                    <div class="persegi">
+                        @if(count($akademik) > 0)
+                            <p class="text-white m-0 fs-5 px-3">{{ $akademik[0]->tahun_akademik }}</p>
+                        @else
+                            <p class="text-white m-0 fs-5 px-3">Tidak ada data tahun akademik.</p>
+                        @endif
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="persegi2 m-0 px-3">
+                        <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
+                    </div>
+                </div>
+            </div>
+            <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
             <table class="table">
                 <thead>
                     <tr>
@@ -62,3 +65,4 @@
             </div>
         @endif
     </div>
+</div>
