@@ -1,6 +1,6 @@
 <div class="col">
     <div class="col mb-3 text-end">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData" style="position: relative">
             <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
         </button>
     </div>
