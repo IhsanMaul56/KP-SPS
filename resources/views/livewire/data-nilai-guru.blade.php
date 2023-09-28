@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @push('styles')
     @livewireStyles
 @endpush
@@ -7,7 +8,6 @@
 @endpush
 
 <div class="card-body h-100 overflow-auto" id="shadow">
-
     <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
         <div class="col">
             <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
@@ -20,24 +20,28 @@
         <div class="col">
             <select wire:model="tingkatSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
                 <option value="" selected>Tingkat</option>
-                @foreach ($tingkat as $ting)
-                    <option value="{{ $ting->nama_tingkat }}">{{ $ting->nama_tingkat }}</option>
-                @endforeach
+                @if ($tingkat)
+                    @foreach ($tingkat as $ting)
+                        <option value="{{ $ting }}">{{ $ting }}</option>
+                    @endforeach
+                @endif
             </select>
         </div>
         <div class="col">
-            <select wore:model="tingkatSelected" wire:model="kelasSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
+            <select wire:model="kelasSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
                 <option value="" selected>Kelas</option>
-                @foreach ($kelas as $kel)
-                    <option value="{{ $kel->nama_kelas }}">{{ $kel->nama_kelas }}</option>
-                @endforeach
-            </select>
+                @if ($kelas)
+                    @foreach ($kelas as $kel)
+                        <option value="{{ $kel }}">{{ $kel }}</option>
+                    @endforeach
+                @endif
+            </select>            
         </div>
     </div>
 
     <div class="row mt-3">
-        @if (!$siswa->isEmpty())
-            <table class="table">
+        @if ($siswa && !$siswa->isEmpty())
+            <table class="table text-center">
                 <thead>
                     <th>No</th>
                     <th>NIS</th>
@@ -53,7 +57,9 @@
                             <td>{{ $item->nis }}</td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>0</td>
-                            <td></td>
+                            <td>
+                                <a href="{{ route('tambah-nilai-siswa') }}" class="btn btn-primary" style="text-decoration: none;">Tambah Nilai</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -13,6 +13,7 @@ use App\Http\Livewire\AkunSiswa;
 use App\Http\Livewire\TambahDataGuru;
 use App\Http\Livewire\TambahDataSiswa;
 use App\Http\Livewire\DataTablesExample;
+use App\Http\Livewire\DataNilaiSiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,7 @@ Route::middleware(['auth'])->group(function(){
 
 Route::get('/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
 Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
+Route::get('/input-nilai', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
+
 
 

@@ -29,11 +29,16 @@
             @foreach ($dagur as $index => $item)
                 <tr>
                     <td>{{ $dagur->firstItem() + $index }}</td>
-                    <td></td>
+                    <td>{{ $item->nip }}</td>
                     <td>{{ $item->nama_guru }}</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
-                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                            <i class="bi bi-pencil-square text-white"></i>
+                        </button>
+                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

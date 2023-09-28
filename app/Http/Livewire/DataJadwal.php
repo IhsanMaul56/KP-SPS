@@ -57,6 +57,7 @@ class DataJadwal extends Component
             $this->jadwal = null;
         }
 
+
         return view('livewire.data-jadwal', [
             'dataJadwal' => data_jadwal::where('hari', 'like', '%'.$this->search.'%')->paginate(10)
         ]);

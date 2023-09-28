@@ -6,6 +6,7 @@
     @livewireScripts
 @endpush
 
+
 <div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
         <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
@@ -57,4 +58,3 @@
         </table>
         {{ $dataJadwal->links() }}
     </div>
-</div>

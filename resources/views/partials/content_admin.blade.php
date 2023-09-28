@@ -125,7 +125,14 @@
             </div>
         </div>
         <div class="row p-0 m-0">
-            @livewire('data-jadwal')
+            <div class="card-body h-100 overflow-auto" id="shadow">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
+                    </div>
+                </div>
+                @livewire('data-jadwal')
+            </div>
         </div>
     </div>
 </div>

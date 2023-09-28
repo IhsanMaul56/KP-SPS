@@ -12,8 +12,13 @@ class AkunGuru extends Component
     public $guru;
     public $akun;
     public $data = [
-        'alamat' => '',
-        'no_hp' => ''
+        'no_hp' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'desa' => '',
+        'rt' => '',
+        'rw' => '',
+        'alamat' => ''
     ];
 
     public function render()
@@ -43,8 +48,13 @@ class AkunGuru extends Component
             DB::table('data_gurus')
                 ->where('nip', $user->guru_id)
                 ->update([
-                    'alamat' => $this->data['alamat'],
                     'no_hp' => $this->data['no_hp'],
+                    'provinsi' => $this->data['provinsi'],
+                    'kota' => $this->data['kota'],
+                    'desa' => $this->data['desa'],
+                    'rt' => $this->data['rt'],
+                    'rw' => $this->data['rw'],
+                    'alamat' => $this->data['alamat'],
                 ]);
 
             Session::flash('message', 'Data berhasil di update');
@@ -65,8 +75,13 @@ class AkunGuru extends Component
                 ->first();
 
             if ($guruData) {
-                $this->data['alamat'] = $guruData->alamat;
                 $this->data['no_hp'] = $guruData->no_hp;
+                $this->data['provinsi'] = $guruData->provinsi;
+                $this->data['kota'] = $guruData->kota;
+                $this->data['desa'] = $guruData->desa;
+                $this->data['rt'] = $guruData->rt;
+                $this->data['rw'] = $guruData->rw;
+                $this->data['alamat'] = $guruData->alamat;
             }
         }
     }
