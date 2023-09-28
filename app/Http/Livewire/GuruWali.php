@@ -18,6 +18,7 @@ class GuruWali extends Component
     public $wali;
     public $kelas;
     public $tingkat;
+    public $akademik;
     public $dataSiswa;
 
     public function render()
@@ -32,6 +33,10 @@ class GuruWali extends Component
             
             if($this->wali){
                 $kelasId = $this->wali->pluck('kelas_id')->toArray();
+
+                $this->akademik = DB::table('tahun_akademiks')
+                    ->select('tahun_akademiks.tahun_akademik')
+                    ->get();
 
                 $this->kelas = DB::table('data_kelas')
                     ->where('kode_kelas', '=', $kelasId)

@@ -1,6 +1,18 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
     <div class="col-3" style="width: 200px">
         <div class="persegi">
-            <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+            @if(count($akademik) > 0)
+                <p class="text-white m-0 fs-5 px-3">{{ $akademik[0]->tahun_akademik }}</p>
+            @else
+                <p class="text-white m-0 fs-5 px-3">Tidak ada data tahun akademik.</p>
+            @endif
         </div>
     </div>
     <div class="col">
