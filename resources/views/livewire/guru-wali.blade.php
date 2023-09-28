@@ -1,10 +1,22 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
 <div class="row">
     <div class="col">
         @if ($dataSiswa != null)
             <div class="row mb-3">
                 <div class="col-3" style="width: 200px">
                     <div class="persegi">
-                        <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+                        @if(count($akademik) > 0)
+                            <p class="text-white m-0 fs-5 px-3">{{ $akademik[0]->tahun_akademik }}</p>
+                        @else
+                            <p class="text-white m-0 fs-5 px-3">Tidak ada data tahun akademik.</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col">
@@ -13,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <input type="text" class="form-control" wire:model="search" placeholder="Search" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
+            <input type="text" class="form-control" wire:model="search" placeholder="Search" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
             <table class="table">
                 <thead>
                     <tr>
@@ -34,18 +46,16 @@
                             <td></td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>0</td>
+                            <td>-</td>
                             <td>
-                                <span class="btn btn-success"><i class="bi bi-eye"></i></span>
+                                <span class="btn btn-primary">Edit</span>
+                                <span class="btn btn-danger">Hapus</span>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="col text-end mt-5">
-                <button class="btn btn-success" id="shadow" type="submit" style="position: relative;">Setujui</button>
-            </div>
         @else
             <div class="col text-center">
                 <img src="{{URL::asset('/img/warning.png')}}" alt="warning" width="125px;">
