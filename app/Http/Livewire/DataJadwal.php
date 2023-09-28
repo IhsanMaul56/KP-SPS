@@ -37,6 +37,21 @@ class DataJadwal extends Component
             } else {
                 $this->pengampu = null;
             }
+        } elseif ($user && $user->guru_id) {
+            $this->jadwal = DB::table('data_jadwals')
+                ->select('data_jadwals.*')
+                ->get();
+
+            if ($this->jadwal) {
+                $pengampuIds = $this->jadwal->pluck('pengampu_id')->toArray();
+
+                // Fetch all matching data_pengampus records using whereIn
+                $this->pengampu = DB::table('data_pengampus')
+                    ->whereIn('kode_pengampu', $pengampuIds)
+                    ->get();
+            } else {
+                $this->pengampu = null;
+            }
         } else {
             $this->pengampu = null;
             $this->jadwal = null;

@@ -161,7 +161,7 @@
     </div>
 </div>
 
-{{-- Page 9 --}}
+{{-- Page 8 --}}
 <div class="col p-0 page" id="admin8">
     <div class="grid-tengah">
         <div class="row">

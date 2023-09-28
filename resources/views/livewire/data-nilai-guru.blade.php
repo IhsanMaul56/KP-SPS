@@ -43,6 +43,7 @@
                     <th>NIS</th>
                     <th>Nama Siswa</th>
                     <th>Nilai Akhir</th>
+                    <th>Aksi</th>
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>
@@ -52,6 +53,7 @@
                             <td>{{ $item->nis }}</td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>0</td>
+                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>

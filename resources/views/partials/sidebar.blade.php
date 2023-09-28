@@ -8,14 +8,20 @@
                     <a href="{{ route('beranda') }}" id="btnAdmin1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dataguru" aria-expanded="false"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
+                    <div class="row mx-0 collapse" id="dataguru">
+                        <span class="sidebar dd-kiri fs-5" id="btnAdmin">Guru Wali</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnAdmin">Guru Matpel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnAdmin2">Master Guru</span>
+                    </div>
+                    <br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnAdmin3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
-                    <div class="row mx-0 collapse" id="dropdownContent">
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="akademik">
                         <span class="sidebar dd-kiri fs-5" id="btnAdmin6">Jadwal Mapel</span>
                         <span class="sidebar dd-kiri fs-5" id="btnAdmin4">Jurusan</span>
                         <span class="sidebar dd-kiri fs-5" id="btnAdmin5">Kelas</span>
@@ -34,13 +40,25 @@
                     <span class="sidebar active" id="btnKurlum1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dataguru" aria-expanded="false"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span>
+                    <div class="row mx-0 collapse" id="dataguru">
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum">Guru Wali</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum">Guru Matpel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum">Master Guru</span>
+                    </div>
+                    <br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnKurlum3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum4"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span><br>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="akademik">
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum">Jadwal Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum">Jurusan</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKurlum">Kelas</span>
+                    </div>
+                    <br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnKurlum5"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>

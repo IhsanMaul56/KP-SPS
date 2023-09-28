@@ -7,21 +7,18 @@
 @endpush
 
 <div class="card-body h-100 overflow-auto" id="shadow">
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 100px">
-        </div>
-    </div>
-    <div class="row">
+    <div class="col">
+        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
         <table class="table">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama Guru</th>
-                    <th>Nama Mapel</th>
+                    <th>Mata Pelajaran</th>
                     <th>Kelas</th>
-                    <th>hari</th>
+                    <th>Hari</th>
                     <th>Waktu</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +50,7 @@
                         <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
                         <td>{{ $item->hari }}</td>
                         <td>{{ $item->waktu_masuk }} - {{ $item->waktu_keluar }}</td>
+                        <td></td>
                     </tr>
                 @endforeach
             </tbody>
