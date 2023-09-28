@@ -20,7 +20,7 @@
         @elseif (Auth::user()->role == 'siswa')
             @include('partials.content_siswa')
         @endif
-        <div class="col p-0">
+        <div class="col p-0" style="z-index: -9999;">
             <div class="grid-kanan">
                 @if (Auth::user()->role == 'admin')
                     @include('partials.rightbar_admin')
