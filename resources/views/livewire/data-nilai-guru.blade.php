@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @push('styles')
     @livewireStyles
 @endpush
@@ -54,7 +55,7 @@
                             <td>{{ $item->nama_siswa }}</td>
                             <td>0</td>
                             <td>
-                                <a href="#" class="btn btn-primary" style="text-decoration: none">Tambah Nilai</a>
+                                <a href="{{ route('tambah-nilai-siswa') }}" class="btn btn-primary" style="text-decoration: none;">Tambah Nilai</a>
                             </td>
                         </tr>
                     @endforeach
