@@ -63,7 +63,7 @@ class LoginController extends Controller
         if (Auth::attempt($infologin)) {
             $request->session()->regenerate();
             if(Auth::user()->role == 'admin'){
-                return redirect('/dashboard');
+                return redirect('/dashboard/admin');
             }elseif(Auth::user()->role == 'kurikulum'){
                 return redirect('/dashboard/kurikulum');
             }elseif(Auth::user()->role == 'guru'){

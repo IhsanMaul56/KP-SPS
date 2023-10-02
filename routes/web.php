@@ -37,20 +37,28 @@ Route::get('/home', function(){
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('beranda');
+    Route::prefix('/dashboard')->group(function(){
+        Route::get('/admin', [DashboardController::class, 'index'])->name('beranda');
+        Route::get('/admin/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
+        Route::post('/admin/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
+    });    
+
     Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
+
     Route::prefix('/dashboard')->group(function(){
         Route::get('/guru', [DataGuruController::class, 'index'])->name('guru');
         Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');
     });
+
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
     });
+
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
-Route::get('/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
+
 Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
 Route::get('/input-nilai', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
 
