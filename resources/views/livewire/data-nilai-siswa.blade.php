@@ -22,8 +22,8 @@
                 </div>
                 {{-- Nilai  Formatif --}}
                 <div class="row">
-                    <form action="#" method="POST">
-                        <div class="card p-0 sumatip show">
+                    <form action="#" method="POST" id="form1">
+                        <div class="card p-0">
                             <div class="card-body overflow-auto h-100 fs-5">
                                 <h3>Nilai Formatif</h3><hr>
                                 <div class="row mb-2">
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="row text-end">
                                     <div class="col-3 mt-5">
-                                        <span class="btn btn-primary mt-5">Next</span>
+                                        <span class="btn btn-primary mt-5" id="nextFormButton">Next</span>
                                     </div>
                                     <div class="col-3 mt-5">
                                         <input type="submit" value="Simpan" class="btn btn-primary mt-5">
@@ -80,8 +80,8 @@
                 </div>
                 {{-- Nilai Sumatif --}}
                 <div class="row">
-                    <form action="#" method="POST">
-                        <div class="card p-0 sumatip">
+                    <form action="#" method="POST" id="form1" class="hidden">
+                        <div class="card p-0">
                             <div class="card-body overflow-auto h-100 fs-5">
                                 <h3>Nilai Sumatif</h3><hr>
                                 <div class="row mb-2">
@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="row text-end">
                                     <div class="col-3 mt-5">
-                                        <span class="btn btn-primary mt-5">Next</span>
+                                        <span class="btn btn-primary mt-5" id="prevFormButton">Prevous</span>
                                     </div>
                                     <div class="col-3 mt-5">
                                         <input type="submit" value="Simpan" class="btn btn-primary mt-5">
@@ -141,7 +141,7 @@
 
     <div class="col p-0">
         <div class="grid-kanan">
-            @include('partials.rightbar_admin')
+            @include('partials.rightbar_guru')
         </div>
     </div>
 </div>

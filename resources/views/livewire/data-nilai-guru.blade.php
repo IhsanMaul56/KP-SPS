@@ -1,12 +1,3 @@
-@extends('layouts.app')
-@push('styles')
-    @livewireStyles
-@endpush
-
-@push('script')
-    @livewireScripts
-@endpush
-
 <div class="card-body h-100 overflow-auto" id="shadow">
     <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
         <div class="col">

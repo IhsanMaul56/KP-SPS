@@ -43,5 +43,30 @@ valueDisplays.forEach((valueDisplay) => {
     }, duration);
 });
 
+// next and prev form
+// const prevFormButton = document.getElementById('prevFormButton');
+// const nextFormButton = document.getElementById('nextFormButton');
+// const forms = document.querySelectorAll('form');
+// let currentFormIndex = 0;
 
+// function showForm(index) {
+//     forms.forEach((form, i) => {
+//         if (i === index) {
+//             form.classList.remove('hidden');
+//         } else {
+//             form.classList.add('hidden');
+//         }
+//     });
+// }
 
+// showForm(currentFormIndex);
+
+// prevFormButton.addEventListener('click', function() {
+//     currentFormIndex = Math.max(0, currentFormIndex - 1);
+//     showForm(currentFormIndex);
+// });
+
+// nextFormButton.addEventListener('click', function() {
+//     currentFormIndex = Math.min(forms.length - 1, currentFormIndex + 1);
+//     showForm(currentFormIndex);
+// });
