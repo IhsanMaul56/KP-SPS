@@ -1,3 +1,10 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
 {{-- pengumuman --}}
 <div class="rightbar active-page" id="rightguru1">
     <div class="row mb-3">
@@ -27,25 +34,4 @@
 </div>
 
 {{-- akun --}}
-<div class="rightbar" id="rightguru2">
-    <div class="row mb-3">
-        <div class="col fs-2 justify-content-end d-flex align-items-center">
-            <i class="bi bi-person-circle"></i>
-            <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->guru_id }}</span>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#" id="btnPage6">Profil</a></li>
-                <li><a class="dropdown-item" href="/logout">Keluar</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row p-0 m-0">
-        <div class="card-body h-100 overflow-auto" id="shadow">
-            <div class="row m-0 p-0">
-                <span>Foto Profil</span>
-                <hr>
-                <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>
-                @livewire('profile-akun')
-            </div>
-        </div>
-    </div>
-</div>
+@livewire('profile-akun')

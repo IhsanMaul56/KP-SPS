@@ -362,4 +362,7 @@ span.text {
         height: 100vh;
     }
 }
+.hidden {
+    display: none;
+}
 /* batas sidebar responsive */
