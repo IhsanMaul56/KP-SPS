@@ -1,20 +1,12 @@
-@push('styles')
-    @livewireStyles
-@endpush
-
-@push('script')
-    @livewireScripts
-@endpush
-
 <div class="col">
     <div class="row">
         <div class="col">
             <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
         </div>
         <div class="col-3" style="width: max-content;">
-            <a href="{{ route('tambah-data-guru') }}" class="btn btn-primary" style="text-decoration: none;">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
                 <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-            </a>
+            </button>
         </div>
     </div>
     <table class="table table-bordered">
@@ -23,19 +15,19 @@
                 <th>No</th>
                 <th>NIP</th>
                 <th>Nama Guru</th>
-                <th>Jenis Kelamin</th>
+                <th>Mata Pelajaran</th>
                 <th>No. HP</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($dagur as $index => $item)
+            {{-- @foreach ($dagur as $index => $item) --}}
                 <tr class="text-center">
-                    <td>{{ $dagur->firstItem() + $index }}</td>
-                    <td>{{ $item->nip }}</td>
-                    <td class="text-start">{{ $item->nama_guru }}</td>
-                    <td>{{ $item->jenis_kelamin }}</td>
-                    <td>{{ $item->no_hp }}</td>
+                    <td>1</td>
+                    <td>112233</td>
+                    <td class="text-start">AZIZI</td>
+                    <td class="text-start">BAHASA INGGRIS</td>
+                    <td>08112233</td>
                     <td>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
                             <i class="bi bi-pencil-square text-white"></i>
@@ -43,8 +35,7 @@
                         <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                     </td>
                 </tr>
-            @endforeach
+            {{-- @endforeach --}}
         </tbody>
     </table>
-    {{ $dagur->links() }}
 </div>

@@ -1,5 +1,5 @@
 {{-- pengumuman --}}
-<div class="rightbar active-page" id="rightkurlum1">
+<div class="rightbar active-page" id="PengumumanKurikulum">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
@@ -27,7 +27,7 @@
 </div>
 
 {{-- akun --}}
-<div class="rightbar" id="rightkurlum2">
+<div class="rightbar" id="FotoKurikulum">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>

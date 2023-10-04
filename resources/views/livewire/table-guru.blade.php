@@ -2,9 +2,9 @@
     <h3 class="fs-5 mb-2">Jadwal Mengajar</h3>
     <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px;">
     @if ($jadwal != null)    
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>No</th>
                     <th>Mata Pelajaran</th>
                     <th>Hari</th>
@@ -15,21 +15,21 @@
             <tbody>
                 <?php $no = 1; ?>
                 @foreach ($jadwal as $item)
-                    <tr>
+                    <tr class="text-center">
                         <td>{{ $no++ }}</td>
-                        <td>{{ $item->hari }}</td>
-                        <td>{{ $item->waktu_masuk }} - {{ $item->waktu_keluar }}</td>
                         @if ($pengampu)
                             @php
                                 // Cari data pengampu yang sesuai dengan pengampu_id pada jadwal
                                 $matchingPengampu = $pengampu->firstWhere('kode_pengampu', $item->pengampu_id);
                             @endphp
                             @if ($matchingPengampu)
-                                <td>{{ $matchingPengampu->nama_mapel }}</td>
+                                <td class="text-start">{{ $matchingPengampu->nama_mapel }}</td>
                             @else
                                 <td>Tidak Ditemukan</td>
                             @endif
                         @endif
+                        <td>{{ $item->hari }}</td>
+                        <td>{{ $item->waktu_masuk }} - {{ $item->waktu_keluar }}</td>
                         <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
                     </tr>
                 @endforeach

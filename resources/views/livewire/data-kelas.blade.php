@@ -4,9 +4,9 @@
             <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
         </button>
     </div>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>No</th>
                 <th>Kelas</th>
                 <th>Wali Kelas</th>
@@ -17,11 +17,11 @@
         </thead>
         <tbody>
             @foreach ($dakel as $index => $item)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $dakel->firstItem() + $index }}</td>
                     <td>{{ $item->nama_kelas}}</td>
-                    <td>{{ $item->nama_jurusan}}</td>
-                    <td></td>
+                    <td class="text-start">INDRA</td>
+                    <td>08112233</td>
                     <td>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
                             <i class="bi bi-pencil-square text-white"></i>

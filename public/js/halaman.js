@@ -1,283 +1,318 @@
 // Role Siswa
-const btnSiswa1 = document.getElementById('btnSiswa1');
-const btnSiswa2 = document.getElementById('btnSiswa2');
-const btnSiswa3 = document.getElementById('btnSiswa3');
+const btnBerandaSiswa = document.getElementById('btnBerandaSiswa');
+const btnNilaiSiswa = document.getElementById('btnNilaiSiswa');
+const btnProfilSiswa = document.getElementById('btnProfilSiswa');
 
-const siswa1 = document.getElementById('siswa1');
-const siswa2 = document.getElementById('siswa2');
-const siswa3 = document.getElementById('siswa3');
-const rightbar1 = document.getElementById('rightbar1');
-const rightbar2 = document.getElementById('rightbar2');
+const BerandaSiswa = document.getElementById('BerandaSiswa');
+const NilaiSiswa = document.getElementById('NilaiSiswa');
+const ProfilSiswa = document.getElementById('ProfilSiswa');
+const PengumumanSiswa = document.getElementById('PengumumanSiswa');
+const FotoSiswa = document.getElementById('FotoSiswa');
 
 var userRole = 'siswa';
 document.addEventListener("DOMContentLoaded", function() {
     if(userRole === 'siswa'){
 
-        let activePage = siswa1; // Menyimpan halaman yang sedang aktif
+        let activePage = BerandaSiswa; // Menyimpan halaman yang sedang aktif
 
-        btnSiswa1.addEventListener('click', () => {
+        btnBerandaSiswa.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = siswa1; // Memperbarui halaman yang sedang aktif
-            siswa1.classList.add('active-page');
-            rightbar1.classList.add('active-page');
+            activePage = BerandaSiswa; // Memperbarui halaman yang sedang aktif
+            BerandaSiswa.classList.add('active-page');
+            PengumumanSiswa.classList.add('active-page');
         });
 
-        btnSiswa2.addEventListener('click', () => {
+        btnNilaiSiswa.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = siswa2; // Memperbarui halaman yang sedang aktif
-            siswa2.classList.add('active-page');
-            rightbar1.classList.add('active-page');
+            activePage = NilaiSiswa; // Memperbarui halaman yang sedang aktif
+            NilaiSiswa.classList.add('active-page');
+            PengumumanSiswa.classList.add('active-page');
         });
 
-        btnSiswa3.addEventListener('click', () => {
+        btnProfilSiswa.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = siswa3; // Memperbarui halaman yang sedang aktif
-            siswa3.classList.add('active-page');
-            rightbar2.classList.add('active-page');
+            activePage = ProfilSiswa; // Memperbarui halaman yang sedang aktif
+            ProfilSiswa.classList.add('active-page');
+            FotoSiswa.classList.add('active-page');
         });
 
         function resetPage(page) {
             page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
-            rightbar1.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
-            rightbar2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
+            PengumumanSiswa.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
+            FotoSiswa.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
         }
     }
 });
 
 // Role Kurikulum
-const btnKurlum1 = document.getElementById('btnKurlum1');
-const btnKurlum2 = document.getElementById('btnKurlum2');
-const btnKurlum3 = document.getElementById('btnKurlum3');
-const btnKurlum4 = document.getElementById('btnKurlum4');
-const btnKurlum5 = document.getElementById('btnKurlum5');
-const btnKurlum6 = document.getElementById('btnKurlum6');
-const btnKurlum7 = document.getElementById('btnKurlum7');
+const btnBerandaKurikulum = document.getElementById('btnBerandaKurikulum');
+const btnGuruWaliKurikulum = document.getElementById('btnGuruWaliKurikulum');
+const btnGuruMapelKurikulum = document.getElementById('btnGuruMapelKurikulum');
+const btnMasterGuruKurikulum = document.getElementById('btnMasterGuruKurikulum');
+const btnDataSiswaKurikulum = document.getElementById('btnDataSiswaKurikulum');
+const btnJadwalMapelKurikulum = document.getElementById('btnJadwalMapelKurikulum');
+const btnJurusanKurikulum = document.getElementById('btnJurusanKurikulum');
+const btnKelasKurikulum = document.getElementById('btnKelasKurikulum');
+const btnProfilKurikulum = document.getElementById('btnProfilKurikulum');
 
-const kurlum1 = document.getElementById('kurlum1');
-const kurlum2 = document.getElementById('kurlum2');
-const kurlum3 = document.getElementById('kurlum3');
-const kurlum4 = document.getElementById('kurlum4');
-const kurlum5 = document.getElementById('kurlum5');
-const kurlum6 = document.getElementById('kurlum6');
-const kurlum7 = document.getElementById('kurlum7');
-const rightkurlum1 = document.getElementById('rightkurlum1');
-const rightkurlum2 = document.getElementById('rightkurlum2');
+const BerandaKurikulum = document.getElementById('BerandaKurikulum');
+const GuruWaliKurikulum = document.getElementById('GuruWaliKurikulum');
+const GuruMapelKurikulum = document.getElementById('GuruMapelKurikulum');
+const MasterGuruKurikulum = document.getElementById('MasterGuruKurikulum');
+const DataSiswaKurikulum = document.getElementById('DataSiswaKurikulum');
+const JadwalMapelKurikulum = document.getElementById('JadwalMapelKurikulum');
+const JurusanKurikulum = document.getElementById('JurusanKurikulum');
+const KelasKurikulum = document.getElementById('KelasKurikulum');
+const ProfilKurikulum = document.getElementById('ProfilKurikulum');
+const PengumumanKurikulum = document.getElementById('PengumumanKurikulum');
+const FotoKurikulum = document.getElementById('FotoKurikulum');
 
 var userRole2 = 'kurikulum';
 document.addEventListener("DOMContentLoaded", function() {
     if(userRole2 === 'kurikulum'){
 
-        let activePage = kurlum1; // Menyimpan halaman yang sedang aktif
+        let activePage = BerandaKurikulum; // Menyimpan halaman yang sedang aktif
 
-        btnKurlum1.addEventListener('click', () => {
+        btnBerandaKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum1; // Memperbarui halaman yang sedang aktif
-            kurlum1.classList.add('active-page');
-            rightkurlum1.classList.add('active-page');
+            activePage = BerandaKurikulum; // Memperbarui halaman yang sedang aktif
+            BerandaKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
         });
 
-        btnKurlum2.addEventListener('click', () => {
+        btnGuruWaliKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum2; // Memperbarui halaman yang sedang aktif
-            kurlum2.classList.add('active-page');
-            rightkurlum1.classList.add('active-page');
+            activePage = GuruWaliKurikulum; // Memperbarui halaman yang sedang aktif
+            GuruWaliKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
         });
 
-        btnKurlum3.addEventListener('click', () => {
+        btnGuruMapelKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum3; // Memperbarui halaman yang sedang aktif
-            kurlum3.classList.add('active-page');
-            rightkurlum1.classList.add('active-page');
+            activePage = GuruMapelKurikulum; // Memperbarui halaman yang sedang aktif
+            GuruMapelKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
         });
 
-        btnKurlum4.addEventListener('click', () => {
+        btnMasterGuruKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum4; // Memperbarui halaman yang sedang aktif
-            kurlum4.classList.add('active-page');
-            rightkurlum1.classList.add('active-page');
+            activePage = MasterGuruKurikulum; // Memperbarui halaman yang sedang aktif
+            MasterGuruKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
         });
 
-        btnKurlum5.addEventListener('click', () => {
+        btnDataSiswaKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum5; // Memperbarui halaman yang sedang aktif
-            kurlum5.classList.add('active-page');
-            rightkurlum1.classList.add('active-page');
+            activePage = DataSiswaKurikulum; // Memperbarui halaman yang sedang aktif
+            DataSiswaKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
         });
 
-        btnKurlum6.addEventListener('click', () => {
+        btnJadwalMapelKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum6; // Memperbarui halaman yang sedang aktif
-            kurlum6.classList.add('active-page');
-            rightkurlum1.classList.add('active-page');
+            activePage = JadwalMapelKurikulum; // Memperbarui halaman yang sedang aktif
+            JadwalMapelKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
         });
 
-        btnKurlum7.addEventListener('click', () => {
+        btnJurusanKurikulum.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = kurlum7; // Memperbarui halaman yang sedang aktif
-            kurlum7.classList.add('active-page');
-            rightkurlum2.classList.add('active-page');
+            activePage = JurusanKurikulum; // Memperbarui halaman yang sedang aktif
+            JurusanKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
+        });
+
+        btnKelasKurikulum.addEventListener('click', () => {
+            resetPage(activePage); // Menghapus tampilan sebelumnya
+            activePage = KelasKurikulum; // Memperbarui halaman yang sedang aktif
+            KelasKurikulum.classList.add('active-page');
+            PengumumanKurikulum.classList.add('active-page');
+        });
+
+        btnProfilKurikulum.addEventListener('click', () => {
+            resetPage(activePage); // Menghapus tampilan sebelumnya
+            activePage = ProfilKurikulum; // Memperbarui halaman yang sedang aktif
+            ProfilKurikulum.classList.add('active-page');
+            FotoKurikulum.classList.add('active-page');
         });
 
         function resetPage(page) {
             page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
-            rightkurlum1.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
-            rightkurlum2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
+            PengumumanKurikulum.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
+            FotoKurikulum.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
         }
     }
 });
 
 // Role Admin
-const btnAdmin1 = document.getElementById('btnAdmin1');
-const btnAdmin2 = document.getElementById('btnAdmin2');
-const btnAdmin3 = document.getElementById('btnAdmin3');
-const btnAdmin4 = document.getElementById('btnAdmin4');
-const btnAdmin5 = document.getElementById('btnAdmin5');
-const btnAdmin6 = document.getElementById('btnAdmin6');
-const btnAdmin7 = document.getElementById('btnAdmin7');
-const btnAdmin8 = document.getElementById('btnAdmin8');
-const btnAdmin9 = document.getElementById('btnAdmin9');
+const btnBerandaAdmin = document.getElementById('btnBerandaAdmin');
+const btnGuruWaliAdmin = document.getElementById('btnGuruWaliAdmin');
+const btnGuruMapelAdmin = document.getElementById('btnGuruMapelAdmin');
+const btnMasterGuruAdmin = document.getElementById('btnMasterGuruAdmin');
+const btnDataSiswaAdmin = document.getElementById('btnDataSiswaAdmin');
+const btnJadwalMapelAdmin = document.getElementById('btnJadwalMapelAdmin');
+const btnJurusanAdmin = document.getElementById('btnJurusanAdmin');
+const btnKelasAdmin = document.getElementById('btnKelasAdmin');
+const btnNilaiMapelAdmin = document.getElementById('btnNilaiMapelAdmin');
+const btnRaporAdmin = document.getElementById('btnRaporAdmin');
+const btnProfilAdmin = document.getElementById('btnProfilAdmin');
 
-const admin1 = document.getElementById('admin1');
-const admin2 = document.getElementById('admin2');
-const admin3 = document.getElementById('admin3');
-const admin4 = document.getElementById('admin4');
-const admin5 = document.getElementById('admin5');
-const admin6 = document.getElementById('admin6');
-const admin7 = document.getElementById('admin7');
-const admin8 = document.getElementById('admin8');
-const admin9 = document.getElementById('admin9');
-const rightmin1 = document.getElementById('rightmin1');
-const rightmin2 = document.getElementById('rightmin2');
+const BerandaAdmin = document.getElementById('BerandaAdmin');
+const GuruWaliAdmin = document.getElementById('GuruWaliAdmin');
+const GuruMapelAdmin = document.getElementById('GuruMapelAdmin');
+const MasterGuruAdmin = document.getElementById('MasterGuruAdmin');
+const DataSiswaAdmin = document.getElementById('DataSiswaAdmin');
+const JadwalMapelAdmin = document.getElementById('JadwalMapelAdmin');
+const JurusanAdmin = document.getElementById('JurusanAdmin');
+const KelasAdmin = document.getElementById('KelasAdmin');
+const NilaiMapelAdmin = document.getElementById('NilaiMapelAdmin');
+const RaporAdmin = document.getElementById('RaporAdmin');
+const ProfilAdmin = document.getElementById('ProfilAdmin');
+const PengumumanAdmin = document.getElementById('PengumumanAdmin');
+const FotoAdmin = document.getElementById('FotoAdmin');
 
 var userRole3 = 'admin';
 document.addEventListener("DOMContentLoaded", function() {
     if(userRole3 === 'admin'){
 
-        let activePage = admin1; // Menyimpan halaman yang sedang aktif
+        let activePage = BerandaAdmin; // Menyimpan halaman yang sedang aktif
 
-        btnAdmin1.addEventListener('click', () => {
+        btnBerandaAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin1; // Memperbarui halaman yang sedang aktif
-            admin1.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = BerandaAdmin; // Memperbarui halaman yang sedang aktif
+            BerandaAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin2.addEventListener('click', () => {
+        btnGuruWaliAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin2; // Memperbarui halaman yang sedang aktif
-            admin2.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = GuruWaliAdmin; // Memperbarui halaman yang sedang aktif
+            GuruWaliAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin3.addEventListener('click', () => {
+        btnGuruMapelAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin3; // Memperbarui halaman yang sedang aktif
-            admin3.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = GuruMapelAdmin; // Memperbarui halaman yang sedang aktif
+            GuruMapelAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin4.addEventListener('click', () => {
+        btnMasterGuruAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin4; // Memperbarui halaman yang sedang aktif
-            admin4.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = MasterGuruAdmin; // Memperbarui halaman yang sedang aktif
+            MasterGuruAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin5.addEventListener('click', () => {
+        btnDataSiswaAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin5; // Memperbarui halaman yang sedang aktif
-            admin5.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = DataSiswaAdmin; // Memperbarui halaman yang sedang aktif
+            DataSiswaAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin6.addEventListener('click', () => {
+        btnJadwalMapelAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin6; // Memperbarui halaman yang sedang aktif
-            admin6.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = JadwalMapelAdmin; // Memperbarui halaman yang sedang aktif
+            JadwalMapelAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin7.addEventListener('click', () => {
+        btnJurusanAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin7; // Memperbarui halaman yang sedang aktif
-            admin7.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = JurusanAdmin; // Memperbarui halaman yang sedang aktif
+            JurusanAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin8.addEventListener('click', () => {
+        btnKelasAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin8; // Memperbarui halaman yang sedang aktif
-            admin8.classList.add('active-page');
-            rightmin1.classList.add('active-page');
+            activePage = KelasAdmin; // Memperbarui halaman yang sedang aktif
+            KelasAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
         });
 
-        btnAdmin9.addEventListener('click', () => {
+        btnNilaiMapelAdmin.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = admin9; // Memperbarui halaman yang sedang aktif
-            admin9.classList.add('active-page');
-            rightmin2.classList.add('active-page');
+            activePage = NilaiMapelAdmin; // Memperbarui halaman yang sedang aktif
+            NilaiMapelAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
+        });
+
+        btnRaporAdmin.addEventListener('click', () => {
+            resetPage(activePage); // Menghapus tampilan sebelumnya
+            activePage = RaporAdmin; // Memperbarui halaman yang sedang aktif
+            RaporAdmin.classList.add('active-page');
+            PengumumanAdmin.classList.add('active-page');
+        });
+
+        btnProfilAdmin.addEventListener('click', () => {
+            resetPage(activePage); // Menghapus tampilan sebelumnya
+            activePage = ProfilAdmin; // Memperbarui halaman yang sedang aktif
+            ProfilAdmin.classList.add('active-page');
+            FotoAdmin.classList.add('active-page');
         });
         
         function resetPage(page) {
             page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
-            rightmin1.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
-            rightmin2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
+            PengumumanAdmin.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
+            FotoAdmin.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
         }
     }
 });
 
 // Role Guru
-const btnGuru1 = document.getElementById('btnGuru1');
-const btnGuru2 = document.getElementById('btnGuru2');
-const btnGuru3 = document.getElementById('btnGuru3');
-const btnGuru4 = document.getElementById('btnGuru4');
+const btnBerandaGuru = document.getElementById('btnBerandaGuru');
+const btnDataNilaiGuru = document.getElementById('btnDataNilaiGuru');
+const btnDataKelasGuru = document.getElementById('btnDataKelasGuru');
+const btnProfilGuru = document.getElementById('btnProfilGuru');
 
-const guru1 = document.getElementById('guru1');
-const guru2 = document.getElementById('guru2');
-const guru3 = document.getElementById('guru3');
-const guru4 = document.getElementById('guru4');
-const rightguru1 = document.getElementById('rightguru1');
-const rightguru2 = document.getElementById('rightguru2');
+const BerandaGuru = document.getElementById('BerandaGuru');
+const DataNilaiGuru = document.getElementById('DataNilaiGuru');
+const DataKelasGuru = document.getElementById('DataKelasGuru');
+const ProfilGuru = document.getElementById('ProfilGuru');
+const PengumumanGuru = document.getElementById('PengumumanGuru');
+const FotoGuru = document.getElementById('FotoGuru');
 
 var userRole4 = 'guru';
 document.addEventListener("DOMContentLoaded", function() {
     if(userRole4 === 'guru'){
 
-        let activePage = guru1; // Menyimpan halaman yang sedang aktif
+        let activePage = BerandaGuru; // Menyimpan halaman yang sedang aktif
 
-        btnGuru1.addEventListener('click', () => {
+        btnBerandaGuru.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = guru1; // Memperbarui halaman yang sedang aktif
-            guru1.classList.add('active-page');
-            rightguru1.classList.add('active-page');
+            activePage = BerandaGuru; // Memperbarui halaman yang sedang aktif
+            BerandaGuru.classList.add('active-page');
+            PengumumanGuru.classList.add('active-page');
         });
 
-        btnGuru2.addEventListener('click', () => {
+        btnDataNilaiGuru.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = guru2; // Memperbarui halaman yang sedang aktif
-            guru2.classList.add('active-page');
-            rightguru1.classList.add('active-page');
+            activePage = DataNilaiGuru; // Memperbarui halaman yang sedang aktif
+            DataNilaiGuru.classList.add('active-page');
+            PengumumanGuru.classList.add('active-page');
         });
 
-        btnGuru3.addEventListener('click', () => {
+        btnDataKelasGuru.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = guru3; // Memperbarui halaman yang sedang aktif
-            guru3.classList.add('active-page');
-            rightguru1.classList.add('active-page');
+            activePage = DataKelasGuru; // Memperbarui halaman yang sedang aktif
+            DataKelasGuru.classList.add('active-page');
+            PengumumanGuru.classList.add('active-page');
         });
 
-        btnGuru4.addEventListener('click', () => {
+        btnProfilGuru.addEventListener('click', () => {
             resetPage(activePage); // Menghapus tampilan sebelumnya
-            activePage = guru4; // Memperbarui halaman yang sedang aktif
-            guru4.classList.add('active-page');
-            rightguru2.classList.add('active-page');
+            activePage = ProfilGuru; // Memperbarui halaman yang sedang aktif
+            ProfilGuru.classList.add('active-page');
+            FotoGuru.classList.add('active-page');
         });
         
         function resetPage(page) {
             page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
-            rightguru1.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
-            rightguru2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
+            PengumumanGuru.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
+            FotoGuru.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
         }
     }
 });
-

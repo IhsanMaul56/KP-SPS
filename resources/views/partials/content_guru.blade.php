@@ -1,5 +1,5 @@
-{{-- Page 1 --}}
-<div class="col p-0 page active-page" id="guru1">
+{{-- Beranda Guru --}}
+<div class="col p-0 page active-page" id="BerandaGuru">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -21,8 +21,8 @@
 </div>
 
 
-{{-- Page 2 --}}
-<div class="col p-0 page" id="guru2">
+{{-- Data Nilai Guru --}}
+<div class="col p-0 page" id="DataNilaiGuru">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -39,8 +39,8 @@
     </div>
 </div>
 
-{{-- Page 3 --}}
-<div class="col p-0 page" id="guru3">
+{{-- Data Kelas Guru --}}
+<div class="col p-0 page" id="DataKelasGuru">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -61,8 +61,8 @@
     </div>
 </div>
 
-{{-- Page 4 --}}
-<div class="col p-0 page" id="guru4">
+{{-- Profil Guru --}}
+<div class="col p-0 page" id="ProfilGuru">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">

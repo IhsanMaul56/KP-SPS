@@ -24,7 +24,6 @@ class ProfileAkun extends Component
         else if(Auth::user()->role === 'guru')
             $fotos = DB::table('data_gurus')->where('nip', Auth::user()->guru_id)->first();
             return view('livewire.profile-akun-guru', compact('fotos'));
-        
     }
 
     public function updatedPhoto()
@@ -53,5 +52,4 @@ class ProfileAkun extends Component
             session()->flash('message', 'Foto profil berhasil diunggah.');
         }
     }
-    
 }
