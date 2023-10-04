@@ -1,5 +1,5 @@
-{{-- Page 1 --}}
-<div class="col p-0 page active-page" id="kurlum1">
+{{-- Beranda Kurikulum --}}
+<div class="col p-0 page active-page" id="BerandaKurikulum">
     <div class="grid-tengah">
         <div class="row" style="margin-bottom: 30px;">
             <div class="col">
@@ -16,12 +16,52 @@
     </div>
 </div>
 
-{{-- Page 2 --}}
-<div class="col p-0 page" id="kurlum2">
+{{-- Data Guru | Guru Wali Kurikulum --}}
+<div class="col p-0 page" id="GuruWaliKurikulum">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Data Guru</span>
+                <span class="h1 fw-bold text-biru">Data Guru |</span><span class="h2 text-biru" style="padding-left: 10px;">Guru Wali</span>
+            </div>
+            <div class="col text-end">
+                <span class="h5">Selamat Datang,</span><br>
+                <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
+            </div>
+        </div>
+        <div class="row p-0 m-0">
+            <div class="card-body overflow-auto h-100" id="shadow">
+                @livewire('data-guru-wali')
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Data Guru | Guru Mapel Kurikulum --}}
+<div class="col p-0 page" id="GuruMapelKurikulum">
+    <div class="grid-tengah">
+        <div class="row">
+            <div class="col">
+                <span class="h1 fw-bold text-biru">Data Guru |</span><span class="h2 text-biru" style="padding-left: 10px;">Guru Mapel</span>
+            </div>
+            <div class="col text-end">
+                <span class="h5">Selamat Datang,</span><br>
+                <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
+            </div>
+        </div>
+        <div class="row p-0 m-0">
+            <div class="card-body overflow-auto h-100" id="shadow">
+                @livewire('data-guru-mapel')
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Data Guru | Master Guru Kurikulum --}}
+<div class="col p-0 page" id="MasterGuruKurikulum">
+    <div class="grid-tengah">
+        <div class="row">
+            <div class="col">
+                <span class="h1 fw-bold text-biru">Data Guru |</span><span class="h2 text-biru" style="padding-left: 10px;">Master Guru</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -36,8 +76,8 @@
     </div>
 </div>
 
-{{-- Page 3 --}}
-<div class="col p-0 page" id="kurlum3">
+{{-- Data Siswa Kurikulum --}}
+<div class="col p-0 page" id="DataSiswaKurikulum">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -58,12 +98,12 @@
     </div>
 </div>
 
-{{-- Page 4 --}}
-<div class="col p-0 page" id="kurlum4">
+{{-- Akademik | Jadwal Mapel Kurikulum --}}
+<div class="col p-0 page" id="JadwalMapelKurikulum">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Akademik | Jadwal Pelajaran</span>
+                <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Jadwal Mapel</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -72,28 +112,18 @@
         </div>
         <div class="row p-0 m-0">
             <div class="card-body h-100 overflow-auto" id="shadow">
-                <div class="row mb-1" style="display: flex; align-items: center;">
-                    <div class="col">
-                        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
-                    </div>
-                    <div class="col-3" style="width: max-content;">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
-                            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-                        </button>
-                    </div>
-                </div>
                 @livewire('data-jadwal')
             </div>
         </div>
     </div>
 </div>
 
-{{-- Page 5 --}}
-<div class="col p-0 page" id="kurlum5">
+{{-- Akademik | Jurusan Kurikulum --}}
+<div class="col p-0 page" id="JurusanKurikulum">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Akademik | Data Jurusan</span>
+                <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Jurusan</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -108,12 +138,12 @@
     </div>
 </div>
 
-{{-- Page 6 --}}
-<div class="col p-0 page" id="kurlum6">
+{{-- Akademik | Kelas Kurikulum --}}
+<div class="col p-0 page" id="KelasKurikulum">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Akademik | Data Kelas</span>
+                <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Kelas</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>
@@ -128,12 +158,12 @@
     </div>
 </div>
 
-{{-- Page 7 --}}
-<div class="col p-0 page" id="kurlum7">
+{{-- Profil Kurikulum --}}
+<div class="col p-0 page" id="ProfilKurikulum">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
-                <span class="h1 fw-bold text-biru">Akun</span>
+                <span class="h1 fw-bold text-biru">Profil |</span><span class="h2 text-biru" style="padding-left: 10px">Data Diri</span>
             </div>
             <div class="col text-end">
                 <span class="h5">Selamat Datang,</span><br>

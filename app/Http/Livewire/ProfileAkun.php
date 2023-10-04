@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\data_siswa;
+use App\Models\data_guru;
 use DB;
 
 class ProfileAkun extends Component
@@ -23,7 +24,6 @@ class ProfileAkun extends Component
         else if(Auth::user()->role === 'guru')
             $fotos = DB::table('data_gurus')->where('nip', Auth::user()->guru_id)->first();
             return view('livewire.profile-akun-guru', compact('fotos'));
-        
     }
 
     public function updatedPhoto()
@@ -43,7 +43,7 @@ class ProfileAkun extends Component
             ]);
             session()->flash('message', 'Foto profil berhasil diunggah.');
         } else if($gurus) {
-            $filename = $user->id . '.' . $this->photo->getClientOriginalExtension();
+            $filename = $gurus->id . '.' . $this->photo->getClientOriginalExtension();
             $photo=$this->photo->storeAs('profile-pictures', $filename, 'public');
 
             $checks=data_guru::where('nip', Auth::user()->guru_id)->update([
@@ -52,5 +52,4 @@ class ProfileAkun extends Component
             session()->flash('message', 'Foto profil berhasil diunggah.');
         }
     }
-    
 }

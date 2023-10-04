@@ -5,75 +5,92 @@
         <div class="col" style="margin-top: 40px">
             @if (Auth::user()->role == 'admin')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnAdmin1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('beranda') }}" id="btnBerandaAdmin" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
-                    <div class="row mx-0 collapse" id="dropdownContent">
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin6">Jadwal Mapel</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin4">Jurusan</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin5">Kelas</span>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataGuru" aria-expanded="false"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span>
+                    <div class="row mx-0 collapse" id="DataGuru">
+                        <span class="sidebar dd-kiri fs-5" id="btnGuruWaliAdmin">Guru Wali</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnGuruMapelAdmin">Guru Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnMasterGuruAdmin">Master Guru</span>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin7" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
+                    <span class="sidebar" id="btnDataSiswaAdmin"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin9"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="Akademik">
+                        <span class="sidebar dd-kiri fs-5" id="btnJadwalMapelAdmin">Jadwal Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnJurusanAdmin">Jurusan</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKelasAdmin">Kelas</span>
+                    </div>
+                    <br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataNilai" aria-expanded="false"><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span>
+                    <div class="row mx-0 collapse" id="DataNilai">
+                        <span class="sidebar dd-kiri fs-5" id="btnNilaiMapelAdmin">Nilai Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnRaporAdmin">Rapor</span>
+                    </div>
+                    <br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnProfilAdmin"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
 
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">
-                    <span class="sidebar active" id="btnKurlum1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                    <span class="sidebar active" id="btnBerandaKurikulum"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
-                    <div class="row mx-0 collapse" id="dropdownContent">
-                        <span class="sidebar dd-kiri fs-5" id="btnKurlum4">Jadwal Mapel</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnKurlum5">Jurusan</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnKurlum6">Kelas</span>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataGuru" aria-expanded="false"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span>
+                    <div class="row mx-0 collapse" id="DataGuru">
+                        <span class="sidebar dd-kiri fs-5" id="btnGuruWaliKurikulum">Guru Wali</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnGuruMapelKurikulum">Guru Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnMasterGuruKurikulum">Master Guru</span>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum7"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <span class="sidebar" id="btnDataSiswaKurikulum"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="Akademik">
+                        <span class="sidebar dd-kiri fs-5" id="btnJadwalMapelKurikulum">Jadwal Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnJurusanKurikulum">Jurusan</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnKelasKurikulum">Kelas</span>
+                    </div>
+                    <br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnProfilKurikulum"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
 
             @elseif (Auth::user()->role == 'guru')
                 <div class="row mx-0">
-                    <span class="sidebar active" id="btnGuru1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                    <span class="sidebar active" id="btnBerandaGuru"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnGuru2"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</span><br>
+                    <span class="sidebar" id="btnDataNilaiGuru"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnGuru3"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
+                    <span class="sidebar" id="btnDataKelasGuru"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnGuru4"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <span class="sidebar" id="btnProfilGuru"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
             @elseif (Auth::user()->role == 'siswa')
                 <div class="row mx-0">
-                    <span class="sidebar active" id="btnSiswa1"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
+                    <span class="sidebar active" id="btnBerandaSiswa"><i class="bi bi-house-door icon-kiri"></i>Beranda</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnSiswa2"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
+                    <span class="sidebar" id="btnNilaiSiswa"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnSiswa3"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <span class="sidebar" id="btnProfilSiswa"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
                 </div>
             @endif
         </div>

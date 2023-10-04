@@ -1,5 +1,5 @@
 {{-- pengumuman --}}
-<div class="rightbar active-page" id="rightbar1">
+<div class="rightbar active-page" id="PengumumanSiswa">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>

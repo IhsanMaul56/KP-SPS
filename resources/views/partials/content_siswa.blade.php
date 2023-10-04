@@ -1,5 +1,5 @@
-{{-- Page 1 --}}
-<div class="col p-0 page active-page" id="siswa1">
+{{-- Beranda Siswa --}}
+<div class="col p-0 page active-page" id="BerandaSiswa">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -20,8 +20,8 @@
     </div>
 </div>
 
-{{-- Page 2 --}}
-<div class="col p-0 page" id="siswa2">
+{{-- Nilai Siswa --}}
+<div class="col p-0 page" id="NilaiSiswa">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
@@ -45,13 +45,35 @@
                         </select>
                     </div>
                 </div>
+                <table class="table table-bordered my-3">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Nilai Akhir</th>
+                            <th>Huruf</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr class="text-center">
+                                <td>1</td>
+                                <td class="text-start">BAHASA INGGRIS</td>
+                                <td>75</td>
+                                <td>A</td>
+                                <td>
+                                    <span class="btn btn-success"><i class="bi bi-eye"></i></span>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
-{{-- Page 3 --}}
-<div class="col p-0 page" id="siswa3">
+{{-- Profil Siswa --}}
+<div class="col p-0 page" id="ProfilSiswa">
     <div class="grid-tengah">
         <div class="row">
             <div class="col">
