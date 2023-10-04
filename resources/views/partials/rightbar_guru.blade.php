@@ -1,3 +1,10 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
 {{-- pengumuman --}}
 <div class="rightbar active-page" id="PengumumanGuru">
     <div class="row mb-3">

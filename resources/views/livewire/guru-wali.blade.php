@@ -1,14 +1,10 @@
 <div class="row">
     <div class="col">
         @if ($dataSiswa != null)
-            <div class="row mb-2">
+            <div class="row mb-3">
                 <div class="col-3" style="width: 200px">
                     <div class="persegi">
-                        @if(count($akademik) > 0)
-                            <p class="text-white m-0 fs-5 px-3">{{ $akademik[0]->tahun_akademik }}</p>
-                        @else
-                            <p class="text-white m-0 fs-5 px-3">Tidak Ada Data Tahun Akademik</p>
-                        @endif
+                        <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
                     </div>
                 </div>
                 <div class="col">
@@ -17,8 +13,8 @@
                     </div>
                 </div>
             </div>
-            <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
-            <table class="table table-bordered mt-3">
+            <input type="text" class="form-control" wire:model="search" placeholder="Search" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
+            <table class="table">
                 <thead>
                     <tr class="text-center">
                         <th>No</th>
