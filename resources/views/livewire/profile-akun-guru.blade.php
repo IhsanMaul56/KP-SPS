@@ -41,6 +41,10 @@
                 @else
                     <p>Anda tidak memiliki izin untuk mengunggah foto profil.</p>
                 @endif
+        </div>
+            <div class="row">
+                <span class="fw-bold mb-2" style="text-align: center; font-size: 20px;">{{ Auth::user()->name }}</span>
+                <span class="fw-bold" style="text-align: center; font-size: 20px;">{{ Auth::user()->email }}</span>
             </div>
         </div>
     </div>
