@@ -54,10 +54,10 @@
 
             @elseif (Auth::user()->role == 'guru')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnGuru1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('beranda') }}" id="btnGuru1" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <a href="#" id="btnGuru2" class="sidebar" style="text-decoration: none"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</a><br>
+                    <a href="{{ route('nilai-gurus') }}" id="btnGuru2" class="sidebar" style="text-decoration: none"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</a><br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnGuru3"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
@@ -68,13 +68,13 @@
 
             @elseif (Auth::user()->role == 'siswa')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnSiswa1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('beranda') }}" id="home" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar" id="btnSiswa2"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('profile-siswa') }}" class="sidebar" id="btnSiswa3" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a>
+                    <a href="{{ route('profile-siswa') }}" class="sidebar" id="profile" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a>
                 </div>
             @endif
         </div>

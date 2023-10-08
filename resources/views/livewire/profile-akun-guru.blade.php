@@ -24,7 +24,7 @@
                 @endif
 
                 @if (Auth::user()->guru())
-                    <form wire:submit.prevent="updatedPhoto()">
+                    <form wire:submit.prevent="updatedPhoto">
                         <input wire:model="photo" type="file" class="input-group">
                         @error('photo') <span class="error">{{ $message }}</span> @enderror
                     </form>

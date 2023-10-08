@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Auth;
-use App\Models\data_siswa;
 use App\Models\data_guru;
-use DB;
+use App\Models\data_siswa;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProfileAkun extends Component
 {
@@ -21,17 +22,17 @@ class ProfileAkun extends Component
             $foto = DB::table('data_siswas')->where('nis', Auth::user()->siswa_id)->first();
             return view('livewire.profile-akun-siswa', compact('foto'));
         }
-        else if(Auth::user()->role === 'guru'){
+        else if(Auth::user()->role === 'guru')
             $fotos = DB::table('data_gurus')->where('nip', Auth::user()->guru_id)->first();
             return view('livewire.profile-akun-guru', compact('fotos'));
-        }
     }
 
     public function updatedPhoto()
     {
         $this->validate([
-            'photo' => 'image|max:1024', // Maksimal ukuran 1MB
+            'photo' => 'image|max:1024',
         ]);
+
         $siswas = Auth::user()->siswa;
         $gurus = Auth::user()->guru;
         if ($siswas) {
@@ -52,5 +53,4 @@ class ProfileAkun extends Component
             session()->flash('message', 'Foto profil berhasil diunggah.');
         }
     }
-    
 }

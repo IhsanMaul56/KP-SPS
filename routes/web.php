@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('beranda');
         Route::get('/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
         Route::post('/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
+        Route::get('/nilai-guru', DataNilaiGuru::class)->name('nilai-gurus');
     });    
 
     Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
@@ -57,7 +58,6 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
         Route::get('/profile', [DataSiswaController::class, 'profile'])->name('profile-siswa');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
-        // Route::post('/profile', [ProfileAkun::class, 'updatedPhoto'])->name('foto.siswa');
     });
 
     Route::get('/logout', [LoginController::class, 'logout']);
