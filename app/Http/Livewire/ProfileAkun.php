@@ -21,10 +21,10 @@ class ProfileAkun extends Component
             $foto = DB::table('data_siswas')->where('nis', Auth::user()->siswa_id)->first();
             return view('livewire.profile-akun-siswa', compact('foto'));
         }
-        else if(Auth::user()->role === 'guru')
+        else if(Auth::user()->role === 'guru'){
             $fotos = DB::table('data_gurus')->where('nip', Auth::user()->guru_id)->first();
             return view('livewire.profile-akun-guru', compact('fotos'));
-        
+        }
     }
 
     public function updatedPhoto()
@@ -32,7 +32,6 @@ class ProfileAkun extends Component
         $this->validate([
             'photo' => 'image|max:1024', // Maksimal ukuran 1MB
         ]);
-
         $siswas = Auth::user()->siswa;
         $gurus = Auth::user()->guru;
         if ($siswas) {

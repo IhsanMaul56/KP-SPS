@@ -7,7 +7,7 @@ const siswa1 = document.getElementById('siswa1');
 const siswa2 = document.getElementById('siswa2');
 const siswa3 = document.getElementById('siswa3');
 const rightbar1 = document.getElementById('rightbar1');
-const rightbar2 = document.getElementById('rightbar2');
+// const rightbar2 = document.getElementById('rightbar2');
 
 var userRole = 'siswa';
 document.addEventListener("DOMContentLoaded", function() {
@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function() {
             resetPage(activePage); // Menghapus tampilan sebelumnya
             activePage = siswa3; // Memperbarui halaman yang sedang aktif
             siswa3.classList.add('active-page');
-            rightbar2.classList.add('active-page');
+            // rightbar2.classList.add('active-page');
         });
 
         function resetPage(page) {
             page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
             rightbar1.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
-            rightbar2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
+            // rightbar2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
         }
     }
 });
@@ -237,7 +237,7 @@ const guru2 = document.getElementById('guru2');
 const guru3 = document.getElementById('guru3');
 const guru4 = document.getElementById('guru4');
 const rightguru1 = document.getElementById('rightguru1');
-const rightguru2 = document.getElementById('rightguru2');
+// const rightguru2 = document.getElementById('rightguru2');
 
 var userRole4 = 'guru';
 document.addEventListener("DOMContentLoaded", function() {
@@ -270,13 +270,12 @@ document.addEventListener("DOMContentLoaded", function() {
             resetPage(activePage); // Menghapus tampilan sebelumnya
             activePage = guru4; // Memperbarui halaman yang sedang aktif
             guru4.classList.add('active-page');
-            rightguru2.classList.add('active-page');
         });
         
         function resetPage(page) {
             page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
             rightguru1.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar1
-            rightguru2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
+            // rightguru2.classList.remove('active-page'); // Menghapus kelas 'active-page' dari rightbar2
         }
     }
 });

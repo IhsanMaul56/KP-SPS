@@ -13,10 +13,13 @@ class DataSiswaController extends Controller
      */
     public function index()
     {
-        $dataSiswa = data_siswa::all();
-        return view('layouts.dashboard', ['dataSiswa' => $dataSiswa]);
+        return view('layouts.dashboard');
     }
 
+    public function profile()
+    {
+        return view('layouts.siswa-profile');
+    }
     /**
      * Show the form for creating a new resource.
      */
