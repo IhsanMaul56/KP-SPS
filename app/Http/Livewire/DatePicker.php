@@ -12,6 +12,7 @@ class DatePicker extends Component
     {
         return view('livewire.date-picker');
     }
+    
     public function updatedSelectedDate($value)
     {
     // Lakukan sesuatu dengan tanggal yang dipilih

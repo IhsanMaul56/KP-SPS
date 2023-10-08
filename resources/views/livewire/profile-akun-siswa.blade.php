@@ -19,7 +19,7 @@
                 @else
                     <center>
                         <img src="{{ asset('storage/profile-pictures/'.$foto->foto_siswa) }}" alt="Foto Profil" width="250" class="rounded-circle mb-5">
-                    </center>    
+                    </center>
                 @endif
 
                 @if (session()->has('message'))
