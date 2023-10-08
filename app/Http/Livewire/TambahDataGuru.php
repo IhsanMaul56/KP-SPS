@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\data_guru;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class TambahDataGuru extends Component
 {
@@ -15,10 +15,10 @@ class TambahDataGuru extends Component
         return view('livewire.tambah-data-guru');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $this->validate([
-            'nip' => 'required|unique:data_guru,nip',
+        $request->validate([
+            'nip' => 'required|unique:data_gurus,nip',
             'nama_guru' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -48,44 +48,30 @@ class TambahDataGuru extends Component
             'alamat.required' => 'Alamat harus diisi',
         ]);
 
+        // dd($request);
+
         data_guru::create([
-            'nip' => $this->nip,
-            'nama_guru' => $this->nama_guru,
-            'tempat_lahir' => $this->tempat_lahir,
-            'tanggal_lahir' => $this->tanggal_lahir,
-            'jenis_kelamin' => $this->jenis_kelamin,
-            'agama' => $this->agama,
-            'no_hp' => $this->no_hp,
-            'provinsi' => $this->provinsi,
-            'kota' => $this->kota,
-            'desa' => $this->desa,
-            'rt' => $this->rt,
-            'rw' => $this->rw,
-            'alamat' => $this->alamat,
+            'nip' => $request->nip,
+            'nama_guru' => $request->nama_guru,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'agama' => $request->agama,
+            'no_hp' => $request->no_hp,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'desa' => $request->desa,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'alamat' => $request->alamat,
         ]);
 
         session()->flash('berhasil', 'Data guru berhasil disimpan.');
         
         $this->resetForm();
 
-        dd([
-            'nip' => $this->nip,
-            'nama_guru' => $this->nama_guru,
-            'tempat_lahir' => $this->tempat_lahir,
-            'tanggal_lahir' => $this->tanggal_lahir,
-            'jenis_kelamin' => $this->jenis_kelamin,
-            'agama' => $this->agama,
-            'no_hp' => $this->no_hp,
-            'provinsi' => $this->provinsi,
-            'kota' => $this->kota,
-            'desa' => $this->desa,
-            'rt' => $this->rt,
-            'rw' => $this->rw,
-            'alamat' => $this->alamat,
-        ]);
+        return redirect()->back();
     }
-
-
 
     private function resetForm()
     {

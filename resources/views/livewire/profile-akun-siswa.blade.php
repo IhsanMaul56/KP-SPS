@@ -27,7 +27,7 @@
                 @endif
 
                 @if (Auth::user()->siswa())
-                    <form wire:submit.prevent="updatedPhoto()">
+                    <form wire:submit.prevent="updatedPhoto">
                         <input wire:model="photo" type="file" wire:model="photo" class="input-group">
                         @error('photo') <span class="error">{{ $message }}</span> @enderror
                     </form>
