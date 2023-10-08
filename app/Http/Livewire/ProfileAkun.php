@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Auth;
-use App\Models\data_siswa;
 use App\Models\data_guru;
-use DB;
+use App\Models\data_siswa;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProfileAkun extends Component
 {
@@ -30,7 +31,7 @@ class ProfileAkun extends Component
     public function updatedPhoto()
     {
         $this->validate([
-            'photo' => 'image|max:1024', // Maksimal ukuran 1MB
+            'photo' => 'image|max:1024',
         ]);
         $siswas = Auth::user()->siswa;
         $gurus = Auth::user()->guru;

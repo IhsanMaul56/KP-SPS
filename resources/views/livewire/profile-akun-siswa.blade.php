@@ -32,16 +32,15 @@
                 <div class="alert alert-success">{{ session('message') }}</div>
             @endif
 
-            @if (Auth::user()->role === 'siswa')
-                <form wire:submit.prevent="updatedPhoto()">
-                    @csrf
-                    <input wire:model="photo" type="file" class="input-group">
-                    @error('photo') <span class="error">{{ $message }}</span> @enderror
-                    <button type="submit">Unggah Foto</button>
-                </form> 
-            @else
-                <p>Anda tidak memiliki izin untuk mengunggah foto profil.</p>
-            @endif
+                @if (Auth::user()->siswa())
+                    <form wire:submit.prevent="updatedPhoto">
+                        <input wire:model="photo" type="file" wire:model="photo" class="input-group">
+                        @error('photo') <span class="error">{{ $message }}</span> @enderror
+                    </form>
+                @else
+                    <p>Anda tidak memiliki izin untuk mengunggah foto profil.</p>
+                @endif
+            </div>
         </div>
     </div>
 </div>
