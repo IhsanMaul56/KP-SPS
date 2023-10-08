@@ -52,5 +52,4 @@ class ProfileAkun extends Component
             session()->flash('message', 'Foto profil berhasil diunggah.');
         }
     }
-    
 }

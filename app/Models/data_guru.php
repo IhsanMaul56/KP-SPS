@@ -10,6 +10,8 @@ class data_guru extends Model
 {
     use HasFactory;
 
+    protected $tabel = 'data_gurus';
+
     protected $fillable = [
         'nip',
         'nama_guru',

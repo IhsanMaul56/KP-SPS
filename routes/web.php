@@ -40,11 +40,12 @@ Route::get('/home', function(){
 });
 
 Route::middleware(['auth'])->group(function(){
+    
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/', [DashboardController::class, 'index'])->name('beranda');
-        Route::get('/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
-        Route::post('/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
-    });    
+        Route::get('/admin', [DashboardController::class, 'index'])->name('beranda');
+        Route::get('/admin/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
+        Route::post('/admin/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
+    });        
 
     Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
 

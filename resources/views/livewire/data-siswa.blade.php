@@ -1,13 +1,17 @@
-<div class="row">
-    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1);">
-    <div class="col-3" style="width: max-content;">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
-            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-        </button>
+<div class="col">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+        </div>
+        <div class="col-3" style="width: max-content;">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+            </button>
+        </div>
     </div>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>No</th>
                 <th>NIS</th>
                 <th>Nama Siswa</th>
@@ -15,16 +19,15 @@
                 <th>Jenis Kelamin</th>
                 <th>No. HP</th>
                 <th>Aksi</th>
-                <!-- Tambahkan kolom lain di sini -->
             </tr>
         </thead>
         <tbody>
             @foreach ($dasis as $index => $item)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $dasis->firstItem() + $index }}</td>
                     <td>{{ $item->nis }}</td>
-                    <td>{{ $item->nama_siswa }}</td>
-                    <td>-</td>
+                    <td class="text-start">{{ $item->nama_siswa }}</td>
+                    <td>X AKL 1</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->no_hp }}</td>
                     <td>

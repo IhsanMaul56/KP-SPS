@@ -164,7 +164,7 @@
                 </div>
             </div>
             <div class="col text-end mt-3">
-                <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c;">Update Data</button>
+                <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c; border-radius: 10px 10px 10px 10px">Update Data</button>
             </div>
         @else
             <p>Data alamat tidak tersedia.</p>
