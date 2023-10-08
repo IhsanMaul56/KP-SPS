@@ -14,6 +14,9 @@ use App\Http\Livewire\TambahDataGuru;
 use App\Http\Livewire\TambahDataSiswa;
 use App\Http\Livewire\DataTablesExample;
 use App\Http\Livewire\DataNilaiSiswa;
+use App\Http\Livewire\DataNilaiGuru;
+use App\Http\Livewire\ProfileAkun;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,17 +54,21 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');
     });
 
-    Route::prefix('dashboard')->group(function(){
+    Route::prefix('/dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
+        Route::get('/profile', [DataSiswaController::class, 'profile'])->name('profile-siswa');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
+        // Route::post('/profile', [ProfileAkun::class, 'updatedPhoto'])->name('foto.siswa');
     });
 
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
-
+// Route::get('/profile', AkunGuru::class)->name('profile-guru');
 Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
 Route::get('/input-nilai', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
+
+// Route::get('/dashboard/data-nilai', DataNilaiGuru::class)->name('data-nilai-siswa');
 
 
 
