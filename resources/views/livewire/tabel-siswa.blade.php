@@ -20,12 +20,30 @@
             </tr>
         </thead>
         <tbody>
+            <?php $no = 1; ?>
+            @foreach ($jadwal as $item)
                 <tr class="text-center">
-                    <td>1</td>
-                    <td class="text-start">BAHASA INGGRIS</td>
-                    <td>Selasa</td>
-                    <td>07:00-09:00</td>
-                    <td class="text-start">INDRA</td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $item->hari }}</td>
+                    {{-- <td>{{ $item->waktu_masuk }} - {{ $item->waktu_keluar }}</td> --}}
+                    <td>
+                        {{ substr($item->waktu_masuk, 0, 5) }} - {{ substr($item->waktu_keluar, 0, 5) }}
+                    </td>
+                    @if ($pengampu)
+                        @php
+                            $searchGuru = $pengampu->firstWhere('kode_pengampu', $item->pengampu_id);
+                        @endphp
+                        @if ($searchGuru)
+                            <td class="text-start">{{ $searchGuru->nama_guru }}</td>
+                            <td class="text-start">{{ $searchGuru->nama_mapel }}</td>
+                        @else
+                            <td>Data Tidak Ditemukan</td>
+                        @endif
+                    @endif
+                </tr>
+            @endforeach
+                <tr class="text-center">
+                    
                 </tr>
         </tbody>
     </table>

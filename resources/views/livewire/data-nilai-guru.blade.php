@@ -26,7 +26,7 @@
                         <option value="{{ $kel }}">{{ $kel }}</option>
                     @endforeach
                 @endif
-            </select>            
+            </select>
         </div>
     </div>
 

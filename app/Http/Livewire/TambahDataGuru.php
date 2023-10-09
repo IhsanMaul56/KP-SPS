@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\data_guru;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TambahDataGuru extends Component
 {
     public $nip, $nama_guru, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $agama, $no_hp, $provinsi, $kota, $desa, $rt, $rw, $alamat;
+    public $email;
 
     public function render()
     {
@@ -31,6 +33,7 @@ class TambahDataGuru extends Component
             'rt' => 'required',
             'rw' => 'required',
             'alamat' => 'required',
+            'email' => 'required|email|unique:users,email',
         ], [
             'nip.required' => 'NIP harus diisi.',
             'nip.unique' => 'NIP sudah ada dalam database.',
@@ -46,6 +49,8 @@ class TambahDataGuru extends Component
             'rt.required' => 'Rt harus diisi',
             'rw.required' => 'Rw harus diisi',
             'alamat.required' => 'Alamat harus diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.unique' => 'Email sudah ada dalam database',
         ]);
 
         // dd($request);
@@ -66,6 +71,14 @@ class TambahDataGuru extends Component
             'alamat' => $request->alamat,
         ]);
 
+        User::create([
+            'name' => ucwords($request->nama_guru),
+            'email' => strtolower($request->email),
+            'password' => bcrypt('12345'),
+            'role' => 'guru',
+            'guru_id' => $request->nip,
+        ]);
+
         session()->flash('berhasil', 'Data guru berhasil disimpan.');
         
         $this->resetForm();
@@ -82,6 +95,7 @@ class TambahDataGuru extends Component
         $this->jenis_kelamin = '';
         $this->agama = '';
         $this->no_hp = '';
+        $this->email = '';
         $this->provinsi = '';
         $this->kota = '';
         $this->desa = '';

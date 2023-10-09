@@ -8,34 +8,24 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
-                    <th>Nama Jurusan</th>
-                    <th>Kepala Jurusan</th>
-                    <th>Kelas</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($dajur as $index => $item)
-                    <tr class="text-center">
-                        <td>{{ $dajur->firstItem() + $index }}</td>
-                        <td class="text-start">{{ $item->nama_jurusan}}</td>
-                        <td class="text-start">{{ $item->nama_guru}}</td>
-                        <td>5</td>
-                        <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
-                                <i class="bi bi-pencil-square text-white"></i>
-                            </button>
-                                <!-- Modal Edit Jurusan-->
-                                <div class="modal fade" id="editJurusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Edit Data Jurusan</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                            <div class="modal-body">
-                                                ...
+                    <td>{{ $dajur->firstItem() + $index }}</td>
+                    <td class="text-start">{{ $item->nama_jurusan}}</td>
+                    <td class="text-start">{{ $item->nama_guru}}</td>
+                    <td>{{ $this->countKelas( $item->kode_jurusan) }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                            <i class="bi bi-pencil-square text-white"></i>
+                        </button>
+                            <!-- Modal Edit Jurusan-->
+                            <div class="modal fade" id="editJurusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data Jurusan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                        <div class="modal-body">
+                                            ...
                                             </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

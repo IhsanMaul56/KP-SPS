@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/admin', [DashboardController::class, 'index'])->name('beranda');
         Route::get('/admin/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
         Route::post('/admin/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
+        Route::get('/admin/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
+        Route::post('/admin/tambah-siswa', [TambahDataSiswa::class, 'store'])->name('tambah-data-siswa-store');
     });        
 
     Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
@@ -80,7 +82,6 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/logout', [LoginController::class, 'logout']);
 });
-
 
 Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
 Route::get('/input-nilai', DataNilaiSiswa::class)->name('tambah-nilai-siswa');

@@ -10,18 +10,24 @@
                 </button>
             </div>
         </div>
-        <table class="table table-bordered">
-            <thead>
-                <tr class="text-center">
-                    <th>No</th>
-                    <th>NIS</th>
-                    <th>Nama Siswa</th>
-                    <th>Kelas</th>
-                    <th>Jenis Kelamin</th>
-                    <th>No. HP</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
+        <div class="col-3" style="width: max-content;">
+            <a href="{{ route('tambah-data-siswa') }}" class="btn btn-primary" style="text-decoration: none;">
+                <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+            </a>
+        </div>
+    </div>
+      <table class="table table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th>No</th>
+                <th>NIS</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>Jenis Kelamin</th>
+                <th>No. HP</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
             <tbody>
                 @foreach ($dasis as $index => $item)
                     <tr class="text-center">
