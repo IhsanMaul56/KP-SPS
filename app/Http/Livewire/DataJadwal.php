@@ -66,4 +66,8 @@ class DataJadwal extends Component
     public function updatingSearch(){
         $this->resetPage();
     }
+
+    public function tampil(){
+        return view('partials.jadwal-mapel');
+    }
 }

@@ -5,65 +5,82 @@
         <div class="col sedbar" style="margin-top: 40px">
             @if (Auth::user()->role == 'admin')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnAdmin1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('beranda') }}" id="btnBerandaAdmin" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
-                    <div class="row mx-0 collapse" id="dropdownContent">
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin6">Jadwal Mapel</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin4">Jurusan</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnAdmin5">Kelas</span>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataGuru" aria-expanded="false"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span>
+                    <div class="row mx-0 collapse" id="DataGuru">
+                        <a href="{{ route('data-walis') }}" class="sidebar dd-kiri fs-5" style="text-decoration: none">Guru Wali</a>
+                        <a href="{{ route('data-mapels') }}" class="sidebar dd-kiri fs-5" style="text-decoration: none">Guru Mapel</a>
+                        <a href="{{ route('master-guru') }}" class="sidebar dd-kiri fs-5" style="text-decoration: none">Master Guru</a>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin7" ><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span><br>
+                    <a href="{{ route('siswa-kurikulum') }}" class="sidebar fs-5" style="text-decoration: none"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnAdmin9"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="Akademik">
+                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jadwal Mapel</a>
+                        <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jurusan</a>
+                        <a href="{{ route('m-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
+                    </div>
+                    <br>
                 </div>
-
+                <div class="row mx-0">
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataNilai" aria-expanded="false"><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span>
+                    <div class="row mx-0 collapse" id="DataNilai">
+                        <span class="sidebar dd-kiri fs-5" id="btnNilaiMapelAdmin">Nilai Mapel</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnRaporAdmin">Rapor</span>
+                    </div>
+                    <br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar" id="btnProfilAdmin"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                </div>
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnAdmin1" class="sidebar active" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('beranda') }}" id="btnBerandaKurikulum" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum2"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum3"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</span><br>
-                </div>
-                <div class="row mx-0">
-                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
-                    <div class="row mx-0 collapse" id="dropdownContent">
-                        <span class="sidebar dd-kiri fs-5" id="btnKurlum4">Jadwal Mapel</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnKurlum5">Jurusan</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnKurlum6">Kelas</span>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataGuru" aria-expanded="false"><i class="bi bi-person-vcard icon-kiri"></i>Data Guru</span>
+                    <div class="row mx-0 collapse" id="DataGuru">
+                        <a href="{{ route('data-walis') }}" class="sidebar dd-kiri fs-5" style="text-decoration: none">Guru Wali</a>
+                        <a href="{{ route('data-mapels') }}" class="sidebar dd-kiri fs-5" style="text-decoration: none">Guru Mapel</a>
+                        <a href="{{ route('master-guru') }}" class="sidebar dd-kiri fs-5" style="text-decoration: none">Master Guru</a>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnKurlum7"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <a href="{{ route('siswa-kurikulum') }}" class="sidebar fs-5" style="text-decoration: none"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</a><br>
+                </div>
+                <div class="row mx-0">
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
+                    <div class="row mx-0 collapse" id="Akademik">
+                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jadwal Mapel</a>
+                        <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jurusan</a>
+                        <a href="{{ route('m-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
+                    </div>
+                    <br>
+                </div>
+                <div class="row mx-0">
+                    <a href="{{ route('profile-guru') }}" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profile</a><br>
                 </div>
 
             @elseif (Auth::user()->role == 'guru')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnGuru1" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('beranda') }}" id="btnBerandaGuru" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('nilai-gurus') }}" id="btnGuru2" class="sidebar" style="text-decoration: none"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</a><br>
+                    <a href="{{ route('nilai-gurus') }}" id="btnDataNilaiGuru" class="sidebar" style="text-decoration: none"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnGuru3"><i class="bi bi-journal-richtext icon-kiri"></i>Data Kelas</span><br>
+                    <a href="{{ route('nilai-walis') }}" class="sidebar" style="text-decoration: none"><i class="bi bi-journal-richtext icon-kiri"></i>Data Wali</a>
+                    <br>
                 </div>
                 <div class="row mx-0">
-                    <a href="#" class="sidebar" id="btnGuru4" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
+                    <a href="{{ route('profile-guru') }}" class="sidebar" id="btnGuru4" style="text-decoration: none" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
                 </div>
 
             @elseif (Auth::user()->role == 'siswa')
@@ -71,7 +88,7 @@
                     <a href="{{ route('beranda') }}" id="home" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnSiswa2"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
+                    <span class="sidebar" id="btnNilaiSiswa"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
                 </div>
                 <div class="row mx-0">
                     <a href="{{ route('profile-siswa') }}" class="sidebar" id="profile" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a>
@@ -79,6 +96,6 @@
             @endif
         </div>
         <div class="row mx-0">
-            <a href="/logout" class="exit" style="text-decoration: none;"><i class="bi bi-box-arrow-right keluar"></i>Keluar</a>
+            <a href="/logout" class="exit" style="text-decoration: none;"><i class="bi bi-box-arrow-right icon-kiri"></i>Keluar</a>
         </div>
     </div>

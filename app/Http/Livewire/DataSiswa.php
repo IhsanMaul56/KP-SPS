@@ -23,4 +23,8 @@ class DataSiswa extends Component
     public function updatingSearch(){
         $this->resetPage();
     }
+
+    public function tampil(){
+        return view('partials.kurikulum-siswa');
+    }
 }

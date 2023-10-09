@@ -6,7 +6,7 @@
     @livewireScripts
 @endpush
 {{-- pengumuman --}}
-<div class="rightbar active-page" id="rightguru1">
+<div class="rightbar active-page" id="PengumumanGuru">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>

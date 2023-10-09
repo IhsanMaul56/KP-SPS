@@ -15,11 +15,11 @@
             <div class="row m-0 p-0">
                 <span>Foto Profil</span>
                 <hr>
-                @if ($fotos->foto_guru == "")
+                @if ($foto_k->foto_guru == "")
                     <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>
                 @else
                     <center>
-                        <img src="{{ asset('storage/profile-pictures/'.$fotos->foto_guru) }}" alt="Foto Profil" width="250" class="rounded-circle mb-5">
+                        <img src="{{ asset('storage/profile-pictures/'.$foto_k->foto_guru) }}" alt="Foto Profil" width="250" class="rounded-circle mb-5">
                     </center>    
                 @endif
 

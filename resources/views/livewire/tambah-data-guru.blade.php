@@ -21,13 +21,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form wire:submit.prevent="store" method="POST">
+                    <form wire:submit.prevent="store" method="POST" action="{{ route('tambah-data-guru') }}">
                         @csrf
                         @if (Session::has('berhasil'))
                             <div class="alert alert-success">
                                 {{ Session::get('berhasil') }}
                             </div>
                         @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        
                         <div class="card p-0">
                             <div class="card-body overflow-auto h-100 fs-5">
                                 <div class="row mb-2">
@@ -36,7 +47,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('nip') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan NIP" wire:model='nip' value="{{ old('nip') }}">
+                                            <input id="nip" type="text" class="form-control @error('nip') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan NIP" wire:model="nip" name="nip">
                                             @error('nip')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -51,7 +62,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('nama_guru') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Nama Lengkap" wire:model='nama_guru'>
+                                            <input id="nama_guru" type="text" class="form-control @error('nama_guru') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Nama Lengkap" wire:model="nama_guru" name="nama_guru">
                                             @error('nama_guru')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -66,7 +77,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Tempat Lahir" wire:model='tempat_lahir'>
+                                            <input id="tempat_lahir" type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Tempat Lahir" wire:model="tempat_lahir" name="tempat_lahir">
                                             @error('tempat_lahir')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -76,7 +87,13 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            @livewire('date-picker')
+                                            <label for="datepicker"></label>
+                                            <input wire:model="tanggal_lahir" type="date" id="datepicker" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir">
+                                            @error('tanggal_lahir')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -86,11 +103,11 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input type="radio" name="option" id="option1" value="Laki-laki" class="me-2" wire:model='jenis_kelamin'>
-                                            <label for="option1" class="me-3">Laki-laki</label>
+                                            <input type="radio" id="Laki-lai" value="Laki-laki" class="me-2" wire:model="jenis_kelamin" name="jenis_kelamin">
+                                            <label for="Laki-laki" class="me-3">Laki-laki</label>
                                             
-                                            <input type="radio" name="option" id="option2" value="Perempuan" class="me-2" wire:model='jenis_kelamin'>
-                                            <label for="option2" class="me-3">Perempuan</label>
+                                            <input type="radio" id="Perempuan" value="Perempuan" class="me-2" wire:model="jenis_kelamin" name="jenis_kelamin">
+                                            <label for="Perempuan" class="me-3">Perempuan</label>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +117,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('agama') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Agama" wire:model='agama'>
+                                            <input id="agama" type="text" class="form-control @error('agama') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Agama" wire:model="agama" name="agama">
                                             @error('agama')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -115,7 +132,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('no_hp') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Nomor HP" oninput="this.value = this.value.replace(/[^0-9]/g, '')" wire:model='no_hp'>
+                                            <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Nomor HP" oninput="this.value = this.value.replace(/[^0-9]/g, '')" wire:model="no_hp" name="no_hp">
                                             @error('no_hp')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -130,7 +147,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('provinsi') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Provinsi" wire:model='provinsi'>
+                                            <input id="provinsi" type="text" class="form-control @error('provinsi') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Provinsi" wire:model="provinsi" name="provinsi">
                                             @error('provinsi')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -145,7 +162,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('kota') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Kota" wire:model='kota'>
+                                            <input id="kota" type="text" class="form-control @error('kota') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Kota" wire:model="kota" name="kota">
                                             @error('kota')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -160,7 +177,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('desa') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Desa" wire:model='desa'>
+                                            <input id="desa" type="text" class="form-control @error('desa') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Desa" wire:model="desa" name="desa">
                                             @error('desa')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -175,7 +192,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('rt') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RT" wire:model='rt'>
+                                            <input id="rt" type="text" class="form-control @error('rt') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RT" wire:model="rt" name="rt">
                                             @error('rt')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -185,7 +202,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control @error('rw') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RW" wire:model='rw'>
+                                            <input id="rw" type="text" class="form-control @error('rw') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RW" wire:model="rw" name="rw">
                                             @error('rw')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -200,8 +217,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="input-group">
-                                            <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" cols="2" rows="2" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Alamat Lengkap" wire:model='alamat'></textarea>
-                                            @error('nip')
+                                            <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RW" wire:model="alamat" name="alamat">
+                                            @error('alamat')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -212,7 +229,6 @@
                                         
                                     </div>
                                 </div>
-                                {{-- <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c;">Simpan</button> --}}
                                 <input type="submit" value="Simpan" class="btn btn-primary mt-5">
                             </div>
                         </div>

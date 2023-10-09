@@ -9,9 +9,9 @@
     </div>
 </div>
 <div class="my-3">
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>No</th>
                 <th>Hari</th>
                 <th>Waktu</th>
@@ -20,27 +20,13 @@
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1; ?>
-            
-            @foreach ($jadwal as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $item->hari }}</td>
-                    <td>{{ date('H:i', strtotime($item->waktu_masuk)) }} - {{ date('H:i', strtotime($item->waktu_keluar)) }}</td>
-                    @if ($pengampu)
-                        @php
-                            $matchingPengampu = $pengampu->firstWhere('kode_pengampu', $item->pengampu_id);
-                        @endphp
-                        @if ($matchingPengampu)
-                            <td>{{ $matchingPengampu->nama_mapel }}</td>
-                            <td>{{ $matchingPengampu->nama_guru }}</td>
-                        @else
-                            <td>Tidak Ditemukan</td>
-                            <td>Tidak Ditemukan</td> <!-- Tambahkan pesan "Tidak Ditemukan" untuk nama_pengampu juga -->
-                        @endif
-                    @endif
+                <tr class="text-center">
+                    <td>1</td>
+                    <td class="text-start">BAHASA INGGRIS</td>
+                    <td>Selasa</td>
+                    <td>07:00-09:00</td>
+                    <td class="text-start">INDRA</td>
                 </tr>
-            @endforeach
         </tbody>
     </table>
 </div>

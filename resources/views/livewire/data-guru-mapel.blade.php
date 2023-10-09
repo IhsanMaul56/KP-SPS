@@ -14,23 +14,21 @@
             <thead>
                 <tr class="text-center">
                     <th>No</th>
-                    <th>NIS</th>
-                    <th>Nama Siswa</th>
-                    <th>Kelas</th>
-                    <th>Jenis Kelamin</th>
+                    <th>NIP</th>
+                    <th>Nama Guru</th>
+                    <th>Mata Pelajaran</th>
                     <th>No. HP</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($dasis as $index => $item)
+                {{-- @foreach ($dagur as $index => $item) --}}
                     <tr class="text-center">
-                        <td>{{ $dasis->firstItem() + $index }}</td>
-                        <td>{{ $item->nis }}</td>
-                        <td class="text-start">{{ $item->nama_siswa }}</td>
-                        <td>X AKL 1</td>
-                        <td>{{ $item->jenis_kelamin }}</td>
-                        <td>{{ $item->no_hp }}</td>
+                        <td>1</td>
+                        <td>112233</td>
+                        <td class="text-start">AZIZI</td>
+                        <td class="text-start">BAHASA INGGRIS</td>
+                        <td>08112233</td>
                         <td>
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
                                 <i class="bi bi-pencil-square text-white"></i>
@@ -38,9 +36,8 @@
                             <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                         </td>
                     </tr>
-                @endforeach
+                {{-- @endforeach --}}
             </tbody>
         </table>
-        {{ $dasis->links() }}  
-    </div>
+    </div>    
 </div>
