@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function(){
     Route::prefix('dashboard')->group(function(){
         Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
-        Route::get('/profile-siswa', [DataSiswaController::class, 'profile'])->name('profile-siswa');
+        Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');
     });
 
     Route::get('/logout', [LoginController::class, 'logout']);
