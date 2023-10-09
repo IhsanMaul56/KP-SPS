@@ -1,5 +1,4 @@
-@livewireStyles
-<div class="rightbar" id="FotoGuru">
+<div id="FotoGuru">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>

@@ -1,5 +1,4 @@
-@livewireStyles
-<div class="rightbar" id="FotoGuru">
+<div id="FotoGuru">
     <div class="row mb-3">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
@@ -20,21 +19,17 @@
                 @else
                     <center>
                         <img src="{{ asset('storage/profile-pictures/'.$fotos->foto_guru) }}" alt="Foto Profil" width="250" class="rounded-circle mb-5">
-                    </center>    
+                    </center>
                 @endif
 
                 @if (session()->has('message'))
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
 
-                @if (Auth::user()->guru())
-                    <form wire:submit.prevent="updatedPhoto">
-                        <input wire:model="photo" type="file" class="input-group">
-                        @error('photo') <span class="error">{{ $message }}</span> @enderror
-                    </form>
-                @else
-                    <p>Anda tidak memiliki izin untuk mengunggah foto profil.</p>
-                @endif
+                <form wire:submit.prevent="updatedPhoto">
+                    <input wire:model="photo" type="file" class="input-group">
+                    @error('photo') <span class="error">{{ $message }}</span> @enderror
+                </form>
             </div>
         </div>
     </div>
