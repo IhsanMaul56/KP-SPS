@@ -10,4 +10,8 @@ class DataGuruMapel extends Component
     {
         return view('livewire.data-guru-mapel');
     }
+
+    public function tampil(){
+        return view('partials.mapel-guru');
+    }
 }

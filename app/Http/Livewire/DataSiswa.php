@@ -16,11 +16,15 @@ class DataSiswa extends Component
     public function render()
     {
         return view('livewire.data-siswa', [
-            'dasis' => data_siswa::where('nama_siswa','like','%'.$this->search.'%')->paginate(10)
+            'dasis' => data_siswa::where('nama_siswa','like','%'.$this->search.'%')->paginate(5)
         ]);
     }
     
     public function updatingSearch(){
         $this->resetPage();
+    }
+
+    public function tampil(){
+        return view('partials.kurikulum-siswa');
     }
 }

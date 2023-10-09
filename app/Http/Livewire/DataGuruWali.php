@@ -10,4 +10,9 @@ class DataGuruWali extends Component
     {
         return view('livewire.data-guru-wali');
     }
+    
+    public function tampil()
+    {
+        return view('partials.kurikulum-wali');
+    }
 }

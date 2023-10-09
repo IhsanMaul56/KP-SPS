@@ -15,7 +15,7 @@
             <div class="grid-tengah">
                 <div class="row">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Profil |</span><span class="h2 text-biru" style="padding-left: 10px;">Data Diri</span>
+                        <span class="h1 fw-bold text-biru">Nilai |</span><span class="h2 text-biru" style="padding-left: 10px;">Mata Pelajaran</span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>
@@ -23,17 +23,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="card">
-                        <div class="card-body h-100 overflow-auto">
-                            @livewire('akun-siswa')
-                        </div>
-                    </div>
+                    @livewire('data-nilai-guru')
                 </div>
             </div>
         </div>
         <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
             <div class="grid-kanan">
-                @livewire('profile-akun')
+                @include('partials.rightbar_guru')
             </div>
         </div>
     </div>

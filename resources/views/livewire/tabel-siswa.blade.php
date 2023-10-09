@@ -13,10 +13,10 @@
         <thead>
             <tr class="text-center">
                 <th>No</th>
-                <th>Mata Pelajaran</th>
                 <th>Hari</th>
                 <th>Waktu</th>
-                <th>Nama Guru</th>
+                <th>Mata Pelajaran</th>
+                <th>Guru Pengampu</th>
             </tr>
         </thead>
         <tbody>

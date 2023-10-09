@@ -122,4 +122,8 @@ class DataNilaiGuru extends Component
             $this->siswa = collect();
         }
     }
+
+    public function tampil(){
+        return view('partials.guru-nilai');
+    }
 }

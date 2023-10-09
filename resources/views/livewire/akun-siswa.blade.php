@@ -6,7 +6,7 @@
     @livewireScripts
 @endpush
 
-<form wire:submit.prevent="update" method="POST" action="{{ route('siswa.edit') }}">
+<form wire:submit.prevent="update" method="POST" action="{{ route('siswa.edit') }}" class="fs-5">
     @if (Session::has('message'))
         <div class="alert alert-success">
             {{ Session::get('message') }}
@@ -79,7 +79,7 @@
             </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->provinsi }}" readonly>
+                    <input id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->provinsi }}">
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
             </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->kota }}" readonly>
+                    <input id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->kota }}">
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->desa }}" readonly>
+                    <input id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->desa }}">
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
             </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rt }}" readonly>
+                    <input id="rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rt }}">
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
             </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rw }}" readonly>
+                    <input id="rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rw }}">
                 </div>
             </div>
         </div>
