@@ -20,7 +20,7 @@
                     <td>{{ $dajur->firstItem() + $index }}</td>
                     <td class="text-start">{{ $item->nama_jurusan}}</td>
                     <td class="text-start">{{ $item->nama_guru}}</td>
-                    <td>5</td>
+                    <td>{{ $this->countKelas( $item->kode_jurusan) }}</td>
                     <td>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
                             <i class="bi bi-pencil-square text-white"></i>

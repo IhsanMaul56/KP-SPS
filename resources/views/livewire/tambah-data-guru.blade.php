@@ -143,6 +143,21 @@
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-3">
+                                        <span>Email</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Nomor Email" wire:model="email" name="email">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-3">
                                         <span>Provinsi</span>
                                     </div>
                                     <div class="col-3">

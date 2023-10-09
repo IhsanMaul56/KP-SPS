@@ -1,3 +1,11 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
 <div class="col">
     <div class="row">
         <div class="col">
@@ -21,13 +29,20 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($dagur as $index => $item) --}}
+            <?php $no = 1; ?>
+            @foreach ($wali as $item)
                 <tr class="text-center">
-                    <td>1</td>
-                    <td>112233</td>
-                    <td class="text-start">AZIZI</td>
-                    <td>X AKL 1</td>
-                    <td>08112233</td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $item->wali_id }}</td>
+                    <td>{{ $item->nama_guru }}</td>
+                    <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
+                    <td class="text-start">
+                        @if ($item->guru_no_hp)
+                            {{ $item->guru_no_hp }}
+                        @else
+                            Tidak Ditemukan
+                        @endif
+                    </td>
                     <td>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
                             <i class="bi bi-pencil-square text-white"></i>
@@ -35,7 +50,8 @@
                         <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                     </td>
                 </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </tbody>
     </table>
+    {{ $dataWali->links() }}
 </div>

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class TableGuru extends Component
 {
     public $search = '';
-    public $dataCount;
+    // public $dataCount;
     public $jadwal;
     public $pengampu;
 

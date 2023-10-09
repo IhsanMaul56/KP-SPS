@@ -12,16 +12,21 @@
                 <th>Wali Kelas</th>
                 <th>No. HP</th>
                 <th>Aksi</th>
-                <!-- Tambahkan kolom lain di sini -->
             </tr>
         </thead>
         <tbody>
-            @foreach ($dakel as $index => $item)
+            @foreach ($kelas as $index => $item)
                 <tr class="text-center">
                     <td>{{ $dakel->firstItem() + $index }}</td>
-                    <td>{{ $item->nama_kelas}}</td>
-                    <td class="text-start">INDRA</td>
-                    <td>08112233</td>
+                    <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas}}</td>
+                    <td>{{ $item->nama_guru }}</td>
+                    <td>
+                        @if ($item->guru_no_hp)
+                            {{ $item->guru_no_hp }}
+                        @else
+                            Tidak Ditemukan
+                        @endif
+                    </td>
                     <td>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
                             <i class="bi bi-pencil-square text-white"></i>

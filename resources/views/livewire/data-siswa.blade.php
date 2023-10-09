@@ -4,9 +4,9 @@
             <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
         </div>
         <div class="col-3" style="width: max-content;">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+            <a href="{{ route('tambah-data-siswa') }}" class="btn btn-primary" style="text-decoration: none;">
                 <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-            </button>
+            </a>
         </div>
     </div>
     <table class="table table-bordered">
