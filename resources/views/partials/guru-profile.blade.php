@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-body h-100 overflow-auto">
-                            @livewire('akun-siswa')
+                            @livewire('akun-guru')
                         </div>
                     </div>
                 </div>

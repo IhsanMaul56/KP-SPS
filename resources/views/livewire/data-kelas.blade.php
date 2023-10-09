@@ -41,19 +41,20 @@
                                     </div>
                                         <div class="modal-body">
                                             ...
+                                            </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            <button type="button" class="btn btn-primary">Simpan Data</button>
                                         </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        <button type="button" class="btn btn-primary">Simpan Data</button>
+                                    </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
-                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $dakel->links() }}   
+                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {{ $dakel->links() }}   
+    </div>
 </div>

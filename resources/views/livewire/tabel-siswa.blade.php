@@ -16,7 +16,7 @@
                 <th>Hari</th>
                 <th>Waktu</th>
                 <th>Mata Pelajaran</th>
-                <th>Nama Guru</th>
+                <th>Guru Pengampu</th>
             </tr>
         </thead>
         <tbody>

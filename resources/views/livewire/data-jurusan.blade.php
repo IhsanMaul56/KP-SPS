@@ -1,21 +1,12 @@
-<div class="col">
-    <div class="col mb-3 text-end">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
-            <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-        </button>
-    </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr class="text-center">
-                <th>No</th>
-                <th>Nama Jurusan</th>
-                <th>Kepala Jurusan</th>
-                <th>Kelas</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($dajur as $index => $item)
+<div class="card-body h-100 overflow-auto">
+    <div class="col">
+        <div class="col mb-3 text-end">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
+            </button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
                 <tr class="text-center">
                     <td>{{ $dajur->firstItem() + $index }}</td>
                     <td class="text-start">{{ $item->nama_jurusan}}</td>
@@ -35,19 +26,20 @@
                                     </div>
                                         <div class="modal-body">
                                             ...
+                                            </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            <button type="button" class="btn btn-primary">Simpan Data</button>
                                         </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        <button type="button" class="btn btn-primary">Simpan Data</button>
+                                    </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
-                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $dajur->links() }}   
+                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {{ $dajur->links() }}   
+    </div>
 </div>

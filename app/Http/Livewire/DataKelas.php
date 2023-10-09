@@ -32,4 +32,8 @@ class DataKelas extends Component
     public function updatingSearch(){
         $this->resetPage();
     }
+
+    public function tampil(){
+        return view('partials.kelas-data');
+    }
 }
