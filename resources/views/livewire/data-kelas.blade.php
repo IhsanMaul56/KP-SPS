@@ -7,14 +7,14 @@
         </div>
         <table class="table table-bordered">
             <thead>
-                <tr class="text-center">
-                    <th>No</th>
-                    <th>Kelas</th>
-                    <th>Wali Kelas</th>
-                    <th>No. HP</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
+            <tr class="text-center">
+                <th>No</th>
+                <th>Kelas</th>
+                <th>Wali Kelas</th>
+                <th>No. HP</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
             <tbody>
                 @foreach ($kelas as $index => $item)
                     <tr class="text-center">
