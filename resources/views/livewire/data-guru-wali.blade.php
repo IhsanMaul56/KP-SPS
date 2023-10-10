@@ -19,41 +19,42 @@
             </div>
         </div>
     </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr class="text-center">
-                <th>No</th>
-                <th>NIP</th>
-                <th>Nama Guru</th>
-                <th>Kelas</th>
-                <th>No. HP</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1; ?>
-            @foreach ($wali as $item)
+        <table class="table table-bordered">
+            <thead>
                 <tr class="text-center">
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $item->wali_id }}</td>
-                    <td>{{ $item->nama_guru }}</td>
-                    <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
-                    <td class="text-start">
-                        @if ($item->guru_no_hp)
-                            {{ $item->guru_no_hp }}
-                        @else
-                            Tidak Ditemukan
-                        @endif
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
-                            <i class="bi bi-pencil-square text-white"></i>
-                        </button>
-                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
-                    </td>
+                    <th>No</th>
+                    <th>NIP</th>
+                    <th>Nama Guru</th>
+                    <th>Kelas</th>
+                    <th>No. HP</th>
+                    <th>Aksi</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $dataWali->links() }}
+            </thead>
+            <tbody>
+                <?php $no = 1; ?>
+                @foreach ($wali as $item)
+                    <tr class="text-center">
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $item->wali_id }}</td>
+                        <td>{{ $item->nama_guru }}</td>
+                        <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
+                        <td class="text-start">
+                            @if ($item->guru_no_hp)
+                                {{ $item->guru_no_hp }}
+                            @else
+                                Tidak Ditemukan
+                            @endif
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                                <i class="bi bi-pencil-square text-white"></i>
+                            </button>
+                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {{ $dataWali->links() }}
+    </div>
 </div>
