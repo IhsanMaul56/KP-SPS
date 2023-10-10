@@ -7,6 +7,7 @@
         </div>
         <table class="table table-bordered">
             <thead>
+                @foreach ($dajur as $index => $item)
                 <tr class="text-center">
                     <td>{{ $dajur->firstItem() + $index }}</td>
                     <td class="text-start">{{ $item->nama_jurusan}}</td>
