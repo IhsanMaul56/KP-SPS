@@ -10,11 +10,6 @@
                 </button>
             </div>
         </div>
-        <div class="col-3" style="width: max-content;">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
-                <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-            </button>
-        </div>
     </div>
     <table class="table table-bordered">
         <thead>
