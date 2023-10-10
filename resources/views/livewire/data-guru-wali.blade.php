@@ -19,6 +19,7 @@
             </div>
         </div>
     </div>
+    <div>
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
