@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class DataKelas extends Component
 {
-    public $kelas;
     public $search = '';
 
     use WithPagination;
@@ -17,17 +16,18 @@ class DataKelas extends Component
 
     public function render()
     {
-        $this->kelas = DB::table('data_walis')
+        $kelas = DB::table('data_walis')
             ->leftJoin('data_gurus', 'data_walis.wali_id', '=', 'data_gurus.nip')
             ->select(
                 'data_walis.*',
                 'data_gurus.no_hp AS guru_no_hp'
             )
-            ->get();
+            ->where(function ($query) {
+                $query->where('data_walis.nama_guru', 'like', '%' . $this->search . '%');
+            })
+            ->paginate(10);
 
-        return view('livewire.data-kelas', [
-            'dakel' => data_kelas::where('nama_jurusan','like','%'.$this->search.'%')->paginate(5)
-        ]);
+        return view('livewire.data-kelas', compact('kelas'));
     }
     public function updatingSearch(){
         $this->resetPage();

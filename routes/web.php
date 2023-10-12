@@ -20,9 +20,8 @@ use App\Http\Livewire\DataSiswa;
 use App\Http\Livewire\DataJadwal;
 use App\Http\Livewire\DataJurusan;
 use App\Http\Livewire\DataKelas;
-
-
-
+use App\Http\Livewire\TabelSiswa;
+use App\Http\Livewire\TableGuru;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +40,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'login']);
 });
+
 Route::get('/home', function(){
     return redirect('/dashboard');
 });
@@ -67,15 +67,15 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/guru', [DataGuruController::class, 'index'])->name('guru');
+        Route::get('/guru', [TableGuru::class, 'tampil'])->name('guru');
         Route::get('/nilai-guru', [DataNilaiGuru::class, 'tampil'])->name('nilai-gurus');
         Route::get('/nilai-siswa', [GuruWali::class, 'tampil'])->name('nilai-walis');
         Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');
         Route::get('/profile-guru', [AkunGuru::class, 'tampilGuru'])->name('profile-guru');
     });
 
-    Route::prefix('dashboard')->group(function(){
-        Route::get('/siswa', [DataSiswaController::class, 'index'])->name('siswa');
+    Route::prefix('/dashboard')->group(function(){
+        Route::get('/siswa', [TabelSiswa::class, 'tampil'])->name('siswa');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
         Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');
     });
