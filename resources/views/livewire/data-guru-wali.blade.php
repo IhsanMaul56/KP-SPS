@@ -56,6 +56,6 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $dataWali->links() }}
+        {{ $wali->links() }}
     </div>
 </div>

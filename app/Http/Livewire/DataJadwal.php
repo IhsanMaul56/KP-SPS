@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DataJadwal extends Component
 {
-    public $jadwal;
-    public $pengampu;
-
     public $search = '';
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -23,44 +20,42 @@ class DataJadwal extends Component
         $user = Auth::user();
 
         if ($user && $user->admin_id) {
-            $this->jadwal = DB::table('data_jadwals')
+            $jadwal = DB::table('data_jadwals')
                 ->select('data_jadwals.*')
-                ->get();
+                ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
+                ->select(
+                    'data_jadwals.*',
+                    'data_pengampus.nama_guru',
+                    'data_pengampus.nama_mapel'
+                )
+                ->where(function ($query) {
+                    $query->where('data_jadwals.hari', 'like', '%' . $this->search . '%')
+                          ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
+                          ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
+                })
+                ->paginate(10);
 
-            if ($this->jadwal) {
-                $pengampuIds = $this->jadwal->pluck('pengampu_id')->toArray();
-
-                // Fetch all matching data_pengampus records using whereIn
-                $this->pengampu = DB::table('data_pengampus')
-                    ->whereIn('kode_pengampu', $pengampuIds)
-                    ->get();
-            } else {
-                $this->pengampu = null;
-            }
         } elseif ($user && $user->guru_id) {
-            $this->jadwal = DB::table('data_jadwals')
+            $jadwal = DB::table('data_jadwals')
                 ->select('data_jadwals.*')
-                ->get();
+                ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
+                ->select(
+                    'data_jadwals.*',
+                    'data_pengampus.nama_guru',
+                    'data_pengampus.nama_mapel'
+                )
+                ->where(function ($query) {
+                    $query->where('data_jadwals.hari', 'like', '%' . $this->search . '%')
+                          ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
+                          ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
+                })
+                ->paginate(10);
 
-            if ($this->jadwal) {
-                $pengampuIds = $this->jadwal->pluck('pengampu_id')->toArray();
-
-                // Fetch all matching data_pengampus records using whereIn
-                $this->pengampu = DB::table('data_pengampus')
-                    ->whereIn('kode_pengampu', $pengampuIds)
-                    ->get();
-            } else {
-                $this->pengampu = null;
-            }
         } else {
-            $this->pengampu = null;
-            $this->jadwal = null;
+            $jadwal = null;
         }
 
-
-        return view('livewire.data-jadwal', [
-            'dataJadwal' => data_jadwal::where('hari', 'like', '%'.$this->search.'%')->paginate(10)
-        ]);
+        return view('livewire.data-jadwal', compact('jadwal'));
     }
 
     public function updatingSearch(){

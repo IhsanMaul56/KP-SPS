@@ -3,21 +3,25 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 
 class TabelSiswa extends Component
 {
     public $kelas;
     public $siswa;
     public $tingkat;
-    public $jadwal;
-    public $pengampu;
+    public $search = '';
+
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
         $user = Auth::user();
-        $this->jadwal = [];
+
 
         if ($user && $user->siswa_id) {
             $this->siswa = DB::table('data_siswas')
@@ -38,24 +42,35 @@ class TabelSiswa extends Component
                     ->value('nama_kelas');
     
                 if ($kelasId && $this->kelas && $this->tingkat) {
-                    $this->jadwal = DB::table('data_jadwals')
-                        ->where('kelas_id', '=', $kelasId)
-                        ->select('data_jadwals.*')
-                        ->get();
-
-                        // dd($this->jadwal);
-    
-                    $this->pengampu = DB::table('data_pengampus')
-                        ->select('data_pengampus.*')
-                        ->get();
+                    $jadwal = DB::table('data_jadwals')
+                        ->select(
+                            'data_jadwals.*',
+                            'data_pengampus.nama_guru',
+                            'data_pengampus.nama_mapel'
+                        )
+                        ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
+                        ->where('data_jadwals.kelas_id', '=', $kelasId)
+                        ->where('data_jadwals.tingkat_id', '=', $tingkatId)
+                        ->where(function ($query) {
+                            $query->where('data_jadwals.hari', 'like', '%' . $this->search . '%')
+                                ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
+                                ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
+                        })
+                        ->paginate(10);
                 }
             }
         } else {
             $this->kelas = null;
         }
 
-        return view('livewire.tabel-siswa');
+        return view('livewire.tabel-siswa', compact('jadwal'));
     }
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
 
+    public function tampil(){
+        return view('partials.content_siswa');
+    }
 }
