@@ -16,6 +16,56 @@ class TambahDataSiswa extends Component
     public $kelas_id, $tingkat_id;
     public $tingkatList, $kelasList;
 
+    public $formPart1 = [
+        'nis' => '',
+        'nama_siswa' => '',
+        'tempat_lahir' => '',
+        'tanggal_lahir' => '',
+        'jenis_kelamin' => '',
+        'agama' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'desa' => '',
+        'rt' => '',
+        'rw' => '',
+        'alamat' => '',
+        'no_hp' => '',
+    ];
+
+    public $formPart2 = [
+        'nik_ayah' => '',
+        'nama_ayah' => '',
+        'pekerjaan_ayah' => '',
+        'nik_ibu' => '',
+        'nama_ibu' => '',
+        'pekerjaan_ibu' => '',
+        'provinsi_ortu' => '',
+        'kota_ortu' => '',
+        'desa_ortu' => '',
+        'rt_ortu' => '',
+        'rw_ortu' => '',
+        'alamat_ortu' => '',
+    ];
+
+    public $currentPage = 1;
+
+    public function submitFormPart1()
+    {
+        $this->validate([
+
+        ]);
+        $this->currentPage = 2;
+    }
+
+    public function submitFormPart2()
+    {
+        $this->validate([
+
+        ]);
+        
+        $this->currentPage = 1;
+    }
+
     public function render()
     {
         $tingkatData = DB::table('data_tingkats')
@@ -108,6 +158,11 @@ class TambahDataSiswa extends Component
         $this->resetForm();
 
         return redirect()->back();
+    }
+
+    public function update ()
+    {
+        return view('livewire.update-data-siswa');
     }
 
     private function resetForm()

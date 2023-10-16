@@ -60,30 +60,28 @@ sidebarLinks.forEach(link => {
     });
 });
 
-// next and prev form
-// const prevFormButton = document.getElementById('prevFormButton');
-// const nextFormButton = document.getElementById('nextFormButton');
-// const forms = document.querySelectorAll('form');
-// let currentFormIndex = 0;
+var currentStep = 1;
+var form = document.getElementById('form-nilai');
 
-// function showForm(index) {
-//     forms.forEach((form, i) => {
-//         if (i === index) {
-//             form.classList.remove('hidden');
-//         } else {
-//             form.classList.add('hidden');
-//         }
-//     });
-// }
+function showStep(step) {
+    for (var i = 1; i <= 3; i++) {
+        document.getElementById('step-' + i).style.display = 'none';
+    }
+    document.getElementById('step-' + step).style.display = 'block';
+}
 
-// showForm(currentFormIndex);
+function previousStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
+}
 
-// prevFormButton.addEventListener('click', function() {
-//     currentFormIndex = Math.max(0, currentFormIndex - 1);
-//     showForm(currentFormIndex);
-// });
+function nextStep() {
+    if (currentStep < 3) {
+        currentStep++;
+        showStep(currentStep);
+    }
+}
 
-// nextFormButton.addEventListener('click', function() {
-//     currentFormIndex = Math.min(forms.length - 1, currentFormIndex + 1);
-//     showForm(currentFormIndex);
-// });
+showStep(currentStep);

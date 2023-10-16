@@ -31,9 +31,9 @@
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->no_hp }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                                    <a href="{{ route('update-data-siswa') }}" class="btn btn-warning" style="text-decoration: none">
                                         <i class="bi bi-pencil-square text-white"></i>
-                                    </button>
+                                    </a>
                                     <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                                 </td>
                             </tr>
