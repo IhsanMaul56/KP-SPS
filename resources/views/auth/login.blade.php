@@ -74,7 +74,7 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-md-8 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-5" style="background-color: #16498c; border-radius: 10px 10px 10px 10px">
+                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-5" style="background-color: #16498c; border-color: #16498c;">
                                     {{ __('LOGIN') }}
                                 </button>
                             </div>
