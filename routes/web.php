@@ -20,6 +20,7 @@ use App\Http\Livewire\DataSiswa;
 use App\Http\Livewire\DataJadwal;
 use App\Http\Livewire\DataJurusan;
 use App\Http\Livewire\DataKelas;
+use App\Http\Livewire\EditDataGuru;
 use App\Http\Livewire\TabelSiswa;
 use App\Http\Livewire\TableGuru;
 
@@ -51,6 +52,8 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/admin', [DashboardController::class, 'index'])->name('beranda');
         Route::get('/admin/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
         Route::post('/admin/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
+        Route::get('/admin/update-data-guru/{nip}', [TambahDataGuru::class, 'viewUpdate'])->name('update-data-guru');
+        Route::post('/admin/update-data-guru', [TambahDataGuru::class, 'update'])->name('update-data-guru-post');
         Route::get('/admin/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
         Route::post('/admin/tambah-siswa', [TambahDataSiswa::class, 'store'])->name('tambah-data-siswa-store');
     });        
