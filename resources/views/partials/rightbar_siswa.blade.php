@@ -26,5 +26,3 @@
     </div>
 </div>
 
-{{-- akun --}}
-@livewire('profile-akun')

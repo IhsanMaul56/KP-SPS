@@ -34,4 +34,4 @@
 </div>
 
 {{-- akun --}}
-@livewire('profile-akun')
+{{-- @livewire('profile-akun') --}}

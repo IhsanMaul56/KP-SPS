@@ -73,4 +73,8 @@ class GuruWali extends Component
     public function updatingSearch(){
         $this->resetPage();
     }
+
+    public function tampil(){
+        return view('partials.wali-guru');
+    }
 }

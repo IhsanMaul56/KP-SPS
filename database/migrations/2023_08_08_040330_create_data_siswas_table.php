@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('rt_ortu');
             $table->string('rw_ortu');
             $table->string('alamat_ortu');
-            $table->binary('foto_siswa');
+            $table->binary('foto_siswa')->nullable();
             $table->foreignId('kelas_id')->constrained('data_kelas', 'kode_kelas');
             $table->foreignId('tingkat_id')->constrained('data_tingkats', 'kode_tingkat');
             $table->timestamps();

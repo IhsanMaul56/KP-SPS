@@ -1,10 +1,17 @@
-<div class="row">
-    <div class="col">
-        @if ($dataSiswa != null)
-            <div class="row mb-3">
-                <div class="col-3" style="width: 200px">
-                    <div class="persegi">
-                        <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+<div class="card-body h-100 overflow-auto">
+    <div class="row">
+        <div class="col">
+            @if ($dataSiswa != null)
+                <div class="row mb-3">
+                    <div class="col-3" style="width: 200px">
+                        <div class="persegi">
+                            <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="persegi2 m-0 px-3">
+                            <p class="text-white m-0 fs-5">{{ $tingkat }} {{ $kelas }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
@@ -30,15 +37,13 @@
                     <?php $no = 1; ?>
                     @foreach ($dataSiswa as $item)
                         <tr class="text-center">
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $item->nis }}</td>
-                            <td class="text-start">{{ $item->nama_siswa }}</td>
-                            <td>{{ $item->jenis_kelamin }}</td>
-                            <td>0</td>
-                            <td class="text-start">Perlu ditingkatkan kembali</td>
-                            <td>
-                                <span class="btn btn-success"><i class="bi bi-eye"></i></span>
-                            </td>
+                            <th>No</th>
+                            <th>NIS</th>
+                            <th>Nama Siswa</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Nilai</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
                         </tr>
                     @endforeach
                 </tbody>

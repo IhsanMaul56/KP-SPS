@@ -28,6 +28,17 @@
                         <span class="h4">Selamat Datang di <strong class="text-biru">SIPSI</strong></span>
                         <br>
                         <span class="h1 fw-bold mb-5">LOGIN</span>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-3">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="row mb-4 mt-4">
                             <label for="email" class="mb-2">{{ __('Masukkan Email Address') }}</label>
                             <div class="input-group">
@@ -38,8 +49,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-                        
+                        </div>                        
                         <div class="row mb-3">
                             <label for="password" class="mb-2">{{ __('Masukkan Password') }}</label>
                             <div class="input-group">
