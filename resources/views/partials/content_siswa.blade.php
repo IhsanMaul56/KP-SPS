@@ -44,6 +44,11 @@
                             <option>2024/2025 Semester Genap</option>
                         </select>
                     </div>
+                    <div class="col text-end">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insertData">
+                            Nilai Progress
+                        </button>
+                    </div>
                 </div>
                 <table class="table table-bordered my-3">
                     <thead>
@@ -52,7 +57,6 @@
                             <th>Mata Pelajaran</th>
                             <th>Nilai Akhir</th>
                             <th>Huruf</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,9 +65,6 @@
                                 <td class="text-start">BAHASA INGGRIS</td>
                                 <td>75</td>
                                 <td>A</td>
-                                <td>
-                                    <span class="btn btn-success"><i class="bi bi-eye"></i></span>
-                                </td>
                             </tr>
                     </tbody>
                 </table>

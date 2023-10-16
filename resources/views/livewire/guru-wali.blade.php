@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <input type="text" class="form-control" wire:model="search" placeholder="Search" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
+            <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
             <table class="table">
                 <thead>
                     <tr class="text-center">
@@ -44,7 +44,7 @@
                 </tbody>
             </table>
             <div class="col text-end mt-3">
-                <button class="btn btn-success" id="shadow" type="submit" style="position: relative; border-radius: 10px 10px 10px 10px">Setujui</button>
+                <button class="btn btn-success" id="shadow" type="submit" style="position: relative;">Setujui</button>
             </div>
         @else
             <div class="col text-center">
