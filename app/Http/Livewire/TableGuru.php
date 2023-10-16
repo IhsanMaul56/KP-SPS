@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class TableGuru extends Component
 {
     public $search = '';
-    public $dataCount;
-    public $jadwal;
     public $pengampu;
 
     use WithPagination;
@@ -23,36 +21,35 @@ class TableGuru extends Component
         $user = Auth::user();
 
         if ($user && $user->guru_id) {
-            $this->pengampu = DB::table('data_pengampus')
-                ->where('pengampu_id', '=', $user->guru_id)
-                ->select('data_pengampus.*')
-                ->get();
-        
-            if ($this->pengampu->isNotEmpty()) { // Periksa apakah ada data pengampu
-                $kodePengampu = $this->pengampu->pluck('kode_pengampu')->toArray();
+            $guru_id = $user->guru_id;
 
-                $this->jadwal = DB::table('data_jadwals')
-                    ->whereIn('pengampu_id', $kodePengampu)
-                    ->select('data_jadwals.*')
-                    ->get();
-                
-            } else {
-                // Jika tidak ada pengampu yang sesuai, atur $this->jadwal menjadi null
-                $this->jadwal = null;
-            }
+            $jadwal = DB::table('data_pengampus')
+                ->leftJoin('data_jadwals', 'data_pengampus.kode_pengampu', '=', 'data_jadwals.pengampu_id')
+                ->leftJoin('data_gurus', 'data_pengampus.pengampu_id', '=', 'data_gurus.nip')
+                ->where('data_pengampus.pengampu_id', '=', $user->guru_id)
+                ->select(
+                    'data_jadwals.*',
+                    'data_pengampus.nama_guru',
+                    'data_pengampus.nama_mapel'
+                )
+                ->where(function ($query) {
+                    $query->where('data_jadwals.hari', 'like', '%' . $this->search . '%')
+                        ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
+                        ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
+                })
+                ->paginate(10);               
         } else {
-            // Jika tidak ada user atau guru_id, atur $this->pengampu dan $this->jadwal menjadi null
-            $this->pengampu = null;
-            $this->jadwal = null;
+            $jadwal = null;
         }
         
-        return view('livewire.table-guru', [
-            'dagur' => data_guru::where('nama_guru','like','%'.$this->search.'%')->paginate(5)
-        ]);
+        return view('livewire.table-guru', compact('jadwal'));
     }
 
     public function updatingSearch(){
         $this->resetPage();
     }
 
+    public function tampil(){
+        return view('partials.content_guru');
+    }
 }

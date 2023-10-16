@@ -85,4 +85,8 @@ class AkunGuru extends Component
             }
         }
     }
+
+    public function tampilGuru(){
+        return view('partials.guru-profile');
+    }
 }

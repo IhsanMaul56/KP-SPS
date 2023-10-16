@@ -74,4 +74,9 @@ class AkunSiswa extends Component
             }
         }
     }
+
+    public function profile()
+    {
+        return view('layouts.siswa-profile');
+    }
 }
