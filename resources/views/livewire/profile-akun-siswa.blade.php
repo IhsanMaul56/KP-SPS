@@ -9,7 +9,7 @@
             </ul>
         </div>
     </div>
-    <div class="row">
+    <div class="row p-0 m-0">
         <div class="card-body h-100 overflow-auto" id="shadow" style="z-index: 99">
             <div class="row m-0 p-0">
                 <span>Foto Profil</span>

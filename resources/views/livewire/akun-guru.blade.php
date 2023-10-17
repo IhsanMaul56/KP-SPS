@@ -12,7 +12,7 @@
         {{ Session::get('message') }}
     </div>
     @endif
-    @foreach ($akun as $data) 
+    @foreach ($akun as $data)
         <div class="row mb-2">
             <div class="col-3">
                 <span>Nama</span>
@@ -140,7 +140,7 @@
     @endforeach
 
     <div class="col text-end mt-5">
-        <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c; border-radius: 10px 10px 10px 10px">Update Data</button>
+        <button class="btn btn-primary" id="shadow" type="submit" style="position: relative; background-color: #16498c; border: #16498c;">Update Data</button>
 
     </div>
 </form>

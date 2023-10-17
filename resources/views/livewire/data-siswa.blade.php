@@ -21,26 +21,33 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                    <tbody>
-                        @foreach ($dasis as $index => $item)
-                            <tr class="text-center">
-                                <td>{{ $dasis->firstItem() + $index }}</td>
-                                <td>{{ $item->nis }}</td>
-                                <td class="text-start">{{ $item->nama_siswa }}</td>
-                                <td>X AKL 1</td>
-                                <td>{{ $item->jenis_kelamin }}</td>
-                                <td>{{ $item->no_hp }}</td>
-                                <td>
-                                    <a href="{{ route('update-data-siswa') }}" class="btn btn-warning" style="text-decoration: none">
+                <?php $no = 1; ?>
+                <tbody>
+                    @foreach ($siswa as $item)
+                        <tr class="text-center">
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $item->nis }}</td>
+                            <td class="text-start">{{ $item->nama_siswa }}</td>
+                            <td>
+                                @if ($item->siswa_tingkat && $item->siswa_kelas)
+                                    {{ $item->siswa_tingkat }} {{ $item->siswa_kelas }}
+                                @else
+                                    Data tidak Ditemukan
+                                @endif
+                            </td>                                
+                            <td>{{ $item->jenis_kelamin }}</td>
+                            <td>{{ $item->no_hp }}</td>
+                            <td>
+                                <a href="{{ route('update-data-siswa') }}" class="btn btn-warning" style="text-decoration: none">
                                         <i class="bi bi-pencil-square text-white"></i>
-                                    </a>
-                                    <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {{ $dasis->links() }} 
+                                </a>
+                                <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {{ $siswa->links() }}
         </div> 
     </div>
 </div>

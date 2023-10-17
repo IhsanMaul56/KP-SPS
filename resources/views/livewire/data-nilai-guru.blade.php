@@ -32,7 +32,7 @@
 
     <div class="row mt-3">
         @if ($siswa && !$siswa->isEmpty())
-            <table class="table text-center">
+            <table class="table table-bordered text-center">
                 <thead>
                     <th>No</th>
                     <th>NIS</th>
@@ -56,7 +56,14 @@
                 </tbody>
             </table>
         @else
-            <p class="text-center">Tidak ada hasil yang ditemukan.</p>
+        <div class="mx-3">
+            <div class="col text-center">
+                <img src="{{ URL::asset('/img/warning.png') }}" alt="warning" width="125px;">
+            </div>
+            <div class="col text-center pt-3">
+                <span class="mt-3">Halaman Belum Bisa Diakses</span>
+            </div>
+        </div>
         @endif
     </div>
 </div>
