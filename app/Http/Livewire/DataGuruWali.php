@@ -40,4 +40,9 @@ class DataGuruWali extends Component
     {
         return view('partials.kurikulum-wali');
     }
+
+    public function create_wali()
+    {
+        
+    }
 }

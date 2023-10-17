@@ -29,15 +29,15 @@
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataNilai" aria-expanded="false"><i class="bi bi-clipboard2-data icon-kiri"></i>Data Nilai</span>
+                    <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#DataNilai" aria-expanded="false"><i class="bi bi-clipboard2-data icon-kiri"></i>Formatif</span>
                     <div class="row mx-0 collapse" id="DataNilai">
-                        <span class="sidebar dd-kiri fs-5" id="btnNilaiMapelAdmin">Nilai Mapel</span>
-                        <span class="sidebar dd-kiri fs-5" id="btnRaporAdmin">Rapor</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnNilaiMapelAdmin">TP</span>
+                        <span class="sidebar dd-kiri fs-5" id="btnRaporAdmin">ATP</span>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnProfilAdmin"><i class="bi bi-person-circle icon-kiri"></i>Profil</span><br>
+                    <a href="#" class="sidebar" style="text-decoration:none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
                 </div>
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">

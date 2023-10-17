@@ -77,4 +77,5 @@ class GuruWali extends Component
     public function tampil(){
         return view('partials.wali-guru');
     }
+
 }
