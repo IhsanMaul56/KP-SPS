@@ -14,7 +14,6 @@ class TambahDataGuru extends Component
 {
     public $nip, $nama_guru, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $agama, $no_hp, $provinsi, $kota, $desa, $rt, $rw, $alamat;
     public $email;
-    public $guru, $akun;
     public $data = [
         'nip' => '',
         'nama_guru' => '',

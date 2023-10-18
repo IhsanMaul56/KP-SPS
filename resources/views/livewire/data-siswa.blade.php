@@ -5,9 +5,9 @@
                 <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
             </div>
             <div class="col-3" style="width: max-content;">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                <a href="{{ route('tambah-data-siswa') }}" class="btn btn-primary" style="text-decoration: none;">
                     <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
-                </button>
+                </a>
             </div>
             <table class="table table-bordered">
                 <thead>
@@ -38,10 +38,12 @@
                             <td>{{ $item->jenis_kelamin }}</td>
                             <td>{{ $item->no_hp }}</td>
                             <td>
-                                <a href="{{ route('update-data-siswa') }}" class="btn btn-warning" style="text-decoration: none">
+                                <a href="{{ route('update-data-siswa', ['nis' => $item->nis]) }}" wire:click="viewUpdate('{{ $item->nis }}')" class="btn btn-warning" style="text-decoration: none">
                                         <i class="bi bi-pencil-square text-white"></i>
                                 </a>
-                                <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                                <button wire:click="deleteSiswa('{{ $item->nis }}')" class="btn btn-danger">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
                             </td>
                         </tr>
                     @endforeach

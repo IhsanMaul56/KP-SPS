@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
-use Illuminate\Pagination\Paginator;
+use App\Models\data_siswa;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Session;
 
 class DataSiswa extends Component
 {
@@ -31,6 +34,16 @@ class DataSiswa extends Component
             ->paginate(10);
 
         return view('livewire.data-siswa', compact('siswa'));
+    }
+
+    public function deleteSiswa($nis)
+    {
+        User::where('siswa_id', $nis)->delete();
+        data_siswa::where('nis', $nis)->delete();
+
+        $this->resetPage();
+
+        Session::flash('berhasil', 'Data berhasil dihapus');
     }
 
     public function updatingSearch()

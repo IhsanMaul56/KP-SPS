@@ -1,7 +1,6 @@
-@include('livewire.create-guru-mapel')
-@include('livewire.update-guru-mapel')
-
 <div class="card-body h-100 overflow-auto">
+    @include('livewire.create-guru-mapel')
+    @include('livewire.update-guru-mapel')
     <div class="col">
         <div class="row">
             <div class="col">

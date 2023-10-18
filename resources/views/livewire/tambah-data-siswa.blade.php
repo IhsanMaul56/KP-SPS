@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form wire:submit.prevent="store" method="POST" action="{{ route('tambah-data-siswa') }}">
+                    <form wire:submit.prevent="store" method="POST" action="{{ route('tambah-data-siswa-store') }}">
                         @csrf
                         @if (Session::has('berhasil'))
                             <div class="alert alert-success">
