@@ -6,10 +6,10 @@
     @livewireScripts
 @endpush
 
-@include('livewire.create-guru-wali')
-@include('livewire.update-guru-wali')
 
 <div class="card-body h-100 overflow-auto">
+    @include('livewire.create-guru-wali')
+    @include('livewire.update-guru-wali')
     <div class="col">
         <div class="row">
             <div class="col">

@@ -24,7 +24,7 @@
                     <div class="row mx-0 collapse" id="Akademik">
                         <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jadwal Mapel</a>
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jurusan</a>
-                        <a href="{{ route('m-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
+                        <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
                     </div>
                     <br>
                 </div>
