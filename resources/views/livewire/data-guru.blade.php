@@ -1,4 +1,4 @@
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
         <div class="row">
             <div class="col">
@@ -18,12 +18,12 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
+                    <th>NO</th>
                     <th>NIP</th>
-                    <th>Nama Guru</th>
-                    <th>Jenis Kelamin</th>
-                    <th>No. HP</th>
-                    <th>Aksi</th>
+                    <th>NAMA GURU</th>
+                    <th>JENIS KELAMIN</th>
+                    <th>NO. HP</th>
+                    <th>AKSI</th>
                 </tr>
             </thead>
             <tbody>
