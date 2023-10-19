@@ -15,19 +15,19 @@ class DataKajurSeeder extends Seeder
     {
         $dataKajur = [
             [
-                'kajur_id' => '6900',
+                'guru_id' => '6900',
                 'nama_guru' => 'DENIS AJI MUHAMAD JABAR, S.Kom.'
             ],
             [
-                'kajur_id' => '1300',
+                'guru_id' => '1300',
                 'nama_guru' => 'ENUNG SARIFAH, S.Pd'
             ],
             [
-                'kajur_id' => '2100',
+                'guru_id' => '2100',
                 'nama_guru' => 'AGUS HERYANA,S.Pd.,Gr'
             ],
             [
-                'kajur_id' => '4000',
+                'guru_id' => '4000',
                 'nama_guru' => 'ENDRIYANTO TRILAKSONO, S.Pd'
             ]
         ];

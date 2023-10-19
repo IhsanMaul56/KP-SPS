@@ -13,6 +13,11 @@
                 </button>
             </div>
             <table class="table table-bordered">
+                @if (Session::has('berhasil'))
+                    <div class="alert alert-success">
+                        {{ Session::get('berhasil') }}
+                    </div>
+                @endif
                 <thead>
                 <tr class="text-center">
                     <th>No</th>
@@ -47,14 +52,14 @@
                                 @endif
                             </td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateKelas">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateKelas" wire:click="editKelas({{ $item->kode_kelas }})">
                                     <i class="bi bi-pencil-square text-white"></i>
                                 </button>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataKelas">
                                     <i class="bi bi-trash3"></i>
                                 </button>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
