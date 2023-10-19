@@ -1,4 +1,5 @@
-<div class="card-body h-100 overflow-auto">
+@include('livewire.delete-guru')
+<div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
         <div class="row">
             <div class="col">
@@ -18,12 +19,12 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
+                    <th>NO</th>
                     <th>NIP</th>
-                    <th>Nama Guru</th>
-                    <th>Jenis Kelamin</th>
-                    <th>No. HP</th>
-                    <th>Aksi</th>
+                    <th>NAMA GURU</th>
+                    <th>JENIS KELAMIN</th>
+                    <th>NO. HP</th>
+                    <th>AKSI</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +39,7 @@
                             <a href="{{ route('update-data-guru', ['nip' => $item->nip]) }}" wire:click="viewUpdate('{{ $item->nip }}')" class="btn btn-warning">
                                 <i class="bi bi-pencil-square text-white"></i>
                             </a>
-                            <button wire:click="deleteGuru('{{ $item->nip }}')" class="btn btn-danger">
+                            <button wire:click="deleteGuru('{{ $item->nip }}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataGuruM">
                                 <i class="bi bi-trash3"></i>
                             </button>
                         </td>

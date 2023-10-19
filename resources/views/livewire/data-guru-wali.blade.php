@@ -6,10 +6,10 @@
     @livewireScripts
 @endpush
 
-
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.create-guru-wali')
     @include('livewire.update-guru-wali')
+    @include('livewire.delete-wali')
     <div class="col">
         <div class="row">
             <div class="col">
@@ -26,12 +26,12 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
+                    <th>NO</th>
                     <th>NIP</th>
-                    <th>Nama Guru</th>
-                    <th>Kelas</th>
-                    <th>No. HP</th>
-                    <th>Aksi</th>
+                    <th>NAMA GURU</th>
+                    <th>KELAS</th>
+                    <th>NO. HP</th>
+                    <th>AKSI</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +40,9 @@
                     <tr class="text-center">
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->wali_id }}</td>
-                        <td>{{ $item->nama_guru }}</td>
+                        <td class="text-start">{{ $item->nama_guru }}</td>
                         <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
-                        <td class="text-start">
+                        <td>
                             @if ($item->guru_no_hp)
                                 {{ $item->guru_no_hp }}
                             @else
@@ -53,7 +53,9 @@
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruWali">
                                 <i class="bi bi-pencil-square text-white"></i>
                             </button>
-                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataWali">
+                                <i class="bi bi-trash3"></i>
+                            </button>
                         </td>
                     </tr>
                 @endforeach

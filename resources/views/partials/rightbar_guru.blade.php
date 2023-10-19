@@ -7,7 +7,7 @@
 @endpush
 {{-- pengumuman --}}
 <div class="rightbar active-page" id="PengumumanGuru">
-    <div class="row mb-3">
+    <div class="row">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
             <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->guru_id }}</span>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="row m-0 p-0">
                     <img src="{{URL::asset('/img/no-data.png')}}" alt="clipboard" width="150px"><br>
-                    <span style="text-align: center">Tidak Ada Pengumuman Saat Ini</span>
+                    <span class="fs-5" style="text-align: center; color: grey;">Tidak Ada Pengumuman Saat Ini</span>
                 </div>
             </div>
         </div>

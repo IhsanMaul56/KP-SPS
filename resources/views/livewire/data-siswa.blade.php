@@ -1,4 +1,5 @@
-<div class="card-body h-100 overflow-auto">
+@include('livewire.delete-siswa')
+<div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
         <div class="row">
             <div class="col">
@@ -9,17 +10,18 @@
                     <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
                 </a>
             </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr class="text-center">
-                        <th>No</th>
-                        <th>NIS</th>
-                        <th>Nama Siswa</th>
-                        <th>Kelas</th>
-                        <th>Jenis Kelamin</th>
-                        <th>No. HP</th>
-                        <th>Aksi</th>
-                    </tr>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th>NO</th>
+                    <th>NIS</th>
+                    <th>NAMA SISWA</th>
+                    <th>KELAS</th>
+                    <th>JENIS KELAMIN</th>
+                    <th>NO. HP</th>
+                    <th>AKSI</th>
+                </tr>
                 </thead>
                 <?php $no = 1; ?>
                 <tbody>
@@ -38,10 +40,10 @@
                             <td>{{ $item->jenis_kelamin }}</td>
                             <td>{{ $item->no_hp }}</td>
                             <td>
-                                <a href="{{ route('update-data-siswa', ['nis' => $item->nis]) }}" wire:click="viewUpdate('{{ $item->nis }}')" class="btn btn-warning" style="text-decoration: none">
+                                <a href="{{ route('update-data-siswa', ['nis' => $item->nis]) }}" wire:click="viewUpdate('{{ $item->nis }}')" class="btn btn-warning ling">
                                         <i class="bi bi-pencil-square text-white"></i>
                                 </a>
-                                <button wire:click="deleteSiswa('{{ $item->nis }}')" class="btn btn-danger">
+                                <button wire:click="showDelete('{{ $item->nis }}')" data-bs-toggle="modal" class="btn btn-danger" data-bs-target="#DeleteDataSiswa">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                             </td>
@@ -50,6 +52,6 @@
                 </tbody>
             </table>
             {{ $siswa->links() }}
-        </div> 
+        </div>
     </div>
 </div>

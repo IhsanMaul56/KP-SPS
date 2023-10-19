@@ -1,5 +1,5 @@
 <div id="FotoGuru">
-    <div class="row mb-3">
+    <div class="row">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
             <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->guru_id }}</span>
@@ -12,7 +12,7 @@
     <div class="row p-0 m-0">
         <div class="card-body h-100 overflow-auto" id="shadow">
             <div class="row m-0 p-0">
-                <span>Foto Profil</span>
+                <h4>Foto Profil</h4>
                 <hr>
                 @if ($fotos->foto_guru == "")
                     <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>

@@ -1,6 +1,7 @@
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.create-guru-mapel')
     @include('livewire.update-guru-mapel')
+    @include('livewire.delete-pengampu')
     <div class="col">
         <div class="row">
             <div class="col">
@@ -16,12 +17,12 @@
     <table class="table table-bordered">
         <thead>
             <tr class="text-center">
-                <th>No</th>
+                <th>NO</th>
                 <th>NIP</th>
-                <th>Nama Guru</th>
-                <th>Mata Pelajaran</th>
-                <th>No. HP</th>
-                <th>Aksi</th>
+                <th>NAMA GURU</th>
+                <th>MATA PELAJARAN</th>
+                <th>NO. HP</th>
+                <th>AKSI</th>
             </tr>
         </thead>
         <tbody>
@@ -30,9 +31,9 @@
                 <tr class="text-center">
                     <td>{{ $no++ }}</td>
                     <td>{{ $item->pengampu_id }}</td>
-                    <td>{{ $item->nama_guru }}</td>
+                    <td class="text-start">{{ $item->nama_guru }}</td>
                     <td>{{ $item->nama_mapel }}</td>
-                    <td class="text-start">
+                    <td>
                         @if ($item->guru_no_hp)
                             {{ $item->guru_no_hp }}
                         @else
@@ -43,7 +44,9 @@
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruMapel">
                             <i class="bi bi-pencil-square text-white"></i>
                         </button>
-                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengampu">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </td>
                 </tr>
             @endforeach
