@@ -9,6 +9,7 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.create-guru-wali')
     @include('livewire.update-guru-wali')
+    @include('livewire.delete-wali')
     <div class="col">
         <div class="row">
             <div class="col">
@@ -52,7 +53,9 @@
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruWali">
                                 <i class="bi bi-pencil-square text-white"></i>
                             </button>
-                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataWali">
+                                <i class="bi bi-trash3"></i>
+                            </button>
                         </td>
                     </tr>
                 @endforeach

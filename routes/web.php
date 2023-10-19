@@ -24,6 +24,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSiswaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Livewire\EditDataGuru;
+use App\Http\Livewire\NilaiTp;
+use App\Http\Livewire\NilaiAtp;
+use App\Http\Livewire\TabelSiswa;
+use App\Http\Livewire\TableGuru;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +53,7 @@ Route::get('/home', function(){
 Route::middleware(['auth'])->group(function(){
     
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/admin', [DashboardController::class, 'index'])->name('beranda');
+        Route::get('/admin', [DashboardController::class, 'index'])->name('beranda-admin');
         Route::get('/admin/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
         Route::post('/admin/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
         Route::get('/admin/update-data-guru/{nip}', [TambahDataGuru::class, 'viewUpdate'])->name('update-data-guru');
@@ -62,11 +66,13 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/admin/inser-kelas', [DataKelas::class, 'createKelas'])->name('create-kelas');
         // Route::get('/admin/tambah-wali', [GuruWali::class, 'create_wali'])->name('create-data-wali');
         Route::get('/admin/tambah-guru-mapel', [DataGuruMapel::class, 'create_gumapel'])->name('create-guru-mapel');
+        Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
+        Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
         
     });
     
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
+        Route::get('/kurikulum', [DataGuruController::class, 'index'])->name('beranda-kurikulum');
         Route::get('/guru-wali', [DataGuruWali::class, 'tampil'])->name('data-walis');
         Route::get('/guru-mapel', [DataGuruMapel::class, 'tampil'])->name('data-mapels');
         Route::get('/guru-master', [DataGuru::class, 'tampil'])->name('master-guru');
