@@ -11,6 +11,8 @@ class data_jurusan extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_jurusan';
+
     protected $fillable = [
         'nama_jurusan',
         'kajur_id',

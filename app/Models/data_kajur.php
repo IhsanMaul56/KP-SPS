@@ -12,7 +12,7 @@ class data_kajur extends Model
     use HasFactory;
 
     protected $fillable=[
-        'kajur_id',
+        'guru_id',
         'nama_guru'
     ];
 
@@ -23,6 +23,6 @@ class data_kajur extends Model
 
     //invers cardinality
     public function guru () : BelongsTo{
-        return $this->belongsTo(data_guru::class, 'kajur_id', 'nip');
+        return $this->belongsTo(data_guru::class, 'guru_id', 'nip');
     }
 }

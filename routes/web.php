@@ -59,14 +59,15 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/admin/edit-siswa/{nis}', [TambahDataSiswa::class, 'viewUpdate'])->name('update-data-siswa');
         Route::post('/admin/edit-siswa', [TambahDataSiswa::class, 'update'])->name('update-data-siswa-post');
         Route::get('/admin/kelas', [DataKelas::class, 'tampil'])->name('data-kelas');
-        Route::post('/admin/inser-kelas', [DataKelas::class, 'createKelas'])->name('create-kelas');
+        Route::post('/admin/insert-kelas', [DataKelas::class, 'createKelas'])->name('create-kelas');
+        Route::post('/admin/update-kelas', [DataKelas::class, 'updateKelas'])->name('update-kelas');
         // Route::get('/admin/tambah-wali', [GuruWali::class, 'create_wali'])->name('create-data-wali');
         Route::get('/admin/tambah-guru-mapel', [DataGuruMapel::class, 'create_gumapel'])->name('create-guru-mapel');
         
     });
     
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/dashboard/kurikulum', [DataGuruController::class, 'index']);
+        Route::get('kurikulum', [DataGuruController::class, 'index']);
         Route::get('/guru-wali', [DataGuruWali::class, 'tampil'])->name('data-walis');
         Route::get('/guru-mapel', [DataGuruMapel::class, 'tampil'])->name('data-mapels');
         Route::get('/guru-master', [DataGuru::class, 'tampil'])->name('master-guru');
