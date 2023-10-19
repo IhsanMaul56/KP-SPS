@@ -1,5 +1,7 @@
 @include('livewire.create-jurusan')
 @include('livewire.update-jurusan')
+@include('livewire.delete-jurusan')
+
 
 <div class="card-body h-100 overflow-auto">
     <div class="col">
@@ -20,7 +22,9 @@
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateJurusan">
                             <i class="bi bi-pencil-square text-white"></i>
                         </button>
-                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataJurusan">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                         </td>
                     </tr>
                 @endforeach

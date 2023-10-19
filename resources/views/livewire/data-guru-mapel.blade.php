@@ -1,6 +1,7 @@
 <div class="card-body h-100 overflow-auto">
     @include('livewire.create-guru-mapel')
     @include('livewire.update-guru-mapel')
+    @include('livewire.delete-pengampu')
     <div class="col">
         <div class="row">
             <div class="col">
@@ -43,7 +44,9 @@
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruMapel">
                             <i class="bi bi-pencil-square text-white"></i>
                         </button>
-                        <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengampu">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </td>
                 </tr>
             @endforeach

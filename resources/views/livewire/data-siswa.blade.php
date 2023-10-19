@@ -1,3 +1,4 @@
+@include('livewire.delete-siswa')
 <div class="card-body h-100 overflow-auto">
     <div class="col">
         <div class="row">
@@ -38,10 +39,10 @@
                             <td>{{ $item->jenis_kelamin }}</td>
                             <td>{{ $item->no_hp }}</td>
                             <td>
-                                <a href="{{ route('update-data-siswa', ['nis' => $item->nis]) }}" wire:click="viewUpdate('{{ $item->nis }}')" class="btn btn-warning" style="text-decoration: none">
+                                <a href="{{ route('update-data-siswa', ['nis' => $item->nis]) }}" wire:click="viewUpdate('{{ $item->nis }}')" class="btn btn-warning ling">
                                         <i class="bi bi-pencil-square text-white"></i>
                                 </a>
-                                <button wire:click="deleteSiswa('{{ $item->nis }}')" class="btn btn-danger">
+                                <button wire:click="showDelete('{{ $item->nis }}')" data-bs-toggle="modal" class="btn btn-danger" data-bs-target="#DeleteDataSiswa">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                             </td>
