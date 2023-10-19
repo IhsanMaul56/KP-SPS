@@ -1,6 +1,6 @@
 {{-- pengumuman --}}
 <div class="rightbar active-page" id="PengumumanSiswa">
-    <div class="row mb-3">
+    <div class="row">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
             <i class="bi bi-person-circle"></i>
             <span class="fs-5 fw-bold ms-2" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->siswa_id }}</span>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row p-0 m-0">
-        <div class="card-body overflow-auto" id="shadow">
+        <div class="card-body h-100 overflow-auto" id="shadow">
             <div class="row">
                 <div class="col">
                     <i class="bi bi-megaphone-fill"><span style="padding-left: 10px;"></span></i>Pengumuman

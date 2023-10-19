@@ -6,7 +6,7 @@
     @livewireScripts
 @endpush
 
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
         <div class="row">
             <div class="col">
@@ -23,12 +23,12 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
+                    <th>NO</th>
                     <th>NIP</th>
-                    <th>Nama Guru</th>
-                    <th>Kelas</th>
-                    <th>No. HP</th>
-                    <th>Aksi</th>
+                    <th>NAMA GURU</th>
+                    <th>KELAS</th>
+                    <th>NO. HP</th>
+                    <th>AKSI</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,9 +37,9 @@
                     <tr class="text-center">
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->wali_id }}</td>
-                        <td>{{ $item->nama_guru }}</td>
+                        <td class="text-start">{{ $item->nama_guru }}</td>
                         <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas }}</td>
-                        <td class="text-start">
+                        <td>
                             @if ($item->guru_no_hp)
                                 {{ $item->guru_no_hp }}
                             @else
