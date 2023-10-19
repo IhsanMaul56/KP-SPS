@@ -1,9 +1,7 @@
-@include('livewire.create-jurusan')
-@include('livewire.update-jurusan')
 @include('livewire.delete-jurusan')
-
-
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
+    @include('livewire.create-jurusan')
+    @include('livewire.update-jurusan')
     <div class="col">
         <div class="col mb-3 text-end">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertJurusan">
@@ -12,6 +10,15 @@
         </div>
         <table class="table table-bordered">
             <thead>
+                <tr class="text-center">
+                    <th>NO</th>
+                    <th>NAMA JURUSAN</th>
+                    <th>KEPALA JURUSAN</th>
+                    <th>KELAS</th>
+                    <th>AKSI</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach ($dajur as $index => $item)
                 <tr class="text-center">
                     <td>{{ $dajur->firstItem() + $index }}</td>

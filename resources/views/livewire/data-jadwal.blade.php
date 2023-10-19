@@ -1,5 +1,5 @@
 @include('livewire.delete-jadwal')
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
         <div class="row">
             <div class="col">
@@ -14,13 +14,13 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
-                    <th>Nama Guru</th>
-                    <th>Mata Pelajaran</th>
-                    <th>Kelas</th>
-                    <th>Hari</th>
-                    <th>Waktu</th>
-                    <th>Aksi</th>
+                    <th>NO</th>
+                    <th>NAMA GURU</th>
+                    <th>MATA PELAJARAN</th>
+                    <th>KELAS</th>
+                    <th>HARI</th>
+                    <th>WAKTU</th>
+                    <th>AKSI</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                     @foreach ($jadwal as $item)
                         <tr class="text-center">
                             <td>{{ $no++ }}</td>
-                            <td>
+                            <td class="text-start">
                                 @if ($item->nama_guru)
                                     {{ $item->nama_guru }}
                                 @endif

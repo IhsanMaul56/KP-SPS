@@ -2,7 +2,7 @@
     <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
         <div class="col">
             <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
-                <option value="" selected>Mata Pelajaran</option>
+                <option value="" hidden selected>Mata Pelajaran</option>
                 @foreach ($guru as $mapel)
                     <option value="{{ $mapel->nama_mapel }}">{{ $mapel->nama_mapel }}</option>
                 @endforeach
@@ -10,7 +10,7 @@
         </div>
         <div class="col">
             <select wire:model="tingkatSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
-                <option value="" selected>Tingkat</option>
+                <option value="" hidden selected>Tingkat</option>
                 @if ($tingkat)
                     @foreach ($tingkat as $ting)
                         <option value="{{ $ting }}">{{ $ting }}</option>
@@ -20,7 +20,7 @@
         </div>
         <div class="col">
             <select wire:model="kelasSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
-                <option value="" selected>Kelas</option>
+                <option value="" hidden selected>Kelas</option>
                 @if ($kelas)
                     @foreach ($kelas as $kel)
                         <option value="{{ $kel }}">{{ $kel }}</option>
@@ -30,15 +30,15 @@
         </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="col mt-3">
         @if ($siswa && !$siswa->isEmpty())
             <table class="table table-bordered text-center">
                 <thead>
-                    <th>No</th>
+                    <th>NO</th>
                     <th>NIS</th>
-                    <th>Nama Siswa</th>
-                    <th>Nilai Akhir</th>
-                    <th>Aksi</th>
+                    <th>NAMA SISWA</th>
+                    <th>NILAI AKHIR</th>
+                    <th>AKSI</th>
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>
@@ -46,23 +46,20 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->nis }}</td>
-                            <td>{{ $item->nama_siswa }}</td>
+                            <td class="text-start">{{ $item->nama_siswa }}</td>
                             <td>0</td>
                             <td>
-                                <a href="{{ route('tambah-nilai-siswa') }}" class="btn btn-primary" style="text-decoration: none;">Tambah Nilai</a>
+                                <a href="{{ route('tambah-nilai-siswa') }}" class="btn btn-primary" style="text-decoration: none;"><i class="bi bi-plus-lg"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         @else
-        <div class="mx-3">
-            <div class="col text-center">
-                <img src="{{ URL::asset('/img/warning.png') }}" alt="warning" width="125px;">
-            </div>
-            <div class="col text-center pt-3">
-                <span class="mt-3">Halaman Belum Bisa Diakses</span>
-            </div>
+        <div class="col text-center">
+            <hr>
+            <img src="{{URL::asset('/img/warning.png')}}" alt="warning" class="mb-3" width="125px;">
+            <p>Tidak Ada Hasil Yang Ditemukan</p>
         </div>
         @endif
     </div>

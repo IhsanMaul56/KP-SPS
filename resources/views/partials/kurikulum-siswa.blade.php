@@ -22,7 +22,7 @@
                         <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row p-0 m-0">
                     @livewire('data-siswa')
                 </div>
             </div>

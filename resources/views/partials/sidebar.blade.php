@@ -37,7 +37,7 @@
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <a href="#" class="sidebar" style="text-decoration:none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
+                    <a href="#" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
                 </div>
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">
@@ -58,14 +58,14 @@
                 <div class="row mx-0">
                     <span class="sidebar dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
                     <div class="row mx-0 collapse" id="Akademik">
-                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jadwal Mapel</a>
+                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Master Jadwal</a>
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jurusan</a>
                         <a href="{{ route('m-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
                     </div>
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('profile-guru') }}" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profile</a><br>
+                    <a href="{{ route('profile-guru') }}" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
                 </div>
 
             @elseif (Auth::user()->role == 'guru')
@@ -88,7 +88,7 @@
                     <a href="{{ route('beranda') }}" id="home" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
-                    <span class="sidebar" id="btnNilaiSiswa"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</span><br>
+                    <a href="{{ route('nilai-siswa') }}" id="nilai" class="sidebar" style="text-decoration: none"><i class="bi bi-clipboard-minus icon-kiri"></i>Nilai</a><br>
                 </div>
                 <div class="row mx-0">
                     <a href="{{ route('profile-siswa') }}" class="sidebar" id="profile" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a>

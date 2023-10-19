@@ -1,4 +1,4 @@
-<div class="card-body h-100 overflow-auto">
+<div class="card-body h-100 overflow-auto" id="shadow">
     <div class="row">
         <div class="col">
             @if ($dataSiswa != null)
@@ -16,18 +16,19 @@
                 </div>
         </div>
         <div class="row">
-            <input type="text" class="form-control" wire:model="search" placeholder="Cari"
-                style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
-            <table class="table table-bordered m-3">
+            <div class="col">
+                <input type="text" class="form-control" wire:model="search" placeholder="Cari" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
+            </div>
+            <table class="table m-3 table-bordered">
                 <thead>
                     <tr class="text-center">
-                        <th>No</th>
+                        <th>NO</th>
                         <th>NIS</th>
-                        <th>Nama Siswa</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Nilai</th>
-                        <th>Keterangan</th>
-                        <th>Aksi</th>
+                        <th>NAMA SISWA</th>
+                        <th>JENIS KELAMIN</th>
+                        <th>NILAI</th>
+                        <th>KETERANGAN</th>
+                        <th>AKSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,7 @@
         <div class="col text-center pt-3">
             <span class="mt-3">Halaman Belum Bisa Diakses</span>
         </div>
-        @endif
     </div>
+    @endif
+</div>
 </div>
