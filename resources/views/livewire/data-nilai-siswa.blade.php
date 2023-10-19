@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="row text-end">
                                     <div class="col-3 mt-5">
-                                        <span class="btn btn-primary mt-5" id="prevFormButton">Prevous</span>
+                                        <span class="btn btn-primary mt-5" id="prevFormButton" onclick="previousStep()">Prevous</span>
                                     </div>
                                     <div class="col-3 mt-5">
                                         <input type="submit" value="Simpan" class="btn btn-primary mt-5">

@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 use App\Models\data_siswa;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class TambahDataSiswa extends Component
 {
@@ -15,6 +16,84 @@ class TambahDataSiswa extends Component
     public $nik_ayah, $nama_ayah, $pekerjaan_ayah, $nik_ibu, $nama_ibu ,$pekerjaan_ibu, $provinsi_ortu, $kota_ortu, $desa_ortu, $rt_ortu, $rw_ortu, $alamat_ortu;
     public $kelas_id, $tingkat_id;
     public $tingkatList, $kelasList;
+    public $data = [
+        'nis' => '',
+        'nama_siswa' => '',
+        'tempat_lahir' => '',
+        'tanggal_lahir' => '',
+        'jenis_kelamin' => '',
+        'agama' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'desa' => '',
+        'rt' => '',
+        'rw' => '',
+        'alamat' => '',
+        'no_hp' => '',
+        'email' => '',
+        'nik_ayah' => '',
+        'nama_ayah' => '',
+        'pekerjaan_ayah' => '',
+        'nik_ibu' => '',
+        'nama_ibu' => '',
+        'pekerjaan_ibu' => '',
+        'provinsi_ortu' => '',
+        'kota_ortu' => '',
+        'desa_ortu' => '',
+        'rt_ortu' => '',
+        'rw_ortu' => '',
+        'alamat_ortu' => '',
+    ];
+
+    public $formPart1 = [
+        'nis' => '',
+        'nama_siswa' => '',
+        'tempat_lahir' => '',
+        'tanggal_lahir' => '',
+        'jenis_kelamin' => '',
+        'agama' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'desa' => '',
+        'rt' => '',
+        'rw' => '',
+        'alamat' => '',
+        'no_hp' => '',
+    ];
+
+    public $formPart2 = [
+        'nik_ayah' => '',
+        'nama_ayah' => '',
+        'pekerjaan_ayah' => '',
+        'nik_ibu' => '',
+        'nama_ibu' => '',
+        'pekerjaan_ibu' => '',
+        'provinsi_ortu' => '',
+        'kota_ortu' => '',
+        'desa_ortu' => '',
+        'rt_ortu' => '',
+        'rw_ortu' => '',
+        'alamat_ortu' => '',
+    ];
+
+    public $currentPage = 1;
+
+    public function submitFormPart1()
+    {
+        $this->validate([
+
+        ]);
+        $this->currentPage = 2;
+    }
+
+    public function submitFormPart2()
+    {
+        $this->validate([
+
+        ]);
+        
+        $this->currentPage = 1;
+    }
 
     public function render()
     {
@@ -103,11 +182,118 @@ class TambahDataSiswa extends Component
             'siswa_id' => $request->nis,
         ]);
 
-        session()->flash('berhasil', 'Data guru berhasil disimpan.');
+        session()->flash('berhasil', 'Data siswa berhasil disimpan.');
 
         $this->resetForm();
 
         return redirect()->back();
+    }
+
+    public function viewUpdate($nis)
+    {
+        $siswa = DB::table('users')
+            ->leftJoin('data_siswas', 'users.siswa_id', '=', 'data_siswas.nis')
+            ->where('data_siswas.nis', '=', $nis)
+            ->select(
+                'users.email',
+                'data_siswas.*'
+            )
+            ->first();
+
+        if ($siswa) {
+            return view('livewire.update-data-siswa')->with('siswa', $siswa);
+        } else {
+            session()->flash('gagal', 'Siswa tidak ditemukan.');
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $existingUser = DB::table('users')
+            ->leftJoin('data_gurus', 'users.guru_id', '=', 'data_gurus.nip')
+            ->where('email', $request->email)
+            ->where('siswa_id', '!=', $request->nis)
+            ->first();
+
+        if ($existingUser) {
+            session()->flash('gagal', 'Email address sudah digunakan.');
+        } else {
+            DB::table('users')
+                ->leftJoin('data_siswas', 'users.siswa_id', '=', 'data_siswas.nis')
+                ->where('data_siswas.nis', '=', $request->nis)
+                ->update([
+                    'nis' => $request->nis,
+                    'nama_siswa' => $request->nama_siswa,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tanggal_lahir' => $request->tanggal_lahir,
+                    'jenis_kelamin' => $request->jenis_kelamin,
+                    'agama' => $request->agama,
+                    'no_hp' => $request->no_hp,
+                    'provinsi' => $request->provinsi,
+                    'kota' => $request->kota,
+                    'desa' => $request->desa,
+                    'rt' => $request->rt,
+                    'rw' => $request->rw,
+                    'alamat' => $request->alamat,
+                    'nik_ayah' => $request->nik_ayah,
+                    'nama_ayah' => $request->nama_ayah,
+                    'pekerjaan_ayah' => $request->pekerjaan_ayah,
+                    'nik_ibu' => $request->nik_ibu,
+                    'nama_ibu' => $request->nama_ibu,
+                    'pekerjaan_ibu' => $request->pekerjaan_ibu,
+                    'provinsi_ortu' => $request->provinsi_ortu,
+                    'kota_ortu' => $request->kota_ortu,
+                    'desa_ortu' => $request->desa_ortu,
+                    'rt_ortu' => $request->rt_ortu,
+                    'rw_ortu' => $request->rw_ortu,
+                    'alamat_ortu' => $request->alamat_ortu,
+                    'email' => $request->email,
+                ]);
+
+            session()->flash('berhasil', 'Data berhasil diupdate');
+        }
+
+        return redirect()->back();
+    }
+
+    public function mount()
+    {
+        $dataSiswa = DB::table('users')
+            ->leftJoin('data_siswas', 'users.siswa_id', '=', 'data_siswas.nis')
+            ->select(
+                'users.email',
+                'data_siswas.*',
+            )
+            ->first();
+        
+        if($dataSiswa){
+            $this->data['nis'] = $dataSiswa->nis;
+            $this->data['nama_siswa'] = $dataSiswa->nama_siswa;
+            $this->data['tempat_lahir'] = $dataSiswa->tempat_lahir;
+            $this->data['tanggal_lahir'] = $dataSiswa->tanggal_lahir;
+            $this->data['jenis_kelamin'] = $dataSiswa->jenis_kelamin;
+            $this->data['agama'] = $dataSiswa->agama;
+            $this->data['no_hp'] = $dataSiswa->no_hp;
+            $this->data['email'] = $dataSiswa->email;
+            $this->data['provinsi'] = $dataSiswa->provinsi;
+            $this->data['kota'] = $dataSiswa->kota;
+            $this->data['desa'] = $dataSiswa->desa;
+            $this->data['rt'] = $dataSiswa->rt;
+            $this->data['rw'] = $dataSiswa->rw;
+            $this->data['alamat'] = $dataSiswa->alamat;
+            $this->data['nik_ayah'] = $dataSiswa->nik_ayah;
+            $this->data['nama_ayah'] = $dataSiswa->nama_ayah;
+            $this->data['pekerjaan_ayah'] = $dataSiswa->pekerjaan_ayah;
+            $this->data['nik_ibu'] = $dataSiswa->nik_ibu;
+            $this->data['nama_ibu'] = $dataSiswa->nama_ibu;
+            $this->data['pekerjaan_ibu'] = $dataSiswa->pekerjaan_ibu;
+            $this->data['provinsi_ortu'] = $dataSiswa->provinsi_ortu;
+            $this->data['kota_ortu'] = $dataSiswa->kota_ortu;
+            $this->data['desa_ortu'] = $dataSiswa->desa_ortu;
+            $this->data['rt_ortu'] = $dataSiswa->rt_ortu;
+            $this->data['rw_ortu'] = $dataSiswa->rw_ortu;
+            $this->data['alamat_ortu'] = $dataSiswa->alamat_ortu;
+        }
     }
 
     private function resetForm()

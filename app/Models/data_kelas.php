@@ -14,10 +14,11 @@ class data_kelas extends Model
     use HasFactory;
 
     protected $fillable = [
-        // 'tingkat_id',
         'nama_kelas',
         'jurusan_id',
         'nama_jurusan',
+        'tingkat_id',
+        'nama_tingkat',
         'tahun_id',
         'nama_tahun'
     ];
@@ -56,7 +57,7 @@ class data_kelas extends Model
         return $this->belongsTo(tahun_akademik::class, 'tahun_id    ', 'kode_tahun');
     }
 
-    // public function tingkat() : BelongsTo{
-    //     return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
-    // }
+    public function tingkat() : BelongsTo{
+        return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
+    }
 }

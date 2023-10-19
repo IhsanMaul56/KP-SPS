@@ -60,7 +60,6 @@ class AkunGuru extends Component
             Session::flash('message', 'Data berhasil di update');
         }
 
-        // $this->reset(['data']);
         $this->emit('refreshComponent');
     }
 

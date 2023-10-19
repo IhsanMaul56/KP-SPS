@@ -10,6 +10,11 @@
                 </a>
             </div>
         </div>
+        @if (Session::has('berhasil'))
+            <div class="alert alert-success">
+                {{ Session::get('berhasil') }}
+            </div>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
@@ -30,10 +35,12 @@
                         <td>{{ $item->jenis_kelamin }}</td>
                         <td>{{ $item->no_hp }}</td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                            <a href="{{ route('update-data-guru', ['nip' => $item->nip]) }}" wire:click="viewUpdate('{{ $item->nip }}')" class="btn btn-warning">
                                 <i class="bi bi-pencil-square text-white"></i>
+                            </a>
+                            <button wire:click="deleteGuru('{{ $item->nip }}')" class="btn btn-danger">
+                                <i class="bi bi-trash3"></i>
                             </button>
-                            <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
                         </td>
                     </tr>
                 @endforeach

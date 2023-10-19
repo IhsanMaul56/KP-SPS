@@ -12,7 +12,7 @@
         {{ Session::get('message') }}
     </div>
     @endif
-    @foreach ($akun as $data) 
+    @foreach ($akun as $data)
         <div class="row mb-2">
             <div class="col-3">
                 <span>Nama</span>

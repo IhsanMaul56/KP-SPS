@@ -32,22 +32,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center">
-                        <td>1</td>
-                        <td>112233</td>
-                        <td class="text-start">Akung</td>
-                        <td>Laki-laki</td>
-                        <td>75</td>
-                        <td class="text-start">Kurang rajin</td>
-                        <td><button class="btn btn-success" id="shadow" type="submit" style="position: relative;"><i class="bi bi-eye"></i></button></td>
-                    </tr>
+                    <?php $no = 1; ?>
+                    @foreach ($dataSiswa as $item)
+                        <tr class="text-center">
+                            <th>{{ $no++ }}</th>
+                            <th>{{ $item->nis }}</th>
+                            <th>{{ $item->nama_siswa }}</th>
+                            <th>{{ $item->jenis_kelamin }}</th>
+                            <th>0</th>
+                            <th>Baba</th>
+                            <th>Aksi</th>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+            <div class="col text-end mt-3">
+                <button class="btn btn-success" id="shadow" type="submit"
+                    style="position: relative;">Setujui</button>
+            </div>
         </div>
-        <div class="col text-end mt-3">
-            <button class="btn btn-success" id="shadow" type="submit" style="position: relative;">Setujui</button>
-        </div>
-    @else
+        @else
         <div class="col text-center">
             <img src="{{ URL::asset('/img/warning.png') }}" alt="warning" width="125px;">
         </div>

@@ -2,9 +2,7 @@
 
 namespace App\Http\Livewire;
 
-
 use Livewire\Component;
-use Illuminate\Pagination\Paginator;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
@@ -32,12 +30,18 @@ class DataGuruWali extends Component
         return view('livewire.data-guru-wali', compact('wali'));
     }
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
     
     public function tampil()
     {
         return view('partials.kurikulum-wali');
+    }
+
+    public function createWali()
+    {
+        
     }
 }

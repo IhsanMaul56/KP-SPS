@@ -7,13 +7,15 @@
 @endpush
 
 <div class="card-body h-100 overflow-auto" id="shadow">
+    @include('livewire.create-guru-wali')
+    @include('livewire.update-guru-wali')
     <div class="col">
         <div class="row">
             <div class="col">
                 <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
             </div>
             <div class="col-3" style="width: max-content;">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertGuruWali">
                     <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
                 </button>
             </div>
@@ -47,7 +49,7 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruWali">
                                 <i class="bi bi-pencil-square text-white"></i>
                             </button>
                             <span class="btn btn-danger"><i class="bi bi-trash3"></i></span>
