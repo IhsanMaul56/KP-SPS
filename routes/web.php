@@ -26,8 +26,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Livewire\EditDataGuru;
 use App\Http\Livewire\NilaiTp;
 use App\Http\Livewire\NilaiAtp;
-use App\Http\Livewire\TabelSiswa;
-use App\Http\Livewire\TableGuru;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

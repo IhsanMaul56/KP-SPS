@@ -1,5 +1,13 @@
-@include('livewire.delete-guru')
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
 <div class="card-body h-100 overflow-auto" id="shadow">
+    @include('livewire.delete-guru')
     <div class="col">
         <div class="row">
             <div class="col">
@@ -39,7 +47,7 @@
                             <a href="{{ route('update-data-guru', ['nip' => $item->nip]) }}" wire:click="viewUpdate('{{ $item->nip }}')" class="btn btn-warning">
                                 <i class="bi bi-pencil-square text-white"></i>
                             </a>
-                            <button wire:click="deleteGuru('{{ $item->nip }}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataGuruM">
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataGuruM" wire:click="deleteGuruConfirm('{{ $item->nip }}')">
                                 <i class="bi bi-trash3"></i>
                             </button>
                         </td>
@@ -50,3 +58,9 @@
         {{ $dagur->links() }}
     </div>
 </div>
+
+<script>
+    Livewire.on('closeDeleteModal', function () {
+        $('#DeleteDataGuruM').modal('hide');
+    });
+</script>

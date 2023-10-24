@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class data_siswa extends Model
 {
     use HasFactory;
-
+    protected $primaryKey = 'nis';
+    
     protected $fillable = [
         'nis',
         'nama_siswa',

@@ -47,7 +47,8 @@ class DataKelas extends Component
             ->select(
                 'data_kelas.*',
                 'data_gurus.nama_guru',
-                'data_tingkats.nama_tingkat'
+                'data_tingkats.nama_tingkat',
+                'data_gurus.no_hp AS guru_no_hp'
             )
             ->paginate(10);
 
@@ -148,12 +149,18 @@ class DataKelas extends Component
         }
     }
 
-    public function deleteKelas($kode_kelas)
+    public function deleteKelasConfirm($kode_kelas)
     {
-        data_kelas::where('kode_kelas', $kode_kelas)->delete();
+        $this->selectedKelasId = data_kelas::find($kode_kelas);
+    }
 
+    public function deleteKelas()
+    {
+        if ($this->selectedKelasId) {
+            data_kelas::where('kode_kelas', $this->selectedKelasId->kode_kelas)->delete();
+            Session::flash('berhasil', 'Data berhasil dihapus');
+        }
+    
         $this->resetPage();
-
-        Session::flash('berhasil', 'Data berhasil dihapus');
     }
 }

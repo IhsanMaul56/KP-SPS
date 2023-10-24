@@ -11,6 +11,7 @@ class data_guru extends Model
     use HasFactory;
 
     protected $tabel = 'data_gurus';
+    protected $primaryKey = 'nip';
 
     protected $fillable = [
         'nip',

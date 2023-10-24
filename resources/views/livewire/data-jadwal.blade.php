@@ -1,5 +1,5 @@
-@include('livewire.delete-jadwal')
 <div class="card-body h-100 overflow-auto" id="shadow">
+    @include('livewire.delete-jadwal')
     <div class="col">
         <div class="row">
             <div class="col">
