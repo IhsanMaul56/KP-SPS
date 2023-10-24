@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\data_kelas;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class DataKelas extends Component
 {
@@ -14,6 +15,13 @@ class DataKelas extends Component
     public $jurusanList, $tingkatList;
     public $showModal = false;
     public $search = '';
+    public $selectedKelasId;
+    public $selectedKelas = [
+        'kode_kelas' => '',
+        'nama_kelas' => '',
+        'jurusan_id' => '',
+        'tingkat_id' => '',
+    ];
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -70,8 +78,6 @@ class DataKelas extends Component
             ->where('kode_tingkat', $this->tingkat_id)
             ->value('nama_tingkat');
         
-        // dd($this->jurusan_id, $this->tingkat_id);
-
         try {
             data_kelas::create([
                 'nama_kelas' => $this->nama_kelas,
@@ -93,5 +99,61 @@ class DataKelas extends Component
         $this->nama_kelas = null;
         $this->jurusan_id = null;
         $this->tingkat_id = null;
+    }
+
+    public function editKelas($kelasId)
+    {
+        $kelas = data_kelas::find($kelasId);
+        if ($kelas) {
+            $this->selectedKelasId = $kelasId;
+            $this->selectedKelas = [
+                'kode_kelas' => $kelas->kode_kelas,
+                'nama_kelas' => $kelas->nama_kelas,
+                'jurusan_id' => $kelas->jurusan_id,
+                'tingkat_id' => $kelas->tingkat_id,
+            ];
+            $this->showModal = true;
+        }
+    }
+
+    public function updateSelectedKelas()
+    {
+        $this->validate([
+            'selectedKelas.nama_kelas' => 'required',
+            'selectedKelas.jurusan_id' => 'required',
+            'selectedKelas.tingkat_id' => 'required',
+        ]);
+
+        $jurusanData = DB::table('data_jurusans')
+            ->where('kode_jurusan', $this->selectedKelas['jurusan_id'])
+            ->value('nama_jurusan');
+
+        $tingkatData = DB::table('data_tingkats')
+            ->where('kode_tingkat', $this->selectedKelas['tingkat_id'])
+            ->value('nama_tingkat');
+
+        try {
+            data_kelas::where('kode_kelas', $this->selectedKelasId)->update([
+                'nama_kelas' => $this->selectedKelas['nama_kelas'],
+                'jurusan_id' => $this->selectedKelas['jurusan_id'],
+                'nama_jurusan' => $jurusanData,
+                'tingkat_id' => $this->selectedKelas['tingkat_id'],
+                'nama_tingkat' => $tingkatData,
+            ]);
+
+            $this->showModal = false;
+            session()->flash('berhasil', 'Data kelas berhasil diupdate.');
+        } catch (\Exception $e) {
+            session()->flash('gagal', 'Terjadi kesalahan saat mengupdate data kelas: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteKelas($kode_kelas)
+    {
+        data_kelas::where('kode_kelas', $kode_kelas)->delete();
+
+        $this->resetPage();
+
+        Session::flash('berhasil', 'Data berhasil dihapus');
     }
 }

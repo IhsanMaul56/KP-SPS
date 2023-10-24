@@ -25,7 +25,7 @@
                             @foreach ($jurusanList as $kodeJurusan => $namaJurusan)
                                 <option value="{{ $kodeJurusan }}">{{ $namaJurusan }}</option>
                             @endforeach
-                        </select>                        
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -36,9 +36,9 @@
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                 <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
                             @endforeach
-                        </select>                        
+                        </select>
                     </div>
-                </div>                
+                </div>
                 <div class="row mt-3">
                     <div class="col">
                         <label>Nama Kelas :</label>

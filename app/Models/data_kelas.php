@@ -13,6 +13,8 @@ class data_kelas extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_kelas';
+
     protected $fillable = [
         'nama_kelas',
         'jurusan_id',
