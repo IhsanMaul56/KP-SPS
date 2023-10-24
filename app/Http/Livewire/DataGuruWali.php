@@ -23,7 +23,7 @@ class DataGuruWali extends Component
             )
             ->where(function ($query) {
                 $query->where('data_walis.wali_id', 'like', '%' . $this->search . '%')
-                      ->orWhere('data_walis.nama_guru', 'like', '%' . $this->search . '%');
+                    ->orWhere('data_walis.nama_guru', 'like', '%' . $this->search . '%');
             })
             ->paginate(10);
 

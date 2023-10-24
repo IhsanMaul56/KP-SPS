@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Guru Untuk Wali Kelas</h5>
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">TAMBAH GURU UNTUK WALI KELAS</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
         <div class="modal-body">
@@ -10,8 +10,8 @@
                 <div class="col">
                     <label>Pilih Guru :</label>
                     <select name="guru" class="form-control">
-                        <option value="">NIP Guru - Nama Guru</option>
-                        <option value=""></option>
+                        <option value="" hidden selected>NIP Guru - Nama Guru</option>
+                        <option value="">112233 - Asep</option>
                     </select>
                 </div>
             </div>
@@ -19,8 +19,8 @@
                 <div class="col">
                     <label>Pilih Kelas :</label>
                     <select name="guru" class="form-control">
-                        <option value="">Jurusan - Kelas</option>
-                        <option value=""></option>
+                        <option value="" hidden selected>Jurusan - Kelas</option>
+                        <option value="">PM - X PM 1</option>
                     </select>
                 </div>
             </div>

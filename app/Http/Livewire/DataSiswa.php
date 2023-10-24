@@ -29,7 +29,7 @@ class DataSiswa extends Component
             )
             ->where(function ($query) {
                 $query->where('data_siswas.nis', 'like', '%' . $this->search . '%')
-                      ->orWhere('data_siswas.nama_siswa', 'like', '%' . $this->search . '%');
+                    ->orWhere('data_siswas.nama_siswa', 'like', '%' . $this->search . '%');
             })
             ->paginate(10);
 

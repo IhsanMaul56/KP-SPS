@@ -70,7 +70,7 @@
 
             @elseif (Auth::user()->role == 'guru')
                 <div class="row mx-0">
-                    <a href="{{ route('beranda') }}" id="btnBerandaGuru" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
+                    <a href="{{ route('guru') }}" id="btnBerandaGuru" class="sidebar" style="text-decoration: none"><i class="bi bi-house-door icon-kiri"></i>Beranda</a><br>
                 </div>
                 <div class="row mx-0">
                     <a href="{{ route('nilai-gurus') }}" id="btnDataNilaiGuru" class="sidebar" style="text-decoration: none"><i class="bi bi-journal-text icon-kiri"></i>Data Nilai</a><br>

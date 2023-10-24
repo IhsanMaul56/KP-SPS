@@ -24,7 +24,7 @@ class DataGuruMapel extends Component
             )
             ->where(function ($query) {
                 $query->where('data_pengampus.pengampu_id', 'like', '%' . $this->search . '%')
-                      ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%');
+                    ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%');
             })
             ->paginate(10);
 

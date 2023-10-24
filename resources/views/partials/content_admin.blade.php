@@ -1,7 +1,7 @@
 {{-- Beranda Admin --}}
 <div class="col p-0 page active-page" id="BerandaAdmin">
     <div class="grid-tengah">
-        <div class="row" style="margin-bottom: 30px;">
+        <div class="row" style="margin-bottom: 20px">
             <div class="col">
                 <span class="h1 fw-bold text-biru">Beranda</span>
             </div>
