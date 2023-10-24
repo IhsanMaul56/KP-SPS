@@ -1,5 +1,5 @@
-@include('livewire.delete-siswa')
 <div class="card-body h-100 overflow-auto" id="shadow">
+    @include('livewire.delete-siswa')
     <div class="col">
         <div class="row">
             <div class="col">
@@ -11,6 +11,12 @@
                 </a>
             </div>
         </div>
+        <div>
+            @if (Session::has('berhasil'))
+            <div class="alert alert-success">
+                {{ Session::get('berhasil') }}
+            </div>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
@@ -43,9 +49,9 @@
                                 <a href="{{ route('update-data-siswa', ['nis' => $item->nis]) }}" wire:click="viewUpdate('{{ $item->nis }}')" class="btn btn-warning ling">
                                         <i class="bi bi-pencil-square text-white"></i>
                                 </a>
-                                <button wire:click="showDelete('{{ $item->nis }}')" data-bs-toggle="modal" class="btn btn-danger" data-bs-target="#DeleteDataSiswa">
+                                <button wire:click="deleteSiswaConfirm('{{ $item->nis }}')" data-bs-toggle="modal" class="btn btn-danger" data-bs-target="#DeleteDataSiswa">
                                     <i class="bi bi-trash3"></i>
-                                </button>
+                                </button>                                
                             </td>
                         </tr>
                     @endforeach
@@ -55,3 +61,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    Livewire.on('closeDeleteModal', function () {
+        $('#DeleteDataSiswa').modal('hide');
+    });
+</script>

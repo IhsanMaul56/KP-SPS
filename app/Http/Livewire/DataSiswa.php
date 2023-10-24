@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Session;
 
 class DataSiswa extends Component
 {
+    public $selectedSiswa;
+    public $confirmingSiswaDeletion;
     public $search = '';
 
     use WithPagination;
@@ -36,14 +38,20 @@ class DataSiswa extends Component
         return view('livewire.data-siswa', compact('siswa'));
     }
 
-    public function deleteSiswa($nis)
+    public function deleteSiswaConfirm($nis)
     {
-        User::where('siswa_id', $nis)->delete();
-        data_siswa::where('nis', $nis)->delete();
+        $this->selectedSiswa = data_siswa::find($nis);
+    }
+
+    public function deleteSiswa()
+    {        
+        if ($this->selectedSiswa) {
+            User::where('siswa_id', $this->selectedSiswa->nis)->delete();
+            data_siswa::where('nis', $this->selectedSiswa->nis)->delete();
+            Session::flash('berhasil', 'Data berhasil dihapus');
+        }
 
         $this->resetPage();
-
-        Session::flash('berhasil', 'Data berhasil dihapus');
     }
 
     public function updatingSearch()

@@ -143,14 +143,22 @@ class DataJurusan extends Component
         }
     }
 
-    public function deleteJurusan($jurusanId)
+    public function deleteJurusanConfirm($kode_jurusan)
     {
-        data_jurusan::where('kode_jurusan', $jurusanId)->delete();
-        data_kajur::where('kode_kajur', $jurusanId)->delete();
-        data_kelas::where('jurusan_id', $jurusanId)->delete();
+        $this->jurusanSelectedId = data_jurusan::find($kode_jurusan);
+    }
+
+    public function deleteJurusan()
+    {
+        if ($this->jurusanSelectedId) {
+            data_kajur::where('kode_kajur', $this->jurusanSelectedId->kode_jurusan)->delete();
+            data_kelas::where('jurusan_id', $this->jurusanSelectedId->kode_jurusan)->delete();
+            data_jurusan::where('kode_jurusan', $this->jurusanSelectedId->kode_jurusan)->delete();
+
+            Session::flash('berhasil', 'Data berhasil dihapus');
+        }
 
         $this->resetPage();
-
-        Session::flash('berhasil', 'Data berhasil dihapus');
     }
+
 }

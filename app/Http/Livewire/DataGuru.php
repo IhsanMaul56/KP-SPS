@@ -5,11 +5,16 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\data_guru;
+use App\Models\data_pengampu;
+use App\Models\data_wali;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class DataGuru extends Component
 {
+    public $selectedGuru;
+    public $confirmingGuruDeletion;
     public $search = '';
 
     use WithPagination;
@@ -22,14 +27,24 @@ class DataGuru extends Component
         ]);
     }
 
-    public function deleteGuru($nip)
+    public function deleteGuruConfirm($nip)
     {
-        User::where('guru_id', $nip)->delete();
-        data_guru::where('nip', $nip)->delete();
+        $this->selectedGuru = data_guru::find($nip);
+    }
+
+
+    public function deleteGuru()
+    {
+        if ($this->selectedGuru) {
+            User::where('guru_id', $this->selectedGuru->nip)->delete();
+            data_wali::where('wali_id', $this->selectedGuru->nip)->delete();
+            data_pengampu::where('pengampu_id', $this->selectedGuru->nip)->delete();
+            data_guru::where('nip', $this->selectedGuru->nip)->delete();
+            
+            Session::flash('berhasil', 'Data berhasil dihapus');
+        }
 
         $this->resetPage();
-
-        Session::flash('berhasil', 'Data berhasil dihapus');
     }
 
     public function updatingSearch(){

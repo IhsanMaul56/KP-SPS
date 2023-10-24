@@ -25,6 +25,11 @@
     <div>
         <table class="table table-bordered">
             <thead>
+                @if (Session::has('berhasil'))
+                    <div class="alert alert-success">
+                        {{ Session::get('berhasil') }}
+                    </div>
+                @endif
                 <tr class="text-center">
                     <th>NO</th>
                     <th>NIP</th>
@@ -50,10 +55,10 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruWali">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruWali" wire:click="editWali({{ $item->kode_wali }})">
                                 <i class="bi bi-pencil-square text-white"></i>
                             </button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataWali">
+                            <button wire:click="deleteWaliConfirm('{{ $item->kode_wali }}')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataWali">
                                 <i class="bi bi-trash3"></i>
                             </button>
                         </td>
