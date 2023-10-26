@@ -10,6 +10,8 @@ class data_wali extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_wali';
+
     protected $fillable = [
         'wali_id',
         'nama_guru',

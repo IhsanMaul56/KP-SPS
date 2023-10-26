@@ -1,5 +1,5 @@
-@include('livewire.delete-jurusan')
 <div class="card-body h-100 overflow-auto" id="shadow">
+    @include('livewire.delete-jurusan')
     @include('livewire.create-jurusan')
     @include('livewire.update-jurusan')
     <div class="col">
@@ -9,6 +9,11 @@
             </button>
         </div>
         <table class="table table-bordered">
+            @if (Session::has('berhasil'))
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil') }}
+                </div>
+            @endif
             <thead>
                 <tr class="text-center">
                     <th>NO</th>
@@ -30,7 +35,7 @@
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateJurusan" wire:click="editJurusan({{ $item->kode_jurusan }})">
                             <i class="bi bi-pencil-square text-white"></i>
                         </button>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataJurusan">
+                        <button wire:click="deleteJurusanConfirm('{{ $item->kode_jurusan }}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataJurusan">
                             <i class="bi bi-trash3"></i>
                         </button>
                     </td>
