@@ -11,7 +11,9 @@
                     <label>Pilih Guru :</label>
                     <select name="guru" class="form-control">
                         <option value="" hidden selected>NIP Guru - Nama Guru</option>
-                        <option value="">112233 - Asep</option>
+                        @foreach ($guruList as $nipGuru => $namaGuru)
+                            <option value="{{ $nipGuru }}">{{ $nipGuru }} - {{ $namaGuru }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -20,7 +22,9 @@
                     <label>Pilih Mata Pelajaran :</label>
                     <select name="guru" class="form-control">
                         <option value="" hidden selected>Kode Mapel - Nama Mapel</option>
-                        <option value="">112233 - MTK</option>
+                        @foreach ($mapelList as $kodeMapel => $namaMapel)
+                            <option value="{{ $kodeMapel }}">{{ $kodeMapel }} - {{ $namaMapel }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

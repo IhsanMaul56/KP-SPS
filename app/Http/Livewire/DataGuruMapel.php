@@ -9,6 +9,9 @@ use Illuminate\Pagination\Paginator;
 
 class DataGuruMapel extends Component
 {
+    public $guruList;
+    public $mapelList;
+    
     public $search = '';
 
     use WithPagination;
@@ -28,6 +31,19 @@ class DataGuruMapel extends Component
             })
             ->paginate(10);
 
+            $guru = DB::table('data_gurus')
+            ->select('nip', 'nama_guru')
+            ->get();
+
+            $this->guruList = $guru->pluck('nama_guru', 'nip');
+
+            $mapel = DB::table('data_mapels')
+            ->select('kode_mapel', 'nama_mapel')
+            ->get();
+
+            $this->mapelList = $mapel->pluck('nama_mapel', 'kode_mapel');
+
+
         return view('livewire.data-guru-mapel', compact('pengampu'));
     }
 
@@ -37,5 +53,9 @@ class DataGuruMapel extends Component
 
     public function tampil(){
         return view('partials.mapel-guru');
+    }
+
+    public function tambahGuruMapel(){
+    
     }
 }

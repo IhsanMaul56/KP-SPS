@@ -12,7 +12,7 @@
     <div class="container-fluid p-0">
         @include('partials.sidebar')
         <div class="col p-0">
-            <div class="grid-tengah">
+            <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
                         <span class="h1 fw-bold text-biru">Data Siswa</span></span>
@@ -25,11 +25,6 @@
                 <div class="row p-0 m-0">
                     @livewire('data-siswa')
                 </div>
-            </div>
-        </div>
-        <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
-            <div class="grid-kanan">
-                @include('partials.rightbar_kurikulum')
             </div>
         </div>
     </div>
