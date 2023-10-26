@@ -1,4 +1,5 @@
-<div class="modal fade" id="InsertGuruWali" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+<div class="modal fade" id="InsertGuruWali" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    wire:ignore.self>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -36,7 +37,7 @@
                             @foreach ($kelasList as $kodeKelas => $namaKelas)
                                 <option value="{{ $kodeKelas }}">{{ $namaJurusan[$kodeKelas] }} - {{ $namaKelas }}</option>
                             @endforeach
-                        </select>
+                        </select>                        
                     </div>
                 </div>
                 <div class="row mb-3">

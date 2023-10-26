@@ -83,7 +83,8 @@ Route::middleware(['auth'])->group(function(){
     });
 
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/guru', [TableGuru::class, 'tampil'])->name('guru');
+        Route::get('/guru', [DashboardController::class, 'index'])->name('beranda-guru');
+        Route::get('/jadwal-guru', [TableGuru::class, 'tampil'])->name('guru');
         Route::get('/nilai-guru', [DataNilaiGuru::class, 'tampil'])->name('nilai-gurus');
         Route::get('/nilai-walis', [GuruWali::class, 'tampil'])->name('nilai-walis');
         Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');

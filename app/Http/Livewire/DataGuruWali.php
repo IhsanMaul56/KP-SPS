@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\data_wali;
 use Livewire\Component;
+use App\Models\data_wali;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -12,7 +12,7 @@ class DataGuruWali extends Component
 {
     public $search = '';
     public $showModal = false;
-    public $guruList, $kelasList, $tingkatList, $akademikList;
+    public $guruList = [], $kelasList = [], $tingkatList;
     public $namaJurusan = [];
     public $wali_id;
     public $tingkat_id;
@@ -24,36 +24,43 @@ class DataGuruWali extends Component
         'tingkat_id' => '',
         'kelas_id' => '',
     ];
+    public $selectedTingkatId;
+    public $kelasListEdit = [];
+    public $guruListEdit = [];
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
-        $akademik = DB::table('tahun_akademiks')
-            ->select('kode_tahun', 'tahun_akademik')
-            ->get();
-        
-        $this->akademikList = $akademik->pluck('tahun_akademik', 'kode_tahun');
-
         $tingkat = DB::table('data_tingkats')
             ->select('kode_tingkat', 'nama_tingkat')
             ->get();
-        
         $this->tingkatList = $tingkat->pluck('nama_tingkat', 'kode_tingkat');
+
+        if ($this->tingkat_id) {
+            $kelas = DB::table('data_kelas')
+                ->select('kode_kelas', 'nama_jurusan', 'nama_kelas')
+                ->where('tingkat_id', $this->tingkat_id)
+                ->whereNotIn('kode_kelas', function ($query) {
+                    $query->select('kelas_id')->from('data_walis');
+                })
+                ->get();
+
+            $this->kelasList = $kelas->pluck('nama_kelas', 'kode_kelas');
+            $this->namaJurusan = $kelas->pluck('nama_jurusan', 'kode_kelas');
+        } else {
+            $kelas = [];
+        }
 
         $guru = DB::table('data_gurus')
             ->select('nip', 'nama_guru')
+            ->whereNotIn('nip', function ($query) {
+                $query->select('wali_id')->from('data_walis');
+            })
             ->get();
 
         $this->guruList = $guru->pluck('nama_guru', 'nip');
-
-        $kelas = DB::table('data_kelas')
-            ->select('kode_kelas', 'nama_jurusan', 'nama_kelas')
-            ->get();
-
-        $this->kelasList = $kelas->pluck('nama_kelas', 'kode_kelas');
-        $this->namaJurusan = $kelas->pluck('nama_jurusan', 'kode_kelas');
 
         $wali = DB::table('data_walis')
             ->leftJoin('data_gurus', 'data_walis.wali_id', '=', 'data_gurus.nip')
@@ -95,7 +102,7 @@ class DataGuruWali extends Component
         $tingkatData = DB::table('data_tingkats')
             ->where('kode_tingkat', $this->tingkat_id)
             ->value('nama_tingkat');
-        
+
         $kelasData = DB::table('data_kelas')
             ->where('kode_kelas', $this->kelas_id)
             ->value('nama_kelas');
@@ -111,7 +118,7 @@ class DataGuruWali extends Component
             ]);
 
             $this->showModal = false;
-            session()->flash('berhasil', 'Data kelas berhasil disimpan.');
+            session()->flash('berhasil', 'Data wali kelas berhasil disimpan.');
         } catch (\Exception $e) {
             Session::flash('gagal', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
         }
@@ -124,10 +131,17 @@ class DataGuruWali extends Component
         $this->kelas_id = null;
     }
 
+    public function setTingkatKelasGuruValues($tingkat, $kelas, $guru)
+    {
+        $this->tingkat_id = $tingkat;
+        $this->kelas_id = $kelas;
+        $this->wali_id = $guru;
+    }
+
     public function editWali($waliId)
     {
         $wali = data_wali::find($waliId);
-        if($wali){
+        if ($wali) {
             $this->selectedWaliId = $waliId;
             $this->data = [
                 'kode_wali' => $wali->kode_wali,
@@ -135,6 +149,29 @@ class DataGuruWali extends Component
                 'tingkat_id' => $wali->tingkat_id,
                 'kelas_id' => $wali->kelas_id,
             ];
+    
+            // Ambil data kelas yang sesuai dengan tingkat
+            $kelasListEdit = DB::table('data_kelas')
+                ->select('kode_kelas', 'nama_jurusan', 'nama_kelas')
+                ->where('tingkat_id', $wali->tingkat_id)
+                ->get()
+                ->toArray();
+    
+            // Set nilai-nilai tingkat, kelas, dan guru
+            $this->data['tingkat_id'] = $wali->tingkat_id;
+            $this->data['kelas_id'] = $wali->kelas_id;
+            $this->data['wali_id'] = $wali->wali_id;
+    
+            // Assign array kelasListEdit ke variabel kelasListEdit
+            $this->kelasListEdit = $kelasListEdit;
+            
+            // Ambil data guru yang belum menjadi wali kelas
+            $this->guruListEdit = DB::table('data_gurus')
+                ->select('nip', 'nama_guru')
+                ->whereNotIn('nip', function ($query) {
+                    $query->select('wali_id')->from('data_walis');
+                })
+                ->get();
         }
     }
 
@@ -153,12 +190,12 @@ class DataGuruWali extends Component
         $tingkatData = DB::table('data_tingkats')
             ->where('kode_tingkat', $this->data['tingkat_id'])
             ->value('nama_tingkat');
-        
+
         $kelasData = DB::table('data_kelas')
             ->where('kode_kelas', $this->data['kelas_id'])
             ->value('nama_kelas');
 
-        try{
+        try {
             data_wali::where('kode_wali', $this->data)->update([
                 'wali_id' => $this->data['wali_id'],
                 'nama_guru' => $guruData,
@@ -168,10 +205,12 @@ class DataGuruWali extends Component
                 'nama_kelas' => $kelasData,
             ]);
 
-            session()->flash('berhasil', 'Data kelas berhasil diupdate.');
+            session()->flash('berhasil', 'Data wali kelas berhasil diupdate.');
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi kesalahan saat mengupdate data kelas: ' . $e->getMessage());
         }
+
+        $this->setTingkatKelasGuruValues(null, null, null);
     }
 
     public function deleteWaliConfirm($kode_wali)
@@ -181,11 +220,12 @@ class DataGuruWali extends Component
 
     public function deleteWali()
     {
-        if($this->selectedWaliId){
+        if ($this->selectedWaliId) {
             data_wali::where('kode_wali', $this->selectedWaliId->kode_wali)->delete();
             Session::flash('berhasil', 'Data berhasil dihapus');
         }
 
         $this->resetPage();
+        $this->setTingkatKelasGuruValues(null, null, null);
     }
 }
