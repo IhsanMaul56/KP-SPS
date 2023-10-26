@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered" style="max-width:325px;">
         <div class="modal-content" style="border-radius: 12px;">
             <div class="modal-header" style="border-bottom:unset !important">
-                <h5 class="modal-title w-100 text-center titlemodal-style" id="deleteDataModalLabel">Hapus</h5>
+                <h5 class="modal-title w-100 text-center titlemodal-style fw-bold" id="deleteDataModalLabel">HAPUS</h5>
             </div>
             <div class="modal-body">
                 <img src="\assets\img\trash-can.gif" alt="" class="mx-auto d-block pb-3" style="max-width:84px">

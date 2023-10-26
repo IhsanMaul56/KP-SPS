@@ -316,3 +316,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const btnFormatif = document.getElementById('btnFormatif');
+    const btnSumatif = document.getElementById('btnSumatif');
+    const Formatif = document.getElementById('Formatif');
+    const Sumatif = document.getElementById('Sumatif');
+
+    let activePage = Formatif; // Menyimpan halaman yang sedang aktif
+
+    btnFormatif.addEventListener('click', (event) => {
+        event.preventDefault(); // Mencegah pengiriman formulir yang memuat ulang halaman
+        resetPage(activePage); // Menghapus tampilan sebelumnya
+        activePage = Formatif; // Memperbarui halaman yang sedang aktif
+        Formatif.classList.add('active-page');
+    });
+
+    btnSumatif.addEventListener('click', (event) => {
+        event.preventDefault(); // Mencegah pengiriman formulir yang memuat ulang halaman
+        resetPage(activePage); // Menghapus tampilan sebelumnya
+        activePage = Sumatif; // Memperbarui halaman yang sedang aktif
+        Sumatif.classList.add('active-page');
+    });
+
+    function resetPage(page) {
+        page.classList.remove('active-page'); // Menghapus kelas 'active-page' dari halaman yang diberikan
+    }
+});

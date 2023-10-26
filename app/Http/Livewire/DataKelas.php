@@ -50,6 +50,10 @@ class DataKelas extends Component
                 'data_tingkats.nama_tingkat',
                 'data_gurus.no_hp AS guru_no_hp'
             )
+            ->where(function ($query) {
+                $query->where('data_kelas.nama_kelas', 'like', '%' . $this->search . '%')
+                    ->orWhere('data_walis.nama_guru', 'like', '%' . $this->search . '%');
+            })
             ->paginate(10);
 
         return view('livewire.data-kelas', compact('kelas'));

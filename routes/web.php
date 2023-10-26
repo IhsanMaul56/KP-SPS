@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function(){
     });
 
     Route::prefix('/dashboard')->group(function(){
-        Route::get('/siswa', [TabelSiswa::class, 'tampil'])->name('siswa');
+        Route::get('/siswa', [TabelSiswa::class, 'tampil'])->name('beranda');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
         Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');
         Route::get('/nilai-siswa', MasterNilaiSiswa::class)->name('nilai-siswa');
