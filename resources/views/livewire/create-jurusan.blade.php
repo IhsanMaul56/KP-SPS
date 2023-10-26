@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 <button type="button" class="btn btn-primary" wire:click="createJurusan">Simpan</button>
             </div>
         </div>
