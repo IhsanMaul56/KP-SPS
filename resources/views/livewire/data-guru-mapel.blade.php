@@ -41,10 +41,10 @@
                         @endif
                     </td>
                     <td>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruMapel">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruMapel" wire:click="editPengampu({{ $item->kode_pengampu }})">
                             <i class="bi bi-pencil-square text-white"></i>
                         </button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengampu">
+                        <button wire:click="deletePengampuConfirm('{{ $item->kode_pengampu }}')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengampu">
                             <i class="bi bi-trash3"></i>
                         </button>
                     </td>
