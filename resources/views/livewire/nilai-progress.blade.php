@@ -26,14 +26,22 @@
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <table style="display: flex; justify-content: center">
                             <tr>
-                                <td rowspan="4"><img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="100" width="100"></td>
-                                <td><h3 class="fw-bold">SMK SANGKURIANG 1 CIMAHI</h3></td>
+                                <td rowspan="4"><img src="{{ URL::asset('/img/logosmk1@2x.png') }}" class="img-fluid"
+                                        alt="logo smk" height="100" width="100"></td>
+                                <td>
+                                    <h3 class="fw-bold">SMK SANGKURIANG 1 CIMAHI</h3>
+                                </td>
                             </tr>
                             <tr>
-                                <td><h6>Alamat: Jl. Sangkuriang No.76, Cipageran, Kec. Cimahi Utara, Kota Cimahi, Jawa Barat 40511</h6></td>
+                                <td>
+                                    <h6>Alamat: Jl. Sangkuriang No.76, Cipageran, Kec. Cimahi Utara, Kota Cimahi, Jawa Barat
+                                        40511</h6>
+                                </td>
                             </tr>
                             <tr>
-                                <td><h6>Telepon: (022) 6651173</h6></td>
+                                <td>
+                                    <h6>Telepon: (022) 6651173</h6>
+                                </td>
                             </tr>
                         </table>
                         <hr style="border-top: 4px double black; text-align: center;">
@@ -109,26 +117,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td rowspan="2">1</td>
-                                    <td rowspan="2" class="text-start">Bahasa Inggris</td>
-                                    <td rowspan="2">75</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>0</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td rowspan="2">2</td>
-                                    <td rowspan="2" class="text-start">RPL</td>
-                                    <td rowspan="2">65</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>0</td>
-                                </tr>
+                                <?php $no = 1; ?>
+                                @foreach ($dataNilai as $item)
+                                    <tr class="text-center">
+                                        <td rowspan="2">{{ $no++ }}</td>
+                                        <td rowspan="2" class="text-start">{{ $item->nama_mapel }}</td>
+                                        <td rowspan="2">75</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>0</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                        {{ $dataNilai->links() }}
                     </div>
                 </div>
             </div>
