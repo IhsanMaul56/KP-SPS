@@ -21,8 +21,7 @@ class TabelSiswa extends Component
     public function render()
     {
         $user = Auth::user();
-
-
+        
         if ($user && $user->siswa_id) {
             $this->siswa = DB::table('data_siswas')
                 ->where('nis', '=', $user->siswa_id)

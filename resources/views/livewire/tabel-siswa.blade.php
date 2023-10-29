@@ -2,7 +2,7 @@
     <div class="row mb-3">
         <div class="col-3" style="width: 200px">
             <div class="persegi">
-                <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+                <p class="text-white m-0 fs-5 px-3">test</p>
             </div>
         </div>
         <div class="col">

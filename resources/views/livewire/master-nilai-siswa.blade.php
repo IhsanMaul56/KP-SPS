@@ -25,14 +25,15 @@
                 <div class="row p-0 m-0">
                     <div class="card-body" id="shadow">
                         <div class="row mb-2">
-                            <p class="m-0 fs-5">Pilih Tahun Akademik:</p>
+                            <p class="m-0 fs-5">Pilih Tahun Akademik :</p>
                         </div>
                         <div class="row mb-1" style="display: flex; align-items: center;">
                             <div class="col">
-                                <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: max-content; border-radius: 10px 10px 10px 10px">
+                                <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 10px 10px 10px 10px">
                                     <option hidden selected>Pilih</option>
-                                    <option>2023/2024 Semester Ganjil</option>
-                                    <option>2024/2025 Semester Genap</option>
+                                    @foreach ($akademikList as $kodeTahun => $tahunAkademik)
+                                        <option value="{{ $akademikList }}">{{ $tahunAkademik }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col text-end">
@@ -49,9 +50,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php 
+                                    $no = 1;
+                                ?>
                                     <tr class="text-center">
-                                        <td>1</td>
-                                        <td class="text-start">BAHASA INGGRIS</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td></td>
                                         <td>75</td>
                                         <td>A</td>
                                     </tr>
