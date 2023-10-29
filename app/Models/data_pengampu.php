@@ -11,9 +11,11 @@ class data_pengampu extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_pengampu';
+
     protected $fillable = [
         'pengampu_id',
-        'nama_pengampu',
+        'nama_guru',
         'mapel_id',
         'nama_mapel'
     ];

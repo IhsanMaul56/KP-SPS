@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="row p-0 m-0">
-                    <div class="card-body" id="shadow">
+                    <div class="card-body h-100 overflow-auto" id="shadow">
                         <div class="row mb-2">
                             <p class="m-0 fs-5">Pilih Tahun Akademik :</p>
                         </div>
@@ -37,7 +37,8 @@
                                 </select>
                             </div>
                             <div class="col text-end">
-                                <a href="{{ route('nilai-progress') }}" class="btn btn-success" style="text-decoration: none">Nilai Progress</a>
+                                <a href="{{ route('nilai-progress') }}" class="btn btn-success"
+                                    style="text-decoration: none">Nilai Progress</a>
                             </div>
                         </div>
                         <table class="table table-bordered my-3">
@@ -50,15 +51,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                    $no = 1;
-                                ?>
+                                <?php $no = 1; ?>
+                                @foreach ($dataNilai as $item)
                                     <tr class="text-center">
                                         <td>{{ $no++ }}</td>
-                                        <td></td>
+                                        <td class="text-start">{{ $item->nama_mapel }}</td>
                                         <td>75</td>
                                         <td>A</td>
                                     </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

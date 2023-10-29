@@ -13,6 +13,7 @@ class TabelSiswa extends Component
     public $kelas;
     public $siswa;
     public $tingkat;
+    public $tahun;
     public $search = '';
 
     use WithPagination;
@@ -21,26 +22,34 @@ class TabelSiswa extends Component
     public function render()
     {
         $user = Auth::user();
-        
+      
         if ($user && $user->siswa_id) {
             $this->siswa = DB::table('data_siswas')
                 ->where('nis', '=', $user->siswa_id)
                 ->select('data_siswas.*')
                 ->get();
-    
+
             if ($this->siswa) {
                 $tingkatId = $this->siswa->pluck('tingkat_id')->toArray();
                 $kelasId = $this->siswa->pluck('kelas_id')->toArray();
-    
+
                 $this->tingkat = DB::table('data_tingkats')
                     ->where('kode_tingkat', '=', $tingkatId)
                     ->value('nama_tingkat');
-    
+
                 $this->kelas = DB::table('data_kelas')
                     ->where('kode_kelas', '=', $kelasId)
                     ->value('nama_kelas');
-    
+
                 if ($kelasId && $this->kelas && $this->tingkat) {
+                    $tahunId = DB::table('data_kelas')
+                        ->where('kode_kelas', '=', $kelasId)
+                        ->value('tahun_id');
+                        
+                    $this->tahun = DB::table('tahun_akademiks')
+                        ->where('kode_tahun', '=', $tahunId)
+                        ->value('tahun_akademik');
+
                     $jadwal = DB::table('data_jadwals')
                         ->select(
                             'data_jadwals.*',
@@ -65,11 +74,13 @@ class TabelSiswa extends Component
         return view('livewire.tabel-siswa', compact('jadwal'));
     }
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
-    public function tampil(){
+    public function tampil()
+    {
         return view('partials.content_siswa');
     }
 }

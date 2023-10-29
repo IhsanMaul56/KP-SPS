@@ -4,13 +4,21 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\data_pengampu;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Session;
 
 class DataGuruMapel extends Component
 {
     public $guruList;
     public $mapelList;
+    public $pengampu_id, $mapel_id;
+    public $data = [
+        'kode_pengampu' => '',
+        'pengampu_id' => '',
+        'mapel_id' => '',
+    ];
+    public $selectedPengampuId;
     
     public $search = '';
 
@@ -19,6 +27,18 @@ class DataGuruMapel extends Component
 
     public function render()
     {
+        $guru = DB::table('data_gurus')
+            ->select('nip', 'nama_guru')
+            ->get();
+
+        $this->guruList = $guru->pluck('nama_guru', 'nip');
+
+        $mapel = DB::table('data_mapels')
+            ->select('kode_mapel', 'nama_mapel')
+            ->get();
+
+        $this->mapelList = $mapel->pluck('nama_mapel', 'kode_mapel');
+        
         $pengampu = DB::table('data_pengampus')
             ->leftJoin('data_gurus', 'data_pengampus.pengampu_id', '=', 'data_gurus.nip')
             ->select(
@@ -31,19 +51,6 @@ class DataGuruMapel extends Component
             })
             ->paginate(10);
 
-            $guru = DB::table('data_gurus')
-            ->select('nip', 'nama_guru')
-            ->get();
-
-            $this->guruList = $guru->pluck('nama_guru', 'nip');
-
-            $mapel = DB::table('data_mapels')
-            ->select('kode_mapel', 'nama_mapel')
-            ->get();
-
-            $this->mapelList = $mapel->pluck('nama_mapel', 'kode_mapel');
-
-
         return view('livewire.data-guru-mapel', compact('pengampu'));
     }
 
@@ -55,7 +62,88 @@ class DataGuruMapel extends Component
         return view('partials.mapel-guru');
     }
 
-    public function tambahGuruMapel(){
-    
+    public function createPengampu(){
+        $this->validate([
+            'pengampu_id' => 'required',
+            'mapel_id' => 'required'
+        ]);
+
+        $guruData = DB::table('data_gurus')
+            ->where('nip', $this->pengampu_id)
+            ->value('nama_guru');
+        
+        $mapelData = DB::table('data_mapels')
+            ->where('kode_mapel', $this->mapel_id)
+            ->value('nama_mapel');
+
+        try{
+            data_pengampu::create([
+                'pengampu_id' => $this->pengampu_id,
+                'nama_guru' => $guruData,
+                'mapel_id' => $this->mapel_id,
+                'nama_mapel' => $mapelData
+            ]);
+
+            session()->flash('berhasil', 'Data guru pengampu berhasil disimpan.');
+        } catch (\Exception $e) {
+            Session::flash('gagal', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
+        }
+    }
+
+    public function editPengampu($pengampuId)
+    {
+        $pengampu = data_pengampu::find($pengampuId);
+        if($pengampu){
+            $this->selectedPengampuId = $pengampuId;
+            $this->data = [
+                'kode_pengampu' => $pengampu->kode_pengampu,
+                'pengampu_id' => $pengampu->pengampu_id,
+                'mapel_id' => $pengampu->mapel_id
+            ];
+        }
+    }
+
+    public function updateSelectedPengampu()
+    {
+        $this->validate([
+            'data.pengampu_id' => 'required',
+            'data.mapel_id' => 'required',
+        ]);
+
+        $guruData = DB::table('data_gurus')
+            ->where('nip', $this->data['pengampu_id'])
+            ->value('nama_guru');
+        
+        $mapelData = DB::table('data_mapels')
+            ->where('kode_mapel', $this->data['mapel_id'])
+            ->value('nama_mapel');
+
+        try{
+            data_pengampu::where('kode_pengampu', $this->selectedPengampuId)->update([
+                'pengampu_id' => $this->data['pengampu_id'],
+                'nama_guru' => $guruData,
+                'mapel_id' => $this->data['mapel_id'],
+                'nama_mapel' => $mapelData
+            ]);
+
+            session()->flash('berhasil', 'Data guru pengampu berhasil diupdate.');
+        } catch (\Exception $e) {
+            session()->flash('gagal', 'Terjadi kesalahan saat mengupdate data guru pengampu: ' . $e->getMessage());
+        }
+    }
+
+    public function deletePengampuConfirm($kode_pengampu)
+    {
+        $this->selectedPengampuId = data_pengampu::find($kode_pengampu);
+    }
+
+    public function deletePengampu()
+    {
+        if($this->selectedPengampuId){
+            data_pengampu::where('kode_pengampu', $this->selectedPengampuId->kode_pengampu)->delete();
+            Session::flash('berhasil', 'Data berhasil dihapus');
+        }
+
+        $this->resetPage();
     }
 }

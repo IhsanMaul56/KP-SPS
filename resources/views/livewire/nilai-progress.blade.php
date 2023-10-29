@@ -104,20 +104,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                    $no = 1;
-                                ?>
-                                <tr class="text-center">
-                                    <td rowspan="2">{{ $no++ }}</td>
-                                    <td rowspan="2" class="text-start"></td>
-                                    <td rowspan="2">75</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>0</td>
-                                </tr>
+                                <?php $no = 1; ?>
+                                @foreach ($dataNilai as $item)
+                                    <tr class="text-center">
+                                        <td rowspan="2">{{ $no++ }}</td>
+                                        <td rowspan="2" class="text-start">{{ $item->nama_mapel }}</td>
+                                        <td rowspan="2">75</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>0</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                        {{ $dataNilai->links() }}
                     </div>
                 </div>
             </div>
