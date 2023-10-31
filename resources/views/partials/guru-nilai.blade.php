@@ -15,7 +15,7 @@
             <div class="grid-tengah">
                 <div class="row">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Nilai |</span><span class="h2 text-biru" style="padding-left: 10px;">Mata Pelajaran</span>
+                        <span class="h1 fw-bold text-biru">Data |</span><span class="h2 text-biru" style="padding-left: 10px;">Nilai Mata Pelajaran</span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>

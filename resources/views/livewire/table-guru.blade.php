@@ -1,7 +1,6 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     <div class="col">
-        <h3 class="fs-5 mb-2">Jadwal Mengajar</h3>
-        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px;">
+        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px;">
         @if ($jadwal != null)    
             <table class="table table-bordered">
                 <thead>
@@ -18,7 +17,7 @@
                     @foreach ($jadwal as $item)
                         <tr class="text-center">
                             <td>{{ $no++ }}</td>
-                            <td class="text-start">
+                            <td>
                                 @if ($item->nama_mapel)
                                     {{ $item->nama_mapel }}
                                 @endif

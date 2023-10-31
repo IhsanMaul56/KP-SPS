@@ -1,5 +1,4 @@
 <div class="col">
-
     <div class="card-body h-100 overflow-auto">
         <div class="col">
             <h3 class="fs-5 mb-2">Atur TP Untuk Kelulusan Mata Pelajaran</h3>

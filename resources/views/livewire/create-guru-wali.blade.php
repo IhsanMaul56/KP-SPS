@@ -22,7 +22,7 @@
                     <div class="col">
                         <label>Pilih Tingkat :</label>
                         <select name="tingkat_id" wire:model="tingkat_id" class="form-control">
-                            <option value="">Pilih Tingkat</option>
+                            <option value="" hidden selected>Pilih Tingkat</option>
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                 <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
                             @endforeach
@@ -33,7 +33,7 @@
                     <div class="col">
                         <label>Pilih Kelas :</label>
                         <select name="kelas_id" wire:model="kelas_id" class="form-control">
-                            <option value="">Jurusan - Kelas</option>
+                            <option value="" hidden selected>Jurusan - Kelas</option>
                             @foreach ($kelasList as $kodeKelas => $namaKelas)
                                 <option value="{{ $kodeKelas }}">{{ $namaJurusan[$kodeKelas] }} - {{ $namaKelas }}</option>
                             @endforeach
@@ -44,7 +44,7 @@
                     <div class="col">
                         <label>Pilih Guru :</label>
                         <select name="wali_id" wire:model="wali_id" class="form-control">
-                            <option value="">NIP Guru - Nama Guru</option>
+                            <option value="" hidden selected>NIP Guru - Nama Guru</option>
                             @foreach ($guruList as $nipGuru => $namaGuru)
                                 <option value="{{ $nipGuru }}">{{ $nipGuru }} - {{ $namaGuru }}</option>
                             @endforeach

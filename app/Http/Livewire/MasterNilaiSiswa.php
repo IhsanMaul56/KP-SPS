@@ -14,7 +14,6 @@ class MasterNilaiSiswa extends Component
     public $siswa;
     public $tingkat;
     public $kelas;
-    public $siswa;
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -28,13 +27,13 @@ class MasterNilaiSiswa extends Component
 
         $this->akademikList = $tahunAkademik->pluck('tahun_akademik');
 
-        if($user && $user->siswa_id){
+        if ($user && $user->siswa_id) {
             $this->siswa = DB::table('data_siswas')
                 ->where('nis', '=', $user->siswa_id)
                 ->select('data_siswas.*')
                 ->get();
-            
-            if($this->siswa){
+
+            if ($this->siswa) {
                 $kelasId = $this->siswa->pluck('kelas_id');
                 $tingkatId = $this->siswa->pluck('tingkat_id');
 
@@ -56,19 +55,19 @@ class MasterNilaiSiswa extends Component
     public function NilaiProgress()
     {
         $user = Auth::user();
-        if($user && $user->siswa_id){
+        if ($user && $user->siswa_id) {
             $siswa = DB::table('data_siswas')
                 ->where('nis', $user->siswa_id)
                 ->leftJoin('data_kelas', 'data_siswas.kelas_id', '=', 'data_kelas.kode_kelas')
                 ->select('data_siswas.nama_siswa', 'data_siswas.nis', 'data_kelas.nama_kelas', 'data_kelas.nama_tingkat', 'data_kelas.nama_tahun')
                 ->first();
-          
+
             $this->siswa = DB::table('data_siswas')
                 ->where('nis', '=', $user->siswa_id)
                 ->select('data_siswas.*')
                 ->get();
-            
-            if($this->siswa){
+
+            if ($this->siswa) {
                 $kelasId = $this->siswa->pluck('kelas_id');
                 $tingkatId = $this->siswa->pluck('tingkat_id');
 
@@ -81,12 +80,12 @@ class MasterNilaiSiswa extends Component
                         'data_pengampus.nama_mapel'
                     )
                     ->distinct()
-                    ->paginate(3);
-              if ($siswa) {
-                  return view('livewire.nilai-progress', compact('dataNilai'))->with('siswa', $siswa);
-              } else {
-                  session()->flash('gagal', 'Siswa tidak ditemukan.');
-              }
+                    ->paginate(5);
+                if ($siswa) {
+                    return view('livewire.nilai-progress', compact('dataNilai'))->with('siswa', $siswa);
+                } else {
+                    session()->flash('gagal', 'Siswa tidak ditemukan.');
+                }
             }
         }
     }

@@ -24,13 +24,10 @@
                 </div>
                 <div class="row p-0 m-0">
                     <div class="card-body h-100 overflow-auto" id="shadow">
-                        <div class="row mb-2">
-                            <p class="m-0 fs-5">Pilih Tahun Akademik :</p>
-                        </div>
                         <div class="row mb-1" style="display: flex; align-items: center;">
                             <div class="col">
-                                <select class="form-select" id="shadow" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 10px 10px 10px 10px">
-                                    <option hidden selected>Pilih</option>
+                                <select class="form-select" style="border-color: rgba(168, 168, 168, 1); width: max-content; border-radius: 10px 10px 10px 10px">
+                                    <option hidden selected>Pilih Tahun Akademik</option>
                                     @foreach ($akademikList as $kodeTahun => $tahunAkademik)
                                         <option value="{{ $akademikList }}">{{ $tahunAkademik }}</option>
                                     @endforeach
@@ -55,7 +52,7 @@
                                 @foreach ($dataNilai as $item)
                                     <tr class="text-center">
                                         <td>{{ $no++ }}</td>
-                                        <td class="text-start">{{ $item->nama_mapel }}</td>
+                                        <td>{{ $item->nama_mapel }}</td>
                                         <td>75</td>
                                         <td>A</td>
                                     </tr>

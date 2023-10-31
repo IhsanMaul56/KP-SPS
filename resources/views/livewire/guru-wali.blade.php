@@ -2,9 +2,9 @@
     <div class="col">
         @if ($dataSiswa != null)
             <div class="row mb-3">
-                <div class="col-3" style="width: 200px">
+                <div class="col-auto">
                     <div class="persegi">
-                        <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+                        <p class="text-white m-0 fs-5 px-3">2022/2023</p>
                     </div>
                 </div>
                 <div class="col">
@@ -15,8 +15,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari"
-                        style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
+                    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="border-color: rgba(168, 168, 168, 1); width: max-content; border-radius: 10px 10px 10px 10px;">
                 </div>
             </div>
             <table class="table table-bordered">
