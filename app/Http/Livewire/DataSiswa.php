@@ -44,7 +44,7 @@ class DataSiswa extends Component
     }
 
     public function deleteSiswa()
-    {        
+    {
         if ($this->selectedSiswa) {
             User::where('siswa_id', $this->selectedSiswa->nis)->delete();
             data_siswa::where('nis', $this->selectedSiswa->nis)->delete();

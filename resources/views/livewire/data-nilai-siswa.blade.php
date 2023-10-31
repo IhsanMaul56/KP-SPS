@@ -24,6 +24,18 @@
                 <div class="row p-0 m-0 page active-page" id="Formatif" style="font-size: unset">
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <form action="#" method="POST" id="form1">
+                            @if (Session::has('berhasil'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('berhasil') }}
+                                </div>
+                            @endif
+
+                            @if (session('gagal'))
+                                <div class="alert alert-danger">
+                                    {{ session('gagal') }}
+                                </div>
+                            @endif
+
                             <h3 class="fw-bold">NILAI FORMATIF</h3>
                             <hr>
                             <div class="row mb-2">
@@ -32,7 +44,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Kode Mata Pelajaran">
+                                        <input id="kode_mapel" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Kode Mata Pelajaran" value="{{ $siswa->kode_pengampu }}">
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +54,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Mata Pelajaran">
+                                        <input id="nama_mapel" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Mata Pelajaran" value="{{ $siswa->nama_mapel }}">
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +64,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Tahun Ajaran">
+                                        <input id="tahun_ajar" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Tahun Ajaran" value="{{ $siswa->nama_tahun }}">
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +74,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan NIS">
+                                        <input id="nis" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan NIS" value="{{ $siswa->nis }}">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +84,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Nama Siswa">
+                                        <input id="nama_siswa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Nama Siswa" value="{{ $siswa->nama_siswa }}">
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +94,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Kelas">
+                                        <input id="kelas" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan Kelas" value="{{ $siswa->nama_tingkat }} {{ $siswa->nama_kelas }}">
                                     </div>
                                 </div>
                             </div>
