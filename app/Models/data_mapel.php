@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class data_mapel extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'kode_mapel';
 
     protected $fillable = [
         'nama_mapel'
