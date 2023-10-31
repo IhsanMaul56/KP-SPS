@@ -80,8 +80,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
+                                            <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
                                         </div>
                                     </div>
                                 </div>
@@ -91,8 +90,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
+                                            <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
                                         </div>
                                     </div>
                                 </div>
@@ -117,8 +115,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
+                                            <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
                                         </div>
                                     </div>
                                 </div>
@@ -128,8 +125,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="nama" type="text" class="form-control"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
+                                            <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan">
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +138,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="col p-0">
