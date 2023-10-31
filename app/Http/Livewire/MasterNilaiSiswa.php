@@ -23,7 +23,6 @@ class MasterNilaiSiswa extends Component
         $user = Auth::user();
 
         if ($user && $user->siswa_id) {
-
             $this->siswa = DB::table('data_siswas')
                 ->where('nis', '=', $user->siswa_id)
                 ->select('data_siswas.*')

@@ -97,23 +97,28 @@
                         <table class="table table-bordered mt-3">
                             <thead>
                                 <tr class="text-center">
-                                    <th>NO</th>
-                                    <th>MATA PELAJARAN</th>
-                                    <th>NILAI AKHIR</th>
-                                    <th>CAPAIAN KOMPETENSI</th>
+                                    <th rowspan="2">NO</th>
+                                    <th rowspan="2">MATA PELAJARAN</th>
+                                    <th colspan="2">FORMATIF</th>
+                                    <th colspan="2">SUMATIF</th>
+                                </tr>
+                                <tr class="text-center">
+                                    <th>TUGAS</th>
+                                    <th>KUIS</th>
+                                    <th>UTS</th>
+                                    <th>UAS</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
                                 @foreach ($dataNilai as $item)
                                     <tr class="text-center">
-                                        <td rowspan="2">{{ $no++ }}</td>
-                                        <td rowspan="2" class="text-start">{{ $item->nama_mapel }}</td>
-                                        <td rowspan="2">75</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td>0</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->nama_mapel }}</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
                                     </tr>
                                 @endforeach
                             </tbody>

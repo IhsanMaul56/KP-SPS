@@ -1,15 +1,15 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
-        <div class="col">
-            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
+        <div class="col-auto">
+            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
                 <option value="" hidden selected>Mata Pelajaran</option>
                 @foreach ($guru as $mapel)
                     <option value="{{ $mapel->nama_mapel }}">{{ $mapel->nama_mapel }}</option>
                 @endforeach
             </select>
         </div>
-        <div class="col">
-            <select wire:model="tingkatSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
+        <div class="col-auto">
+            <select wire:model="tingkatSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
                 <option value="" hidden selected>Tingkat</option>
                 @if ($tingkat)
                     @foreach ($tingkat as $ting)
@@ -19,7 +19,7 @@
             </select>
         </div>
         <div class="col">
-            <select wire:model="kelasSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
+            <select wire:model="kelasSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
                 <option value="" hidden selected>Kelas</option>
                 @if ($kelas)
                     @foreach ($kelas as $kel)
