@@ -1,7 +1,7 @@
 {{-- Beranda Kurikulum --}}
 <div class="col p-0 page active-page" id="BerandaKurikulum">
     <div class="grid-tengah">
-        <div class="row" style="margin-bottom: 20px">
+        <div class="row">
             <div class="col">
                 <span class="h1 fw-bold text-biru">Beranda</span>
             </div>
@@ -10,7 +10,7 @@
                 <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
             </div>
         </div>
-        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">
+        <div class="row p-0 m-0 mt-2" style="display: flex; justify-content: space-between;">
             @livewire('data-kurikulum')
         </div>
     </div>

@@ -72,7 +72,7 @@ class LoginController extends Controller
                 return redirect('/dashboard/siswa');
             }
         } else {
-            return redirect()->back()->withErrors('Username dan Password yang dimasukkan salah')->withInput();
+            return redirect()->back()->withErrors('Email atau Password Salah')->withInput();
 
         }
             return back()->with('loginError', 'Login Gagal!');

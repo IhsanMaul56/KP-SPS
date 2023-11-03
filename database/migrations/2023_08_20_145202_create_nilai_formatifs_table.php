@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('nama_mapel');
             $table->foreignId('kelas_id')->constrained('data_kelas', 'kode_kelas');
             $table->string('nama_kelas');
-            $table->foreignId('tp_id')->constrained('data_elemens', 'kode_elemen');
-            $table->string('nama_tp');
+            $table->string('kuis');
+            $table->string('tugas');
             $table->timestamps();
         });
     }

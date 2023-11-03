@@ -16,8 +16,8 @@ class nilai_formatif extends Model
         'nama_mapel',
         'kelas_id',
         'nama_kelas',
-        'tp_id',
-        'nama_tp'
+        'kuis',
+        'tugas'
     ];
 
     //cardinality
@@ -34,7 +34,4 @@ class nilai_formatif extends Model
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
     }
 
-    public function tp() : BelongsTo{
-        return $this->belongsTo(data_elemen::class, 'data_elemens', 'kode_elemen');
-    }
 }
