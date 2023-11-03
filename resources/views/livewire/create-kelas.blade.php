@@ -42,7 +42,12 @@
                 <div class="row mt-3">
                     <div class="col">
                         <label>Nama Kelas :</label>
-                        <input wire:model="nama_kelas" type="text" class="form-control" placeholder="Masukan nama kelas">
+                        <input wire:model="nama_kelas" type="text" class="form-control @error('nama_kelas') is-invalid @enderror" placeholder="Masukan nama kelas">
+                        @error('nama_kelas')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>

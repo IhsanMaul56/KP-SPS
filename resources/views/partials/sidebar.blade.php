@@ -25,17 +25,18 @@
                         <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jadwal Mapel</a>
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jurusan</a>
                         <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
+                        <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Mapel</a>
                     </div>
                     <br>
                 </div>
-                <div class="row mx-0">
+                {{-- <div class="row mx-0">
                     <span class="sidebar dropdown-toggle {{ Request::is('dashboard/admin/set-tp') ? 'active' : ''}}" data-bs-toggle="collapse" data-bs-target="#DataNilai" aria-expanded="false"><i class="bi bi-clipboard2-data icon-kiri"></i>Formatif</span>
                     <div class="row mx-0 collapse" id="DataNilai">
                         <a href="{{ route('cek-tp') }}" class="ling dd-kiri sidebar fs-5">TP</a>
                         <a href="{{ route('cek-atp') }}" class="ling dd-kiri sidebar fs-5">ATP</a>
                     </div>
                     <br>
-                </div>
+                </div> --}}
                 <div class="row mx-0">
                     <a href="#" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
                 </div>

@@ -49,7 +49,7 @@
                             <td class="text-start">{{ $item->nama_siswa }}</td>
                             <td>0</td>
                             <td>
-                                <a href="{{ route('tambah-nilai-siswa') }}" class="btn btn-primary" style="text-decoration: none;"><i class="bi bi-plus-lg"></i></a>
+                                <a href="{{ route('tambah-nilai-siswa', ['nis' => $item->nis]) }}" wire:click="render('{{ $item->nis }}')" class="btn btn-primary" style="text-decoration: none;"><i class="bi bi-plus-lg"></i></a>
                             </td>
                         </tr>
                     @endforeach

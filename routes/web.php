@@ -24,6 +24,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSiswaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Livewire\EditDataGuru;
+use App\Http\Livewire\MasterMapel;
 use App\Http\Livewire\NilaiTp;
 use App\Http\Livewire\NilaiAtp;
 /*
@@ -65,6 +66,7 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/admin/update-kelas', [DataKelas::class, 'updateKelas'])->name('update-kelas');
         // Route::get('/admin/tambah-wali', [GuruWali::class, 'create_wali'])->name('create-data-wali');
         Route::get('/admin/tambah-guru-mapel', [DataGuruMapel::class, 'create_gumapel'])->name('create-guru-mapel');
+        Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
         
@@ -89,6 +91,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/nilai-walis', [GuruWali::class, 'tampil'])->name('nilai-walis');
         Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');
         Route::get('/profile-guru', [AkunGuru::class, 'tampilGuru'])->name('profile-guru');
+        Route::get('/input-nilai/{nis}', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
     });
 
     Route::prefix('/dashboard')->group(function(){
@@ -103,4 +106,3 @@ Route::middleware(['auth'])->group(function(){
 });
 
 // Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');
-Route::get('/input-nilai', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
