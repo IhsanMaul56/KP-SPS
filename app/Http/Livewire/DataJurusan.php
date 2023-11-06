@@ -151,9 +151,9 @@ class DataJurusan extends Component
     public function deleteJurusan()
     {
         if ($this->jurusanSelectedId) {
+            data_jurusan::where('kode_jurusan', $this->jurusanSelectedId->kode_jurusan)->delete();
             data_kajur::where('kode_kajur', $this->jurusanSelectedId->kode_jurusan)->delete();
             data_kelas::where('jurusan_id', $this->jurusanSelectedId->kode_jurusan)->delete();
-            data_jurusan::where('kode_jurusan', $this->jurusanSelectedId->kode_jurusan)->delete();
 
             Session::flash('berhasil', 'Data berhasil dihapus');
         }
