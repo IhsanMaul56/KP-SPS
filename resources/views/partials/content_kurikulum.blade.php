@@ -10,7 +10,7 @@
                 <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
             </div>
         </div>
-        <div class="row p-0 m-0" style="display: flex; justify-content: space-between;">
+        <div class="row p-0 m-0 mt-2" style="display: flex; justify-content: space-between;">
             @livewire('data-kurikulum')
         </div>
     </div>

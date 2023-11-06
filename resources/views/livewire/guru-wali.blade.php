@@ -2,9 +2,9 @@
     <div class="col">
         @if ($dataSiswa != null)
             <div class="row mb-3">
-                <div class="col-3" style="width: 200px">
+                <div class="col-auto">
                     <div class="persegi">
-                        <p class="text-white m-0 fs-5 px-3">2022/2023 Ganjil</p>
+                        <p class="text-white m-0 fs-5 px-3">2022/2023</p>
                     </div>
                 </div>
                 <div class="col">
@@ -15,8 +15,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari"
-                        style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 10px 10px 10px 10px;">
+                    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="border-color: rgba(168, 168, 168, 1); width: max-content; border-radius: 10px 10px 10px 10px;">
                 </div>
             </div>
             <table class="table table-bordered">
@@ -26,9 +25,6 @@
                         <th>NIS</th>
                         <th>NAMA SISWA</th>
                         <th>JENIS KELAMIN</th>
-                        <th>NILAI</th>
-                        <th>KETERANGAN</th>
-                        <th>AKSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,17 +35,10 @@
                             <td>{{ $item->nis }}</td>
                             <td class="text-start">{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
-                            <td>0</td>
-                            <td class="text-start">Baba</td>
-                            <td>Aksi</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="col text-end mt-3">
-                <button class="btn btn-success" id="shadow" type="submit"
-                    style="position: relative;">Setujui</button>
-            </div>
         @else
             <div class="col text-center">
                 <img src="{{ URL::asset('/img/warning.png') }}" alt="warning" width="125px;">

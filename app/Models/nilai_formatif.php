@@ -14,10 +14,14 @@ class nilai_formatif extends Model
     protected $fillable = [
         'mapel_id',
         'nama_mapel',
+        'tingkat_id',
+        'nama_tingkat',
         'kelas_id',
         'nama_kelas',
-        'tp_id',
-        'nama_tp'
+        'siswa_id',
+        'nama_siswa',
+        'kuis',
+        'tugas',
     ];
 
     //cardinality
@@ -34,7 +38,11 @@ class nilai_formatif extends Model
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
     }
 
-    public function tp() : BelongsTo{
-        return $this->belongsTo(data_elemen::class, 'data_elemens', 'kode_elemen');
+    public function siswa() : BelongsTo{
+        return $this->belongsTo(data_siswa::class, 'siswa_id', 'nis');
+    }
+
+    public function tingkat() : BelongsTo{
+        return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
     }
 }

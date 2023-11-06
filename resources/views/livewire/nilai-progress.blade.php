@@ -12,7 +12,7 @@
     <div class="container-fluid p-0">
         @include('partials.sidebar')
         <div class="col p-0">
-            <div class="grid-tengah">
+            <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
                         <span class="h1 fw-bold text-biru">Nilai Progress</span>
@@ -51,94 +51,82 @@
                         <div class="row mb-3">
                             <h3 class="text-center fw-bold">(RAPOR)</h3>
                         </div>
-                        <div class="row mb-1">
-                            <div class="col">
-                                <span>Nama Peserta Didik</span>
+                        @if ($siswa)
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <span>Nama Peserta Didik</span>
+                                </div>
+                                <div class="col">
+                                    <span>: {{ $siswa->nama_siswa }}</span>
+                                </div>
+
+                                <div class="col">
+                                    <span>Fase</span>
+                                </div>
+                                <div class="col">
+                                    <span>: E</span>
+                                </div>
                             </div>
-                            <div class="col">
-                                <span>: Ahmad Reza</span>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <span>NIS</span>
+                                </div>
+                                <div class="col">
+                                    <span>: {{ $siswa->nis }}</span>
+                                </div>
+                                <div class="col">
+                                    <span>Semester</span>
+                                </div>
+                                <div class="col">
+                                    <span>: 1</span>
+                                </div>
                             </div>
-                            <div class="col">
-                                <span>Kelas</span>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <span>Kelas</span>
+                                </div>
+                                <div class="col">
+                                    <span>: {{ $siswa->nama_tingkat }} {{ $siswa->nama_kelas }}</span>
+                                </div>
+                                <div class="col">
+                                    <span>Tahun Ajaran</span>
+                                </div>
+                                <div class="col">
+                                    <span>: {{ $siswa->nama_tahun }}</span>
+                                </div>
                             </div>
-                            <div class="col">
-                                <span>: X RPL 1</span>
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col">
-                                <span>NIS</span>
-                            </div>
-                            <div class="col">
-                                <span>: 112233</span>
-                            </div>
-                            <div class="col">
-                                <span>Fase</span>
-                            </div>
-                            <div class="col">
-                                <span>: F</span>
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col">
-                                <span>Sekolah</span>
-                            </div>
-                            <div class="col">
-                                <span>: SMK Sangkuriang 1</span>
-                            </div>
-                            <div class="col">
-                                <span>Semester</span>
-                            </div>
-                            <div class="col">
-                                <span>: 2</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span>Alamat</span>
-                            </div>
-                            <div class="col">
-                                <span>: Cimahi</span>
-                            </div>
-                            <div class="col">
-                                <span>Tahun Ajaran</span>
-                            </div>
-                            <div class="col">
-                                <span>: 2023⁄2024 Ganjil</span>
-                            </div>
-                        </div>
+                        @endif
                         <table class="table table-bordered mt-3">
                             <thead>
                                 <tr class="text-center">
-                                    <th>NO</th>
-                                    <th>MATA PELAJARAN</th>
-                                    <th>NILAI AKHIR</th>
-                                    <th>CAPAIAN KOMPETENSI</th>
+                                    <th rowspan="2">NO</th>
+                                    <th rowspan="2">MATA PELAJARAN</th>
+                                    <th colspan="2">FORMATIF</th>
+                                    <th colspan="2">SUMATIF</th>
+                                </tr>
+                                <tr class="text-center">
+                                    <th>TUGAS</th>
+                                    <th>KUIS</th>
+                                    <th>UTS</th>
+                                    <th>UAS</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                @foreach ($dataNilai as $item)
+                                @foreach ($dataMapel as $item)
                                     <tr class="text-center">
-                                        <td rowspan="2">{{ $no++ }}</td>
-                                        <td rowspan="2" class="text-start">{{ $item->nama_mapel }}</td>
-                                        <td rowspan="2">75</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td>0</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->nama_mapel }}</td>
+                                        <td>{{ $item->formatifs ? $item->formatifs->tugas : '-' }}</td>
+                                        <td>{{ $item->formatifs ? $item->formatifs->kuis : '-' }}</td>
+                                        <td>{{ $item->sumatifs ? $item->sumatifs->uts : '-' }}</td>
+                                        <td>{{ $item->sumatifs ? $item->sumatifs->uas : '-' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $dataNilai->links() }}
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
-            <div class="grid-kanan">
-                @include('partials.rightbar_siswa')
             </div>
         </div>
     </div>

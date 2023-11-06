@@ -32,5 +32,13 @@ class data_tingkat extends Model
         return $this->hasMany(data_kelas::class, 'tingkat_id', 'kode_tingkat');
     }
 
+    public function sumatif() : HasMany{
+        return $this->hasMany(nilai_sumatif::class, 'siswa_id', 'nis');
+    }
+
+    public function formatif() : HasMany{
+        return $this->hasMany(nilai_formatif::class, 'siswa_id', 'nis');
+    }
+
     //invers cardinality
 }

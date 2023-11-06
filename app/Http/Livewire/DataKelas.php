@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\data_kelas;
+use App\Models\data_wali;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -70,9 +71,11 @@ class DataKelas extends Component
     public function createKelas()
     {
         $this->validate([
-            'nama_kelas' => 'required',
+            'nama_kelas' => 'required|unique:data_kelas,nama_kelas',
             'jurusan_id' => 'required',
             'tingkat_id' => 'required',
+        ], [
+            'nama_kelas.unique' => 'Nama Kelas Sudah ada'
         ]);
 
         $jurusanData = DB::table('data_jurusans')
@@ -161,6 +164,7 @@ class DataKelas extends Component
     public function deleteKelas()
     {
         if ($this->selectedKelasId) {
+            data_wali::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
             data_kelas::where('kode_kelas', $this->selectedKelasId->kode_kelas)->delete();
             Session::flash('berhasil', 'Data berhasil dihapus');
         }

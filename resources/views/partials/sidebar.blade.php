@@ -1,5 +1,5 @@
-<div class="row m-0">
-    <div class="grid-kiri p-0 text-center">
+<div class="row m-0 h-100 overflow-auto">
+    <div class="grid-kiri p-0 text-center overflow-auto">
     <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="120" width="120" style="margin-top: 20px; margin-bottom: 10px;">
             <br><h5 class="text-white fw-bold" style="margin-bottom: 0px;">SMK SANGKURIANG <br> 1 CIMAHI</h5>
         <div class="col sedbar" style="margin-top: 40px">
@@ -25,17 +25,18 @@
                         <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jadwal Mapel</a>
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Jurusan</a>
                         <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Kelas</a>
+                        <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5" style="text-decoration:none">Mapel</a>
                     </div>
                     <br>
                 </div>
-                <div class="row mx-0">
+                {{-- <div class="row mx-0">
                     <span class="sidebar dropdown-toggle {{ Request::is('dashboard/admin/set-tp') ? 'active' : ''}}" data-bs-toggle="collapse" data-bs-target="#DataNilai" aria-expanded="false"><i class="bi bi-clipboard2-data icon-kiri"></i>Formatif</span>
                     <div class="row mx-0 collapse" id="DataNilai">
                         <a href="{{ route('cek-tp') }}" class="ling dd-kiri sidebar fs-5">TP</a>
                         <a href="{{ route('cek-atp') }}" class="ling dd-kiri sidebar fs-5">ATP</a>
                     </div>
                     <br>
-                </div>
+                </div> --}}
                 <div class="row mx-0">
                     <a href="#" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
                 </div>

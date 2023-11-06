@@ -85,3 +85,11 @@ function nextStep() {
 }
 
 showStep(currentStep);
+
+// Modal
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertGuruWali').modal('hide');
+    $('#UpdateGuruWali').modal('hide');
+    $('#DeleteDataWali').modal('hide');
+});

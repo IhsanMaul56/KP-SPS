@@ -49,6 +49,16 @@ class data_siswa extends Model
         return $this->hasOne(User::class, 'siswa_id', 'nis');
     }
 
+    public function sumatif() : HasOne
+    {
+        return $this->hasOne(nilai_sumatif::class, 'siswa_id', 'nis');
+    }
+
+    public function formatif() : HasOne
+    {
+        return $this->hasOne(nilai_formatif::class, 'siswa_id', 'nis');
+    }
+    
     //invers cardinality
     public function kelas() : BelongsTo{
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
