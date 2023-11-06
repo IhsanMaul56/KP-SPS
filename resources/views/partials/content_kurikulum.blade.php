@@ -1,7 +1,7 @@
 {{-- Beranda Kurikulum --}}
 <div class="col p-0 page active-page" id="BerandaKurikulum">
-    <div class="grid-tengah">
-        <div class="row">
+    <div class="grid-tengah w-100 overflow-auto">
+        <div class="row" style="margin-bottom: 20px">
             <div class="col">
                 <span class="h1 fw-bold text-biru">Beranda</span>
             </div>

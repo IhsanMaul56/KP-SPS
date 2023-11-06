@@ -1,10 +1,12 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
-    <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
-        <div class="col-auto">
-            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
+    @include('livewire.modal-persentase')
+
+    <div class="row mb-1 align-items-center" style="display: flex; align-items: center; width: 75%;">
+        <div class="col">
+            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
                 <option value="" hidden selected>Mata Pelajaran</option>
-                @foreach ($guru as $mapel)
-                    <option value="{{ $mapel->nama_mapel }}">{{ $mapel->nama_mapel }}</option>
+                @foreach ($guru as $pengampu)
+                    <option value="{{ $pengampu->nama_mapel }}">{{ $pengampu->nama_mapel }}</option>
                 @endforeach
             </select>
         </div>
@@ -28,6 +30,11 @@
                 @endif
             </select>
         </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertPercent">
+                <i class="bi bi-percent" style="padding-right:5px;"></i>Atur Persentase
+            </button>
+        </div>
     </div>
 
     <div class="col mt-3">
@@ -47,9 +54,9 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->nis }}</td>
                             <td class="text-start">{{ $item->nama_siswa }}</td>
-                            <td>0</td>
+                            <td>{{ $item->nilai_akhir }}</td>
                             <td>
-                                <a href="{{ route('tambah-nilai-siswa', ['nis' => $item->nis]) }}" wire:click="render('{{ $item->nis }}')" class="btn btn-primary" style="text-decoration: none;"><i class="bi bi-plus-lg"></i></a>
+                                <a href="{{ route('tambah-nilai-siswa', ['nis' => $item->nis, 'mapel_id' => $item->mapel_id]) }}" class="btn btn-primary" style="text-decoration: none;"><i class="bi bi-plus-lg"></i></a>
                             </td>
                         </tr>
                     @endforeach
