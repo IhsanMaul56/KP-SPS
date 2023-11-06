@@ -54,22 +54,22 @@ class TambahDataGuru extends Component
             'alamat' => 'required',
             'email' => 'required|email|unique:users,email',
         ], [
-            'nip.required' => 'NIP harus diisi.',
-            'nip.unique' => 'NIP sudah ada dalam database.',
-            'nama_guru.required' => 'Nama guru harus diisi',
-            'tempat_lahir.required' => 'Tempat lahir harus diisi',
-            'tanggal_lahir.required' => 'Tanggal lahir harus diisi',
-            'jenis_kelamin.required' => 'Jenis kelamin harus diisi',
-            'agama.required' => 'Agama harus diisi',
-            'no_hp.required' => 'No HP harus diisi',
-            'provinsi.required' => 'Provinsi harus diisi',
-            'kota.required' => 'Kota harus diisi',
-            'desa.required' => 'Desa harus diisi',
-            'rt.required' => 'Rt harus diisi',
-            'rw.required' => 'Rw harus diisi',
-            'alamat.required' => 'Alamat harus diisi',
-            'email.email' => 'Format email tidak valid',
-            'email.unique' => 'Email sudah ada dalam database',
+            'nip.required' => 'NIP Harus Diisi',
+            'nip.unique' => 'NIP Sudah Ada Dalam Database',
+            'nama_guru.required' => 'Nama Guru Harus Diisi',
+            'tempat_lahir.required' => 'Tempat Lahir Harus Diisi',
+            'tanggal_lahir.required' => 'Tanggal Lahir Harus Diisi',
+            'jenis_kelamin.required' => 'Jenis Kelamin Harus Diisi',
+            'agama.required' => 'Agama Harus Diisi',
+            'no_hp.required' => 'No. HP Harus Diisi',
+            'provinsi.required' => 'Provinsi Harus Diisi',
+            'kota.required' => 'Kota Harus Diisi',
+            'desa.required' => 'Desa Harus Diisi',
+            'rt.required' => 'Rt Harus Diisi',
+            'rw.required' => 'Rw Harus Diisi',
+            'alamat.required' => 'Alamat Harus Diisi',
+            'email.required' => 'Format Email Tidak Valid',
+            'email.unique' => 'Email Sudah Ada Dalam Database',
         ]);
 
         data_guru::create([
@@ -96,7 +96,7 @@ class TambahDataGuru extends Component
             'guru_id' => $request->nip,
         ]);
 
-        session()->flash('berhasil', 'Data guru berhasil disimpan.');
+        session()->flash('berhasil', 'Data Berhasil Ditambahkan');
         
         $this->resetForm();
 
@@ -161,7 +161,7 @@ class TambahDataGuru extends Component
                 'email' => $request->email,
             ]);
         
-        Session::flash('berhasil', 'Data berhasil di update');
+        Session::flash('berhasil', 'Data Berhasil Diupdate');
         return redirect()->back();
         $this->emit('refreshComponent');
     }

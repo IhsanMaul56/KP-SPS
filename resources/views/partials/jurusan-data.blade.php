@@ -15,7 +15,7 @@
             <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Data Jurusan</span>
+                        <span class="h1 fw-bold text-biru">Akademik |</span><span class="h2 text-biru" style="padding-left: 10px;">Master Jurusan</span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>

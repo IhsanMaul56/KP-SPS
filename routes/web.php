@@ -27,6 +27,8 @@ use App\Http\Livewire\EditDataGuru;
 use App\Http\Livewire\MasterMapel;
 use App\Http\Livewire\NilaiTp;
 use App\Http\Livewire\NilaiAtp;
+use App\Http\Livewire\Pengumuman;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +71,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
+        Route::get('/admin/pengumuman', Pengumuman::class)->name('create-pengumuman');
+        Route::get('/admin/pengumuman', [Pengumuman::class, 'index'])->name('show-pengumuman');
     });
 
     Route::prefix('/dashboard')->group(function () {

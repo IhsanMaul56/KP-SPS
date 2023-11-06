@@ -38,7 +38,7 @@ class DataJurusan extends Component
         $jurusan = DB::table('data_jurusans')
             ->leftJoin('data_kajurs', 'data_jurusans.kajur_id', '=', 'data_kajurs.kode_kajur')
             ->select('data_jurusans.*')
-            ->paginate(5);
+            ->paginate(10);
 
         return view('livewire.data-jurusan', compact('jurusan'));
     }
@@ -84,11 +84,12 @@ class DataJurusan extends Component
 
             $this->reset(['nama_jurusan', 'guru_id']);
 
-            Session::flash('berhasil', 'Data berhasil disimpan.');
+            Session::flash('berhasil', 'Data Berhasil Ditambahkan');
 
         } catch (\Exception $e) {
             Session::flash('gagal', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
         }
+        return redirect()->route('m-jurusan');
     }
 
     public function editJurusan($jurusanId)
@@ -134,13 +135,14 @@ class DataJurusan extends Component
                 $this->reset(['selectedJurusan']);
                 $this->showModal = false;
 
-                Session::flash('berhasil', 'Data berhasil diperbarui.');
+                Session::flash('berhasil', 'Data Berhasil Diupdate');
             } else {
                 Session::flash('gagal', 'Data guru tidak ditemukan.');
             }
         } catch (\Exception $e) {
             Session::flash('gagal', 'Terjadi kesalahan saat mengupdate data kelas: ' . $e->getMessage());
         }
+        return redirect()->route('m-jurusan');
     }
 
     public function deleteJurusanConfirm($kode_jurusan)
@@ -155,10 +157,11 @@ class DataJurusan extends Component
             data_kajur::where('kode_kajur', $this->jurusanSelectedId->kode_jurusan)->delete();
             data_kelas::where('jurusan_id', $this->jurusanSelectedId->kode_jurusan)->delete();
 
-            Session::flash('berhasil', 'Data berhasil dihapus');
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
         $this->resetPage();
+        return redirect()->route('m-jurusan');
     }
 
 }

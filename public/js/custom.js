@@ -85,3 +85,39 @@ function nextStep() {
 }
 
 showStep(currentStep);
+
+// Modal Guru Wali
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertGuruWali').modal('hide');
+    $('#UpdateGuruWali').modal('hide');
+    $('#DeleteDataWali').modal('hide');
+});
+
+// Modal Guru Mapel
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertGuruMapel').modal('hide');
+    $('#UpdateGuruMapel').modal('hide');
+    $('#DeleteDataPengampu').modal('hide');
+});
+
+// Modal Master Guru
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#DeleteDataGuruM').modal('hide');
+});
+
+// Modal Master Siswa
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#DeleteDataSiswa').modal('hide');
+});
+
+// Modal Master Jurusan
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertJurusan').modal('hide');
+    $('#UpdateJurusan').modal('hide');
+    $('#DeleteDataJurusan').modal('hide');
+});

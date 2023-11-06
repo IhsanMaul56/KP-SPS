@@ -9,7 +9,7 @@
 @endpush
 
 @section('content')
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 ">
         @include('partials.sidebar')
         @if (Auth::user()->role == 'admin')
             @include('partials.content_admin')
@@ -20,19 +20,8 @@
         @elseif (Auth::user()->role == 'siswa')
             @include('partials.content_siswa')
         @endif
-        @if (Auth::user()->role == 'kurikulum')
-            <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
-                <div class="grid-kanan">
-                    @include('partials.rightbar_kurikulum')
-                </div>
-            </div>
-        @elseif (Auth::user()->role == 'guru')
-            <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
-                <div class="grid-kanan">
-                    @include('partials.rightbar_guru')
-                </div>
-            </div>
-        @elseif (Auth::user()->role == 'siswa')
+        
+        @if (Auth::user()->role == 'siswa')
             <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
                 <div class="grid-kanan">
                     @include('partials.rightbar_siswa')

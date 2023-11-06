@@ -31,18 +31,16 @@
 
                         @if ($errors->any())
                             <div class="alert alert-danger mt-3">
-                                <ul>
                                     @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
+                                        <span>{{ $error }}</span>
                                     @endforeach
-                                </ul>
                             </div>
                         @endif
 
                         <div class="row mb-4 mt-4">
-                            <label for="email" class="mb-2">{{ __('Masukkan Email Address') }}</label>
+                            <label for="email" class="mb-2">{{ __('Email Address') }}</label>
                             <div class="input-group">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Masukkan Email Address">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -51,9 +49,9 @@
                             </div>
                         </div>                        
                         <div class="row mb-3">
-                            <label for="password" class="mb-2">{{ __('Masukkan Password') }}</label>
+                            <label for="password" class="mb-2">{{ __('Password') }}</label>
                             <div class="input-group">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Masukkan Password">
                                 <span class="input-group-text" id="showPasswordToggle"><i class="bi bi-eye"></i></span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -63,18 +61,18 @@
                             </div>
                         </div>
             
-                        <div class="row mb-4 justify-content-end">
-                            <div class="col-md-8 mb-2 d-flex justify-content-end">
+                        <div class="row mb-2 justify-content-end">
+                            {{-- <div class="col-md-8 mb-2 d-flex justify-content-end">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration:none">
                                         {{ __('Lupa Password') }}
                                     </a>
                                 @endif
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-md-8 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-5" style="background-color: #16498c; border-color: #16498c;">
+                                <button type="submit" class="btn btn-primary fw-bold text-white fs-5 px-5 mb-3" style="background-color: #16498c; border-color: #16498c;">
                                     {{ __('LOGIN') }}
                                 </button>
                             </div>

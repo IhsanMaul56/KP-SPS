@@ -70,7 +70,8 @@ class DataGuruWali extends Component
             )
             ->where(function ($query) {
                 $query->where('data_walis.wali_id', 'like', '%' . $this->search . '%')
-                    ->orWhere('data_walis.nama_guru', 'like', '%' . $this->search . '%');
+                    ->orWhere('data_walis.nama_guru', 'like', '%' . $this->search . '%')
+                    ->orWhere('data_walis.nama_kelas', 'like', '%' . $this->search . '%');
             })
             ->paginate(10);
 
@@ -118,10 +119,11 @@ class DataGuruWali extends Component
             ]);
 
             $this->showModal = false;
-            session()->flash('berhasil', 'Data wali kelas berhasil disimpan.');
+            session()->flash('berhasil', 'Data Berhasil Ditambahkan');
         } catch (\Exception $e) {
-            Session::flash('gagal', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
+            Session::flash('gagal', 'Terjadi Kesalahan Saat Menambahkan Data' . $e->getMessage());
         }
+        return redirect()->route('data-walis');
     }
 
     public function resetField()
@@ -205,12 +207,13 @@ class DataGuruWali extends Component
                 'nama_kelas' => $kelasData,
             ]);
 
-            session()->flash('berhasil', 'Data wali kelas berhasil diupdate.');
+            session()->flash('berhasil', 'Data Berhasil Diupdate');
         } catch (\Exception $e) {
-            session()->flash('gagal', 'Terjadi kesalahan saat mengupdate data kelas: ' . $e->getMessage());
+            session()->flash('gagal', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }
 
         $this->setTingkatKelasGuruValues(null, null, null);
+        return redirect()->route('data-walis');
     }
 
     public function deleteWaliConfirm($kode_wali)
@@ -222,10 +225,13 @@ class DataGuruWali extends Component
     {
         if ($this->selectedWaliId) {
             data_wali::where('kode_wali', $this->selectedWaliId->kode_wali)->delete();
-            Session::flash('berhasil', 'Data berhasil dihapus');
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
         $this->resetPage();
         $this->setTingkatKelasGuruValues(null, null, null);
+        
+        return redirect()->route('data-walis');
+
     }
 }

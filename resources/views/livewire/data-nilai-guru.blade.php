@@ -1,7 +1,9 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
-    <div class="row mb-1" style="display: flex; align-items: center; width: 75%;">
-        <div class="col-auto">
-            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
+    @include('livewire.modal-persentase')
+
+    <div class="row mb-1 align-items-center" style="display: flex; align-items: center; width: 75%;">
+        <div class="col">
+            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
                 <option value="" hidden selected>Mata Pelajaran</option>
                 @foreach ($guru as $pengampu)
                     <option value="{{ $pengampu->nama_mapel }}">{{ $pengampu->nama_mapel }}</option>
@@ -27,6 +29,11 @@
                     @endforeach
                 @endif
             </select>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertPercent">
+                <i class="bi bi-percent" style="padding-right:5px;"></i>Atur Persentase
+            </button>
         </div>
     </div>
 
