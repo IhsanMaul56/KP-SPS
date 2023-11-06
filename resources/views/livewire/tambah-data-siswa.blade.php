@@ -10,7 +10,7 @@
     <div class="container-fluid p-0">
         @include('partials.sidebar')
         <div class="col p-0">
-            <div class="grid-tengah">
+            <div class="grid-tengah w-100 overflow-auto">
                 <div class="row" style="margin-bottom: 30px;">
                     <div class="col">
                         <span class="h1 fw-bold text-biru">Tambah Siswa</span>
@@ -36,7 +36,7 @@
                                         <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
-                            </div>
+                            </div>  
                         @endif
                         
                         <div class="card p-0">
@@ -451,11 +451,5 @@
                 </div>  
             </div>
         </div>
-
-    <div class="col p-0">
-        <div class="grid-kanan">
-            @include('partials.rightbar_admin')
-        </div>
-    </div>
 </div>
 @endsection

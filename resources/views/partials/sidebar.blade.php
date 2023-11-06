@@ -17,7 +17,7 @@
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('siswa-kurikulum') }}" class="sidebar fs-5 {{ Request::is('dashboard/data-siswa') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</a><br>
+                    <a href="{{ route('siswa-kurikulum') }}" class="sidebar fs-5 {{ Request::is('dashboard/data-siswa') ? 'active' : ''}} {{ Request::is('dashboard/admin/tambah-siswa') ? 'active' : '' }}" style="text-decoration: none"><i class="bi bi-person-lines-fill icon-kiri"></i>Data Siswa</a><br>
                 </div>
                 <div class="row mx-0">
                     <span class="sidebar dropdown-toggle {{ Request::is('dashboard/jadwal-pelajaran') ? 'active' : ''}} {{ Request::is('dashboard/jurusan') ? 'active' : ''}} {{ Request::is('dashboard/admin/kelas') ? 'active' : ''}}" data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
@@ -38,6 +38,9 @@
                 </div>
                 <div class="row mx-0">
                     <a href="#" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
+                </div>
+                <div class="row mx-0">
+                    <a href="{{ route('show-pengumuman') }}" class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">
@@ -81,6 +84,9 @@
                 </div>
                 <div class="row mx-0">
                     <a href="{{ route('profile-guru') }}" class="sidebar" id="btnGuru4" style="text-decoration: none" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
+                </div>
+                <div class="row mx-0">
+                    <a href="{{ route('show-pengumuman') }}" class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
 
             @elseif (Auth::user()->role == 'siswa')
