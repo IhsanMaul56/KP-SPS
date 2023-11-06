@@ -12,7 +12,7 @@
     <div class="container-fluid p-0">
         @include('partials.sidebar')
         <div class="col p-0">
-            <div class="grid-tengah">
+            <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
                         <span class="h1 fw-bold text-biru">Nilai Progress</span>
@@ -26,14 +26,16 @@
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <table style="display: flex; justify-content: center">
                             <tr>
-                                <td rowspan="4"><img src="{{ URL::asset('/img/logosmk1@2x.png') }}" class="img-fluid" alt="logo smk" height="100" width="100"></td>
+                                <td rowspan="4"><img src="{{ URL::asset('/img/logosmk1@2x.png') }}" class="img-fluid"
+                                        alt="logo smk" height="100" width="100"></td>
                                 <td>
                                     <h3 class="fw-bold">SMK SANGKURIANG 1 CIMAHI</h3>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <h6>Alamat: Jl. Sangkuriang No.76, Cipageran, Kec. Cimahi Utara, Kota Cimahi, Jawa Barat 40511</h6>
+                                    <h6>Alamat: Jl. Sangkuriang No.76, Cipageran, Kec. Cimahi Utara, Kota Cimahi, Jawa Barat
+                                        40511</h6>
                                 </td>
                             </tr>
                             <tr>
@@ -111,26 +113,20 @@
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                @foreach ($dataNilai as $item)
+                                @foreach ($dataMapel as $item)
                                     <tr class="text-center">
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama_mapel }}</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
+                                        <td>{{ $item->formatifs ? $item->formatifs->tugas : '-' }}</td>
+                                        <td>{{ $item->formatifs ? $item->formatifs->kuis : '-' }}</td>
+                                        <td>{{ $item->sumatifs ? $item->sumatifs->uts : '-' }}</td>
+                                        <td>{{ $item->sumatifs ? $item->sumatifs->uas : '-' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $dataNilai->links() }}
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
-            <div class="grid-kanan">
-                @include('partials.rightbar_siswa')
             </div>
         </div>
     </div>
