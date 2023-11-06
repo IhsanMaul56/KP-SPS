@@ -2,22 +2,36 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Http\Livewire\DataAdmin;
+use App\Http\Livewire\DataJadwal;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Events\ModelsPruned;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([DataMapelSeeder::class]);
+        $this->call([DataGuruSeeder::class]);
+        $this->call([DataKajurSeeder::class]);
+        $this->call([DataJurusanSeeder::class]);
+        $this->call([DataTingkatSeeder::class]);
+        $this->call([TahunAkademikSeeder::class]);
+        $this->call([DataKelasSeeder::class]);
+        $this->call([DataPengampuSeeder::class]);
+        $this->call([DataJadwalSeeder::class]);
+        $this->call([DataAdminSeeder::class]);
+        $this->call([DataSiswaSeeder::class]);
+        $this->call([DummyUserSeeder::class]);
+        $this->call([DataElemenSeeder::class]);
+        $this->call([DataCpSeeder::class]);
+        $this->call([NilaiFormatifSeeder::class]);
+        $this->call([NilaiSumatifSeeder::class]);
+        $this->call([DataNilaiSementaraSeeder::class]);
+        $this->call([DataWaliSeeder::class]);
     }
 }
