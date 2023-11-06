@@ -33,6 +33,7 @@ class GuruWali extends Component
             
             if($this->wali){
                 $kelasId = $this->wali->pluck('kelas_id')->toArray();
+                $tingkatId = $this->wali->pluck('tingkat_id')->toArray();
 
                 $this->akademik = DB::table('tahun_akademiks')
                     ->select('tahun_akademiks.tahun_akademik')
@@ -43,7 +44,7 @@ class GuruWali extends Component
                     ->value('nama_kelas');
                 
                 $this->tingkat = DB::table('data_tingkats')
-                    ->where('kode_tingkat', '=', $kelasId)
+                    ->where('kode_tingkat', '=', $tingkatId)
                     ->value('nama_tingkat');
 
                 if($this->kelas){

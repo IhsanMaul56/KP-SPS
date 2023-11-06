@@ -45,13 +45,13 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/', [LoginController::class, 'login']);
 });
 
-Route::get('/home', function(){
+Route::get('/home', function () {
     return redirect('/dashboard');
 });
 
-Route::middleware(['auth'])->group(function(){
-    
-    Route::prefix('/dashboard')->group(function(){
+Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('/dashboard')->group(function () {
         Route::get('/admin', [DashboardController::class, 'index'])->name('beranda-admin');
         Route::get('/admin/tambah-guru', TambahDataGuru::class)->name('tambah-data-guru');
         Route::post('/admin/tambah-guru', [TambahDataGuru::class, 'store'])->name('tambah-data-guru-store');
@@ -69,10 +69,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
-        
     });
-    
-    Route::prefix('/dashboard')->group(function(){
+
+    Route::prefix('/dashboard')->group(function () {
         Route::get('/kurikulum', [DataGuruController::class, 'index'])->name('beranda-kurikulum');
         Route::get('/guru-wali', [DataGuruWali::class, 'tampil'])->name('data-walis');
         Route::get('/guru-mapel', [DataGuruMapel::class, 'tampil'])->name('data-mapels');
@@ -84,17 +83,19 @@ Route::middleware(['auth'])->group(function(){
         // Route::get('/profile', [AkunGuru::class, 'ProfileKurikulum'])->name('m-kelas');
     });
 
-    Route::prefix('/dashboard')->group(function(){
+    Route::prefix('/dashboard')->group(function () {
         Route::get('/guru', [DashboardController::class, 'index'])->name('beranda-guru');
         Route::get('/jadwal-guru', [TableGuru::class, 'tampil'])->name('guru');
         Route::get('/nilai-guru', [DataNilaiGuru::class, 'tampil'])->name('nilai-gurus');
         Route::get('/nilai-walis', [GuruWali::class, 'tampil'])->name('nilai-walis');
         Route::get('/guru/edit', [AkunGuru::class])->name('guru.edit');
         Route::get('/profile-guru', [AkunGuru::class, 'tampilGuru'])->name('profile-guru');
-        Route::get('/input-nilai/{nis}', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
+        Route::get('/input-nilai/{nis}/{mapel_id}', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
+        Route::post('/input-nilai-formatif', [DataNilaiSiswa::class, 'createNilaiFormatif'])->name('insert-nilai-formatif');
+        Route::post('/input-nilai-sumatif', [DataNilaiSiswa::class, 'createNilaiSumatif'])->name('insert-nilai-sumatif');
     });
 
-    Route::prefix('/dashboard')->group(function(){
+    Route::prefix('/dashboard')->group(function () {
         Route::get('/siswa', [TabelSiswa::class, 'tampil'])->name('beranda');
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
         Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');

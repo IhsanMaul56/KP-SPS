@@ -14,8 +14,12 @@ class nilai_sumatif extends Model
     protected $fillable = [
         'mapel_id',
         'nama_mapel',
+        'tingkat_id',
+        'nama_tingkat',
         'kelas_id',
         'nama_kelas',
+        'siswa_id',
+        'nama_siswa',
         'uts',
         'uas',
     ];
@@ -32,5 +36,13 @@ class nilai_sumatif extends Model
 
     public function kelas() : BelongsTo{
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
+    public function siswa() : BelongsTo{
+        return $this->belongsTo(data_siswa::class, 'siswa_id', 'nis');
+    }
+
+    public function tingkat() : BelongsTo{
+        return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
     }
 }

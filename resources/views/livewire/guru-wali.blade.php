@@ -25,9 +25,6 @@
                         <th>NIS</th>
                         <th>NAMA SISWA</th>
                         <th>JENIS KELAMIN</th>
-                        <th>NILAI</th>
-                        <th>KETERANGAN</th>
-                        <th>AKSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,17 +35,10 @@
                             <td>{{ $item->nis }}</td>
                             <td class="text-start">{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
-                            <td>0</td>
-                            <td class="text-start">Baba</td>
-                            <td>Aksi</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="col text-end mt-3">
-                <button class="btn btn-success" id="shadow" type="submit"
-                    style="position: relative;">Setujui</button>
-            </div>
         @else
             <div class="col text-center">
                 <img src="{{ URL::asset('/img/warning.png') }}" alt="warning" width="125px;">

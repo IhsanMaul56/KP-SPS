@@ -68,7 +68,6 @@ class AkunGuru extends Component
         $user = Auth::user();
 
         if ($user && $user->guru_id) {
-            // Mengambil data dari database dan mengisi properti $data
             $guruData = DB::table('data_gurus')
                 ->where('nip', $user->guru_id)
                 ->first();
