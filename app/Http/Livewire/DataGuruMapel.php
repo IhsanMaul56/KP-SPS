@@ -47,7 +47,8 @@ class DataGuruMapel extends Component
             )
             ->where(function ($query) {
                 $query->where('data_pengampus.pengampu_id', 'like', '%' . $this->search . '%')
-                    ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%');
+                    ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
+                    ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
             })
             ->paginate(10);
 
@@ -84,10 +85,11 @@ class DataGuruMapel extends Component
                 'nama_mapel' => $mapelData
             ]);
 
-            session()->flash('berhasil', 'Data guru pengampu berhasil disimpan.');
+            session()->flash('berhasil', 'Data Berhasil Ditambahkan');
         } catch (\Exception $e) {
-            Session::flash('gagal', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
+            Session::flash('gagal', 'Terjadi Kesalahan Saat Menambahkan Data: ' . $e->getMessage());
         }
+        return redirect()->route('data-mapels');
     }
 
     public function editPengampu($pengampuId)
@@ -126,10 +128,11 @@ class DataGuruMapel extends Component
                 'nama_mapel' => $mapelData
             ]);
 
-            session()->flash('berhasil', 'Data guru pengampu berhasil diupdate.');
+            session()->flash('berhasil', 'Data Berhasil Diupdate.');
         } catch (\Exception $e) {
-            session()->flash('gagal', 'Terjadi kesalahan saat mengupdate data guru pengampu: ' . $e->getMessage());
+            session()->flash('gagal', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }
+        return redirect()->route('data-mapels');
     }
 
     public function deletePengampuConfirm($kode_pengampu)
@@ -141,9 +144,10 @@ class DataGuruMapel extends Component
     {
         if($this->selectedPengampuId){
             data_pengampu::where('kode_pengampu', $this->selectedPengampuId->kode_pengampu)->delete();
-            Session::flash('berhasil', 'Data berhasil dihapus');
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
         $this->resetPage();
+        return redirect()->route('data-mapels');
     }
 }

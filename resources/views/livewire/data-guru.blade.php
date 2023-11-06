@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col">
                 <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari"
-                    style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+                    style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
             </div>
             <div class="col-3" style="width: max-content;">
                 <a href="{{ route('tambah-data-guru') }}" class="btn btn-primary" style="text-decoration: none;">

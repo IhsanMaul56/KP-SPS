@@ -23,7 +23,9 @@ class DataGuru extends Component
     public function render()
     {
         return view('livewire.data-guru', [
-            'dagur' => data_guru::where('nama_guru', 'like', '%'.$this->search.'%')->paginate(10)
+            'dagur' => data_guru::where('nip', 'like', '%'.$this->search.'%')
+            ->orWhere('nama_guru', 'like', '%' . $this->search . '%')
+            ->paginate(10)
         ]);
     }
 
@@ -41,10 +43,11 @@ class DataGuru extends Component
             data_pengampu::where('pengampu_id', $this->selectedGuru->nip)->delete();
             data_guru::where('nip', $this->selectedGuru->nip)->delete();
             
-            Session::flash('berhasil', 'Data berhasil dihapus');
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
         $this->resetPage();
+        return redirect()->route('master-guru');
     }
 
     public function updatingSearch(){

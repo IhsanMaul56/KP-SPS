@@ -3,7 +3,7 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
             </div>
             <div class="col-3" style="width: max-content;">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">

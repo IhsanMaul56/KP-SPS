@@ -52,7 +52,8 @@ class GuruWali extends Component
                         ->where('kelas_id', '=', $kelasId)
                         ->select('data_siswas.*')
                         ->get();
-                } else {
+                
+                    } else {
                     $this->dataSiswa = null;
                     $this->wali = null;
                     $this->kelas = null;

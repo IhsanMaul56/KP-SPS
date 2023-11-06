@@ -31,7 +31,8 @@ class DataSiswa extends Component
             )
             ->where(function ($query) {
                 $query->where('data_siswas.nis', 'like', '%' . $this->search . '%')
-                    ->orWhere('data_siswas.nama_siswa', 'like', '%' . $this->search . '%');
+                    ->orWhere('data_siswas.nama_siswa', 'like', '%' . $this->search . '%')
+                    ->orWhere('data_kelas.nama_kelas', 'like', '%' . $this->search . '%');
             })
             ->paginate(10);
 
@@ -48,10 +49,11 @@ class DataSiswa extends Component
         if ($this->selectedSiswa) {
             User::where('siswa_id', $this->selectedSiswa->nis)->delete();
             data_siswa::where('nis', $this->selectedSiswa->nis)->delete();
-            Session::flash('berhasil', 'Data berhasil dihapus');
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
         $this->resetPage();
+        return redirect()->route('siswa-kurikulum');
     }
 
     public function updatingSearch()

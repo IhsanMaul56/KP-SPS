@@ -1,5 +1,5 @@
-<div class="row m-0">
-    <div class="grid-kiri p-0 text-center">
+<div class="row m-0 h-100 overflow-auto">
+    <div class="grid-kiri p-0 text-center overflow-auto">
     <img src="{{URL::asset('/img/logosmk1@2x.png')}}" class="img-fluid" alt="logo smk" height="120" width="120" style="margin-top: 20px; margin-bottom: 10px;">
             <br><h5 class="text-white fw-bold" style="margin-bottom: 0px;">SMK SANGKURIANG <br> 1 CIMAHI</h5>
         <div class="col sedbar" style="margin-top: 40px">
