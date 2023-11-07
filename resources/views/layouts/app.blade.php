@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Favicons -->
+    <link href="{{URL::asset('/img/logosmk1@2x.png')}}" rel="icon">
+    <link href="{{URL::asset('/img/logosmk1@2x.png')}}" rel="apple-touch-icon">
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

@@ -31,6 +31,9 @@ class DataJurusan extends Component
     {
         $guru = DB::table('data_gurus')
             ->select('nip', 'nama_guru')
+            ->whereNotIn('nip', function ($query) {
+                $query->select('guru_id')->from('data_kajurs');
+            })
             ->get();
 
         $this->guruList = $guru->pluck('nama_guru', 'nip');

@@ -121,3 +121,11 @@ $(document).ready(function() {
     $('#UpdateJurusan').modal('hide');
     $('#DeleteDataJurusan').modal('hide');
 });
+
+// Modal Master Kelas
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertKelas').modal('hide');
+    $('#UpdateKelas').modal('hide');
+    $('#DeleteDataKelas').modal('hide');
+});

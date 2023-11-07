@@ -9,7 +9,7 @@
                     <div class="col">
                         <label>Pilih Tingkat :</label>
                         <select name="tingkat_id" wire:model="tingkat_id" class="form-control">
-                            <option value="" hidden selected>Pilih Tingkat</option>
+                            <option value="" hidden selected>Tingkat</option>
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                 <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
                             @endforeach

@@ -96,10 +96,11 @@ class DataKelas extends Component
             ]);
 
             $this->showModal = false;
-            session()->flash('berhasil', 'Data kelas berhasil disimpan.');
+            session()->flash('berhasil', 'Data Berhasil Ditambahkan');
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi kesalahan saat menyimpan data kelas: ' . $e->getMessage());
         }
+        return redirect()->route('m-kelas');
     }
 
     public function resetFields()
@@ -150,10 +151,11 @@ class DataKelas extends Component
             ]);
 
             $this->showModal = false;
-            session()->flash('berhasil', 'Data kelas berhasil diupdate.');
+            session()->flash('berhasil', 'Data Berhasil Diupdate');
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi kesalahan saat mengupdate data kelas: ' . $e->getMessage());
         }
+        return redirect()->route('m-kelas');
     }
 
     public function deleteKelasConfirm($kode_kelas)
@@ -166,9 +168,10 @@ class DataKelas extends Component
         if ($this->selectedKelasId) {
             data_wali::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
             data_kelas::where('kode_kelas', $this->selectedKelasId->kode_kelas)->delete();
-            Session::flash('berhasil', 'Data berhasil dihapus');
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
     
         $this->resetPage();
+        return redirect()->route('m-kelas');
     }
 }
