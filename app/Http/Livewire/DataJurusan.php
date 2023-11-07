@@ -2,11 +2,17 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
+use App\Models\data_wali;
 use App\Models\data_kajur;
 use App\Models\data_kelas;
+use App\Models\data_siswa;
+use App\Models\data_jadwal;
 use App\Models\data_jurusan;
 use Livewire\WithPagination;
+use App\Models\nilai_sumatif;
+use App\Models\nilai_formatif;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -153,9 +159,29 @@ class DataJurusan extends Component
     public function deleteJurusan()
     {
         if ($this->jurusanSelectedId) {
-            data_jurusan::where('kode_jurusan', $this->jurusanSelectedId->kode_jurusan)->delete();
-            data_kajur::where('kode_kajur', $this->jurusanSelectedId->kode_jurusan)->delete();
+            User::whereHas('siswa', function($query) {
+                $query->whereHas('kelas', function($kelasQuery) {
+                    $kelasQuery->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
+                });
+            })->delete();
+            data_jadwal::whereHas('kelas', function($query) {
+                $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
+            })->delete();
+            data_siswa::whereHas('kelas', function($query) {
+                $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
+            })->delete();
+            data_wali::whereHas('kelas', function($query) {
+                $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
+            })->delete();
+            nilai_formatif::whereHas('kelas', function($query) {
+                $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
+            })->delete();
+            nilai_sumatif::whereHas('kelas', function($query) {
+                $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
+            })->delete();
             data_kelas::where('jurusan_id', $this->jurusanSelectedId->kode_jurusan)->delete();
+            data_jurusan::where('kajur_id', $this->jurusanSelectedId->kode_jurusan)->delete();
+            data_jurusan::where('kode_jurusan', $this->jurusanSelectedId->kode_jurusan)->delete();
 
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
@@ -163,5 +189,4 @@ class DataJurusan extends Component
         $this->resetPage();
         return redirect()->route('m-jurusan');
     }
-
 }
