@@ -27,8 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call([DataAdminSeeder::class]);
         $this->call([DataSiswaSeeder::class]);
         $this->call([DummyUserSeeder::class]);
-        $this->call([DataElemenSeeder::class]);
-        $this->call([DataCpSeeder::class]);
         $this->call([NilaiFormatifSeeder::class]);
         $this->call([NilaiSumatifSeeder::class]);
         $this->call([DataNilaiSementaraSeeder::class]);

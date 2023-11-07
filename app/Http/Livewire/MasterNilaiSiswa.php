@@ -55,6 +55,7 @@ class MasterNilaiSiswa extends Component
                     ->get();
 
                 $mapelIds = $dataMapel->pluck('mapel_id');
+                $pengampuIds = $dataMapel->pluck('kode_pengampu');
 
                 $nilaiFormatifs = DB::table('nilai_formatifs')
                     ->whereIn('mapel_id', $mapelIds)
@@ -66,15 +67,24 @@ class MasterNilaiSiswa extends Component
                     ->where('siswa_id', $user->siswa_id)
                     ->get();
 
+                $bobotNilai = DB::table('bobot_nilais')
+                        ->whereIn('pengampu_id', $pengampuIds)
+                        ->get();
+
                 foreach ($dataMapel as $mapel) {
                     $mapel->formatifs = $nilaiFormatifs->where('mapel_id', $mapel->mapel_id)->first();
                     $mapel->sumatifs = $nilaiSumatifs->where('mapel_id', $mapel->mapel_id)->first();
+                    $mapel->bobotNilai = $bobotNilai->where('pengampu_id', $mapel->kode_pengampu)->first();
 
-                    $nilaiTugasKuis = $mapel->formatifs ? (($mapel->formatifs->tugas + $mapel->formatifs->kuis / 2)) : 0;
+                    $nilaiTugasKuis = $mapel->formatifs ? ((($mapel->formatifs->tugas + $mapel->formatifs->kuis) / 2)) : 0;
                     $nilaiUTS = $mapel->sumatifs ? $mapel->sumatifs->uts : 0;
                     $nilaiUAS = $mapel->sumatifs ? $mapel->sumatifs->uas : 0;
 
-                    $nilaiAkhir = ($nilaiTugasKuis * 0.4) + ($nilaiUTS * 0.3) + ($nilaiUAS * 0.3);
+                    $bobotFormatif = $mapel->bobotNilai ? ($mapel->bobotNilai->formatif_akhir / 100) : 0;
+                    $bobotUts = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uts / 100) : 0;
+                    $bobotUas = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uas / 100) : 0;
+
+                    $nilaiAkhir = ($nilaiTugasKuis * $bobotFormatif) + ($nilaiUTS * $bobotUts) + ($nilaiUAS * $bobotUas);
 
                     $mapel->nilai_akhir = $nilaiAkhir;
                     $mapel->huruf_nilai = $this->getHurufNilai($nilaiAkhir);

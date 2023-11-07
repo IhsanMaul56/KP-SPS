@@ -2,9 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\data_jadwal;
 use Livewire\Component;
 use App\Models\data_kelas;
+use App\Models\data_siswa;
 use App\Models\data_wali;
+use App\Models\nilai_formatif;
+use App\Models\nilai_sumatif;
+use App\Models\User;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -164,7 +169,14 @@ class DataKelas extends Component
     public function deleteKelas()
     {
         if ($this->selectedKelasId) {
+            User::whereHas('siswa', function($query) {
+                $query->where('kelas_id', $this->selectedKelasId->kode_kelas);
+            })->delete();
+            data_siswa::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
+            data_jadwal::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
             data_wali::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
+            nilai_formatif::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
+            nilai_sumatif::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
             data_kelas::where('kode_kelas', $this->selectedKelasId->kode_kelas)->delete();
             Session::flash('berhasil', 'Data berhasil dihapus');
         }
