@@ -17,9 +17,9 @@
     <table class="table table-bordered">
         <thead>
             @if (Session::has('berhasil'))
-                    <div class="alert alert-success">
-                        {{ Session::get('berhasil') }}
-                    </div>
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil') }}
+                </div>
             @endif
             <tr class="text-center">
                 <th>NO</th>

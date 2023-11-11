@@ -57,8 +57,9 @@
                                         <div class="input-group">
                                             <input id="nip" type="text"
                                                 class="form-control @error('nip') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan NIP"
-                                                wire:model="nip" name="nip" value="{{ $guru->nip }}">
+                                                style="border-color: rgba(168, 168, 168, 1);"
+                                                placeholder="Masukan Tempat Lahir" wire:model="nip"
+                                                name="nip" value="{{ $guru->nip }}">
                                             @error('nip')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
