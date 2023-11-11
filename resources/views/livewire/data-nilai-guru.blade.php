@@ -1,6 +1,5 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.modal-persentase')
-
     <div class="row mb-1 align-items-center" style="display: flex; align-items: center; width: 75%;">
         <div class="col">
             <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
@@ -39,6 +38,46 @@
 
     <div class="col mt-3">
         @if ($siswa && !$siswa->isEmpty())
+            <div>
+                <div class="row mb-3 mt-3">
+                    <label for="">File Exel</label>
+                    <div class="col">
+                        <input type="file" class="form-control @error('file') is-invalid @enderror" wire:model="file">
+                        <small>Note<b class="text-danger">*</b> : file harus bertipe .xlsx atau .xls</small>
+                        @error('file')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" wire:click="importExcel">IMPORT</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-success" wire:click="downloadExcel">Download Exel</button>
+                    </div>
+                </div>
+            </div>
+            @if (Session::has('berhasil_import') && !Session::has('error'))
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil_import') }}
+                </div>
+
+            @elseif (Session::has('error') && !Session::has('berasil_import'))
+                <div class="alert alert-danger">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <table class="table table-bordered text-center">
                 <thead>
                     <th>NO</th>

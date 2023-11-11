@@ -1,15 +1,59 @@
+@push('styles')
+    @livewireStyles
+@endpush
+
+@push('script')
+    @livewireScripts
+@endpush
+
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.delete-jadwal')
     <div class="col">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari"
+                    style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
             </div>
             <div class="col-3" style="width: max-content;">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertData">
                     <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
                 </button>
             </div>
+        </div>
+        <div class="row mb-3">
+            <label for="">File Exel</label>
+            <div class="col">
+                <input type="file" class="form-control @error('file') is-invalid @enderror" wire:model="file">
+                <small>Note<b class="text-danger">*</b> : file harus bertipe .xlsx atau .xls</small>
+                @error('file')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" wire:click="importJadwal">IMPORT</button>
+                <button type="button" class="btn btn-success" wire:click="exportTemplate">Download Template</button>
+                <button type="button" class="btn btn-warning" wire:click="exportData">Download Data</button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            @if (Session::has('berhasil') && !Session::has('gagal'))
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil') }}
+                </div>
+
+            @elseif (Session::has('gagal') && !Session::has('berasil'))
+                <div class="alert alert-danger">
+                    {{ Session::get('gagal') }}
+                </div>
+            @endif
+
+            @if (Session::has('error'))
+                <div class="alert alert-danger">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
         </div>
         <table class="table table-bordered">
             <thead>
@@ -45,10 +89,12 @@
                                 {{ substr($item->waktu_masuk, 0, 5) }} - {{ substr($item->waktu_keluar, 0, 5) }}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJurusan">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#editJurusan">
                                     <i class="bi bi-pencil-square text-white"></i>
                                 </button>
-                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataJadwal">
+                                <button class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#DeleteDataJadwal">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                             </td>

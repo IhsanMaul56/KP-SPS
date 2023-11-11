@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\BobotNilai;
 use Livewire\Component;
+use App\Models\BobotNilai;
+use App\Exports\NilaiExport;
+use App\Imports\NilaiImport;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataNilaiGuru extends Component
 {
@@ -22,6 +25,9 @@ class DataNilaiGuru extends Component
     public $mapelList;
     public $pengampu_id, $formatif_akhir, $sumatif_uts, $sumatif_uas;
     public $mapelData;
+
+    use WithFileUploads;
+    public $file;
 
     public function render()
     {
@@ -107,6 +113,24 @@ class DataNilaiGuru extends Component
         $this->kelasSelected = null;
     }
 
+    public function downloadExcel()
+    {
+        $this->cari();
+
+        $fileName = 'data-nilai.xlsx';
+
+        return Excel::download(new NilaiExport($this->siswa), $fileName);
+    }
+
+    public function importExcel()
+    {
+        $this->validate([
+            'file' => 'required|mimes:xlsx, xls'
+        ]);
+
+        Excel::import(new NilaiImport, $this->file);
+    }
+
     public function cari()
     {
         if ($this->mapelSelected && $this->kelasSelected && $this->tingkatSelected) {
@@ -153,6 +177,9 @@ class DataNilaiGuru extends Component
                 ->select(
                     'data_siswas.*',
                     'data_pengampus.mapel_id',
+                    'data_pengampus.nama_mapel',
+                    'data_jadwals.nama_tingkat',
+                    'data_jadwals.nama_kelas',
                     'nilai_formatifs.tugas',
                     'nilai_formatifs.kuis',
                     'nilai_sumatifs.uts',
@@ -226,7 +253,6 @@ class DataNilaiGuru extends Component
             session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
         }
     }
-
 
     public function tampil()
     {
