@@ -52,8 +52,6 @@
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-primary" wire:click="importExcel">IMPORT</button>
-                    </div>
-                    <div class="col">
                         <button type="button" class="btn btn-success" wire:click="downloadExcel">Download Exel</button>
                     </div>
                 </div>

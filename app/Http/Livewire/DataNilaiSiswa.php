@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\DataSemester;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\nilai_sumatif;
 use App\Models\nilai_formatif;
+use App\Models\tahun_akademik;
 use Illuminate\Support\Facades\DB;
 
 class DataNilaiSiswa extends Component
@@ -85,6 +87,20 @@ class DataNilaiSiswa extends Component
             'tugas' => 'required|numeric',
         ]);
 
+        $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
+
+        if (!$tahun_akademik_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+            return;
+        }
+
+        $semester_aktif = DataSemester::where('status', '=', 'aktif')->first();
+
+        if (!$semester_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan semester aktif.');
+            return;
+        }
+
         try {
             $mapelData = DB::table('data_mapels')
                 ->where('kode_mapel', $mapel_id)
@@ -108,6 +124,10 @@ class DataNilaiSiswa extends Component
                     'tingkat_id' => $tingkat_id,
                     'kelas_id' => $kelas_id,
                     'siswa_id' => $siswa_id,
+                    'tahun_id' => $tahun_akademik_aktif->kode_tahun,
+                    'nama_tahun' => $tahun_akademik_aktif->tahun_akademik,
+                    'semester_id' => $semester_aktif->kode_semester,
+                    'nama_semester' => $semester_aktif->nama_semester,
                 ],
                 [
                     'nama_mapel' => $mapelData,
@@ -141,6 +161,20 @@ class DataNilaiSiswa extends Component
             'uas' => 'required|numeric',
         ]);
 
+        $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
+
+        if (!$tahun_akademik_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+            return;
+        }
+
+        $semester_aktif = DataSemester::where('status', '=', 'aktif')->first();
+
+        if (!$semester_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan semester aktif.');
+            return;
+        }
+
         try {
             $mapelData = DB::table('data_mapels')
                 ->where('kode_mapel', $mapel_id)
@@ -164,6 +198,10 @@ class DataNilaiSiswa extends Component
                     'tingkat_id' => $tingkat_id,
                     'kelas_id' => $kelas_id,
                     'siswa_id' => $siswa_id,
+                    'tahun_id' => $tahun_akademik_aktif->kode_tahun,
+                    'nama_tahun' => $tahun_akademik_aktif->tahun_akademik,
+                    'semester_id' => $semester_aktif->kode_semester,
+                    'nama_semester' => $semester_aktif->nama_semester,
                 ],
                 [
                     'nama_mapel' => $mapelData,

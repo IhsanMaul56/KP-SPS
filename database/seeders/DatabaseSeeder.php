@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([DataKajurSeeder::class]);
         $this->call([DataJurusanSeeder::class]);
         $this->call([DataTingkatSeeder::class]);
+        $this->call([DataSemesterSeeder::class]);
         $this->call([TahunAkademikSeeder::class]);
         $this->call([DataKelasSeeder::class]);
         $this->call([DataPengampuSeeder::class]);
