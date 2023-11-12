@@ -41,7 +41,7 @@
                     <a href="#" class="sidebar" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('show-pengumuman') }}" class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
+                    <a href="{{ route('create-pengumuman') }}" class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">
@@ -87,7 +87,7 @@
                     <a href="{{ route('profile-guru') }}" class="sidebar" id="btnGuru4" style="text-decoration: none" style="text-decoration: none"><i class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('show-pengumuman') }}" class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
+                    <a href="{{ route('create-pengumuman') }}" class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
 
             @elseif (Auth::user()->role == 'siswa')

@@ -26,22 +26,57 @@
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <div class="row">
                             <div class="col">
-
                                 <label for="editor" class="fs-4">Pengumuman Siswa</label>
                                 <hr>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <form method="post">
+                                <form method="post" action="{{ route('create-pengumuman') }}" wire:submit.prevent="createPengumuman">
+                                    @csrf
+                                    <input type="text" wire:model="guru_id" name="guru_id" value="{{ $guru_id }}">
+                                    @if (Session::has('berhasil'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('berhasil') }}
+                                        </div>
+                                    @endif
+
+                                    @if (Session::has('gagal'))
+                                        <div class="alert alert-danger">
+                                            {{ Session::get('gagal') }}
+                                        </div>
+                                    @endif
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <select wire:model="tingkat_id" name="tingkat_id" id="" class="form-control @error('tingkat_id') is-invalid @enderror">
+                                                @error('tingkat_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <option value="" selected hidden>Tingkat</option>
+                                                @foreach ($tingkatList as $tingkatId => $namaTingkat)
+                                                    <option value="{{ $tingkatId }}">{{ $namaTingkat }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select wire:model="kelas_id" name="kelas_id" id="" class="form-control @error('kelas_id') is-invalid @enderror">
+                                                <option value="" selected hidden>Kelas</option>
+                                                @foreach ($kelasList as $kelasId => $namaKelas)
+                                                    <option value="{{ $kelasId }}">{{ $namaKelas }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col">
-                                            <textarea id="summernote" name="editordata"></textarea>
+                                            <textarea wire:model="deskripsi" id="summernote" name="deskripsi"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col text-end">
-                                            <input type="submit" class="btn btn-primary mt-3" value="Kirim">
+                                            <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                                         </div>
                                     </div>
                                 </form>
