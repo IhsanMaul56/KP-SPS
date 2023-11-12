@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tahun_akademiks', function (Blueprint $table) {
-            $table->id('kode_tahun');
-            $table->string('tahun_akademik');
-            $table->foreignId('semester_id')->constrained('data_semesters', 'kode_semester');
+        Schema::create('data_semesters', function (Blueprint $table) {
+            $table->id('kode_semester');
             $table->string('nama_semester');
             $table->enum('status', ['aktif', 'tidak aktif']);
             $table->timestamps();
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tahun_akademiks');
+        Schema::dropIfExists('data_semesters');
     }
 };

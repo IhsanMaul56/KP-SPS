@@ -12,6 +12,10 @@ class nilai_sumatif extends Model
     use HasFactory;
 
     protected $fillable = [
+        'tahun_id',
+        'nama_tahun',
+        'semester_id',
+        'nama_semester',
         'mapel_id',
         'nama_mapel',
         'tingkat_id',
@@ -44,5 +48,13 @@ class nilai_sumatif extends Model
 
     public function tingkat() : BelongsTo{
         return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
+    }
+
+    public function tahun() : BelongsTo{
+        return $this->belongsTo(tahun_akademik::class, 'tahun_id', 'kode_tahun');
+    }
+
+    public function semester() : BelongsTo{
+        return $this->belongsTo(DataSemester::class, 'semester_id', 'kode_semester');
     }
 }

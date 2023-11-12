@@ -15,8 +15,29 @@ class TahunAkademikSeeder extends Seeder
     {
         $tahunAkademik = [
             [
-                'tahun_akademik' => '2023/2024'
-            ]
+                'tahun_akademik' => '2023/2024',
+                'semester_id' => '1',
+                'nama_semester' => '1',
+                'status' => 'aktif'
+            ],
+            [
+                'tahun_akademik' => '2023/2024',
+                'semester_id' => '2',
+                'nama_semester' => '2',
+                'status' => 'aktif'
+            ],
+            [
+                'tahun_akademik' => '2024/2025',
+                'semester_id' => '1',
+                'nama_semester' => '1',
+                'status' => 'tidak aktif'
+            ],
+            [
+                'tahun_akademik' => '2024/2025',
+                'semester_id' => '2',
+                'nama_semester' => '2',
+                'status' => 'tidak aktif'
+            ],
         ];
 
         foreach($tahunAkademik as $key => $val){

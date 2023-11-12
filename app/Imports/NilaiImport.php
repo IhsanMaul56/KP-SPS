@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Models\data_kelas;
 use App\Models\data_tingkat;
 use App\Models\data_pengampu;
+use App\Models\DataSemester;
 use App\Models\nilai_sumatif;
 use App\Models\nilai_formatif;
+use App\Models\tahun_akademik;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -25,7 +27,25 @@ class NilaiImport implements ToModel, WithHeadingRow
             $tingkat = data_tingkat::where('nama_tingkat', $row['tingkat'])->first();
             $tingkat_id = $tingkat ? $tingkat->kode_tingkat : null;
 
+            $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
+
+            if (!$tahun_akademik_aktif) {
+                session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+                return;
+            }
+
+            $semester_aktif = DataSemester::where('status', '=', 'aktif')->first();
+
+            if(!$semester_aktif){
+                session()->flash('gagal', 'Tidak dapat menemukan semester aktif.');
+                return;
+            }
+
             $commonData = [
+                'tahun_id' => $tahun_akademik_aktif->kode_tahun,
+                'nama_tahun' => $tahun_akademik_aktif->tahun_akademik,
+                'semester_id' => $semester_aktif->kode_semester,
+                'nama_semester' => $semester_aktif->nama_semester,
                 'siswa_id' => $row['nis'],
                 'nama_siswa' => $row['nama'],
                 'mapel_id' => $mapel_id,
@@ -35,7 +55,7 @@ class NilaiImport implements ToModel, WithHeadingRow
                 'kelas_id' => $kelas_id,
                 'nama_kelas' => $row['kelas'],
             ];
-            
+
             if (!$this->isDataExists($commonData, nilai_formatif::class) && !$this->isDataExists($commonData, nilai_sumatif::class)) {
                 if (isset($row['tugas']) && isset($row['kuis'])) {
                     $formatifData = array_merge($commonData, [
@@ -44,7 +64,7 @@ class NilaiImport implements ToModel, WithHeadingRow
                     ]);
 
                     nilai_formatif::create($formatifData);
-                    Session::flash('berhasil_import', 'Data formatif berhasil diimpor.');
+                    Session::flash('berhasil_import', 'Data nilai berhasil diimport.');
                 }
 
                 if (isset($row['uts']) && isset($row['uas'])) {
@@ -54,7 +74,7 @@ class NilaiImport implements ToModel, WithHeadingRow
                     ]);
 
                     nilai_sumatif::create($sumatifData);
-                    Session::flash('berhasil_import', 'Data sumatif berhasil diimpor.');
+                    Session::flash('berhasil_import', 'Data nilai berhasil diimport.');
                 }
             } else {
                 Session::flash('error', 'Data Excel gagal diimpor karena sudah ada.');
