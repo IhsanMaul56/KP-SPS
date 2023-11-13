@@ -7,7 +7,7 @@
             <div class="modal-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Tingkat :</label>
+                        <label>Tingkat :</label>
                         <select name="tingkat_id" wire:model="data.tingkat_id" class="form-control" disabled>
                             <option value="">Pilih Tingkat</option>
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
@@ -18,9 +18,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Kelas :</label>
+                        <label>Kelas :</label>
                         <select name="kelas_id" wire:model="data.kelas_id" class="form-control" disabled>
-                            <option value="">Jurusan - Kelas</option>
+                            <option value="">Pilih Jurusan - Kelas</option>
                             @foreach ($kelasListEdit as $kelas)
                                 <option value="{{ $kelas->kode_kelas ?? $kelas['kode_kelas'] }}">{{ $kelas->nama_jurusan ?? $kelas['nama_jurusan'] }} - {{ $kelas->nama_kelas ?? $kelas['nama_kelas'] }}</option>
                             @endforeach
@@ -29,9 +29,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Guru :</label>
-                        <select name="wali_id" wire:model="data.wali_id" class="form-control">
-                            <option value="" hidden selected>NIP - Nama Guru</option>
+                        <label>Guru :</label>
+                        <select name="wali_id" wire:model="data.wali_id" class="form-select">
+                            <option value="" hidden selected>Pilih NIP - Nama Guru</option>
                             @foreach ($guruListEdit as $guru)
                                 @if(is_object($guru))
                                     <option value="{{ $guru->nip }}">{{ $guru->nip }} - {{ $guru->nama_guru }}</option>

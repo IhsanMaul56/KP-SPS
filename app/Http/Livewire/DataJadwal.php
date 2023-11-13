@@ -31,6 +31,8 @@ class DataJadwal extends Component
                 ->where(function ($query) {
                     $query->where('data_jadwals.hari', 'like', '%' . $this->search . '%')
                         ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
+                        ->orWhere('data_jadwals.nama_tingkat', 'like', '%' . $this->search . '%')
+                        ->orWhere('data_jadwals.nama_kelas', 'like', '%' . $this->search . '%')
                         ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
                 })
                 ->paginate(10);

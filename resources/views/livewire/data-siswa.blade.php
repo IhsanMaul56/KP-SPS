@@ -3,7 +3,7 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content;">
             </div>
             <div class="col-3" style="width: max-content;">
                 <a href="{{ route('tambah-data-siswa') }}" class="btn btn-primary" style="text-decoration: none;">
@@ -12,9 +12,14 @@
             </div>
         </div>
         <div>
-            @if (Session::has('berhasil'))
+        @if (Session::has('berhasil'))
             <div class="alert alert-success">
                 {{ Session::get('berhasil') }}
+            </div>
+        @endif
+        @if (session()->has('gagal'))
+            <div class="alert alert-danger">
+                {{ session('gagal') }}
             </div>
         @endif
         <table class="table table-bordered">

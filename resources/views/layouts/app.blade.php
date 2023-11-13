@@ -8,7 +8,7 @@
     <!-- Favicons -->
     <link href="{{URL::asset('/img/logosmk1@2x.png')}}" rel="icon">
     <link href="{{URL::asset('/img/logosmk1@2x.png')}}" rel="apple-touch-icon">
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -23,6 +23,9 @@
 
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/summernote/summernote-lite.min.css') }}">
+    <script src="{{ asset('assets/summernote/summernote-lite.min.js') }}"></script>
     @livewireStyles
 
     @stack('styles')

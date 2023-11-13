@@ -5,7 +5,8 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari"
+                    style="width: max-content;">
             </div>
             <div class="col-3" style="width: max-content;">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertGuruMapel">
@@ -17,9 +18,13 @@
     <table class="table table-bordered">
         <thead>
             @if (Session::has('berhasil'))
-                    <div class="alert alert-success">
-                        {{ Session::get('berhasil') }}
-                    </div>
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil') }}
+                </div>
+            @elseif (Session::has('gagal'))
+                <div class="alert alert-danger">
+                    {{ Session::get('gagal') }}
+                </div>
             @endif
             <tr class="text-center">
                 <th>NO</th>
@@ -46,10 +51,12 @@
                         @endif
                     </td>
                     <td>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateGuruMapel" wire:click="editPengampu({{ $item->kode_pengampu }})">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#UpdateGuruMapel" wire:click="editPengampu({{ $item->kode_pengampu }})">
                             <i class="bi bi-pencil-square text-white"></i>
                         </button>
-                        <button wire:click="deletePengampuConfirm('{{ $item->kode_pengampu }}')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengampu">
+                        <button wire:click="deletePengampuConfirm('{{ $item->kode_pengampu }}')" type="button"
+                            class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengampu">
                             <i class="bi bi-trash3"></i>
                         </button>
                     </td>

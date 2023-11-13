@@ -27,12 +27,7 @@
                             <div class="col">
                                 <div class="card-body overflow-auto fs-5 m-0" id="shadow" style="height: max-content">
                                     @csrf
-                                    @if (Session::has('berhasil'))
-                                        <div class="alert alert-success">
-                                            {{ Session::get('berhasil') }}
-                                        </div>
-                                    @endif
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>NIS</span>
                                         </div>
@@ -40,8 +35,8 @@
                                             <div class="input-group">
                                                 <input id="nis" type="text"
                                                     class="form-control @error('nis') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukkan NIS"
-                                                    wire:model="nis" name="nis">
+                                                    placeholder="Masukkan NIS" wire:model="nis" name="nis"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('nis')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -56,8 +51,8 @@
                                             <div class="input-group">
                                                 <input id="agama" type="text"
                                                     class="form-control @error('agama') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan Agama" wire:model="agama" name="agama">
+                                                    placeholder="Masukkan Agama" wire:model="agama" name="agama"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('agama')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -66,7 +61,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Nama Lengkap</span>
                                         </div>
@@ -74,9 +69,9 @@
                                             <div class="input-group">
                                                 <input id="nama_siswa" type="text"
                                                     class="form-control @error('nama_siswa') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Nama Lengkap" wire:model="nama_siswa"
-                                                    name="nama_siswa">
+                                                    name="nama_siswa"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('nama_siswa')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -91,8 +86,8 @@
                                             <div class="input-group">
                                                 <input id="provinsi" type="text"
                                                     class="form-control @error('provinsi') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan Provinsi" wire:model="provinsi" name="provinsi">
+                                                    placeholder="Masukkan Provinsi" wire:model="provinsi" name="provinsi"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('provinsi')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -101,7 +96,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Email</span>
                                         </div>
@@ -109,7 +104,6 @@
                                             <div class="input-group">
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Email" wire:model="email" name="email">
                                                 @error('email')
                                                     <div class="invalid-feedback">
@@ -125,8 +119,8 @@
                                             <div class="input-group">
                                                 <input id="kota" type="text"
                                                     class="form-control @error('kota') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan Kota" wire:model="kota" name="kota">
+                                                    placeholder="Masukkan Kota" wire:model="kota" name="kota"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('kota')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -135,7 +129,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Nomor HP</span>
                                         </div>
@@ -143,7 +137,6 @@
                                             <div class="input-group">
                                                 <input id="no_hp" type="text"
                                                     class="form-control @error('no_hp') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Nomor HP"
                                                     oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                                     wire:model="no_hp" name="no_hp">
@@ -161,8 +154,8 @@
                                             <div class="input-group">
                                                 <input id="desa" type="text"
                                                     class="form-control @error('desa') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan Desa" wire:model="desa" name="desa">
+                                                    placeholder="Masukkan Desa" wire:model="desa" name="desa"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('desa')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -171,7 +164,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Tempat, Tanggal Lahir</span>
                                         </div>
@@ -179,8 +172,8 @@
                                             <div class="input-group">
                                                 <input id="tempat_lahir" type="text"
                                                     class="form-control @error('tempat_lahir') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);" placeholder="Tempat"
-                                                    wire:model="tempat_lahir" name="tempat_lahir">
+                                                    placeholder="Tempat" wire:model="tempat_lahir" name="tempat_lahir"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('tempat_lahir')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -208,8 +201,8 @@
                                             <div class="input-group">
                                                 <input id="rt" type="text"
                                                     class="form-control @error('rt') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);" placeholder="RT"
-                                                    wire:model="rt" name="rt">
+                                                    placeholder="RT" wire:model="rt" name="rt"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('rt')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -221,8 +214,8 @@
                                             <div class="input-group">
                                                 <input id="rw" type="text"
                                                     class="form-control @error('rw') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);" placeholder="RW"
-                                                    wire:model="rw" name="rw">
+                                                    placeholder="RW" wire:model="rw" name="rw"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('rw')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -231,7 +224,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row align-items-center">
                                         <div class="col-3">
                                             <span>Jenis Kelamin</span>
                                         </div>
@@ -252,7 +245,6 @@
                                             <div class="input-group">
                                                 <input id="alamat" type="text"
                                                     class="form-control @error('alamat') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Alamat Lengkap" wire:model="alamat"
                                                     name="alamat">
                                                 @error('alamat')
@@ -270,7 +262,7 @@
                         <div class="row mt-3">
                             <div class="col">
                                 <div class="card-body overflow-auto fs-5 m-0" id="shadow" style="height: max-content">
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>NIK Ayah</span>
                                         </div>
@@ -278,9 +270,8 @@
                                             <div class="input-group">
                                                 <input id="nik_ayah" type="text"
                                                     class="form-control @error('nik_ayah') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan NIK Ayah" wire:model="nik_ayah"
-                                                    name="nik_ayah">
+                                                    placeholder="Masukkan NIK Ayah" wire:model="nik_ayah" name="nik_ayah"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('nik_ayah')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -295,8 +286,8 @@
                                             <div class="input-group">
                                                 <input id="nik_ibu" type="text"
                                                     class="form-control @error('nik_ibu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan NIK Ibu" wire:model="nik_ibu" name="nik_ibu">
+                                                    placeholder="Masukkan NIK Ibu" wire:model="nik_ibu" name="nik_ibu"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('nik_ibu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -305,7 +296,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Nama Ayah</span>
                                         </div>
@@ -313,9 +304,9 @@
                                             <div class="input-group">
                                                 <input id="nama_ayah" type="text"
                                                     class="form-control @error('nama_ayah') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Nama Ayah" wire:model="nama_ayah"
-                                                    name="nama_ayah">
+                                                    name="nama_ayah"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('nama_ayah')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -330,9 +321,8 @@
                                             <div class="input-group">
                                                 <input id="nama_ibu" type="text"
                                                     class="form-control @error('nama_ibu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
-                                                    placeholder="Masukkan Nama Ibu" wire:model="nama_ibu"
-                                                    name="nama_ibu">
+                                                    placeholder="Masukkan Nama Ibu" wire:model="nama_ibu" name="nama_ibu"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('nama_ibu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -341,7 +331,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Pekerjaan Ayah</span>
                                         </div>
@@ -349,9 +339,9 @@
                                             <div class="input-group">
                                                 <input id="pekerjaan_ayah" type="text"
                                                     class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Pekerjaan Ayah" wire:model="pekerjaan_ayah"
-                                                    name="pekerjaan_ayah">
+                                                    name="pekerjaan_ayah"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('pekerjaan_ayah')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -366,9 +356,9 @@
                                             <div class="input-group">
                                                 <input id="pekerjaan_ibu" type="text"
                                                     class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Pekerjaan Ibu" wire:model="pekerjaan_ibu"
-                                                    name="pekerjaan_ibu">
+                                                    name="pekerjaan_ibu"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('pekerjaan_ibu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -377,7 +367,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Provinsi Orang Tua</span>
                                         </div>
@@ -385,9 +375,9 @@
                                             <div class="input-group">
                                                 <input id="provinsi_ortu" type="text"
                                                     class="form-control @error('provinsi_ortu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Provinsi Orang Tua" wire:model="provinsi_ortu"
-                                                    name="provinsi_ortu">
+                                                    name="provinsi_ortu"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('provinsi_ortu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -402,9 +392,9 @@
                                             <div class="input-group">
                                                 <input id="desa_ortu" type="text"
                                                     class="form-control @error('desa_ortu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Desa Orang Tua" wire:model="desa_ortu"
-                                                    name="desa_ortu">
+                                                    name="desa_ortu"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('desa_ortu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -413,7 +403,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>Kota Orang Tua</span>
                                         </div>
@@ -421,9 +411,9 @@
                                             <div class="input-group">
                                                 <input id="kota_ortu" type="text"
                                                     class="form-control @error('kota_ortu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Kota Orang Tua" wire:model="kota_ortu"
-                                                    name="kota_ortu">
+                                                    name="kota_ortu"
+                                                    oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                                 @error('kota_ortu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -438,8 +428,8 @@
                                             <div class="input-group">
                                                 <input id="rt_ortu" type="text"
                                                     class="form-control @error('rt_ortu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);" placeholder="RT"
-                                                    wire:model="rt_ortu" name="rt_ortu">
+                                                    placeholder="RT" wire:model="rt_ortu" name="rt_ortu"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('rt_ortu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -451,8 +441,8 @@
                                             <div class="input-group">
                                                 <input id="rw_ortu" type="text"
                                                     class="form-control @error('rw_ortu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);" placeholder="RW"
-                                                    wire:model="rw_ortu" name="rw_ortu">
+                                                    placeholder="RW" wire:model="rw_ortu" name="rw_ortu"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                                 @error('rw_ortu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -461,7 +451,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row align-items-center">
                                         <div class="col-3">
                                             <span>Alamat Lengkap</span>
                                         </div>
@@ -469,7 +459,6 @@
                                             <div class="input-group">
                                                 <input id="alamat_ortu" type="text"
                                                     class="form-control @error('alamat_ortu') is-invalid @enderror"
-                                                    style="border-color: rgba(168, 168, 168, 1);"
                                                     placeholder="Masukkan Alamat Lengkap" wire:model="alamat_ortu"
                                                     name="alamat_ortu">
                                                 @error('alamat_ortu')
@@ -483,30 +472,30 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col">
                                 <div class="card-body overflow-auto fs-5 mt-3" id="shadow"
                                     style="height: max-content">
-                                    <div class="row">
+                                    <div class="row align-items-center">
                                         <div class="col-3">
                                             <span>Kelas</span>
                                         </div>
-                                        <div class="col-3" style="width: 149px;">
+                                        <div class="col-auto">
                                             <select wire:model="tingkat_id" class="form-select"
-                                                style="border-color: rgba(168, 168, 168, 1); width: 120px;"
+                                                style="width: 175px;"
                                                 name="tingkat_id">
-                                                <option value="" hidden selected>Tingkat</option>
+                                                <option value="" hidden selected>Pilih Tingkat</option>
                                                 @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                                     <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-3" style="width: 149px;">
+                                        <div class="col-auto">
                                             <select wire:model="kelas_id" class="form-select"
-                                                style="border-color: rgba(168, 168, 168, 1); width: 120px;"
+                                                style="width: 175px;"
                                                 name="kelas_id">
-                                                <option value="" hidden selected>Kelas</option>
+                                                <option value="" hidden selected>Pilih Kelas</option>
                                                 @foreach ($kelasList as $kodeKelas => $namaKelas)
                                                     <option value="{{ $kodeKelas }}">{{ $namaKelas }}</option>
                                                 @endforeach

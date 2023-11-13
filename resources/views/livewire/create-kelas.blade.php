@@ -7,9 +7,9 @@
             <div class="modal-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Jurusan :</label>
-                        <select wire:model="jurusan_id" class="form-control">
-                            <option value="" hidden selected>Jurusan</option>
+                        <label>Jurusan :</label>
+                        <select wire:model="jurusan_id" class="form-select">
+                            <option value="" hidden selected>Pilih Jurusan</option>
                             @foreach ($jurusanList as $kodeJurusan => $namaJurusan)
                                 <option value="{{ $kodeJurusan }}">{{ $namaJurusan }}</option>
                             @endforeach
@@ -18,9 +18,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Tingkat :</label>
-                        <select wire:model="tingkat_id" class="form-control">
-                            <option value="" hidden selected>Tingkat</option>
+                        <label>Tingkat :</label>
+                        <select wire:model="tingkat_id" class="form-select">
+                            <option value="" hidden selected>Pilih Tingkat</option>
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                 <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
                             @endforeach

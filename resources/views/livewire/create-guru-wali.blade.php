@@ -7,9 +7,9 @@
             <div class="modal-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Tingkat :</label>
-                        <select name="tingkat_id" wire:model="tingkat_id" class="form-control">
-                            <option value="" hidden selected>Tingkat</option>
+                        <label>Tingkat :</label>
+                        <select name="tingkat_id" wire:model="tingkat_id" class="form-select">
+                            <option value="" hidden selected>Pilih Tingkat</option>
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                 <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
                             @endforeach
@@ -18,9 +18,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Kelas :</label>
-                        <select name="kelas_id" wire:model="kelas_id" class="form-control">
-                            <option value="" hidden selected>Jurusan - Kelas</option>
+                        <label>Kelas :</label>
+                        <select name="kelas_id" wire:model="kelas_id" class="form-select">
+                            <option value="" hidden selected>Pilih Jurusan - Kelas</option>
                             @foreach ($kelasList as $kodeKelas => $namaKelas)
                                 <option value="{{ $kodeKelas }}">{{ $namaJurusan[$kodeKelas] }} - {{ $namaKelas }}</option>
                             @endforeach
@@ -29,9 +29,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Guru :</label>
-                        <select name="wali_id" wire:model="wali_id" class="form-control">
-                            <option value="" hidden selected>NIP - Nama Guru</option>
+                        <label>Guru :</label>
+                        <select name="wali_id" wire:model="wali_id" class="form-select">
+                            <option value="" hidden selected>Pilih NIP - Nama Guru</option>
                             @foreach ($guruList as $nipGuru => $namaGuru)
                                 <option value="{{ $nipGuru }}">{{ $nipGuru }} - {{ $namaGuru }}</option>
                             @endforeach

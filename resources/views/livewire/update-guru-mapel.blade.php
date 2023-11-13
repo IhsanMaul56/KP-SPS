@@ -8,9 +8,9 @@
             <div class="modal-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Guru :</label>
-                        <select name="pengampu_id" wire:model="data.pengampu_id" class="form-control">
-                            <option value="" hidden selected>NIP - Nama Guru</option>
+                        <label>Guru :</label>
+                        <select name="pengampu_id" wire:model="data.pengampu_id" class="form-select">
+                            <option value="" hidden selected>Pilih NIP - Nama Guru</option>
                             @foreach ($guruList as $nipGuru => $namaGuru)
                                 <option value="{{ $nipGuru }}">{{ $nipGuru }} - {{ $namaGuru }}</option>
                             @endforeach
@@ -19,9 +19,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Mata Pelajaran :</label>
-                        <select name="mapel_id" wire:model="data.mapel_id" class="form-control">
-                            <option value="" hidden selected>Kode Mapel - Nama Mapel</option>
+                        <label>Mata Pelajaran :</label>
+                        <select name="mapel_id" wire:model="data.mapel_id" class="form-select">
+                            <option value="" hidden selected>Pilih Kode Mapel - Nama Mapel</option>
                             @foreach ($mapelList as $kodeMapel => $namaMapel)
                                 <option value="{{ $kodeMapel }}">{{ $kodeMapel }} - {{ $namaMapel }}</option>
                             @endforeach

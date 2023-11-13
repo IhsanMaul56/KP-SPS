@@ -13,14 +13,17 @@ class DataGuruMapel extends Component
     public $guruList;
     public $mapelList;
     public $pengampu_id, $mapel_id;
+    
     public $data = [
         'kode_pengampu' => '',
         'pengampu_id' => '',
         'mapel_id' => '',
     ];
     public $selectedPengampuId;
-    
+
     public $search = '';
+    public $gagalMessage = '';
+
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -38,7 +41,7 @@ class DataGuruMapel extends Component
             ->get();
 
         $this->mapelList = $mapel->pluck('nama_mapel', 'kode_mapel');
-        
+
         $pengampu = DB::table('data_pengampus')
             ->leftJoin('data_gurus', 'data_pengampus.pengampu_id', '=', 'data_gurus.nip')
             ->select(
@@ -55,29 +58,43 @@ class DataGuruMapel extends Component
         return view('livewire.data-guru-mapel', compact('pengampu'));
     }
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
-    public function tampil(){
+    public function tampil()
+    {
         return view('partials.mapel-guru');
     }
 
-    public function createPengampu(){
+    public function createPengampu()
+    {
         $this->validate([
             'pengampu_id' => 'required',
             'mapel_id' => 'required'
         ]);
 
+        // Cek apakah pengampu sudah mengambil mapel ini sebelumnya
+        $cekPengampu = data_pengampu::where('mapel_id', $this->mapel_id)
+            ->where('pengampu_id', $this->pengampu_id)
+            ->first();
+
+            if ($cekPengampu) {
+                // Pengampu sudah mengambil mapel ini, notif pesan kesalahan
+                session()->flash('gagal', 'Anda Sudah Mengambil Mata Pelajaran Ini');
+                return redirect()->route('data-mapels');
+            }
+
         $guruData = DB::table('data_gurus')
             ->where('nip', $this->pengampu_id)
             ->value('nama_guru');
-        
+
         $mapelData = DB::table('data_mapels')
             ->where('kode_mapel', $this->mapel_id)
             ->value('nama_mapel');
 
-        try{
+        try {
             data_pengampu::create([
                 'pengampu_id' => $this->pengampu_id,
                 'nama_guru' => $guruData,
@@ -95,7 +112,7 @@ class DataGuruMapel extends Component
     public function editPengampu($pengampuId)
     {
         $pengampu = data_pengampu::find($pengampuId);
-        if($pengampu){
+        if ($pengampu) {
             $this->selectedPengampuId = $pengampuId;
             $this->data = [
                 'kode_pengampu' => $pengampu->kode_pengampu,
@@ -115,12 +132,12 @@ class DataGuruMapel extends Component
         $guruData = DB::table('data_gurus')
             ->where('nip', $this->data['pengampu_id'])
             ->value('nama_guru');
-        
+
         $mapelData = DB::table('data_mapels')
             ->where('kode_mapel', $this->data['mapel_id'])
             ->value('nama_mapel');
 
-        try{
+        try {
             data_pengampu::where('kode_pengampu', $this->selectedPengampuId)->update([
                 'pengampu_id' => $this->data['pengampu_id'],
                 'nama_guru' => $guruData,
@@ -142,7 +159,7 @@ class DataGuruMapel extends Component
 
     public function deletePengampu()
     {
-        if($this->selectedPengampuId){
+        if ($this->selectedPengampuId) {
             data_pengampu::where('kode_pengampu', $this->selectedPengampuId->kode_pengampu)->delete();
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }

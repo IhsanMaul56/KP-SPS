@@ -8,8 +8,8 @@
                 <form>
                     <div class="row mb-3">
                         <div class="col">
-                            <label>Pilih Jurusan :</label>
-                            <select wire:model="selectedKelas.jurusan_id" class="form-control">
+                            <label>Jurusan :</label>
+                            <select wire:model="selectedKelas.jurusan_id" class="form-select">
                                 <option value="" hidden selected>Jurusan</option>
                                 @foreach ($jurusanList as $kodeJurusan => $namaJurusan)
                                     <option value="{{ $kodeJurusan }}">{{ $namaJurusan }}</option>
@@ -19,8 +19,8 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <label>Pilih Tingkat :</label>
-                            <select wire:model="selectedKelas.tingkat_id" class="form-control">
+                            <label>Tingkat :</label>
+                            <select wire:model="selectedKelas.tingkat_id" class="form-select">
                                 <option value="" hidden selected>Tingkat</option>
                                 @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                     <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>
@@ -31,7 +31,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label>Nama Kelas :</label>
-                            <input wire:model="selectedKelas.nama_kelas" type="text" class="form-control" placeholder="Masukan nama kelas" value="{{ $nama_kelas }}">
+                            <input wire:model="selectedKelas.nama_kelas" type="text" class="form-control" placeholder="Masukkan Nama Kelas" value="{{ $nama_kelas }}">
                         </div>
                     </div>
                 </div>
