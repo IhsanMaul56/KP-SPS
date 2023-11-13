@@ -23,6 +23,7 @@ use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSiswaController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Livewire\AturTahunSemester;
 use App\Http\Livewire\EditDataGuru;
 use App\Http\Livewire\MasterMapel;
 use App\Http\Livewire\NilaiTp;
@@ -71,8 +72,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
-        Route::get('/admin/pengumuman', Pengumuman::class)->name('create-pengumuman');
-        Route::get('/admin/pengumuman', [Pengumuman::class, 'index'])->name('show-pengumuman');
+        Route::get('/admin/aktivasi-semester', AturTahunSemester::class)->name('atur-tasem');
     });
 
     Route::prefix('/dashboard')->group(function () {
@@ -97,6 +97,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/input-nilai/{nis}/{mapel_id}', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
         Route::post('/input-nilai-formatif', [DataNilaiSiswa::class, 'createNilaiFormatif'])->name('insert-nilai-formatif');
         Route::post('/input-nilai-sumatif', [DataNilaiSiswa::class, 'createNilaiSumatif'])->name('insert-nilai-sumatif');
+        Route::get('/pengumuman', Pengumuman::class)->name('show_pengumuman');
+        Route::post('/pengumuman', [Pengumuman::class, 'createPengumuman'])->name('create-pengumuman');
     });
 
     Route::prefix('/dashboard')->group(function () {
@@ -105,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');
         Route::get('/nilai-siswa', MasterNilaiSiswa::class)->name('nilai-siswa');
         Route::get('/nilai-progress', [MasterNilaiSiswa::class, 'NilaiProgress'])->name('nilai-progress');
+        Route::get('/', [Pengumuman::class, 'pengumumanSiswa'])->name('pengumuman_siswa');
     });
 
     Route::get('/logout', [LoginController::class, 'logout']);

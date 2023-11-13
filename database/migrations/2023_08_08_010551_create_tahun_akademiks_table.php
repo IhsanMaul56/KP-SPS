@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('tahun_akademiks', function (Blueprint $table) {
             $table->id('kode_tahun');
             $table->string('tahun_akademik');
+            $table->foreignId('semester_id')->constrained('data_semesters', 'kode_semester');
+            $table->string('nama_semester');
+            $table->enum('status', ['aktif', 'tidak aktif']);
             $table->timestamps();
         });
     }

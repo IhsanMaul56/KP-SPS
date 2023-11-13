@@ -99,113 +99,118 @@ class TambahDataSiswa extends Component
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nis' => 'required|unique:data_siswas,nis',
-            'nama_siswa' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'agama' => 'required',
-            'no_hp' => 'required',
-            'provinsi' => 'required',
-            'kota' => 'required',
-            'desa' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
-            'alamat' => 'required',
-            'email' => 'required|email|unique:users,email',
-            
-            'nik_ayah' => 'required',
-            'nama_ayah' => 'required',
-            'pekerjaan_ayah' => 'required',
-            'nik_ibu' => 'required',
-            'nama_ibu' => 'required',
-            'pekerjaan_ibu' => 'required',
-            'provinsi_ortu' => 'required',
-            'kota_ortu' => 'required',
-            'desa_ortu' => 'required',
-            'rt_ortu' => 'required',
-            'rw_ortu' => 'required',
-            'alamat_ortu' => 'required',
-
-            'kelas_id' => 'required',
-            'tingkat_id' => 'required',
-        ], [
-            'nis.required' => 'NIS Harus Diisi',
-            'nis.unique' => 'NIS Sudah Ada Dalam Database',
-            'nama_siswa.required' => 'Nama Siswa Harus Diisi',
-            'tempat_lahir.required' => 'Tempat Lahir Harus Diisi',
-            'tanggal_lahir.required' => 'Tanggal Lahir Harus Diisi',
-            'jenis_kelamin.required' => 'Jenis Kelamin Harus Diisi',
-            'agama.required' => 'Agama Harus Diisi',
-            'no_hp.required' => 'No. HP Harus Diisi',
-            'provinsi.required' => 'Provinsi Harus Diisi',
-            'kota.required' => 'Kota Harus Diisi',
-            'desa.required' => 'Desa Harus Diisi',
-            'rt.required' => 'RT Harus Diisi',
-            'rw.required' => 'RW Harus Diisi',
-            'alamat.required' => 'Alamat Harus Diisi',
-            'email.required' => 'Format Email Tidak Valid',
-            'email.unique' => 'Email Sudah Ada Dalam Database',
-
-            'nik_ayah.required' => 'NIK Ayah Harus Diisi',
-            'nama_ayah.required' => 'Nama Ayah Harus Diisi',
-            'pekerjaan_ayah.required' => 'Pekerjaan Ayah Harus Diisi',
-            'nik_ibu.required' => 'NIK Ibu Harus Diisi',
-            'nama_ibu.required' => 'Nama Ibu Harus Diisi',
-            'pekerjaan_ibu.required' => 'Pekerjaan Ibu Harus Diisi',
-            'provinsi_ortu.required' => 'Provinsi Harus Diisi',
-            'kota_ortu.required' => 'Kota Harus Diisi',
-            'desa_ortu.required' => 'Desa Harus Diisi',
-            'rt_ortu.required' => 'RT Harus Diisi',
-            'rw_ortu.required' => 'RW Harus Diisi',
-            'alamat_ortu.required' => 'Alamat Harus Diisi',
-
-            'kelas_id' => 'Kelas Harus Diisi',
-            'tingkat_id' => 'Tingkat Harus Diisi',
-        ]);
-
-        data_siswa::create([
-            'nis' => $request->nis,
-            'nama_siswa' => $request->nama_siswa,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'agama' => $request->agama,
-            'no_hp' => $request->no_hp,
-            'provinsi' => $request->provinsi,
-            'kota' => $request->kota,
-            'desa' => $request->desa,
-            'rt' => $request->rt,
-            'rw' => $request->rw,
-            'alamat' => $request->alamat,
-            'nik_ayah' => $request->nik_ayah,
-            'nama_ayah' => $request->nama_ayah,
-            'pekerjaan_ayah' => $request->pekerjaan_ayah,
-            'nik_ibu' => $request->nik_ibu,
-            'nama_ibu' => $request->nama_ibu,
-            'pekerjaan_ibu' => $request->pekerjaan_ibu,
-            'provinsi_ortu' => $request->provinsi_ortu,
-            'kota_ortu' => $request->kota_ortu,
-            'desa_ortu' => $request->desa_ortu,
-            'rt_ortu' => $request->rt_ortu,
-            'rw_ortu' => $request->rw_ortu,
-            'alamat_ortu' => $request->alamat_ortu,
-            'kelas_id' => $request->kelas_id,
-            'tingkat_id' => $request->tingkat_id,
-        ]);
-
-        User::create([
-            'name' => ucwords($request->nama_siswa),
-            'email' => strtolower($request->email),
-            'password' => bcrypt('12345'),
-            'role' => 'siswa',
-            'siswa_id' => $request->nis,
-        ]);
-
-        session()->flash('berhasil', 'Data Berhasil Ditambahkan');
-
-        $this->resetForm();
+        try{
+            $request->validate([
+                'nis' => 'required|unique:data_siswas,nis',
+                'nama_siswa' => 'required',
+                'tempat_lahir' => 'required',
+                'tanggal_lahir' => 'required',
+                'jenis_kelamin' => 'required',
+                'agama' => 'required',
+                'no_hp' => 'required',
+                'provinsi' => 'required',
+                'kota' => 'required',
+                'desa' => 'required',
+                'rt' => 'required',
+                'rw' => 'required',
+                'alamat' => 'required',
+                'email' => 'required|email|unique:users,email',
+                
+                'nik_ayah' => 'required',
+                'nama_ayah' => 'required',
+                'pekerjaan_ayah' => 'required',
+                'nik_ibu' => 'required',
+                'nama_ibu' => 'required',
+                'pekerjaan_ibu' => 'required',
+                'provinsi_ortu' => 'required',
+                'kota_ortu' => 'required',
+                'desa_ortu' => 'required',
+                'rt_ortu' => 'required',
+                'rw_ortu' => 'required',
+                'alamat_ortu' => 'required',
+    
+                'kelas_id' => 'required',
+                'tingkat_id' => 'required',
+            ], [
+                'nis.required' => 'NIS Harus Diisi',
+                'nis.unique' => 'NIS Sudah Ada Dalam Database',
+                'nama_siswa.required' => 'Nama Siswa Harus Diisi',
+                'tempat_lahir.required' => 'Tempat Lahir Harus Diisi',
+                'tanggal_lahir.required' => 'Tanggal Lahir Harus Diisi',
+                'jenis_kelamin.required' => 'Jenis Kelamin Harus Diisi',
+                'agama.required' => 'Agama Harus Diisi',
+                'no_hp.required' => 'No. HP Harus Diisi',
+                'provinsi.required' => 'Provinsi Harus Diisi',
+                'kota.required' => 'Kota Harus Diisi',
+                'desa.required' => 'Desa Harus Diisi',
+                'rt.required' => 'RT Harus Diisi',
+                'rw.required' => 'RW Harus Diisi',
+                'alamat.required' => 'Alamat Harus Diisi',
+                'email.required' => 'Format Email Tidak Valid',
+                'email.unique' => 'Email Sudah Ada Dalam Database',
+    
+                'nik_ayah.required' => 'NIK Ayah Harus Diisi',
+                'nama_ayah.required' => 'Nama Ayah Harus Diisi',
+                'pekerjaan_ayah.required' => 'Pekerjaan Ayah Harus Diisi',
+                'nik_ibu.required' => 'NIK Ibu Harus Diisi',
+                'nama_ibu.required' => 'Nama Ibu Harus Diisi',
+                'pekerjaan_ibu.required' => 'Pekerjaan Ibu Harus Diisi',
+                'provinsi_ortu.required' => 'Provinsi Harus Diisi',
+                'kota_ortu.required' => 'Kota Harus Diisi',
+                'desa_ortu.required' => 'Desa Harus Diisi',
+                'rt_ortu.required' => 'RT Harus Diisi',
+                'rw_ortu.required' => 'RW Harus Diisi',
+                'alamat_ortu.required' => 'Alamat Harus Diisi',
+    
+                'kelas_id' => 'Kelas Harus Diisi',
+                'tingkat_id' => 'Tingkat Harus Diisi',
+            ]);
+    
+            data_siswa::create([
+                'nis' => $request->nis,
+                'nama_siswa' => $request->nama_siswa,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'agama' => $request->agama,
+                'no_hp' => $request->no_hp,
+                'provinsi' => $request->provinsi,
+                'kota' => $request->kota,
+                'desa' => $request->desa,
+                'rt' => $request->rt,
+                'rw' => $request->rw,
+                'alamat' => $request->alamat,
+                'nik_ayah' => $request->nik_ayah,
+                'nama_ayah' => $request->nama_ayah,
+                'pekerjaan_ayah' => $request->pekerjaan_ayah,
+                'nik_ibu' => $request->nik_ibu,
+                'nama_ibu' => $request->nama_ibu,
+                'pekerjaan_ibu' => $request->pekerjaan_ibu,
+                'provinsi_ortu' => $request->provinsi_ortu,
+                'kota_ortu' => $request->kota_ortu,
+                'desa_ortu' => $request->desa_ortu,
+                'rt_ortu' => $request->rt_ortu,
+                'rw_ortu' => $request->rw_ortu,
+                'alamat_ortu' => $request->alamat_ortu,
+                'kelas_id' => $request->kelas_id,
+                'tingkat_id' => $request->tingkat_id,
+            ]);
+    
+            User::create([
+                'name' => ucwords($request->nama_siswa),
+                'email' => strtolower($request->email),
+                'password' => bcrypt('12345'),
+                'role' => 'siswa',
+                'siswa_id' => $request->nis,
+            ]);
+    
+            session()->flash('berhasil', 'Data Berhasil Ditambahkan');
+    
+            $this->resetForm();
+        } catch (\Exception $e) {
+            session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
+        }
+        
 
         return redirect()->route('siswa-kurikulum');
     }

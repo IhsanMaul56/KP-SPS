@@ -25,6 +25,10 @@ class data_pengampu extends Model
         return $this->hasMany(data_jadwal::class, 'pengampu_id', 'kode_pengampu');
     }
 
+    public function bobot() : HasMany{
+        return $this->hasMany(BobotNilai::class, 'pengampu_id', 'kode_pengampu');
+    }
+
     //invers cardinality
     public function guru() : BelongsTo{
         return $this->belongsTo(data_guru::class, 'pengampu_id', 'nip');

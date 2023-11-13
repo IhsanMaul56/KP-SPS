@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\DataSemester;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\nilai_sumatif;
 use App\Models\nilai_formatif;
+use App\Models\tahun_akademik;
 use Illuminate\Support\Facades\DB;
 
 class DataNilaiSiswa extends Component
@@ -30,9 +32,12 @@ class DataNilaiSiswa extends Component
 
         $siswa = DB::table('data_siswas')
             ->join('data_kelas', 'data_siswas.kelas_id', '=', 'data_kelas.kode_kelas')
+            ->join('tahun_akademiks', 'data_kelas.tahun_id', '=', 'tahun_akademiks.kode_tahun')
+            ->join('data_semesters', 'tahun_akademiks.semester_id', '=', 'data_semesters.kode_semester')
             ->join('data_tingkats', 'data_siswas.tingkat_id', '=', 'data_tingkats.kode_tingkat')
             ->join('data_jadwals', 'data_kelas.kode_kelas', '=', 'data_jadwals.kelas_id')
             ->join('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
+            ->where('data_semesters.status', '=', 'aktif')
             ->where('data_siswas.nis', '=', $this->siswaData)
             ->where('data_pengampus.mapel_id', '=', $this->mapelData)
             ->select(
@@ -42,7 +47,8 @@ class DataNilaiSiswa extends Component
                 'data_siswas.tingkat_id',
                 'data_kelas.nama_kelas',
                 'data_tingkats.nama_tingkat',
-                'data_kelas.nama_tahun',
+                'tahun_akademiks.tahun_akademik',
+                'data_semesters.nama_semester',
                 'data_pengampus.nama_mapel',
                 'data_pengampus.kode_pengampu',
                 'data_pengampus.mapel_id',
@@ -85,6 +91,20 @@ class DataNilaiSiswa extends Component
             'tugas' => 'required|numeric',
         ]);
 
+        $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
+
+        if (!$tahun_akademik_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+            return;
+        }
+
+        $semester_aktif = DataSemester::where('status', '=', 'aktif')->first();
+
+        if (!$semester_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan semester aktif.');
+            return;
+        }
+
         try {
             $mapelData = DB::table('data_mapels')
                 ->where('kode_mapel', $mapel_id)
@@ -108,6 +128,10 @@ class DataNilaiSiswa extends Component
                     'tingkat_id' => $tingkat_id,
                     'kelas_id' => $kelas_id,
                     'siswa_id' => $siswa_id,
+                    'tahun_id' => $tahun_akademik_aktif->kode_tahun,
+                    'nama_tahun' => $tahun_akademik_aktif->tahun_akademik,
+                    'semester_id' => $semester_aktif->kode_semester,
+                    'nama_semester' => $semester_aktif->nama_semester,
                 ],
                 [
                     'nama_mapel' => $mapelData,
@@ -141,6 +165,20 @@ class DataNilaiSiswa extends Component
             'uas' => 'required|numeric',
         ]);
 
+        $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
+
+        if (!$tahun_akademik_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+            return;
+        }
+
+        $semester_aktif = DataSemester::where('status', '=', 'aktif')->first();
+
+        if (!$semester_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan semester aktif.');
+            return;
+        }
+
         try {
             $mapelData = DB::table('data_mapels')
                 ->where('kode_mapel', $mapel_id)
@@ -164,6 +202,10 @@ class DataNilaiSiswa extends Component
                     'tingkat_id' => $tingkat_id,
                     'kelas_id' => $kelas_id,
                     'siswa_id' => $siswa_id,
+                    'tahun_id' => $tahun_akademik_aktif->kode_tahun,
+                    'nama_tahun' => $tahun_akademik_aktif->tahun_akademik,
+                    'semester_id' => $semester_aktif->kode_semester,
+                    'nama_semester' => $semester_aktif->nama_semester,
                 ],
                 [
                     'nama_mapel' => $mapelData,

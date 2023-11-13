@@ -3,8 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\BobotNilai;
+use App\Exports\NilaiExport;
+use App\Imports\NilaiImport;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataNilaiGuru extends Component
 {
@@ -17,6 +22,12 @@ class DataNilaiGuru extends Component
     public $tingkatSelected = "";
     public $kelasSelected = "";
     public $nilaiAkhir;
+    public $mapelList;
+    public $pengampu_id, $formatif_akhir, $sumatif_uts, $sumatif_uas;
+    public $mapelData;
+
+    use WithFileUploads;
+    public $file;
 
     public function render()
     {
@@ -29,6 +40,8 @@ class DataNilaiGuru extends Component
                 ->where('pengampu_id', '=', $user->guru_id)
                 ->select('data_pengampus.*')
                 ->get();
+
+            $this->mapelList = $this->guru->pluck('nama_mapel', 'kode_pengampu');
 
             if ($this->mapelSelected) {
                 $pengampuId = $this->guru->pluck('kode_pengampu')->toArray();
@@ -53,7 +66,6 @@ class DataNilaiGuru extends Component
 
                     if ($this->tingkat && $this->tingkatSelected) {
 
-                        // Query untuk mendapatkan data kelas
                         $kelasData = DB::table('data_pengampus')
                             ->whereIn('kode_pengampu', $pengampuId)
                             ->where('nama_mapel', $this->mapelSelected)
@@ -80,7 +92,10 @@ class DataNilaiGuru extends Component
             }
         }
 
-        return view('livewire.data-nilai-guru');
+        return view('livewire.data-nilai-guru', [
+            'mapelList' => $this->mapelList,
+            'mapelData' => $this->mapelData,
+        ]);
     }
 
     public function updatedMapelSelected()
@@ -97,6 +112,24 @@ class DataNilaiGuru extends Component
         $this->kelasSelected = null;
     }
 
+    public function downloadExcel()
+    {
+        $this->cari();
+
+        $fileName = 'data-nilai.xlsx';
+
+        return Excel::download(new NilaiExport($this->siswa), $fileName);
+    }
+
+    public function importExcel()
+    {
+        $this->validate([
+            'file' => 'required|mimes:xlsx, xls'
+        ]);
+
+        Excel::import(new NilaiImport, $this->file);
+    }
+
     public function cari()
     {
         if ($this->mapelSelected && $this->kelasSelected && $this->tingkatSelected) {
@@ -106,7 +139,7 @@ class DataNilaiGuru extends Component
             $mapelId = DB::table('data_pengampus')
                 ->where('nama_mapel', $this->mapelSelected)
                 ->value('mapel_id');
-            
+
             $tingkatId = DB::table('data_tingkats')
                 ->where('nama_tingkat', $this->tingkatSelected)
                 ->value('kode_tingkat');
@@ -119,6 +152,7 @@ class DataNilaiGuru extends Component
                 ->join('data_jadwals', 'data_siswas.kelas_id', '=', 'data_jadwals.kelas_id')
                 ->join('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
                 ->join('data_mapels', 'data_pengampus.mapel_id', '=', 'data_mapels.kode_mapel')
+                ->join('bobot_nilais', 'data_pengampus.kode_pengampu', '=', 'bobot_nilais.pengampu_id')
                 ->leftJoin('nilai_formatifs', function ($join) use ($mapelId, $tingkatId, $kelasId) {
                     $join->on('data_siswas.nis', '=', 'nilai_formatifs.siswa_id')
                         ->where('nilai_formatifs.mapel_id', '=', $mapelId)
@@ -142,11 +176,14 @@ class DataNilaiGuru extends Component
                 ->select(
                     'data_siswas.*',
                     'data_pengampus.mapel_id',
+                    'data_pengampus.nama_mapel',
+                    'data_jadwals.nama_tingkat',
+                    'data_jadwals.nama_kelas',
                     'nilai_formatifs.tugas',
                     'nilai_formatifs.kuis',
                     'nilai_sumatifs.uts',
                     'nilai_sumatifs.uas',
-                    DB::raw('((COALESCE(nilai_formatifs.tugas, 0) + COALESCE(nilai_formatifs.kuis, 0)) / 2) * 0.4 + COALESCE(nilai_sumatifs.uts, 0) * 0.3 + COALESCE(nilai_sumatifs.uas, 0) * 0.3 as nilai_akhir')
+                    DB::raw('((COALESCE(nilai_formatifs.tugas, 0) + COALESCE(nilai_formatifs.kuis, 0)) / 2) * (COALESCE(bobot_nilais.formatif_akhir, 0) / 100) + COALESCE(nilai_sumatifs.uts, 0) * (COALESCE(bobot_nilais.sumatif_uts, 0) / 100) + COALESCE(nilai_sumatifs.uas, 0) * (COALESCE(bobot_nilais.sumatif_uas, 0) / 100) as nilai_akhir')
                 )
                 ->distinct()
                 ->get();
@@ -157,8 +194,63 @@ class DataNilaiGuru extends Component
         }
     }
 
-    public function nilaiAkhir()
+    public function fetchMapelData()
     {
+        $mapelData = BobotNilai::where('pengampu_id', $this->pengampu_id)->first();
+
+        if ($mapelData) {
+            $this->formatif_akhir = $mapelData->formatif_akhir;
+            $this->sumatif_uts = $mapelData->sumatif_uts;
+            $this->sumatif_uas = $mapelData->sumatif_uas;
+        } else {
+            $this->formatif_akhir = null;
+            $this->sumatif_uts = null;
+            $this->sumatif_uas = null;
+        }
+    }
+
+    public function insertBobot()
+    {
+        $this->validate([
+            'pengampu_id' => 'required',
+            'formatif_akhir' => 'required|numeric',
+            'sumatif_uts' => 'required|numeric',
+            'sumatif_uas' => 'required|numeric',
+        ]);
+
+        $totalPercentage = $this->formatif_akhir + $this->sumatif_uts + $this->sumatif_uas;
+
+        if ($totalPercentage != 100) {
+            $this->addError('formatif_akhir', 'Total persentase harus sama dengan 100.');
+            $this->addError('sumatif_uts', 'Total persentase harus sama dengan 100.');
+            $this->addError('sumatif_uas', 'Total persentase harus sama dengan 100.');
+            session()->flash('gagal', 'Total persentase harus 100.');
+            return;
+        }
+
+        try {
+            $existingData = BobotNilai::where('pengampu_id', $this->pengampu_id)->first();
+
+            if ($existingData) {
+                // Update existing data
+                $existingData->update([
+                    'formatif_akhir' => $this->formatif_akhir,
+                    'sumatif_uts' => $this->sumatif_uts,
+                    'sumatif_uas' => $this->sumatif_uas,
+                ]);
+                session()->flash('berhasil', 'Data Berhasil Diperbarui');
+            } else {
+                BobotNilai::updateOrInsert([
+                    'pengampu_id' => $this->pengampu_id,
+                    'formatif_akhir' => $this->formatif_akhir,
+                    'sumatif_uts' => $this->sumatif_uts,
+                    'sumatif_uas' => $this->sumatif_uas,
+                ]);
+                session()->flash('berhasil', 'Data Berhasil Ditambahkan');
+            }
+        } catch (\Exception $e) {
+            session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
+        }
     }
 
     public function tampil()

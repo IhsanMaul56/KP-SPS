@@ -36,6 +36,7 @@ class DataGuruWali extends Component
         $tingkat = DB::table('data_tingkats')
             ->select('kode_tingkat', 'nama_tingkat')
             ->get();
+            
         $this->tingkatList = $tingkat->pluck('nama_tingkat', 'kode_tingkat');
 
         if ($this->tingkat_id) {

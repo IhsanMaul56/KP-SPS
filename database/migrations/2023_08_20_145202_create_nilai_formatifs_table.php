@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('nilai_formatifs', function (Blueprint $table) {
             $table->id('kode_formatif');
+            $table->foreignId('tahun_id')->constrained('tahun_akademiks', 'kode_tahun');
+            $table->string('nama_tahun');
+            $table->foreignId('semester_id')->constrained('data_semesters', 'kode_semester');
+            $table->string('nama_semester');
             $table->foreignId('mapel_id')->constrained('data_mapels', 'kode_mapel');
             $table->string('nama_mapel');
             $table->foreignId('tingkat_id')->constrained('data_tingkats', 'kode_tingkat');

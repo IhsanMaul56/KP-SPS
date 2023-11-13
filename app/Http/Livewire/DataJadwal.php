@@ -2,18 +2,24 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\JadwalExport;
+use App\Imports\JadwalImport;
 use Livewire\Component;
-use App\Models\data_jadwal;
-use App\Models\data_pengampu;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataJadwal extends Component
 {
     public $search = '';
+
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    
+    use WithFileUploads;
+    public $file;
 
     public function render()
     {
@@ -59,6 +65,43 @@ class DataJadwal extends Component
         }
 
         return view('livewire.data-jadwal', compact('jadwal'));
+    }
+
+    public function exportTemplate()
+    {
+        $fileName = 'data-jadwal.xlsx';
+        $path = public_path('file/'.$fileName);
+
+        return response()->download($path, $fileName, [
+            'Content-Type' => 'aplication/vnd.ms.excel',
+            'Contnrt-Dispotition' => 'inline; filename="' . $fileName . '"'
+        ]);
+    }
+
+    public function exportData()
+    {
+        $fileName = 'data-guru-pengampu.xlsx';
+
+        return Excel::download(new JadwalExport, $fileName);
+    }
+
+    public function importJadwal()
+    {
+        $this->validate([
+            'file' => 'required|mimes:xlsx, xls'
+        ]);
+
+        try {
+        Excel::import(new JadwalImport, $this->file);
+
+        // If the import is successful
+        session()->flash('berhasil', 'Data berhasil diimport.');
+    } catch (\Exception $e) {
+        // If there is an error during the import
+        session()->flash('error', 'Gagal mengimport data. Pastikan format file benar dan coba lagi.');
+    }
+
+        Excel::import(new JadwalImport, $this->file);
     }
 
     public function updatingSearch(){

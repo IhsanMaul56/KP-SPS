@@ -2,17 +2,25 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
-use App\Models\data_kelas;
 use App\Models\data_wali;
+use App\Models\data_kelas;
+use App\Models\data_siswa;
+use App\Models\data_jadwal;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use App\Models\nilai_sumatif;
+use App\Models\nilai_formatif;
+use App\Models\tahun_akademik;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class DataKelas extends Component
 {
     public $nama_kelas;
-    public $jurusan_id, $tingkat_id;
+    public $jurusan_id, $tingkat_id, $tahun_id;
     public $jurusanList, $tingkatList;
     public $showModal = false;
     public $search = '';
@@ -68,15 +76,25 @@ class DataKelas extends Component
         return view('partials.kelas-data');
     }
 
-    public function createKelas()
+    public function createKelas(Request $request)
     {
         $this->validate([
-            'nama_kelas' => 'required|unique:data_kelas,nama_kelas',
+            'nama_kelas' => [
+                'required',
+                Rule::unique('data_kelas', 'nama_kelas')->where(function ($query) {
+                    return $query->where('tingkat_id', $this->tingkat_id);
+                }),
+            ],
             'jurusan_id' => 'required',
             'tingkat_id' => 'required',
-        ], [
-            'nama_kelas.unique' => 'Nama Kelas Sudah ada'
         ]);
+
+        $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
+
+        if (!$tahun_akademik_aktif) {
+            session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+            return;
+        }
 
         $jurusanData = DB::table('data_jurusans')
             ->where('kode_jurusan', $this->jurusan_id)
@@ -93,6 +111,8 @@ class DataKelas extends Component
                 'nama_jurusan' => $jurusanData,
                 'tingkat_id' => $this->tingkat_id,
                 'nama_tingkat' => $tingkatData,
+                'tahun_id' => $tahun_akademik_aktif->kode_tahun,
+                'nama_tahun' => $tahun_akademik_aktif->tahun_akademik,
             ]);
 
             $this->showModal = false;
@@ -166,7 +186,14 @@ class DataKelas extends Component
     public function deleteKelas()
     {
         if ($this->selectedKelasId) {
+            User::whereHas('siswa', function($query) {
+                $query->where('kelas_id', $this->selectedKelasId->kode_kelas);
+            })->delete();
+            data_siswa::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
+            data_jadwal::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
             data_wali::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
+            nilai_formatif::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
+            nilai_sumatif::where('kelas_id', $this->selectedKelasId->kode_kelas)->delete();
             data_kelas::where('kode_kelas', $this->selectedKelasId->kode_kelas)->delete();
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }

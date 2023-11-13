@@ -26,46 +26,52 @@
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <div class="row mb-1" style="display: flex; align-items: center;">
                             <div class="col-auto">
-                                <select class="form-select">
+                                <select class="form-select" wire:model="tahunSelected" wire:change="loadDataMapel">
                                     <option hidden selected>Pilih Tahun Akademik</option>
-                                    @foreach ($akademikList as $kodeTahun => $tahunAkademik)
-                                        <option value="{{ $akademikList }}">{{ $tahunAkademik }}</option>
-                                    @endforeach
+                                    @if ($tahunAkademik)
+                                        @foreach ($tahunAkademik as $item)
+                                            <option value="{{ $item->kode_tahun }} {{ $item->semester_id }}">{{ $item->tahun_akademik }} - Semester {{ $item->nama_semester }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
-                            </div>
+                            </div>                                                        
                             <div class="col text-end">
                                 <a href="{{ route('nilai-progress') }}" class="btn btn-success"
                                     style="text-decoration: none">Nilai Progress</a>
                             </div>
                         </div>
-                        <table class="table table-bordered my-3">
-                            <thead>
-                                <tr class="text-center">
-                                    <th>NO</th>
-                                    <th>MATA PELAJARAN</th>
-                                    <th>NILAI AKHIR</th>
-                                    <th>HURUF</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 1; ?>
-                                @foreach ($dataMapel as $item)
+                        @if ($dataMapel && count($dataMapel) > 0)
+                            <table class="table table-bordered my-3">
+                                <thead>
                                     <tr class="text-center">
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->nama_mapel }}</td>
-                                        <td>{{ $item->nilai_akhir }}</td>
-                                        <td>{{ $item->huruf_nilai }}</td>
+                                        <th>NO</th>
+                                        <th>MATA PELAJARAN</th>
+                                        <th>NILAI AKHIR</th>
+                                        <th>HURUF</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1; ?>
+                                    @foreach ($dataMapel as $item)
+                                        <tr class="text-center">
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $item->nama_mapel }}</td>
+                                            <td>{{ $item->nilai_akhir }}</td>
+                                            <td>{{ $item->huruf_nilai }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p>No data available.</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
             <div class="grid-kanan">
-                @include('partials.rightbar_siswa')
+                @include('livewire.pengumuman-siswa')
             </div>
         </div>
     </div>

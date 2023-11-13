@@ -50,6 +50,10 @@ class data_kelas extends Model
         return $this->hasOne(data_nilai_sementara::class, 'kelas_id', 'kode_kelas');
     }
 
+    public function pengumuman() : HasMany{
+        return $this->hasMany(Pengumumaan::class, 'kelas_id', 'kode_kelas');
+    }
+
     //invers cardinality
     public function jurusan() : BelongsTo{
         return $this->belongsTo(data_jurusan::class, 'jurusan_id', 'kode_jurusan');

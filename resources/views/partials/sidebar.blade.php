@@ -38,14 +38,11 @@
                         data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i
                             class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
                     <div class="row mx-0 collapse" id="Akademik">
-                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5"
-                            style="text-decoration:none">Jadwal Mapel</a>
-                        <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5"
-                            style="text-decoration:none">Jurusan</a>
-                        <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5"
-                            style="text-decoration:none">Kelas</a>
-                        <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5"
-                            style="text-decoration:none">Mapel</a>
+                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5 ling  ">Jadwal Mapel</a>
+                        <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5 ling">Jurusan</a>
+                        <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5 ling">Kelas</a>
+                        <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5 ling">Mapel</a>
+                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5">Aktivasi Semester</a>
                     </div>
                     <br>
                 </div>
@@ -110,6 +107,9 @@
                     <a href="{{ route('profile-guru') }}" class="sidebar" style="text-decoration: none"><i
                             class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
                 </div>
+                <div class="row mx-0">
+                    <a href="{{ route('create-pengumuman') }}" class="sidebar {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
+                </div>
 
             @elseif (Auth::user()->role == 'guru')
                 <div class="row mx-0">
@@ -134,6 +134,7 @@
                     <a href="{{ route('profile-guru') }}" class="sidebar" id="btnGuru4"
                         style="text-decoration: none" style="text-decoration: none"><i
                             class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
+                    <a href="{{ route('show_pengumuman') }}" class="sidebar {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
 
             @elseif (Auth::user()->role == 'siswa')
