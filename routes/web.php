@@ -107,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');
         Route::get('/nilai-siswa', MasterNilaiSiswa::class)->name('nilai-siswa');
         Route::get('/nilai-progress', [MasterNilaiSiswa::class, 'NilaiProgress'])->name('nilai-progress');
+        Route::get('/', [Pengumuman::class, 'pengumumanSiswa'])->name('pengumuman_siswa');
     });
 
     Route::get('/logout', [LoginController::class, 'logout']);

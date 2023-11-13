@@ -53,7 +53,7 @@
                                 <span>Semester</span>
                             </div>
                             <div class="col">
-                                <span>: 1</span>
+                                <span>: {{ $siswa->nama_semester }}</span>
                             </div>
                         </div>
                         <div class="row mb-1">
@@ -67,7 +67,7 @@
                                 <span>Tahun Ajaran</span>
                             </div>
                             <div class="col">
-                                <span>: {{ $siswa->nama_tahun }}</span>
+                                <span>: {{ $siswa->tahun_akademik }}</span>
                             </div>
                         </div>
                     </div>
