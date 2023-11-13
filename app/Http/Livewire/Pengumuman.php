@@ -46,7 +46,7 @@ class Pengumuman extends Component
                 // dd($this->kelasList);
             }
         }
-        return view('livewire.pengumuman', compact('guru'));
+        return view('livewire.pengumuman-guru', compact('guru'));
     }
 
     public function createPengumuman(Request $request)
@@ -94,8 +94,8 @@ class Pengumuman extends Component
         return redirect()->back();
     }
 
-    public function tampil()
+    public function pengumumanSiswa()
     {
-        // return view('livewire.pengumuman');
+        return view('livewire.pengumuman-siswa');
     }
 }
