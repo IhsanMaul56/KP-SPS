@@ -51,7 +51,7 @@ class data_kelas extends Model
     }
 
     public function pengumuman() : HasMany{
-        return $this->hasMany(Pengumuman::class, 'kelas_id', 'kode_kelas');
+        return $this->hasMany(Pengumumaan::class, 'kelas_id', 'kode_kelas');
     }
 
     //invers cardinality
