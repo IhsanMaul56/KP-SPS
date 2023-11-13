@@ -15,7 +15,7 @@
             <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Data Siswa</span></span>
+                        <span class="h1 fw-bold text-biru">Pusat Informasi</span></span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>
@@ -48,21 +48,21 @@
                                     @endif
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <select wire:model="tingkat_id" name="tingkat_id" id="" class="form-control @error('tingkat_id') is-invalid @enderror">
+                                            <select wire:model="tingkat_id" name="tingkat_id" id="" class="form-select @error('tingkat_id') is-invalid @enderror">
                                                 @error('tingkat_id')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
-                                                <option value="" selected hidden>Tingkat</option>
+                                                <option value="" hidden selected>Pilih Tingkat</option>
                                                 @foreach ($tingkatList as $tingkatId => $namaTingkat)
                                                     <option value="{{ $tingkatId }}">{{ $namaTingkat }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col">
-                                            <select wire:model="kelas_id" name="kelas_id" id="" class="form-control @error('kelas_id') is-invalid @enderror">
-                                                <option value="" selected hidden>Kelas</option>
+                                            <select wire:model="kelas_id" name="kelas_id" id="" class="form-select @error('kelas_id') is-invalid @enderror">
+                                                <option value="" hidden selected>Pilih Kelas</option>
                                                 @foreach ($kelasList as $kelasId => $namaKelas)
                                                     <option value="{{ $kelasId }}">{{ $namaKelas }}</option>
                                                 @endforeach

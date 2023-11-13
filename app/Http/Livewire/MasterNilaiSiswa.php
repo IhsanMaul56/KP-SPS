@@ -10,87 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class MasterNilaiSiswa extends Component
 {
     public $tahunAkademik;
-    public $tahunSelected;
+    public $semester;
     public $siswa;
     public $dataMapel;
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    // public function render()
-    // {
-    //     $user = Auth::user();
-
-    //     if ($user && $user->siswa_id) {
-    //         $this->siswa = DB::table('data_siswas')
-    //             ->where('nis', '=', $user->siswa_id)
-    //             ->select('data_siswas.*')
-    //             ->get();
-
-    //         $this->tahunAkademik = DB::table('tahun_akademiks')
-    //             ->select('tahun_akademiks.*')
-    //             ->get();
-
-    //         if ($this->tahunSelected) {
-    //             $kelasId = $this->siswa->pluck('kelas_id');
-    //             $tingkatId = $this->siswa->pluck('tingkat_id');
-
-    //             $this->dataMapel = DB::table('data_jadwals')
-    //                 ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
-    //                 ->leftJoin('data_kelas', 'data_jadwals.kelas_id', '=', 'data_kelas.kode_kelas')
-    //                 ->leftJoin('data_tingkats', 'data_jadwals.tingkat_id', '=', 'data_tingkats.kode_tingkat')
-    //                 ->leftJoin('nilai_formatifs', 'data_pengampus.mapel_id', '=', 'nilai_formatifs.mapel_id')
-    //                 ->leftJoin('nilai_sumatifs', 'data_pengampus.mapel_id', '=', 'nilai_sumatifs.mapel_id')
-    //                 ->where('data_tingkats.kode_tingkat', '=', $tingkatId)
-    //                 ->where('data_kelas.kode_kelas', '=', $kelasId)
-    //                 ->select(
-    //                     'data_pengampus.*',
-    //                     'data_tingkats.kode_tingkat',
-    //                     'data_kelas.kode_kelas'
-    //                 )
-    //                 ->distinct()
-    //                 ->get();
-
-    //             $mapelIds = $this->dataMapel->pluck('mapel_id');
-    //             $pengampuIds = $this->dataMapel->pluck('kode_pengampu');
-
-    //             $nilaiFormatifs = DB::table('nilai_formatifs')
-    //                 ->whereIn('mapel_id', $mapelIds)
-    //                 ->where('siswa_id', $user->siswa_id)
-    //                 ->get();
-
-    //             $nilaiSumatifs = DB::table('nilai_sumatifs')
-    //                 ->whereIn('mapel_id', $mapelIds)
-    //                 ->where('siswa_id', $user->siswa_id)
-    //                 ->get();
-
-    //             $bobotNilai = DB::table('bobot_nilais')
-    //                 ->whereIn('pengampu_id', $pengampuIds)
-    //                 ->get();
-
-    //             foreach ($this->dataMapel as $mapel) {
-    //                 $mapel->formatifs = $nilaiFormatifs->where('mapel_id', $mapel->mapel_id)->first();
-    //                 $mapel->sumatifs = $nilaiSumatifs->where('mapel_id', $mapel->mapel_id)->first();
-    //                 $mapel->bobotNilai = $bobotNilai->where('pengampu_id', $mapel->kode_pengampu)->first();
-
-    //                 $nilaiTugasKuis = $mapel->formatifs ? ((($mapel->formatifs->tugas + $mapel->formatifs->kuis) / 2)) : 0;
-    //                 $nilaiUTS = $mapel->sumatifs ? $mapel->sumatifs->uts : 0;
-    //                 $nilaiUAS = $mapel->sumatifs ? $mapel->sumatifs->uas : 0;
-
-    //                 $bobotFormatif = $mapel->bobotNilai ? ($mapel->bobotNilai->formatif_akhir / 100) : 0;
-    //                 $bobotUts = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uts / 100) : 0;
-    //                 $bobotUas = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uas / 100) : 0;
-
-    //                 $nilaiAkhir = ($nilaiTugasKuis * $bobotFormatif) + ($nilaiUTS * $bobotUts) + ($nilaiUAS * $bobotUas);
-
-    //                 $mapel->nilai_akhir = $nilaiAkhir;
-    //                 $mapel->huruf_nilai = $this->getHurufNilai($nilaiAkhir);
-    //             }
-    //         }
-    //     }
-
-    //     return view('livewire.master-nilai-siswa');
-    // }
     public function render()
     {
         $user = Auth::user();
@@ -105,34 +31,20 @@ class MasterNilaiSiswa extends Component
                 ->select('tahun_akademiks.*')
                 ->get();
 
-            // dd($this->tahunAkademik);
-
-            $this->loadDataMapel();
-        }
-
-        return view('livewire.master-nilai-siswa');
-    }
-
-    public function loadDataMapel()
-    {
-        $this->processDataMapel();
-        
-        if ($this->tahunSelected) {
             $kelasId = $this->siswa->pluck('kelas_id');
             $tingkatId = $this->siswa->pluck('tingkat_id');
 
             $this->dataMapel = DB::table('data_jadwals')
                 ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
                 ->leftJoin('data_kelas', 'data_jadwals.kelas_id', '=', 'data_kelas.kode_kelas')
+                ->leftJoin('tahun_akademiks', 'data_kelas.tahun_id', '=', 'tahun_akademiks.kode_tahun')
+                ->leftJoin('data_semesters', 'tahun_akademiks.semester_id', '=', 'data_semesters.kode_semester')
                 ->leftJoin('data_tingkats', 'data_jadwals.tingkat_id', '=', 'data_tingkats.kode_tingkat')
                 ->leftJoin('nilai_formatifs', 'data_pengampus.mapel_id', '=', 'nilai_formatifs.mapel_id')
                 ->leftJoin('nilai_sumatifs', 'data_pengampus.mapel_id', '=', 'nilai_sumatifs.mapel_id')
+                ->where('data_semesters.status', '=', 'aktif')
                 ->where('data_tingkats.kode_tingkat', '=', $tingkatId)
                 ->where('data_kelas.kode_kelas', '=', $kelasId)
-                ->where('nilai_formatifs.tahun_id', '=', $this->tahunSelected)
-                ->where('nilai_sumatifs.tahun_id', '=', $this->tahunSelected)
-                ->where('nilai_formatifs.semester_id', '=', substr($this->tahunSelected, -1))
-                ->where('nilai_sumatifs.semester_id', '=', substr($this->tahunSelected, -1))
                 ->select(
                     'data_pengampus.*',
                     'data_tingkats.kode_tingkat',
@@ -140,57 +52,45 @@ class MasterNilaiSiswa extends Component
                 )
                 ->distinct()
                 ->get();
-        }
-    }
 
-    public function processDataMapel()
-    {
-        if ($this->tahunSelected) {
-            if ($this->dataMapel && count($this->dataMapel) > 0) {
-                $user = Auth::user();
+            $mapelIds = $this->dataMapel->pluck('mapel_id');
+            $pengampuIds = $this->dataMapel->pluck('kode_pengampu');
 
-                $mapelIds = $this->dataMapel->pluck('mapel_id');
-                $pengampuIds = $this->dataMapel->pluck('kode_pengampu');
+            $nilaiFormatifs = DB::table('nilai_formatifs')
+                ->whereIn('mapel_id', $mapelIds)
+                ->where('siswa_id', $user->siswa_id)
+                ->get();
 
-                $nilaiFormatifs = DB::table('nilai_formatifs')
-                    ->whereIn('mapel_id', $mapelIds)
-                    ->where('siswa_id', $user->siswa_id)
-                    ->get();
+            $nilaiSumatifs = DB::table('nilai_sumatifs')
+                ->whereIn('mapel_id', $mapelIds)
+                ->where('siswa_id', $user->siswa_id)
+                ->get();
 
-                $nilaiSumatifs = DB::table('nilai_sumatifs')
-                    ->whereIn('mapel_id', $mapelIds)
-                    ->where('siswa_id', $user->siswa_id)
-                    ->get();
+            $bobotNilai = DB::table('bobot_nilais')
+                ->whereIn('pengampu_id', $pengampuIds)
+                ->get();
 
-                $bobotNilai = DB::table('bobot_nilais')
-                    ->whereIn('pengampu_id', $pengampuIds)
-                    ->get();
+            foreach ($this->dataMapel as $mapel) {
+                $mapel->formatifs = $nilaiFormatifs->where('mapel_id', $mapel->mapel_id)->first();
+                $mapel->sumatifs = $nilaiSumatifs->where('mapel_id', $mapel->mapel_id)->first();
+                $mapel->bobotNilai = $bobotNilai->where('pengampu_id', $mapel->kode_pengampu)->first();
 
-                foreach ($this->dataMapel as $mapel) {
-                    $mapel->formatifs = $nilaiFormatifs->where('mapel_id', $mapel->mapel_id)->first();
-                    $mapel->sumatifs = $nilaiSumatifs->where('mapel_id', $mapel->mapel_id)->first();
-                    $mapel->bobotNilai = $bobotNilai->where('pengampu_id', $mapel->kode_pengampu)->first();
+                $nilaiTugasKuis = $mapel->formatifs ? ((($mapel->formatifs->tugas + $mapel->formatifs->kuis) / 2)) : 0;
+                $nilaiUTS = $mapel->sumatifs ? $mapel->sumatifs->uts : 0;
+                $nilaiUAS = $mapel->sumatifs ? $mapel->sumatifs->uas : 0;
 
-                    $nilaiTugasKuis = $mapel->formatifs ? ((($mapel->formatifs->tugas + $mapel->formatifs->kuis) / 2)) : 0;
-                    $nilaiUTS = $mapel->sumatifs ? $mapel->sumatifs->uts : 0;
-                    $nilaiUAS = $mapel->sumatifs ? $mapel->sumatifs->uas : 0;
+                $bobotFormatif = $mapel->bobotNilai ? ($mapel->bobotNilai->formatif_akhir / 100) : 0;
+                $bobotUts = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uts / 100) : 0;
+                $bobotUas = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uas / 100) : 0;
 
-                    $bobotFormatif = $mapel->bobotNilai ? ($mapel->bobotNilai->formatif_akhir / 100) : 0;
-                    $bobotUts = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uts / 100) : 0;
-                    $bobotUas = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uas / 100) : 0;
+                $nilaiAkhir = ($nilaiTugasKuis * $bobotFormatif) + ($nilaiUTS * $bobotUts) + ($nilaiUAS * $bobotUas);
 
-                    $nilaiAkhir = ($nilaiTugasKuis * $bobotFormatif) + ($nilaiUTS * $bobotUts) + ($nilaiUAS * $bobotUas);
-
-                    $mapel->nilai_akhir = $nilaiAkhir;
-                    $mapel->huruf_nilai = $this->getHurufNilai($nilaiAkhir);
-                }
+                $mapel->nilai_akhir = $nilaiAkhir;
+                $mapel->huruf_nilai = $this->getHurufNilai($nilaiAkhir);
             }
         }
-    }
 
-    public function updatedTahunSelected()
-    {
-        $this->loadDataMapel();
+        return view('livewire.master-nilai-siswa');
     }
 
     public function getHurufNilai($nilaiAkhir)
@@ -217,6 +117,8 @@ class MasterNilaiSiswa extends Component
             $siswa = DB::table('data_siswas')
                 ->where('nis', $user->siswa_id)
                 ->leftJoin('data_kelas', 'data_siswas.kelas_id', '=', 'data_kelas.kode_kelas')
+                ->leftJoin('tahun_akademiks', 'data_kelas.tahun_id', '=', 'tahun_akademiks.kode_tahun')
+                ->leftJoin('data_semesters', 'tahun_akademiks.semester_id', '=', 'data_semesters.kode_semester')
                 ->leftJoin('data_tingkats', 'data_siswas.tingkat_id', '=', 'data_tingkats.kode_tingkat')
                 ->select(
                     'data_siswas.nama_siswa',
@@ -225,7 +127,10 @@ class MasterNilaiSiswa extends Component
                     'data_siswas.tingkat_id',
                     'data_kelas.nama_kelas',
                     'data_kelas.nama_tingkat',
-                    'data_kelas.nama_tahun'
+                    'tahun_akademiks.tahun_akademik',
+                    'tahun_akademiks.kode_tahun',
+                    'data_semesters.nama_semester',
+                    'data_semesters.kode_semester',
                 )
                 ->first();
 
@@ -236,16 +141,23 @@ class MasterNilaiSiswa extends Component
                 $dataMapel = DB::table('data_jadwals')
                     ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
                     ->leftJoin('data_kelas', 'data_jadwals.kelas_id', '=', 'data_kelas.kode_kelas')
+                    ->leftJoin('tahun_akademiks', 'data_kelas.tahun_id', '=', 'tahun_akademiks.kode_tahun')
+                    ->leftJoin('data_semesters', 'tahun_akademiks.semester_id', '=', 'data_semesters.kode_semester')
                     ->leftJoin('data_tingkats', 'data_jadwals.tingkat_id', '=', 'data_tingkats.kode_tingkat')
-                    ->where('data_tingkats.kode_tingkat', $tingkatId)
-                    ->where('data_kelas.kode_kelas', $kelasId)
+                    ->leftJoin('nilai_formatifs', 'data_pengampus.mapel_id', '=', 'nilai_formatifs.mapel_id')
+                    ->leftJoin('nilai_sumatifs', 'data_pengampus.mapel_id', '=', 'nilai_sumatifs.mapel_id')
+                    ->where('data_semesters.status', '=', 'aktif')
+                    ->where('data_tingkats.kode_tingkat', '=', $tingkatId)
+                    ->where('data_kelas.kode_kelas', '=', $kelasId)
                     ->select(
-                        'data_jadwals.pengampu_id',
-                        'data_pengampus.*'
+                        'data_pengampus.*',
+                        'data_tingkats.kode_tingkat',
+                        'data_kelas.kode_kelas'
                     )
                     ->distinct()
                     ->get();
 
+                $pengampuIds = $dataMapel->pluck('kode_pengampu');
                 $mapelIds = $dataMapel->pluck('mapel_id');
 
                 $nilaiFormatifs = DB::table('nilai_formatifs')
@@ -258,15 +170,39 @@ class MasterNilaiSiswa extends Component
                     ->where('siswa_id', $user->siswa_id)
                     ->get();
 
+                $bobotNilai = DB::table('bobot_nilais')
+                    ->whereIn('pengampu_id', $pengampuIds)
+                    ->get();
+
                 foreach ($dataMapel as $mapel) {
                     $mapel->formatifs = $nilaiFormatifs->where('mapel_id', $mapel->mapel_id)->first();
                     $mapel->sumatifs = $nilaiSumatifs->where('mapel_id', $mapel->mapel_id)->first();
+                    $mapel->bobotNilai = $bobotNilai->where('pengampu_id', $mapel->kode_pengampu)->first();
+
+                    $nilaiTugasKuis = $mapel->formatifs ? ((($mapel->formatifs->tugas + $mapel->formatifs->kuis) / 2)) : 0;
+                    $nilaiUTS = $mapel->sumatifs ? $mapel->sumatifs->uts : 0;
+                    $nilaiUAS = $mapel->sumatifs ? $mapel->sumatifs->uas : 0;
+
+                    $bobotFormatif = $mapel->bobotNilai ? ($mapel->bobotNilai->formatif_akhir / 100) : 0;
+                    $bobotUts = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uts / 100) : 0;
+                    $bobotUas = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uas / 100) : 0;
+
+                    $nilaiAkhir = ($nilaiTugasKuis * $bobotFormatif) + ($nilaiUTS * $bobotUts) + ($nilaiUAS * $bobotUas);
+
+                    $mapel->nilai_akhir = $nilaiAkhir;
                 }
 
                 return view('livewire.nilai-progress', compact('dataMapel', 'siswa'));
             } else {
-                session()->flash('gagal', 'Siswa tidak ditemukan.');
+                session()->flash('gagal', 'Nilai Tidak Ditemukan.');
             }
         }
+    }
+
+    public function downloadPDF()
+    {
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $mpdf->Output();
     }
 }
