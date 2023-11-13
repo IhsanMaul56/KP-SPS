@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="col">
-        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+        <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content;">
     </div>
     <div class="my-3">
         <table class="table table-bordered">

@@ -28,38 +28,20 @@
                         <form wire:submit.prevent="update" method="POST" action="{{ route('update-data-guru-post') }}">
                             <div class="card-body overflow-auto h-100 fs-5 m-0" id="shadow">
                                 @csrf
-                                @if (Session::has('berhasil'))
-                                    <div class="alert alert-success">
-                                        {{ Session::get('berhasil') }}
-                                    </div>
-                                @endif
-
-                                @if (session('gagal'))
-                                    <div class="alert alert-danger">
-                                        {{ session('gagal') }}
-                                    </div>
-                                @endif
-
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>NIP</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="nip" type="text"
                                                 class="form-control @error('nip') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);"
-                                                placeholder="Masukan Tempat Lahir" wire:model="nip"
-                                                name="nip" value="{{ $guru->nip }}">
+                                                placeholder="Masukan NIP" wire:model="nip" name="nip"
+                                                value="{{ $guru->nip }}"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                             @error('nip')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -68,17 +50,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Nama Lengkap</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="nama_guru" type="text"
                                                 class="form-control @error('nama_guru') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);"
                                                 placeholder="Masukan Nama Lengkap" wire:model="nama_guru" name="nama_guru"
-                                                value="{{ $guru->nama_guru }}">
+                                                value="{{ $guru->nama_guru }}"
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                             @error('nama_guru')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -87,17 +72,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Tempat, Tanggal Lahir</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="tempat_lahir" type="text"
                                                 class="form-control @error('tempat_lahir') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);"
                                                 placeholder="Masukan Tempat Lahir" wire:model="tempat_lahir"
-                                                name="tempat_lahir" value="{{ $guru->tempat_lahir }}">
+                                                name="tempat_lahir" value="{{ $guru->tempat_lahir }}"
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                             @error('tempat_lahir')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -119,9 +107,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Jenis Kelamin</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
@@ -137,16 +128,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Agama</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="agama" type="text"
                                                 class="form-control @error('agama') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Agama"
-                                                wire:model="agama" name="agama" value="{{ $guru->agama }}">
+                                                placeholder="Masukan Agama" wire:model="agama" name="agama"
+                                                value="{{ $guru->agama }}"
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                             @error('agama')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -155,15 +150,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Nomor HP</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="no_hp" type="text"
                                                 class="form-control @error('no_hp') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);"
                                                 placeholder="Masukan Nomor HP"
                                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                                 wire:model="no_hp" name="no_hp" value="{{ $guru->no_hp }}">
@@ -175,15 +172,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Email</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);"
                                                 placeholder="Masukan Nomor Email" wire:model="email" name="email"
                                                 value="{{ $guru->email }}">
                                             @error('email')
@@ -194,17 +193,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Provinsi</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="provinsi" type="text"
                                                 class="form-control @error('provinsi') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);"
                                                 placeholder="Masukan Provinsi" wire:model="provinsi" name="provinsi"
-                                                value="{{ $guru->provinsi }}">
+                                                value="{{ $guru->provinsi }}"
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                             @error('provinsi')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -213,16 +215,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Kota</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="kota" type="text"
                                                 class="form-control @error('kota') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Kota"
-                                                wire:model="kota" name="kota" value="{{ $guru->kota }}">
+                                                placeholder="Masukan Kota" wire:model="kota" name="kota"
+                                                value="{{ $guru->kota }}"
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                             @error('kota')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -231,16 +237,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Desa</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="desa" type="text"
                                                 class="form-control @error('desa') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan Desa"
-                                                wire:model="desa" name="desa" value="{{ $guru->desa }}">
+                                                placeholder="Masukan Desa" wire:model="desa" name="desa"
+                                                value="{{ $guru->desa }}"
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                                             @error('desa')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -249,16 +259,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>RT/RW</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input id="rt" type="text"
                                                 class="form-control @error('rt') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RT"
-                                                wire:model="rt" name="rt" value="{{ $guru->rt }}">
+                                                placeholder="Masukan RT" wire:model="rt" name="rt"
+                                                value="{{ $guru->rt }}"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                             @error('rt')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -270,8 +284,9 @@
                                         <div class="input-group">
                                             <input id="rw" type="text"
                                                 class="form-control @error('rw') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RW"
-                                                wire:model="rw" name="rw" value="{{ $guru->rw }}">
+                                                placeholder="Masukan RW" wire:model="rw" name="rw"
+                                                value="{{ $guru->rw }}"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                             @error('rw')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -280,16 +295,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row lg-2">
+                                <div class="row align-items-center">
                                     <div class="col-3">
                                         <span>Alamat Lengkap</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span>:</span>
                                     </div>
                                     <div class="col">
                                         <div class="input-group">
                                             <input id="alamat" type="text"
                                                 class="form-control @error('alamat') is-invalid @enderror"
-                                                style="border-color: rgba(168, 168, 168, 1);" placeholder="Masukan RW"
-                                                wire:model="alamat" name="alamat" value="{{ $guru->alamat }}">
+                                                placeholder="Masukan RW" wire:model="alamat" name="alamat"
+                                                value="{{ $guru->alamat }}">
                                             @error('alamat')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

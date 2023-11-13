@@ -18,9 +18,9 @@
                 @endif
                 <div class="row mb-3">
                     <div class="col">
-                        <label>Pilih Kepala Jurusan :</label>
-                        <select wire:model="selectedJurusan.guru_id" name="guru" class="form-control">
-                            <option value="" hidden selected>NIP Guru - Nama Guru</option>
+                        <label>Kepala Jurusan :</label>
+                        <select wire:model="selectedJurusan.guru_id" name="guru" class="form-select">
+                            <option value="" hidden selected>Pilih NIP Guru - Nama Guru</option>
                             @foreach ($guruList as $nipGuru => $namaGuru)
                                 <option value="{{ $nipGuru }}">{{ $nipGuru }} - {{ $namaGuru }}</option>
                             @endforeach

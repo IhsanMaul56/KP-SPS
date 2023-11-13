@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="border-color: rgba(168, 168, 168, 1); width: max-content; border-radius: 10px 10px 10px 10px;">
+                    <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content;">
                 </div>
             </div>
             <table class="table table-bordered">
