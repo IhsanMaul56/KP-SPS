@@ -42,7 +42,7 @@
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5 ling">Jurusan</a>
                         <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5 ling">Kelas</a>
                         <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5 ling">Mapel</a>
-                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5">Aktivasi Semester</a>
+                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5">Aktivasi<br>Semester</a>
                     </div>
                     <br>
                 </div>
@@ -54,15 +54,15 @@
                     </div>
                     <br>
                 </div> --}}
-                <div class="row mx-0">
+                {{-- <div class="row mx-0">
                     <a href="#" class="sidebar" style="text-decoration: none"><i
                             class="bi bi-person-circle icon-kiri"></i>Akun</a><br>
-                </div>
-                <div class="row mx-0">
+                </div> --}}
+                {{-- <div class="row mx-0">
                     <a href="{{ route('show-pengumuman') }}"
                         class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : '' }}"
                         style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
-                </div>
+                </div> --}}
 
             @elseif (Auth::user()->role == 'kurikulum')
                 <div class="row mx-0">
