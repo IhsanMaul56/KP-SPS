@@ -48,7 +48,7 @@ class data_guru extends Model
     }
 
     public function pengumuman() :HasOne{
-        return $this->hasOne(Pengumuman::class, 'guru_id', 'nip');
+        return $this->hasOne(Pengumumaan::class, 'guru_id', 'nip');
     }
 
     //invers cardinality

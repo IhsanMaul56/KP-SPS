@@ -29,7 +29,8 @@
         </div>
         <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
             <div class="grid-kanan">
-                @include('partials.rightbar_siswa')
+                {{-- @livewire('pengumuman-siswa') --}}
+                @include('livewire.pengumuman-siswa')
             </div>
         </div>
     </div>

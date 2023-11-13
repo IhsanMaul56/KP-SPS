@@ -41,7 +41,7 @@ class data_tingkat extends Model
     }
 
     public function pengumuman() : hasMany{
-        return $this->hasMany(Pengumuman::class, 'tingat_id', 'kode_tingkat');
+        return $this->hasMany(Pengumumaan::class, 'tingat_id', 'kode_tingkat');
     }
     //invers cardinality
 }

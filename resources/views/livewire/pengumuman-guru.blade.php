@@ -34,7 +34,7 @@
                             <div class="col">
                                 <form method="post" action="{{ route('create-pengumuman') }}" wire:submit.prevent="createPengumuman">
                                     @csrf
-                                    <input type="text" wire:model="guru_id" name="guru_id" value="{{ $guru_id }}">
+                                    <input type="hidden" wire:model="guru_id" name="guru_id" value="{{ $guru_id }}">
                                     @if (Session::has('berhasil'))
                                         <div class="alert alert-success">
                                             {{ Session::get('berhasil') }}

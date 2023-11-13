@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Session;
 
 class Pengumuman extends Component
 {
-    // public $guru;
     public $tingkat;
     public $kelas;
     public $pengumuman;
@@ -26,35 +25,36 @@ class Pengumuman extends Component
         $user = Auth::user();
 
         if ($user && $user->guru_id) {
-            $guru = DB::table('data_pengampus')
-                ->where('pengampu_id', '=', $user->guru_id)
+            $guru = DB::table('data_gurus')
+                ->where('nip', '=', $user->guru_id)
+                ->select('nip')
+                ->first();
+
+                $this->guru_id = $guru->nip ?? null;
+            
+            $pengampu = DB::table('data_pengampus')
+                ->where('pengampu_id', '=', $this->guru_id)
                 ->select('kode_pengampu', 'pengampu_id')
                 ->get();
 
-                $this->guru_id = $guru->pengampu_id;
+            if ($pengampu->isNotEmpty()) {
+                $pengampuKode = $pengampu->pluck('kode_pengampu')->toArray();
 
-            if ($guru) {
-                $pengampuKode = $guru->pluck('kode_pengampu');
-                $this->jadwal = DB::table('data_jadwals')
-                    ->where('pengampu_id', '=', $pengampuKode)
+                $jadwal = DB::table('data_jadwals')
+                    ->whereIn('pengampu_id', $pengampuKode)
                     ->select('data_jadwals.tingkat_id', 'data_jadwals.nama_tingkat', 'data_jadwals.kelas_id', 'data_jadwals.nama_kelas')
                     ->get();
-                // dd($this->jadwal);
 
-                $this->tingkatList = $this->jadwal->pluck('nama_tingkat', 'tingkat_id');
-                $this->kelasList = $this->jadwal->pluck('nama_kelas', 'kelas_id');
-                // dd($this->kelasList);
+                $this->tingkatList = $jadwal->pluck('nama_tingkat', 'tingkat_id');
+                $this->kelasList = $jadwal->pluck('nama_kelas', 'kelas_id');
             }
         }
-        return view('livewire.pengumuman', compact('guru'));
+        return view('livewire.pengumuman-guru', compact('guru', 'jadwal'));
     }
+
 
     public function createPengumuman(Request $request)
     {
-        dd($request);
-        $user = Auth::user();
-        $gurusid = $user->guru_id;
-
         $guru_id = $request->input('guru_id');
 
         $request->validate([
@@ -65,7 +65,7 @@ class Pengumuman extends Component
         ]);
 
         $guruPen = DB::table('data_pengampus')
-            ->where('guru_id', $gurusid)
+            ->where('pengampu_id', $guru_id)
             ->value('nama_guru');
 
         $tingkatPen = DB::table('data_tingkats')
@@ -79,7 +79,7 @@ class Pengumuman extends Component
         try {
             Pengumumaan::create([
                 'deskripsi' => $request->deskripsi,
-                'guru_id' => $gurusid,
+                'guru_id' => $guru_id,
                 'nama_guru' => $guruPen,
                 'tingkat_id' => $request->tingkat_id,
                 'nama_tingkat' => $tingkatPen,
@@ -94,8 +94,9 @@ class Pengumuman extends Component
         return redirect()->back();
     }
 
-    public function tampil()
+
+    public function pengumumanSiswa()
     {
-        // return view('livewire.pengumuman');
+        return view('livewire.pengumuman-siswa');
     }
 }

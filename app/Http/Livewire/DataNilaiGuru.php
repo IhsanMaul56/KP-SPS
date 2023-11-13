@@ -66,7 +66,6 @@ class DataNilaiGuru extends Component
 
                     if ($this->tingkat && $this->tingkatSelected) {
 
-                        // Query untuk mendapatkan data kelas
                         $kelasData = DB::table('data_pengampus')
                             ->whereIn('kode_pengampu', $pengampuId)
                             ->where('nama_mapel', $this->mapelSelected)
