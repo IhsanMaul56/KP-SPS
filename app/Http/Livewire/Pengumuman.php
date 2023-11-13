@@ -93,10 +93,4 @@ class Pengumuman extends Component
         }
         return redirect()->back();
     }
-
-
-    public function pengumumanSiswa()
-    {
-        return view('livewire.pengumuman-siswa');
-    }
 }

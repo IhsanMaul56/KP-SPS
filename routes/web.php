@@ -23,6 +23,7 @@ use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSiswaController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Livewire\AturTahunSemester;
 use App\Http\Livewire\EditDataGuru;
 use App\Http\Livewire\MasterMapel;
 use App\Http\Livewire\NilaiTp;
@@ -71,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
+        Route::get('/admin/aktivasi-semester', AturTahunSemester::class)->name('atur-tasem');
     });
 
     Route::prefix('/dashboard')->group(function () {
