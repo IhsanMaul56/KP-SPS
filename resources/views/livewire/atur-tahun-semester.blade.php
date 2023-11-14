@@ -31,7 +31,7 @@
                             <div class="col">
                                 <div class="card-body shadow text-end" style="height:100%">
                                     <label class="fs-5 text-center">Aktivasi Tahun Akademik & Semester</label>
-                                    <form wire:submit.prevent="updateStatus" method="POST" action="{{ route('aktifasi-tahun-akademik') }}">
+                                    <form wire:submit.prevent="updateSta" method="POST" action="{{ route('aktifasi-tahun-akademik') }}">
                                         @csrf
                                     
                                         @if (session()->has('berhasil'))

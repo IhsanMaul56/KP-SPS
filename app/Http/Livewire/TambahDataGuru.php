@@ -100,7 +100,7 @@ class TambahDataGuru extends Component
         
         $this->resetForm();
 
-        return redirect()->back();
+        return redirect()->route('master-guru');
     }
 
     private function resetForm()
@@ -162,7 +162,7 @@ class TambahDataGuru extends Component
             ]);
         
         Session::flash('berhasil', 'Data Berhasil Diupdate');
-        return redirect()->back();
+        return redirect()->route('master-guru');
         $this->emit('refreshComponent');
     }
 

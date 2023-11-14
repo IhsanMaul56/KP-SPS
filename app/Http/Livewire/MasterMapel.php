@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\data_mapel;
 use App\Models\data_pengampu;
+use App\Models\data_jadwal;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -19,10 +20,11 @@ class MasterMapel extends Component
         'kode_mapel' => '',
         'nama_mapel' => ''
     ];
+    public $selectedPengampuId;
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     public function render()
     {
         $mapel = DB::table('data_mapels')
@@ -41,22 +43,32 @@ class MasterMapel extends Component
             'nama_mapel' => 'required'
         ]);
 
-        try{
-            data_mapel::create([
-                'nama_mapel' => $this->nama_mapel
-            ]);
+        // Periksa apakah data_mapel dengan nama yang sama sudah ada
+        $cekMapel = data_mapel::where('nama_mapel', $this->nama_mapel)->first();
 
-            $this->showModal = false;
-            session()->flash('berhasil', 'Data mata pelajaran berhasil disimpan.');
-        } catch (\Exception $e) {
-            session()->flash('gagal', 'Terjadi kesalahan saat menyimpan data mata pelajaran: ' . $e->getMessage());
+        if ($cekMapel) {
+            // Data sudah ada, tampilkan notifikasi
+            session()->flash('gagal', 'Mata Pelajaran Sudah Ada');
+        } else {
+            // Data belum ada, tambahkan ke tabel data_mapel
+            try {
+                data_mapel::create([
+                    'nama_mapel' => $this->nama_mapel
+                ]);
+
+                $this->showModal = false;
+                session()->flash('berhasil', 'Data Berhasil Ditambahkan');
+            } catch (\Exception $e) {
+                session()->flash('gagal', 'Terjadi kesalahan saat menyimpan data mata pelajaran: ' . $e->getMessage());
+            }
         }
+        return redirect()->route('master-mapel');
     }
 
     public function editMapel($mapelId)
     {
         $mapel = data_mapel::find($mapelId);
-        if($mapel){
+        if ($mapel) {
             $this->mapelSelectedId = $mapelId;
             $this->data = [
                 'kode_mapel' => $mapel->kode_mapel,
@@ -72,33 +84,75 @@ class MasterMapel extends Component
             'data.nama_mapel' => 'required'
         ]);
 
-        try{
+        try {
             data_mapel::where('kode_mapel', $this->data)->update([
                 'nama_mapel' => $this->data['nama_mapel']
             ]);
 
             $this->showModal = false;
-            session()->flash('berhasil', 'Data mata pelajaran berhasil diupdate.');
+            session()->flash('berhasil', 'Data Berhasil Diupdate');
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi kesalahan saat menyimpan data mata pelajaran: ' . $e->getMessage());
         }
+        return redirect()->route('master-mapel');
     }
 
-    public function deleteMapelConfirm($kode_kelas)
+    //Yang Asli
+    // public function deleteMapelConfirm($kode_mapel)
+    // {
+    //     $this->mapelSelectedId = data_mapel::find($kode_mapel);
+    // }
+
+    // public function deleteMapel()
+    // {
+    //     if ($this->mapelSelectedId) {
+    //         $kode_mapel = $this->mapelSelectedId->kode_mapel;
+    //         $data_pengampus = data_pengampu::where('mapel_id', $kode_mapel)->get();
+
+    //         if ($data_pengampus->count() > 0) {
+    //             foreach ($data_pengampus as $data_pengampu) {
+    //                 $data_pengampu->delete();
+    //             }
+    //         }
+
+    //         data_mapel::where('kode_mapel', $kode_mapel)->delete();
+    //         Session::flash('berhasil', 'Data Berhasil Dihapus');
+    //     }
+
+    //     $this->resetPage();
+    //     return redirect()->route('master-mapel');
+    // }
+
+    public function deleteMapelConfirm($kode_mapel)
     {
-        $this->mapelSelectedId = data_mapel::find($kode_kelas);
+        $this->mapelSelectedId = data_mapel::find($kode_mapel);
     }
 
     public function deleteMapel()
     {
-        if($this->mapelSelectedId){
-            data_pengampu::where('mapel_id', $this->mapelSelectedId->kode_mapel)->delete();
-            data_mapel::where('kode_mapel', $this->mapelSelectedId->kode_mapel)->delete();
-            Session::flash('berhasil', 'Data berhasil dihapus');
+        if ($this->mapelSelectedId) {
+            $kode_mapel = $this->mapelSelectedId->kode_mapel;
+            $data_pengampus = data_pengampu::where('mapel_id', $kode_mapel)->get();
+
+            if ($data_pengampus->count() > 0) {
+                foreach ($data_pengampus as $data_pengampu) {
+                    data_jadwal::where('pengampu_id', $data_pengampu->kode_pengampu)->delete();
+                    $data_pengampu->delete();
+                }
+            }
+
+            data_mapel::where('kode_mapel', $kode_mapel)->delete();
+            Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
+
+        $this->resetPage();
+        return redirect()->route('master-mapel');
     }
 
-    public function updatingSearch(){
+
+
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
@@ -107,7 +161,8 @@ class MasterMapel extends Component
         $this->nama_mapel = null;
     }
 
-    public function tampil(){
+    public function tampil()
+    {
         return view('partials.mapel-master');
     }
 }

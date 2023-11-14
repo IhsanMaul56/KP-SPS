@@ -16,7 +16,7 @@ class DataWaliSeeder extends Seeder
         $dataWali = [
             [
                 'wali_id' => '2000',
-                'nama_guru' => 'ATIEK OCTARIA P. S.Pd',
+                'nama_guru' => 'Dr. SAMSORI, S.Pd, M.Pd',
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'X',
                 'kelas_id' => '1',
@@ -32,7 +32,7 @@ class DataWaliSeeder extends Seeder
             ],
             [
                 'wali_id' => '5600',
-                'nama_guru' => 'YUDI KURNIA SOLIHIN, S.Pd',
+                'nama_guru' => 'SUCI SULASTRI, S.Kom., MOS., MTCNA',
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'X',
                 'kelas_id' => '3',
@@ -84,7 +84,7 @@ class DataWaliSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'X',
                 'kelas_id' => '9',
-                'nama_kelas' => 'MPLBB 3'
+                'nama_kelas' => 'MPLB 3'
                 
             ],
             [

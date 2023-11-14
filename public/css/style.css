@@ -257,7 +257,7 @@ body{
 
 /* beranda admin */
 .container {
-    width: 29vmin;
+    width: 38vmin;
     height: 13vmin;
     display: flex;
     justify-content: space-evenly;

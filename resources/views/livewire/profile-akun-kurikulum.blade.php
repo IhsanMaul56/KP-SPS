@@ -12,7 +12,7 @@
     <div class="row p-0 m-0">
         <div class="card-body h-100 overflow-auto" id="shadow">
             <div class="row m-0 p-0">
-                <span>Foto Profil</span>
+                <h4>Foto Profil</h4>
                 <hr>
                 @if ($foto_k->foto_guru == "")
                     <i class="bi bi-person-circle" style="text-align: center; font-size: 100px;"></i>

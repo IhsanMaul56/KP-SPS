@@ -212,7 +212,7 @@ class TambahDataSiswa extends Component
         }
         
 
-        return redirect()->back();
+        return redirect()->route('siswa-kurikulum');
     }
 
     public function viewUpdate($nis)
@@ -235,14 +235,14 @@ class TambahDataSiswa extends Component
 
     public function update(Request $request)
     {
-        $existingUser = DB::table('users')
+        $cekUser = DB::table('users')
             ->leftJoin('data_siswas', 'users.siswa_id', '=', 'data_siswas.nis')
             ->where('email', $request->email)
             ->where('siswa_id', '!=', $request->nis)
             ->first();
 
-        if ($existingUser) {
-            session()->flash('gagal', 'Email address Sudah Digunakan');
+        if ($cekUser) {
+            session()->flash('gagal', 'Tidak Dapat Mengubah Data');
         } else {
             DB::table('users')
                 ->leftJoin('data_siswas', 'users.siswa_id', '=', 'data_siswas.nis')
@@ -279,7 +279,7 @@ class TambahDataSiswa extends Component
             session()->flash('berhasil', 'Data Berhasil Diupdate');
         }
 
-        return redirect()->back();
+        return redirect()->route('siswa-kurikulum');
     }
 
     public function mount()

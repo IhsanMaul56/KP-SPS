@@ -5,12 +5,13 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: 25%; border-color: rgba(168, 168, 168, 1); border-radius: 10px 10px 10px 10px">
+                <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content;">
             </div>
             <div class="col-3" style="width: max-content;">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertKelas">
                     <i class="bi bi-plus-lg" style="padding-right: 5px"></i>Tambah
                 </button>
+            </div>
             </div>
             <table class="table table-bordered">
                 @if (Session::has('berhasil'))
@@ -20,11 +21,11 @@
                 @endif
                 <thead>
                     <tr class="text-center">
-                        <th>No</th>
-                        <th>Kelas</th>
-                        <th>Wali Kelas</th>
-                        <th>No. HP</th>
-                        <th>Aksi</th>
+                        <th>NO</th>
+                        <th>KELAS</th>
+                        <th>WALI KELAS</th>
+                        <th>NO. HP</th>
+                        <th>AKSI</th>
                     </tr>
                 </thead>
                 <?php $no = 1 ?>
@@ -33,7 +34,7 @@
                         <tr class="text-center">
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->nama_tingkat }} {{ $item->nama_kelas}}</td>
-                            <td>
+                            <td class="text-start">
                                 @if ($item->nama_guru)
                                     {{ $item->nama_guru }}
                                 @else
@@ -60,6 +61,5 @@
                     </tbody>
                 </table>
             {{ $kelas->links() }}
-        </div>
     </div>
 </div>

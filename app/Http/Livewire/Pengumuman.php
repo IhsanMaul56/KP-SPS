@@ -23,69 +23,34 @@ class Pengumuman extends Component
 
     public function render()
     {
-        if(Auth::user()->role == 'guru'){
-            $user = Auth::user();
-            if ($user && $user->guru_id) {
-                $guru = DB::table('data_gurus')
-                    ->where('nip', '=', $user->guru_id)
-                    ->select('nip')
-                    ->first();
-    
-                    $this->guru_id = $guru->nip ?? null;
-                
-                $pengampu = DB::table('data_pengampus')
-                    ->where('pengampu_id', '=', $this->guru_id)
-                    ->select('kode_pengampu', 'pengampu_id')
-                    ->get();
-    
-                if ($pengampu->isNotEmpty()) {
-                    $pengampuKode = $pengampu->pluck('kode_pengampu')->toArray();
-    
-                    $jadwal = DB::table('data_jadwals')
-                        ->whereIn('pengampu_id', $pengampuKode)
-                        ->select('data_jadwals.tingkat_id', 'data_jadwals.nama_tingkat', 'data_jadwals.kelas_id', 'data_jadwals.nama_kelas')
-                        ->get();
-    
-                    $this->tingkatList = $jadwal->pluck('nama_tingkat', 'tingkat_id');
-                    $this->kelasList = $jadwal->pluck('nama_kelas', 'kelas_id');
-                }
+        $user = Auth::user();
 
-                $pengumuman = DB::table('pengumumaans')
-                    ->where('guru_id', '=', $this->guru_id)
-                    ->select('kode_pengumuman', 'tingkat_id', 'nama_tingkat', 'kelas_id', 'nama_kelas', 'deskripsi')
-                    ->get();
+        if ($user && $user->guru_id) {
+            $guru = DB::table('data_gurus')
+                ->where('nip', '=', $user->guru_id)
+                ->select('nip')
+                ->first();
 
-                    $this->pengumumanList = $pengumuman->reject('kode_pengumuman', 'nama_tingkat', 'tingkat_id', 'kelas_id', 'nama_kelas', 'deskripsi');
-                // dd($this->pengumumanList);
-            }
-            return view('livewire.pengumuman-guru', compact('guru', 'jadwal', 'pengumuman'));
-        }
-        else if(Auth::user()->role == 'siswa'){
-            $user = Auth::user();
-            if($user && $user->siswa_id){
-                $siswa = DB::table('data_siswas')
-                    ->where('nis', '=', $user->siswa_id)
-                    ->select('nis', 'tingkat_id', 'kelas_id')
-                    ->get();
-                    // dd($siswa);
-                if($siswa){
-                    $siswatingkat = $siswa->pluck('tingkat_id');
-                    $siswakelas = $siswa->pluck('kelas_id');
-                    
-                    $pengumumansiswa = DB::table('pengumumaans')
-                    ->where('tingkat_id', '=', $siswatingkat)
-                    ->where('kelas_id', '=', $siswakelas)
-                    ->select('deskripsi')
-                    ->get();
-                    
-                    // dd($pengumumansiswa);
-                }
-
-            }
-            // dd($pengumumansiswa);
+                $this->guru_id = $guru->nip ?? null;
             
-            return view('livewire.pengumuman-siswa', compact('pengumumansiswa'));
+            $pengampu = DB::table('data_pengampus')
+                ->where('pengampu_id', '=', $this->guru_id)
+                ->select('kode_pengampu', 'pengampu_id')
+                ->get();
+
+            if ($pengampu->isNotEmpty()) {
+                $pengampuKode = $pengampu->pluck('kode_pengampu')->toArray();
+
+                $jadwal = DB::table('data_jadwals')
+                    ->whereIn('pengampu_id', $pengampuKode)
+                    ->select('data_jadwals.tingkat_id', 'data_jadwals.nama_tingkat', 'data_jadwals.kelas_id', 'data_jadwals.nama_kelas')
+                    ->get();
+
+                $this->tingkatList = $jadwal->pluck('nama_tingkat', 'tingkat_id');
+                $this->kelasList = $jadwal->pluck('nama_kelas', 'kelas_id');
+            }
         }
+        return view('livewire.pengumuman-guru', compact('guru', 'jadwal'));
     }
 
     public function createPengumuman(Request $request)
@@ -127,19 +92,5 @@ class Pengumuman extends Component
             session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan Data' . $e->getMessage());
         }
         return redirect()->back();
-    }
-
-    // public function deletePengumumanConfirm()
-
-    public function onDelete()
-    {
-        if($this->selectedPengumuman){
-            Pengumumaan::where('kode_pengumuman', $this->selectedPengumuman->kode_pengumuman)->delete();
-
-            Session::flash('berhasil', 'Data Berhasil Dihapus');
-        }
-
-        $this->resetPage();
-        return redirect()->route('pengumuman-guru');
     }
 }

@@ -15,151 +15,190 @@
     
     @csrf
     @foreach ($siswa2 as $item)
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Nama</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nama_siswa }}" disabled>
+                    <input id="nama" type="text" class="form-control" value="{{ $item->nama_siswa }}" disabled>
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>NIS</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->nis }}" disabled>
+                    <input id="nama" type="nama" class="form-control" value="{{ $item->nis }}" disabled>
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Jenis Kelamin</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">
-                <input id="jk" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->jenis_kelamin }}" disabled>
+                <input id="jk" type="text" class="form-control" value="{{ $item->jenis_kelamin }}" disabled>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Tempat, Tanggal Lahir</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input id="nama" type="nama" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tempat_lahir }}" disabled>
+                    <input id="nama" type="nama" class="form-control" value="{{ $item->tempat_lahir }}" disabled>
                 </div>
             </div>
             <div class="col-3">
                 <div class="input-group">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->tanggal_lahir }}" disabled>
+                    <input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" value="{{ $item->tanggal_lahir }}" disabled>
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Agama</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="agama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->agama }}" disabled>
+                    <input id="agama" type="text" class="form-control" value="{{ $item->agama }}" disabled>
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Provinsi</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="provinsi" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->provinsi }}">
+                    <input id="provinsi" type="text" class="form-control" value="{{ $item->provinsi }}" oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Kota</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="kota" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->kota }}">
+                    <input id="kota" type="text" class="form-control" value="{{ $item->kota }}" oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Desa</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="desa" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->desa }}">
+                    <input id="desa" type="text" class="form-control" value="{{ $item->desa }}" oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>RT</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="rt" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rt }}">
+                    <input id="rt" type="text" class="form-control" value="{{ $item->rt }}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>RW</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input id="rw" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->rw }}">
+                    <input id="rw" type="text" class="form-control" value="{{ $item->rw }}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>Nomor Telepon</span>
             </div>
+            <div class="col-auto">
+                <span>:</span>
+            </div>
             <div class="col-3">          
                 <div class="input-group">
-                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $item->no_hp }}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <input wire:model="data.no_hp" id="nama" type="text" class="form-control" value="{{ $item->no_hp }}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
             </div>
         </div>
         
-        <div class="row mb-2">
+        <div class="row mb-2 align-items-center">
             <div class="col-3">
                 <span>E-mail</span>
+            </div>
+            <div class="col-auto">
+                <span>:</span>
             </div>
             <div class="col-3">
                 @if ($siswa1)
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" style="border-color: rgba(168, 168, 168, 1);" value="{{ $siswa1 }}" disabled>
+                        <input id="email" type="email" class="form-control" value="{{ $siswa1 }}" disabled>
                     </div>
                 @endif
             </div>
         </div>
         
         @if (isset($item->alamat))
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-3">
                     <span>Alamat Lengkap</span>
                 </div>
+                <div class="col-auto">
+                    <span>:</span>
+                </div>
                 <div class="col">
                     <div class="input-group" >
-                        <textarea wire:model="data.alamat" name="alamat" id="alamat" cols="10" rows="2" class="form-control" style="border-color: rgba(168, 168, 168, 1); width: 50%;" value="{{ $item->alamat }}"></textarea>
+                        <textarea wire:model="data.alamat" name="alamat" id="alamat" cols="10" rows="2" class="form-control" style="width: 50%;" value="{{ $item->alamat }}"></textarea>
                     </div>
                 </div>
             </div>
