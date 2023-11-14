@@ -29,6 +29,25 @@
                             <div class="col">
                                 <div class="card-body overflow-auto fs-5 m-0" id="shadow" style="height: max-content">
                                     @csrf
+                                    @if (Session::has('berhasil'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('berhasil') }}
+                                        </div>
+                                    @endif
+                                    @if (Session::has('gagal'))
+                                        <div class="alert alert-danger">
+                                            {{ Session::get('gagal') }}
+                                        </div>
+                                    @endif
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-3">
                                             <span>NIS</span>

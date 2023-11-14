@@ -38,8 +38,11 @@
                             <div class="col text-end">
                                 <a href="{{ route('nilai-progress') }}" class="btn btn-success"
                                     style="text-decoration: none">Nilai Progress</a>
+                                    <iframe id="iframePageToPrint" src="nilai-print" style="display:none;"></iframe>
+                                    <button onclick="cetakPDF()" class="btn btn-primary">Download Nilai</button>
                             </div>
                         </div>
+
                         @if ($dataMapel && count($dataMapel) > 0)
                             <table class="table table-bordered my-3">
                                 <thead>
@@ -75,4 +78,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function cetakPDF() {
+            // Dapatkan akses ke iframe
+            var iframe = document.getElementById('iframePageToPrint').contentWindow;
+
+            // Panggil fungsi untuk mencetak PDF dari halaman yang dimuat di dalam iframe
+            iframe.cetakPDF();
+        }
+    </script>
 @endsection

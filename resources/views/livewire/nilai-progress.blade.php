@@ -51,50 +51,54 @@
                         <div class="row mb-3">
                             <h3 class="text-center fw-bold">(RAPOR)</h3>
                         </div>
-                        @if ($siswa)
-                            <div class="row mb-1">
-                                <div class="col">
-                                    <span>Nama Peserta Didik</span>
-                                </div>
-                                <div class="col">
-                                    <span>: {{ $siswa->nama_siswa }}</span>
-                                </div>
+                        @if ($siswa->isNotEmpty())
+                            @foreach ($siswa as $student)
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Nama Peserta Didik</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>: {{ $student->nama_siswa }}</span>
+                                    </div>
 
-                                <div class="col">
-                                    <span>Fase</span>
+                                    <div class="col">
+                                        <span>Fase</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>: E</span>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <span>: E</span>
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>NIS</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>: {{ $student->nis }}</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>Semester</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>: {{ $student->nama_semester }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-1">
-                                <div class="col">
-                                    <span>NIS</span>
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Kelas</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>: {{ $student->nama_tingkat }} {{ $student->nama_kelas }}</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>Tahun Ajaran</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>: {{ $student->tahun_akademik }}</span>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <span>: {{ $siswa->nis }}</span>
-                                </div>
-                                <div class="col">
-                                    <span>Semester</span>
-                                </div>
-                                <div class="col">
-                                    <span>: 1</span>
-                                </div>
-                            </div>
-                            <div class="row mb-1">
-                                <div class="col">
-                                    <span>Kelas</span>
-                                </div>
-                                <div class="col">
-                                    <span>: {{ $siswa->nama_tingkat }} {{ $siswa->nama_kelas }}</span>
-                                </div>
-                                <div class="col">
-                                    <span>Tahun Ajaran</span>
-                                </div>
-                                <div class="col">
-                                    <span>: {{ $siswa->nama_tahun }}</span>
-                                </div>
-                            </div>
+                            @endforeach
+                        @else
+                            <p>No student data available.</p>
                         @endif
                         <table class="table table-bordered mt-3">
                             <thead>
@@ -103,6 +107,7 @@
                                     <th rowspan="2">MATA PELAJARAN</th>
                                     <th colspan="2">FORMATIF</th>
                                     <th colspan="2">SUMATIF</th>
+                                    <th rowspan="2">NILAI AKHIR</th>
                                 </tr>
                                 <tr class="text-center">
                                     <th>TUGAS</th>
@@ -113,16 +118,19 @@
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                @foreach ($dataMapel as $item)
-                                    <tr class="text-center">
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->nama_mapel }}</td>
-                                        <td>{{ $item->formatifs ? $item->formatifs->tugas : '-' }}</td>
-                                        <td>{{ $item->formatifs ? $item->formatifs->kuis : '-' }}</td>
-                                        <td>{{ $item->sumatifs ? $item->sumatifs->uts : '-' }}</td>
-                                        <td>{{ $item->sumatifs ? $item->sumatifs->uas : '-' }}</td>
-                                    </tr>
-                                @endforeach
+                                @if ($dataMapel && count($dataMapel) > 0)
+                                    @foreach ($dataMapel as $item)
+                                        <tr class="text-center">
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $item->nama_mapel }}</td>
+                                            <td>{{ $item->formatifs ? $item->formatifs->tugas : '-' }}</td>
+                                            <td>{{ $item->formatifs ? $item->formatifs->kuis : '-' }}</td>
+                                            <td>{{ $item->sumatifs ? $item->sumatifs->uts : '-' }}</td>
+                                            <td>{{ $item->sumatifs ? $item->sumatifs->uas : '-' }}</td>
+                                            <td>{{ $item->nilai_akhir }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -130,4 +138,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function cetakPDF() {
+            // Cetak PDF atau lakukan operasi lain sesuai kebutuhan
+            window.print();
+        }
+    </script>
 @endsection
