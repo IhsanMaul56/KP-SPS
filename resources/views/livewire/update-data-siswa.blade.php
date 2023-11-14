@@ -34,6 +34,11 @@
                                             {{ Session::get('berhasil') }}
                                         </div>
                                     @endif
+                                    @if (Session::has('gagal'))
+                                        <div class="alert alert-danger">
+                                            {{ Session::get('gagal') }}
+                                        </div>
+                                    @endif
                                     @if ($errors->any())
                                         <div class="alert alert-danger">
                                             <ul>
