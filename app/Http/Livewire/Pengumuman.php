@@ -15,10 +15,11 @@ class Pengumuman extends Component
     public $tingkat;
     public $kelas;
     public $pengumuman;
+    public $pengumumanList = [];
     public $jadwal;
     public $tingkatList = [];
     public $kelasList = [];
-    public $guru_id, $deskripsi, $tingkat_id, $kelas_id;
+    public $guru_id, $deskripsi, $tingkat_id, $kelas_id, $siswa_id, $selectedPengumuman;
 
     public function render()
     {
@@ -51,7 +52,6 @@ class Pengumuman extends Component
         }
         return view('livewire.pengumuman-guru', compact('guru', 'jadwal'));
     }
-
 
     public function createPengumuman(Request $request)
     {

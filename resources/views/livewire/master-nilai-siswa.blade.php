@@ -25,7 +25,7 @@
                 <div class="row p-0 m-0">
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <div class="row mb-1" style="display: flex; align-items: center;">
-                            <div class="col-auto">
+                            <div class="col">
                                 <select class="form-select" wire:model="tahunSelected" wire:change="loadDataMapel">
                                     <option hidden selected>Pilih Tahun Akademik</option>
                                     @if ($tahunAkademik)
