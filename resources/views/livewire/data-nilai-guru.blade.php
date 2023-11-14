@@ -1,17 +1,17 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.modal-persentase')
-    <div class="row mb-1 align-items-center" style="display: flex; align-items: center; width: 75%;">
-        <div class="col">
-            <select wire:model="mapelSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 250px; border-radius: 100px">
-                <option value="" hidden selected>Mata Pelajaran</option>
+    <div class="row mb-1" style="display: flex; align-items: center;">
+        <div class="col-2">
+            <select wire:model="mapelSelected" class="form-select">
+                <option value="" hidden selected>Pilih Mata Pelajaran</option>
                 @foreach ($guru as $pengampu)
                     <option value="{{ $pengampu->nama_mapel }}">{{ $pengampu->nama_mapel }}</option>
                 @endforeach
             </select>
         </div>
-        <div class="col-auto">
-            <select wire:model="tingkatSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
-                <option value="" hidden selected>Tingkat</option>
+        <div class="col-2">
+            <select wire:model="tingkatSelected" class="form-select">
+                <option value="" hidden selected>Pilih Tingkat</option>
                 @if ($tingkat)
                     @foreach ($tingkat as $ting)
                         <option value="{{ $ting }}">{{ $ting }}</option>
@@ -19,9 +19,9 @@
                 @endif
             </select>
         </div>
-        <div class="col">
-            <select wire:model="kelasSelected" class="form-select" style="border-color: rgba(168, 168, 168, 1); width: 200px; border-radius: 100px">
-                <option value="" hidden selected>Kelas</option>
+        <div class="col-2">
+            <select wire:model="kelasSelected" class="form-select">
+                <option value="" hidden selected>Pilih Kelas</option>
                 @if ($kelas)
                     @foreach ($kelas as $kel)
                         <option value="{{ $kel }}">{{ $kel }}</option>
@@ -29,7 +29,7 @@
                 @endif
             </select>
         </div>
-        <div class="col">
+        <div class="col text-end">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertPercent">
                 <i class="bi bi-percent" style="padding-right:5px;"></i>Atur Persentase
             </button>

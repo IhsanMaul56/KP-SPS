@@ -121,3 +121,27 @@ $(document).ready(function() {
     $('#UpdateJurusan').modal('hide');
     $('#DeleteDataJurusan').modal('hide');
 });
+
+// Modal Master Kelas
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertKelas').modal('hide');
+    $('#UpdateKelas').modal('hide');
+    $('#DeleteDataKelas').modal('hide');
+});
+
+// Modal Master Mapel
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertMapel').modal('hide');
+    $('#UpdateMapel').modal('hide');
+    $('#DeleteDataMapel').modal('hide');
+});
+
+// Modal Master Jadwal
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertJadwal').modal('hide');
+    $('#UpdateJadwal').modal('hide');
+    $('#DeleteDataJadwal').modal('hide');
+});

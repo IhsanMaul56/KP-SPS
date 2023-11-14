@@ -145,7 +145,7 @@ class DataNilaiSiswa extends Component
 
             $this->reset(['tugas', 'kuis']);
 
-            session()->flash('berhasil_formatif', 'Data nilai formatif berhasil disimpan.');
+            session()->flash('berhasil_formatif', 'Data Berhasil Disimpan');
         } catch (\Exception $e) {
             session()->flash('gagal_formatif', 'Terjadi kesalahan saat menyimpan data nilai: ' . $e->getMessage());
         }
@@ -218,7 +218,7 @@ class DataNilaiSiswa extends Component
             );
 
             $this->reset(['uts', 'uas']);
-            session()->flash('berhasil_sumatif', 'Data nilai sumatif berhasil disimpan.');
+            session()->flash('berhasil_sumatif', 'Data Berhasil Disimpan');
         } catch (\Exception $e) {
             session()->flash('gagal_sumatif', 'Terjadi kesalahan saat menyimpan data nilai: ' . $e->getMessage());
         }

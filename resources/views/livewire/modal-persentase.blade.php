@@ -24,7 +24,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <select wire:model="pengampu_id" name="pengampu_id" class="form-control" wire:change="fetchMapelData">
+                        <select wire:model="pengampu_id" name="pengampu_id" class="form-select" wire:change="fetchMapelData">
                             <option value="" hidden selected>Pilih Mata Pelajaran</option>
                             @foreach ($mapelList as $kodePengampu => $namaMapel)
                                 <option value="{{ $kodePengampu }}">{{ $namaMapel }}</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control @error('formatif_akhir') is-invalid @enderror" wire:model="formatif_akhir" name="formatif_akhir" placeholder="Persentase Nilai Formatif">
+                        <input type="text" class="form-control @error('formatif_akhir') is-invalid @enderror" wire:model="formatif_akhir" name="formatif_akhir" placeholder="Masukkan Persentase Nilai Formatif">
                         @error('formatif_akhir')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -56,7 +56,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control @error('sumatif_uts') is-invalid @enderror" wire:model="sumatif_uts" name="sumatif_uts" placeholder="Persentase UTS">
+                        <input type="text" class="form-control @error('sumatif_uts') is-invalid @enderror" wire:model="sumatif_uts" name="sumatif_uts" placeholder="Masukkan Persentase UTS">
                         @error('sumatif_uts')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -72,7 +72,7 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col">
-                        <input type="text" class="form-control @error('sumatif_uas') is-invalid @enderror" wire:model="sumatif_uas" name="sumatif_uas" placeholder="Persentase UAS">
+                        <input type="text" class="form-control @error('sumatif_uas') is-invalid @enderror" wire:model="sumatif_uas" name="sumatif_uas" placeholder="Masukkan Persentase UAS">
                         @error('sumatif_uas')
                             <div class="invalid-feedback">
                                 {{ $message }}
