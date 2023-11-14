@@ -33,7 +33,4 @@ class tahun_akademik extends Model
     }
 
     //invers cardinality
-    public function semester() : BelongsTo{
-        return $this->belongsTo(DataSemester::class, 'semester_id', 'kode_semester');
-    }
 }

@@ -21,12 +21,12 @@
             @include('partials.content_siswa')
         @endif
         
-        @if (Auth::user()->role == 'siswa')
+        {{-- @if (Auth::user()->role == 'siswa')
             <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
                 <div class="grid-kanan">
                     @include('partials.rightbar_siswa')
                 </div>
             </div>
-        @endif
+        @endif --}}
     </div>
 @endsection
