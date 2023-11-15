@@ -74,7 +74,7 @@
         </div>
         <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
             <div class="grid-kanan">
-                @include('livewire.pengumuman-siswa')
+                @livewire('pengumuman')
             </div>
         </div>
     </div>

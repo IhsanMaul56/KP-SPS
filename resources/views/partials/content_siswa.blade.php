@@ -29,13 +29,7 @@
         </div>
         <div class="col p-0" style="z-index: 7; height:30px; weight:20px;">
             <div class="grid-kanan">
-<<<<<<< HEAD
                 @livewire('pengumuman')
-                {{-- ('livewire.pengumuman-siswa') --}}
-=======
-                {{-- @livewire('pengumuman-siswa') --}}
-                @include('livewire.pengumuman-siswa')
->>>>>>> 4782d01464531f4440edb391523c2bd27c965787
             </div>
         </div>
     </div>
