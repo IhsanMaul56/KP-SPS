@@ -19,7 +19,9 @@ class Pengumumaan extends Model
         'tingkat_id',
         'nama_tingkat',
         'kelas_id',
-        'nama_kelas'
+        'nama_kelas',
+        'mapel_id',
+        'nama_mapel',
     ];
 
     // invers cardinality
@@ -33,5 +35,9 @@ class Pengumumaan extends Model
 
     public function kelas() : BelongsTo{
         return $this->belongsTo(data_kelas::class, 'kelas_id', 'kode_kelas');
+    }
+
+    public function mapel() : BelongsTo{
+        return $this->belongsTo(data_pengampu::class, 'mapel_id', 'nama_mapel');
     }
 }

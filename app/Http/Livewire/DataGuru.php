@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\data_guru;
+use App\Models\data_jadwal;
 use App\Models\data_pengampu;
 use App\Models\data_wali;
 use Livewire\WithPagination;
@@ -39,8 +40,11 @@ class DataGuru extends Component
     {
         if ($this->selectedGuru) {
             User::where('guru_id', $this->selectedGuru->nip)->delete();
-            data_wali::where('wali_id', $this->selectedGuru->nip)->delete();
+            data_jadwal::whereHas('pengampu', function($query){
+                $query->where('pengampu_id', $this->selectedGuru->nip);
+            })->delete();
             data_pengampu::where('pengampu_id', $this->selectedGuru->nip)->delete();
+            data_wali::where('wali_id', $this->selectedGuru->nip)->delete();
             data_guru::where('nip', $this->selectedGuru->nip)->delete();
             
             Session::flash('berhasil', 'Data Berhasil Dihapus');

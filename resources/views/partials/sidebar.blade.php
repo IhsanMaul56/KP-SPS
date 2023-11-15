@@ -126,17 +126,9 @@
                     <br>
                 </div>
                 <div class="row mx-0">
-                    <a href="{{ route('show-pengumuman') }}"
-                        class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : '' }}"
-                        style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
-                </div>
-                <div class="row mx-0">
-<<<<<<< HEAD
-=======
                     <a href="{{ route('profile-guru') }}" class="sidebar" id="btnGuru4"
                         style="text-decoration: none" style="text-decoration: none"><i
                             class="bi bi-person-circle icon-kiri"></i>Profil</a><br>
->>>>>>> 4782d01464531f4440edb391523c2bd27c965787
                     <a href="{{ route('show_pengumuman') }}" class="sidebar {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
 
