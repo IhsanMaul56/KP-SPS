@@ -1,4 +1,4 @@
-{{-- pengumuman --}}
+{{-- pengumuman
 <div class="rightbar active-page" id="PengumumanSiswa">
     <div class="row">
         <div class="col fs-2 justify-content-end d-flex align-items-center">
@@ -42,4 +42,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

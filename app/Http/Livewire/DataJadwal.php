@@ -96,7 +96,7 @@ class DataJadwal extends Component
         session()->flash('berhasil', 'Data berhasil diimport.');
     } catch (\Exception $e) {
         // If there is an error during the import
-        session()->flash('error', 'Gagal mengimport data. Pastikan format file benar dan coba lagi.');
+        session()->flash('error', 'Gagal mengimport data. Pastikan menggunakan template yang suda disediakan.');
     }
 
         Excel::import(new JadwalImport, $this->file);

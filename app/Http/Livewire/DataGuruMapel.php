@@ -112,6 +112,7 @@ class DataGuruMapel extends Component
     public function editPengampu($pengampuId)
     {
         $pengampu = data_pengampu::find($pengampuId);
+        
         if ($pengampu) {
             $this->selectedPengampuId = $pengampuId;
             $this->data = [

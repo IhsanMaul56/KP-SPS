@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\DataSemester;
+use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\tahun_akademik;
 use Illuminate\Support\Facades\DB;
@@ -12,55 +12,23 @@ use Illuminate\Support\Facades\Session;
 class AturTahunSemester extends Component
 {
     public $tahun_akademik;
+    public $selectedTahunId = null;
+
     public $tahunAkademikList;
-    public $tahunAkademikSelected;
+    public $semesterList;
+
+    public $status;
+
+    public $data = [
+        'kode_tahun' => '',
+        'status' => ''
+    ];
 
     public function render()
     {
         $tahunAkademik = tahun_akademik::all();
-        $semester = DataSemester::all();
-
-        $this->tahunAkademikList = [];
-
-        foreach ($tahunAkademik as $akademik) {
-            foreach ($semester as $s) {
-                if ($s->kode_semester == $akademik->semester_id) {
-                    $combinedKey = $akademik->kode_tahun . '_' . $s->kode_semester;
-                    $displayText = $akademik->tahun_akademik . ' - ' . $s->nama_semester;
-                    $this->tahunAkademikList[$combinedKey] = $displayText;
-                }
-            }
-        }
 
         return view('livewire.atur-tahun-semester', compact('tahunAkademik'));
-    }
-
-    public function updateStatus()
-    {
-        try {
-            if (empty($this->tahunAkademikSelected)) {
-                throw new \Exception('Tahun Akademik belum dipilih.');
-            }
-
-            list($kodeTahun, $kodeSemester) = explode('_', $this->tahunAkademikSelected);
-
-            $tahunAkademikExists = tahun_akademik::where('kode_tahun', $kodeTahun)->exists();
-            $semesterExists = DataSemester::where('kode_semester', $kodeSemester)->exists();
-
-            if (!$tahunAkademikExists || !$semesterExists) {
-                throw new \Exception('Tahun Akademik atau Semester tidak valid.');
-            }
-
-            tahun_akademik::where('kode_tahun', $kodeTahun)->update(['status' => 'aktif']);
-
-            DataSemester::where('kode_semester', $kodeSemester)->update(['status' => 'aktif']);
-
-            session()->flash('berhasil_aktifasi', 'Data Berhasil Diaktifkan');
-        } catch (\Exception $e) {
-            session()->flash('gagal_aktifasi', 'Terjadi kesalahan saat mengaktifkan data: ' . $e->getMessage());
-        }
-
-        return redirect()->back();
     }
 
     public function insertTahun(Request $request)
@@ -95,4 +63,49 @@ class AturTahunSemester extends Component
 
         return redirect()->back();
     }
+
+    public function editStatus($tahunId)
+    {
+        $tahun = tahun_akademik::find($tahunId);
+        dd($tahunId);
+        if ($tahun) {
+            $this->selectedTahunId = $tahunId;
+            dd($this->selectedTahunId);
+            $this->data = [
+                'kode_tahun' => $tahun->kode_tahun,
+                'status' => $tahun->status
+            ];
+        }
+    }    
+
+    public function updateStatus()
+    {
+        $this->validate([
+            'data.status' => 'required'
+        ]);
+
+        dd($this->data);
+
+        $pengampuId = DB::table('tahun_akademiks')
+            ->where('kode_tahun', $this->data['kode_tahun'])
+            ->value('semester_id');
+
+        try {
+            tahun_akademik::where('kode_tahun', $this->selectedTahunId)->update([
+                'status' => $this->data['status']
+            ]);
+
+            DataSemester::where('kode_semester', $pengampuId)->update([
+                'status' => $this->data['status']
+            ]);
+
+            session()->flash('berhasil_aktif', 'Data Berhasil Diupdate.');
+        } catch (\Exception $e) {
+            session()->flash('gagal_aktif', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
+        }
+    
+        $this->emit('refreshComponent');
+        $this->emit('closeModal');
+    }
+    
 }
