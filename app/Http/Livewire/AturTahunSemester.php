@@ -17,13 +17,6 @@ class AturTahunSemester extends Component
     public $tahunAkademikList;
     public $semesterList;
 
-    public $status;
-
-    public $data = [
-        'kode_tahun' => '',
-        'status' => ''
-    ];
-
     public function render()
     {
         $tahunAkademik = tahun_akademik::all();
@@ -64,48 +57,27 @@ class AturTahunSemester extends Component
         return redirect()->back();
     }
 
-    public function editStatus($tahunId)
+    public function updateStatus(Request $request)
     {
-        $tahun = tahun_akademik::find($tahunId);
-        dd($tahunId);
-        if ($tahun) {
-            $this->selectedTahunId = $tahunId;
-            dd($this->selectedTahunId);
-            $this->data = [
-                'kode_tahun' => $tahun->kode_tahun,
-                'status' => $tahun->status
-            ];
-        }
-    }    
+        $kode_tahun = $request->kode_tahun;
+        $status     = $request->status;
+        $tahun      = new tahun_akademik();
+        
+        try {            
+            $tahun->where('status', 'aktif')->update(['status' => 'tidak aktif']);
 
-    public function updateStatus()
-    {
-        $this->validate([
-            'data.status' => 'required'
-        ]);
-
-        dd($this->data);
-
-        $pengampuId = DB::table('tahun_akademiks')
-            ->where('kode_tahun', $this->data['kode_tahun'])
-            ->value('semester_id');
-
-        try {
-            tahun_akademik::where('kode_tahun', $this->selectedTahunId)->update([
-                'status' => $this->data['status']
-            ]);
-
-            DataSemester::where('kode_semester', $pengampuId)->update([
-                'status' => $this->data['status']
-            ]);
+            $tahun->where('kode_tahun', $kode_tahun)
+                ->join('data_semesters as semester', 'kode_semester', 'semester_id')
+                ->update([
+                    'semester.status' => $status,
+                    'tahun_akademiks.status' => $status
+                ]);
 
             session()->flash('berhasil_aktif', 'Data Berhasil Diupdate.');
         } catch (\Exception $e) {
             session()->flash('gagal_aktif', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }
     
-        $this->emit('refreshComponent');
-        $this->emit('closeModal');
-    }
-    
+        return redirect()->back();
+    }    
 }

@@ -22,33 +22,7 @@
                         <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
                     </div>
                 </div>
-                <div class="row p-0 m-0">
-                    <div class="card-body h-100 overflow-auto" id="shadow">
-                        <div class="row">
-                            <div class="col">
-
-                                <label for="editor" class="fs-4">Pengumuman Siswa</label>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <form method="post">
-                                    <div class="row">
-                                        <div class="col">
-                                            <textarea id="summernote" name="editordata"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col text-end">
-                                            <input type="submit" class="btn btn-primary mt-3" value="Kirim">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @livewire('pengumuman')
             </div>
         </div>
     </div>
@@ -56,19 +30,25 @@
 
 @push('script')
 <script>
-    $('#summernote').summernote({
-        placeholder: 'Tambahkan pengumuman',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link']],
-        ['view', ['codeview', 'help']]
-        ]
+    // $('#summernote').summernote({
+    //     placeholder: 'Tambahkan pengumuman',
+    //     tabsize: 2,
+    //     height: 120,
+    //     toolbar: [
+    //       ['style', ['style']],
+    //       ['font', ['bold', 'underline', 'clear']],
+    //       ['color', ['color']],
+    //       ['para', ['ul', 'ol', 'paragraph']],
+    //       ['table', ['table']],
+    //       ['insert', ['link']],
+    //       ['view', ['codeview', 'help']]
+    //     ]
+    //   });
+</script>
+
+<script>
+    Livewire.on('closeDeleteModal', function () {
+        $('#DeleteDataPengumuman').modal('hide');
     });
 </script>
 @endpush
