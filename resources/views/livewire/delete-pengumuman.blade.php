@@ -1,17 +1,49 @@
-<!-- Modal -->
-<div wire:ignore.self class="modal fade" id="DeleteDataPengumuman" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteDataModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 325px;">
-        <div class="modal-content" style="border-radius: 12px;">
-            <div class="modal-header">
-                <h5 class="modal-title w-100 text-center titlemodal-style fw-bold" id="deleteDataModalLabel">Hapus Pengumuman</h5>
+<div class="col">
+    <div class="card-body h-100 overflow-auto shadow">
+        @include('livewire.modal-delete-pengumuman')
+        @if ($pengumumanList->isEmpty())
+            <div class="row m-0 p-0 mb-3">
+                <img src="{{URL::asset('/img/no-data.png')}}" alt="clipboard" width="150px"><br>
+                <span class="fs-5" style="text-align: center; color: grey;">Tidak Ada Pengumuman Saat Ini</span>
             </div>
-            <div class="modal-body">
-                <div class="text-break text-center textdisable-modal">Apakah Anda yakin ingin menghapus data ini?</div>
-                <div class="modal-footer justify-content-center" style="border-top: unset !important">
-                    <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Batal</button>
-                    <button wire:click="deletePengumuman" class="btn btn-danger">Hapus</button>
+        @else
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Riwayat Pengumuman</h4><hr>
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <td>No</td>
+                                <td>Mata Pelajaran</td>
+                                <td>Tingkat</td>
+                                <td>Kelas</td>
+                                <td>Deskripsi</td>
+                                <td>Aksi</td>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <?php $no = 1; ?>
+                            @foreach ($pengumumanList as $item)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $item->nama_mapel }}</td>
+                                    <td>{{ $item->kelas_id }}</td>
+                                    <td>{{ $item->nama_kelas }}</td>
+                                    <td>
+                                        {!! $item->deskripsi !!}
+                                    </td>
+                                    <td>
+                                        <button wire:click="deletePengumumanConfirm('{{ $item->kode_pengumuman }}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteDataPengumuman">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>
