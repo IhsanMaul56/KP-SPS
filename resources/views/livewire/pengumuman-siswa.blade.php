@@ -21,23 +21,22 @@
 
                 <div class="row m-0 p-0">
                     <div class="col">
-                        {{-- @if ($pengumumansiswa->isEmpty())
-                            <div class="row m-0 p-0 mb-3">
-                                <img src="{{ URL::asset('/img/no-data.png') }}" alt="clipboard" width="150px"><br>
-                                <span class="fs-5" style="text-align: center; color: grey;">Tidak Ada Pengumuman Saat
-                                    Ini</span>
-                            </div>
-                        @else --}}
-                    {{-- <div class="row m-0 p-0 mb-3">
+                        @if ($pengumumansiswa->isEmpty())
+                        <div class="row m-0 p-0 mb-3">
+                            <img src="{{URL::asset('/img/no-data.png')}}" alt="clipboard" width="150px"><br>
+                            <span class="fs-5" style="text-align: center; color: grey;">Tidak Ada Pengumuman Saat Ini</span>
+                        </div>
+                    @else
+                    <div class="row m-0 p-0 mb-3">
                         @foreach ($pengumumansiswa as $pengumuman)
-                            <div class="form-control my-2">{!! $pengumuman->deskripsi !!}</div>
-                            <script>
+                        <div class="form-control my-2">{!! $pengumuman->deskripsi !!}</div>
+                        {{-- <script>
                             $(document).ready(function() {
                                 $('#summernote{{ $loop->iteration }}').summernote({
                                     $('#summernote').summernote('destroy');
                                 });
                             });
-                        </script>
+                        </script> --}}
                         @endforeach
                     </div> --}}
                     {{-- @endif --}}
