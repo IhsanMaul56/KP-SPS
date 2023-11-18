@@ -61,23 +61,22 @@ class JadwalImport implements ToModel, WithHeadingRow, WithChunkReading, WithVal
             DB::beginTransaction();
 
             $existingJadwal = data_jadwal::where([
-                'hari' => $row['hari'],
-                'waktu_masuk' => $waktuMasuk->toTimeString(),
-                'waktu_keluar' => $waktuKeluar->toTimeString(),
-                'tingkat_id' => $tingkat_id,
-                'nama_tingkat' => $row['tingkat'],
-                'kelas_id' => $kelas_id,
-                'nama_kelas' => $row['kelas'],
                 'pengampu_id' => $pengampu_id,
-            ])->first();
-            
-            if ($existingJadwal) {
-                DB::rollBack();
-                return null;
+            ])->get();
+
+            foreach ($existingJadwal as $existJadwal) {
+                if (ucfirst(strtolower($existJadwal->hari)) == ucfirst(strtolower($row['hari']))) {
+                    if ($existJadwal->waktu_masuk == $row['masuk']. ':00') {
+                        DB::rollBack();
+                        $message = 'Ulah sarua, bentrook';
+                        $this->onFailure(new \Exception($message));
+                        return null;
+                    }
+                }
             }
 
             $jadwal = new data_jadwal([
-                'hari' => $row['hari'],
+                'hari' => ucfirst(strtolower($row['hari'])),
                 'waktu_masuk' => $waktuMasuk->toTimeString(),
                 'waktu_keluar' => $waktuKeluar->toTimeString(),
                 'tingkat_id' => $tingkat_id,

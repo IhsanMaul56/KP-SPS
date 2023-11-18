@@ -67,15 +67,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/kelas', [DataKelas::class, 'tampil'])->name('data-kelas');
         Route::post('/admin/insert-kelas', [DataKelas::class, 'createKelas'])->name('create-kelas');
         Route::post('/admin/update-kelas', [DataKelas::class, 'updateKelas'])->name('update-kelas');
-        // Route::get('/admin/tambah-wali', [GuruWali::class, 'create_wali'])->name('create-data-wali');
         Route::get('/admin/tambah-guru-mapel', [DataGuruMapel::class, 'create_gumapel'])->name('create-guru-mapel');
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
-        Route::get('/admin/aktivasi-semester', AturTahunSemester::class)->name('atur-tasem');
-        Route::post('/admin/aktivasi-semester', [AturTahunSemester::class, 'insertTahun'])->name('tambah-tahun-akademik');
-        Route::get('/admin/aktivasi-semester/aktif', AturTahunSemester::class)->name('atur-tasem-aktif');
-        Route::post('/admin/aktivasi-semester/aktif', [AturTahunSemester::class, 'updateStatus'])->name('aktifasi-tahun-akademik');
+        Route::get('/admin/aktivasi-semester/', AturTahunSemester::class)->name('atur-tasem');
+        Route::post('/admin/aktivasi-semester/', [AturTahunSemester::class, 'insertTahun'])->name('tambah-tahun-akademik');
+        Route::put('/admin/aktivasi-semester', [AturTahunSemester::class, 'updateStatus'])->name('update-status');
+
+
     });
 
     Route::prefix('/dashboard')->group(function () {
@@ -87,7 +87,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jadwal-pelajaran', [DataJadwal::class, 'tampil'])->name('m-jadwal');
         Route::get('/jurusan', [DataJurusan::class, 'tampil'])->name('m-jurusan');
         Route::get('/kelas', [DataKelas::class, 'tampil'])->name('m-kelas');
-        // Route::get('/profile', [AkunGuru::class, 'ProfileKurikulum'])->name('m-kelas');
     });
 
     Route::prefix('/dashboard')->group(function () {
@@ -100,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/input-nilai/{nis}/{mapel_id}', DataNilaiSiswa::class)->name('tambah-nilai-siswa');
         Route::post('/input-nilai-formatif', [DataNilaiSiswa::class, 'createNilaiFormatif'])->name('insert-nilai-formatif');
         Route::post('/input-nilai-sumatif', [DataNilaiSiswa::class, 'createNilaiSumatif'])->name('insert-nilai-sumatif');
-        Route::get('/pengumuman', Pengumuman::class)->name('show_pengumuman');
+        Route::get('/pengumuman', [Pengumuman::class, 'tampil'])->name('show_pengumuman');
         Route::post('/pengumuman', [Pengumuman::class, 'createPengumuman'])->name('create-pengumuman');
         Route::delete('pengumuman/{kode_pengumuman}', [Pengumuman::class, 'destroy'])->name('delete-pengumuman');
     });

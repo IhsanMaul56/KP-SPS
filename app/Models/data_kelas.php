@@ -60,7 +60,7 @@ class data_kelas extends Model
     }
 
     public function tahunAkademik() : BelongsTo{
-        return $this->belongsTo(tahun_akademik::class, 'tahun_id    ', 'kode_tahun');
+        return $this->belongsTo(tahun_akademik::class, 'tahun_id', 'kode_tahun');
     }
 
     public function tingkat() : BelongsTo{
