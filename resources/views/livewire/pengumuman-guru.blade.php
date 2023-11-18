@@ -109,6 +109,11 @@
                 <div class="row">
                     <div class="col text-center">
                         <h4>Riwayat Pengumuman</h4><hr>
+                        @if (Session::has('berhasil_hapus'))
+                            <div class="alert alert-success">
+                                {{ Session::get('berhasil_hapus') }}
+                            </div>
+                        @endif
                         <table class="table text-center">
                             <thead>
                                 <tr>

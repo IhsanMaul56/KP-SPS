@@ -90,16 +90,14 @@ class DataJadwal extends Component
         ]);
 
         try {
-        Excel::import(new JadwalImport, $this->file);
+            Excel::import(new JadwalImport, $this->file);
 
-        // If the import is successful
-        session()->flash('berhasil', 'Data berhasil diimport.');
-    } catch (\Exception $e) {
-        // If there is an error during the import
-        session()->flash('error', 'Gagal mengimport data. Pastikan menggunakan template yang suda disediakan.');
-    }
-
-        Excel::import(new JadwalImport, $this->file);
+            // If the import is successful
+            session()->flash('berhasil', 'Data berhasil diimport.');
+        } catch (\Exception $e) {
+            // If there is an error during the import
+            session()->flash('error', 'Gagal mengimport data. Pastikan menggunakan template yang suda disediakan.');
+        }
     }
 
     public function updatingSearch(){

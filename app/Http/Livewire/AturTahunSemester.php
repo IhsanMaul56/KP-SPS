@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\data_kelas;
 use App\Models\DataSemester;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class AturTahunSemester extends Component
 
     public function render()
     {
-        $tahunAkademik = tahun_akademik::all();
+        $tahunAkademik = tahun_akademik::orderBy('created_at', 'desc')->get();
 
         return view('livewire.atur-tahun-semester', compact('tahunAkademik'));
     }
@@ -59,25 +60,32 @@ class AturTahunSemester extends Component
 
     public function updateStatus(Request $request)
     {
-        $kode_tahun = $request->kode_tahun;
-        $status     = $request->status;
-        $tahun      = new tahun_akademik();
-        
-        try {            
+        $kode_tahun     = $request->kode_tahun;
+        $status         = $request->status;
+        $tahun          = new tahun_akademik();
+        $semester       = new DataSemester();
+
+        try {
             $tahun->where('status', 'aktif')->update(['status' => 'tidak aktif']);
+            $semester->where('status', 'aktif')->update(['status' => 'tidak aktif']);
 
             $tahun->where('kode_tahun', $kode_tahun)
                 ->join('data_semesters as semester', 'kode_semester', 'semester_id')
                 ->update([
                     'semester.status' => $status,
-                    'tahun_akademiks.status' => $status
+                    'tahun_akademiks.status' => $status,
                 ]);
+
+            $tahun_id = $tahun->where('kode_tahun', $kode_tahun)->value('kode_tahun');
+
+            DB::table('data_kelas')
+                ->update(['tahun_id' => $tahun_id]);
 
             session()->flash('berhasil_aktif', 'Data Berhasil Diupdate.');
         } catch (\Exception $e) {
             session()->flash('gagal_aktif', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }
-    
-        return redirect()->back();
-    }    
+
+        return redirect()->route('atur-tasem');
+    }
 }

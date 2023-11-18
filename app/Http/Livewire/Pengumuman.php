@@ -164,7 +164,7 @@ class Pengumuman extends Component
     {
         if($this->selectedPengumumanId){
             Pengumumaan::where('kode_pengumuman', $this->selectedPengumumanId->kode_pengumuman)->delete();
-            Session::flash('Berhasil', 'Data Berhasil Dihapus');
+            Session::flash('berhasil_hapus', 'Data Berhasil Dihapus');
         }
 
         // $this->resetPage();
