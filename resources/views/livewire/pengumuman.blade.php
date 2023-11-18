@@ -28,28 +28,3 @@
     </div>
 @endsection
 
-@push('script')
-<script>
-    // $('#summernote').summernote({
-    //     placeholder: 'Tambahkan pengumuman',
-    //     tabsize: 2,
-    //     height: 120,
-    //     toolbar: [
-    //       ['style', ['style']],
-    //       ['font', ['bold', 'underline', 'clear']],
-    //       ['color', ['color']],
-    //       ['para', ['ul', 'ol', 'paragraph']],
-    //       ['table', ['table']],
-    //       ['insert', ['link']],
-    //       ['view', ['codeview', 'help']]
-    //     ]
-    //   });
-</script>
-
-<script>
-    Livewire.on('closeDeleteModal', function () {
-        $('#DeleteDataPengumuman').modal('hide');
-    });
-</script>
-@endpush
-

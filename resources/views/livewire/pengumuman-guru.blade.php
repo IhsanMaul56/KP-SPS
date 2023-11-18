@@ -11,8 +11,6 @@
             <div class="row">
                 <div class="col text-center">
                     <h4>Tambah Pengumuman Siswa</h4><hr>
-                    {{-- <form method="post" action="{{ route('create-pengumuman') }}" wire:submit.prevent="createPengumuman"> --}}
-                        {{-- @csrf --}}
                         <input type="hidden" wire:model="guru_id" name="guru_id" value="{{ $guru_id }}">
                         @if (Session::has('berhasil'))
                             <div class="alert alert-success">
@@ -77,7 +75,7 @@
 
                         <div class="row">
                             <div class="col text-start">
-                                <textarea wire:model="deskripsi" id="summernote" name="deskripsi" class="form-select @error('deskripsi') is-invalid @enderror"></textarea>
+                                <textarea id="summernote" wire:model="deskripsi" name="deskripsi" class="@error('deskripsi') is-invalid @enderror"></textarea>
                                 @error('deskripsi')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -91,7 +89,6 @@
                                 <button wire:click="createPengumuman" type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </div>
                         </div>
-                    {{-- </form> --}}
                 </div>
             </div>
         </div>
@@ -152,22 +149,23 @@
         </div>
     </div>
 </div>
+
 @push('script')
 <script>
-    // $('#summernote').summernote({
-    //     placeholder: 'Tambahkan pengumuman',
-    //     tabsize: 2,
-    //     height: 120,
-    //     toolbar: [
-    //       ['style', ['style']],
-    //       ['font', ['bold', 'underline', 'clear']],
-    //       ['color', ['color']],
-    //       ['para', ['ul', 'ol', 'paragraph']],
-    //       ['table', ['table']],
-    //       ['insert', ['link']],
-    //       ['view', ['codeview', 'help']]
-    //     ]
-    //   });
+    $('#summernote').summernote({
+        placeholder: 'Tambahkan pengumuman',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link']],
+          ['view', ['codeview', 'help']]
+        ]
+      });
 </script>
 
 <script>
