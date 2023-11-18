@@ -101,6 +101,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/input-nilai-sumatif', [DataNilaiSiswa::class, 'createNilaiSumatif'])->name('insert-nilai-sumatif');
         Route::get('/pengumuman', [Pengumuman::class, 'tampil'])->name('show_pengumuman');
         Route::post('/pengumuman', [Pengumuman::class, 'createPengumuman'])->name('create-pengumuman');
+        Route::delete('pengumuman/{kode_pengumuman}', [Pengumuman::class, 'destroy'])->name('delete-pengumuman');
     });
 
     Route::prefix('/dashboard')->group(function () {

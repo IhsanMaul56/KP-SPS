@@ -101,7 +101,7 @@ class Pengumuman extends Component
 
     public function createPengumuman()
     {
-        // dd($this);
+        $guru_id = $request->input('guru_id');
 
         $this->validate([
             'deskripsi' => 'required',
@@ -167,7 +167,7 @@ class Pengumuman extends Component
             Session::flash('berhasil_hapus', 'Data Berhasil Dihapus');
         }
 
-        // $this->resetPage();
+        $this->resetPage();
         return redirect()->route('show_pengumuman');
     }
 }
