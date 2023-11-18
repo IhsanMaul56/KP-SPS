@@ -6,6 +6,8 @@ use Livewire\Component;
 use App\Models\data_mapel;
 use App\Models\data_pengampu;
 use App\Models\data_jadwal;
+use App\Models\nilai_formatif;
+use App\Models\nilai_sumatif;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -97,32 +99,6 @@ class MasterMapel extends Component
         return redirect()->route('master-mapel');
     }
 
-    //Yang Asli
-    // public function deleteMapelConfirm($kode_mapel)
-    // {
-    //     $this->mapelSelectedId = data_mapel::find($kode_mapel);
-    // }
-
-    // public function deleteMapel()
-    // {
-    //     if ($this->mapelSelectedId) {
-    //         $kode_mapel = $this->mapelSelectedId->kode_mapel;
-    //         $data_pengampus = data_pengampu::where('mapel_id', $kode_mapel)->get();
-
-    //         if ($data_pengampus->count() > 0) {
-    //             foreach ($data_pengampus as $data_pengampu) {
-    //                 $data_pengampu->delete();
-    //             }
-    //         }
-
-    //         data_mapel::where('kode_mapel', $kode_mapel)->delete();
-    //         Session::flash('berhasil', 'Data Berhasil Dihapus');
-    //     }
-
-    //     $this->resetPage();
-    //     return redirect()->route('master-mapel');
-    // }
-
     public function deleteMapelConfirm($kode_mapel)
     {
         $this->mapelSelectedId = data_mapel::find($kode_mapel);
@@ -141,6 +117,8 @@ class MasterMapel extends Component
                 }
             }
 
+            nilai_formatif::where('mapel_id', $kode_mapel)->delete();
+            nilai_sumatif::where('mapel_id', $kode_mapel)->delete();
             data_mapel::where('kode_mapel', $kode_mapel)->delete();
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
@@ -148,8 +126,6 @@ class MasterMapel extends Component
         $this->resetPage();
         return redirect()->route('master-mapel');
     }
-
-
 
     public function updatingSearch()
     {

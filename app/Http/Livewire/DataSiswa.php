@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\data_siswa;
+use App\Models\nilai_formatif;
+use App\Models\nilai_sumatif;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -48,6 +50,8 @@ class DataSiswa extends Component
     {
         if ($this->selectedSiswa) {
             User::where('siswa_id', $this->selectedSiswa->nis)->delete();
+            nilai_formatif::where('siswa_id', $this->selectedSiswa->nis)->delete();
+            nilai_sumatif::where('siswa_id', $this->selectedSiswa->nis)->delete();
             data_siswa::where('nis', $this->selectedSiswa->nis)->delete();
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
