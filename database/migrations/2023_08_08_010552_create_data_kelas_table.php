@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('tingkat_id')->constrained('data_tingkats', 'kode_tingkat');
             $table->string('nama_tingkat');
             $table->foreignId('tahun_id')->nullable()->constrained('tahun_akademiks', 'kode_tahun');
-            $table->string('nama_tahun')->nullable();
             $table->timestamps();
         });
     }

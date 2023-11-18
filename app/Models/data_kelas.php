@@ -22,7 +22,6 @@ class data_kelas extends Model
         'tingkat_id',
         'nama_tingkat',
         'tahun_id',
-        'nama_tahun'
     ];
 
     //cardinality

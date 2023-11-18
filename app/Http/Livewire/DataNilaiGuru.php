@@ -147,23 +147,35 @@ class DataNilaiGuru extends Component
             $kelasId = DB::table('data_kelas')
                 ->where('nama_kelas', $this->kelasSelected)
                 ->value('kode_kelas');
+            
+            $tahun = DB::table('tahun_akademiks')
+                ->where('status', 'aktif')
+                ->value('kode_tahun');
+            
+            $semester = DB::table('data_semesters')
+                ->where('status', 'aktif')
+                ->value('kode_semester');
 
             $results = DB::table('data_siswas')
                 ->join('data_jadwals', 'data_siswas.kelas_id', '=', 'data_jadwals.kelas_id')
                 ->join('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
                 ->join('data_mapels', 'data_pengampus.mapel_id', '=', 'data_mapels.kode_mapel')
                 ->join('bobot_nilais', 'data_pengampus.kode_pengampu', '=', 'bobot_nilais.pengampu_id')
-                ->leftJoin('nilai_formatifs', function ($join) use ($mapelId, $tingkatId, $kelasId) {
+                ->leftJoin('nilai_formatifs', function ($join) use ($mapelId, $tingkatId, $kelasId, $tahun, $semester) {
                     $join->on('data_siswas.nis', '=', 'nilai_formatifs.siswa_id')
                         ->where('nilai_formatifs.mapel_id', '=', $mapelId)
                         ->where('nilai_formatifs.tingkat_id', '=', $tingkatId)
-                        ->where('nilai_formatifs.kelas_id', '=', $kelasId);
+                        ->where('nilai_formatifs.kelas_id', '=', $kelasId)
+                        ->where('nilai_formatifs.tahun_id', '=', $tahun)
+                        ->where('nilai_formatifs.semester_id', '=', $semester);
                 })
-                ->leftJoin('nilai_sumatifs', function ($join) use ($mapelId, $tingkatId, $kelasId) {
+                ->leftJoin('nilai_sumatifs', function ($join) use ($mapelId, $tingkatId, $kelasId, $tahun, $semester) {
                     $join->on('data_siswas.nis', '=', 'nilai_sumatifs.siswa_id')
                         ->where('nilai_sumatifs.mapel_id', '=', $mapelId)
                         ->where('nilai_sumatifs.tingkat_id', '=', $tingkatId)
-                        ->where('nilai_sumatifs.kelas_id', '=', $kelasId);
+                        ->where('nilai_sumatifs.kelas_id', '=', $kelasId)
+                        ->where('nilai_sumatifs.tahun_id', '=', $tahun)
+                        ->where('nilai_sumatifs.semester_id', '=', $semester);
                 })
                 ->where('data_pengampus.nama_mapel', '=', $this->mapelSelected)
                 ->where('data_jadwals.nama_tingkat', 'LIKE', '%' . $this->tingkatSelected . '%')
