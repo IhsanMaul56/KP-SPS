@@ -30,16 +30,9 @@
                     <div class="row m-0 p-0 mb-3">
                         @foreach ($pengumumansiswa as $pengumuman)
                         <div class="form-control my-2">{!! $pengumuman->deskripsi !!}</div>
-                        {{-- <script>
-                            $(document).ready(function() {
-                                $('#summernote{{ $loop->iteration }}').summernote({
-                                    $('#summernote').summernote('destroy');
-                                });
-                            });
-                        </script> --}}
                         @endforeach
-                    </div> --}}
-                    {{-- @endif --}}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

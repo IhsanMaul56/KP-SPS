@@ -26,7 +26,7 @@ class Pengumuman extends Component
     public $tingkatList = [];
     public $kelasList = [];
     public $mapelSelected = "";
-    public $guru_id, $deskripsi = "", $tingkat_id = "", $kelas_id, $siswa_id, $mapel_id, $nama_mapel;
+    public $guru_id, $deskripsi, $tingkat_id, $kelas_id, $siswa_id, $mapel_id, $nama_mapel;
 
     public function render()
     {
@@ -48,6 +48,7 @@ class Pengumuman extends Component
                     ->get();
 
                     $this->mapelList = $pengampu->pluck('nama_mapel', 'mapel_id');
+                    // dd($this->mapelList);
 
                 if ($pengampu->isNotEmpty()) {
                     $pengampuKode = $pengampu->pluck('kode_pengampu')->toArray();
@@ -66,6 +67,7 @@ class Pengumuman extends Component
                     ->select('kode_pengumuman', 'tingkat_id', 'nama_tingkat', 'kelas_id', 'nama_kelas', 'mapel_id', 'nama_mapel', 'deskripsi')
                     ->get();
                     $this->pengumumanList = $pengumuman->reject('kode_pengumuman', 'nama_tingkat', 'tingkat_id', 'kelas_id', 'nama_kelas', 'deskripsi');
+                // dd($this->pengumumanList);
             }
             return view('livewire.pengumuman-guru', compact('guru', 'jadwal', 'pengumuman'));
         }
@@ -94,16 +96,12 @@ class Pengumuman extends Component
         }
     }
 
-    public function tampil()
-    {
-        return view('livewire.pengumuman');
-    }
-
     public function createPengumuman(Request $request)
     {
+        // dd($request);
         $guru_id = $request->input('guru_id');
 
-        $this->validate([
+        $request->validate([
             'deskripsi' => 'required',
             'guru_id' => 'required',
             'tingkat_id' => 'required',
@@ -112,31 +110,31 @@ class Pengumuman extends Component
         ]);
 
         $guruPen = DB::table('data_pengampus')
-            ->where('pengampu_id', $this->guru_id)
+            ->where('pengampu_id', $guru_id)
             ->value('nama_guru');
 
         $tingkatPen = DB::table('data_tingkats')
-            ->where('kode_tingkat', $this->tingkat_id)
+            ->where('kode_tingkat', $request->tingkat_id)
             ->value('nama_tingkat');
 
         $kelasPen = DB::table('data_kelas')
-            ->where('kode_kelas', $this->kelas_id)
+            ->where('kode_kelas', $request->kelas_id)
             ->value('nama_kelas');
         
         $mapelPen = DB::table('data_pengampus')
-            ->where('mapel_id', $this->mapel_id)
+            ->where('mapel_id', $request->mapel_id)
             ->value('nama_mapel');
 
         try {
             Pengumumaan::create([
-                'deskripsi' => $this->deskripsi,
-                'guru_id' => $this->guru_id,
+                'deskripsi' => $request->deskripsi,
+                'guru_id' => $guru_id,
                 'nama_guru' => $guruPen,
-                'tingkat_id' => $this->tingkat_id,
+                'tingkat_id' => $request->tingkat_id,
                 'nama_tingkat' => $tingkatPen,
-                'kelas_id' => $this->kelas_id,
+                'kelas_id' => $request->kelas_id,
                 'nama_kelas' => $kelasPen,
-                'mapel_id' => $this->mapel_id,
+                'mapel_id' => $request->mapel_id,
                 'nama_mapel' => $mapelPen,
             ]);
 
@@ -145,14 +143,6 @@ class Pengumuman extends Component
             session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan Data' . $e->getMessage());
         }
         return redirect()->back();
-    }
-
-    public function resetFields()
-    {
-        $this->deskripsi    = null;
-        $this->tingkat_id   = null;
-        $this->mapel_id     = null;
-        $this->kelas_id     = null;
     }
     
     public function deletePengumumanConfirm($kode_pengumuman)
@@ -163,9 +153,11 @@ class Pengumuman extends Component
     public function deletePengumuman()
     {
         if($this->selectedPengumumanId){
-            Pengumumaan::where('kode_pengumuman', $this->selectedPengumumanId->kode_pengumuman)->delete();
-            Session::flash('berhasil_hapus', 'Data Berhasil Dihapus');
+            Pengumumaan::where('kode_pengumuman', $this->selectedPengumumanId)->delete();
+            Session::flash('Berhasil', 'Data Berhasil Dihapus');
         }
+
+        $this->resetPage();
         return redirect()->route('show_pengumuman');
     }
 }
