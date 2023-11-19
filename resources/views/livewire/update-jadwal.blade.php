@@ -6,16 +6,6 @@
                 <h5 class="modal-title fw-bold" id="exampleModalLabel">EDIT JADWAL</h5>
             </div>
             <div class="modal-body">
-                @if (session()->has('berhasilUpdate'))
-                    <div class="alert alert-success">
-                        {{ session('berhasilUpdate') }}
-                    </div>
-                @endif
-                @if (session()->has('gagalUpdate'))
-                    <div class="alert alert-danger">
-                        {{ session('gagalUpdate') }}
-                    </div>
-                @endif
                 <div class="row mb-3">
                     <div class="col">
                         <label>Pengampu :</label>
