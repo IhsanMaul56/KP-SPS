@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Pengumumaan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -47,7 +48,6 @@ class Pengumuman extends Component
                     ->get();
 
                     $this->mapelList = $pengampu->pluck('nama_mapel', 'mapel_id');
-                    // dd($this->mapelList);
 
                 if ($pengampu->isNotEmpty()) {
                     $pengampuKode = $pengampu->pluck('kode_pengampu')->toArray();
@@ -99,7 +99,7 @@ class Pengumuman extends Component
         return view('livewire.pengumuman');
     }
 
-    public function createPengumuman()
+    public function createPengumuman(Request $request)
     {
         $guru_id = $request->input('guru_id');
 
@@ -166,8 +166,6 @@ class Pengumuman extends Component
             Pengumumaan::where('kode_pengumuman', $this->selectedPengumumanId->kode_pengumuman)->delete();
             Session::flash('berhasil_hapus', 'Data Berhasil Dihapus');
         }
-
-        $this->resetPage();
         return redirect()->route('show_pengumuman');
     }
 }
