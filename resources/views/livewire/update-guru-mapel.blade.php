@@ -1,5 +1,5 @@
 <div class="modal fade" id="UpdateGuruMapel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    wire:ignore.self>
+wire:ignore.self>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header justify-content-center">

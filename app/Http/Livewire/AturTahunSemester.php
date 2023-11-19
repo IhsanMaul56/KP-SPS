@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\data_kelas;
 use App\Models\DataSemester;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -17,16 +18,9 @@ class AturTahunSemester extends Component
     public $tahunAkademikList;
     public $semesterList;
 
-    public $status;
-
-    public $data = [
-        'kode_tahun' => '',
-        'status' => ''
-    ];
-
     public function render()
     {
-        $tahunAkademik = tahun_akademik::all();
+        $tahunAkademik = tahun_akademik::orderBy('created_at', 'desc')->get();
 
         return view('livewire.atur-tahun-semester', compact('tahunAkademik'));
     }
@@ -64,47 +58,34 @@ class AturTahunSemester extends Component
         return redirect()->back();
     }
 
-    public function editStatus($tahunId)
+    public function updateStatus(Request $request)
     {
-        $tahun = tahun_akademik::find($tahunId);
-        
-        if ($tahun) {
-            $this->selectedTahunId = $tahunId;
-            dd($this->selectedTahunId);
-            $this->data = [
-                'kode_tahun' => $tahun->kode_tahun,
-                'status' => $tahun->status
-            ];
-        }
-    }    
-
-    public function updateStatus()
-    {
-        $this->validate([
-            'data.status' => 'required'
-        ]);
-
-        dd($this->data);
-
-        $pengampuId = DB::table('tahun_akademiks')
-            ->where('kode_tahun', $this->data['kode_tahun'])
-            ->value('semester_id');
+        $kode_tahun     = $request->kode_tahun;
+        $status         = $request->status;
+        $tahun          = new tahun_akademik();
+        $semester       = new DataSemester();
 
         try {
-            tahun_akademik::where('kode_tahun', $this->selectedTahunId)->update([
-                'status' => $this->data['status']
-            ]);
+            $tahun->where('status', 'aktif')->update(['status' => 'tidak aktif']);
+            $semester->where('status', 'aktif')->update(['status' => 'tidak aktif']);
 
-            DataSemester::where('kode_semester', $pengampuId)->update([
-                'status' => $this->data['status']
-            ]);
+            $tahun->where('kode_tahun', $kode_tahun)
+                ->join('data_semesters as semester', 'kode_semester', 'semester_id')
+                ->update([
+                    'semester.status' => $status,
+                    'tahun_akademiks.status' => $status,
+                ]);
+
+            $tahun_id = $tahun->where('kode_tahun', $kode_tahun)->value('kode_tahun');
+
+            DB::table('data_kelas')
+                ->update(['tahun_id' => $tahun_id]);
 
             session()->flash('berhasil_aktif', 'Data Berhasil Diupdate.');
         } catch (\Exception $e) {
             session()->flash('gagal_aktif', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }
-    
-        $this->emit('refreshComponent');
-        $this->emit('closeModal');
+
+        return redirect()->route('atur-tasem');
     }
 }

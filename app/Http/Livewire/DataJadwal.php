@@ -226,5 +226,6 @@ class DataJadwal extends Component
         } catch (\Exception $e) {
             session()->flash('gagalUpdate', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }
+        return redirect()->route('m-jadwal');
     }
 }

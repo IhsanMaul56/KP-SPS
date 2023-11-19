@@ -12,6 +12,8 @@ class tahun_akademik extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_tahun';
+
     protected $fillable = [
         'tahun_akademik',
         'semester_id',
