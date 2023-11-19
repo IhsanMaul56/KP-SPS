@@ -221,10 +221,10 @@ class DataNilaiGuru extends Component
         $totalPercentage = $this->formatif_akhir + $this->sumatif_uts + $this->sumatif_uas;
 
         if ($totalPercentage != 100) {
-            $this->addError('formatif_akhir', 'Total persentase harus sama dengan 100.');
-            $this->addError('sumatif_uts', 'Total persentase harus sama dengan 100.');
-            $this->addError('sumatif_uas', 'Total persentase harus sama dengan 100.');
-            session()->flash('gagal', 'Total persentase harus 100.');
+            // $this->addError('formatif_akhir', 'Total persentase harus sama dengan 100.');
+            // $this->addError('sumatif_uts', 'Total persentase harus sama dengan 100.');
+            // $this->addError('sumatif_uas', 'Total persentase harus sama dengan 100.');
+            session()->flash('gagal', 'Total Persentase Harus 100');
             return;
         }
 
@@ -251,6 +251,7 @@ class DataNilaiGuru extends Component
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
         }
+        return redirect()->route('nilai-gurus');
     }
 
     public function tampil()

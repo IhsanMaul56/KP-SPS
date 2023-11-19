@@ -83,7 +83,7 @@ class DataGuruMapel extends Component
             if ($cekPengampu) {
                 // Pengampu sudah mengambil mapel ini, notif pesan kesalahan
                 session()->flash('gagal', 'Anda Sudah Mengambil Mata Pelajaran Ini');
-                return redirect()->route('data-mapels');
+                return redirect()->back();
             }
 
         $guruData = DB::table('data_gurus')
@@ -145,7 +145,7 @@ class DataGuruMapel extends Component
                 'nama_mapel' => $mapelData
             ]);
 
-            session()->flash('berhasil', 'Data Berhasil Diupdate.');
+            session()->flash('berhasil', 'Data Berhasil Diupdate');
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
         }

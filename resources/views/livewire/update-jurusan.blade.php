@@ -5,12 +5,6 @@
                 <h5 class="modal-title fw-bold" id="exampleModalLabel">EDIT JURUSAN</h5>
             </div>
             <div class="modal-body">
-                @if (Session::has('berhasil'))
-                    <div class="alert alert-success">
-                        {{ Session::get('berhasil') }}
-                    </div>
-                @endif
-
                 @if (Session::has('gagal'))
                     <div class="alert alert-danger">
                         {{ Session::get('gagal') }}

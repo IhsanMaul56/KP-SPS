@@ -73,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
         Route::get('/admin/aktivasi-semester', AturTahunSemester::class)->name('atur-tasem');
+        Route::post('/admin/aktivasi-semester', [AturTahunSemester::class, 'insertTahun'])->name('tambah-tahun-akademik');
+        Route::get('/jadwal-pelajaran', [DataJadwal::class, 'tampil'])->name('m-jadwal');
     });
 
     Route::prefix('/dashboard')->group(function () {

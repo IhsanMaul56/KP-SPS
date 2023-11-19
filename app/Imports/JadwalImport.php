@@ -35,11 +35,11 @@ class JadwalImport implements ToModel, WithHeadingRow, WithChunkReading, WithVal
                 $query->where('nama_mapel', $row['mapel']);
             })->first();
 
-            if($tingkat === null) {
+            if ($tingkat === null) {
                 $message = 'Data tingkat tidak ditemukan untuk tingkat: ' . $row['tingkat'];
                 $this->onFailure(new \Exception($message));
                 return null;
-            } elseif($kelas === null) {
+            } elseif ($kelas === null) {
                 $message = 'Data kelas tidak ditemukan untuk kelas: ' . $row['kelas'];
                 $this->onFailure(new \Exception($message));
                 return null;
@@ -54,30 +54,42 @@ class JadwalImport implements ToModel, WithHeadingRow, WithChunkReading, WithVal
             }
 
             $pengampu_id = $pengampu ? $pengampu->kode_pengampu : null;
+            $guru_id = $pengampu ? $pengampu->pengampu_id : null;
 
             $waktuMasuk = Carbon::createFromFormat('H:i', $row['masuk']);
             $waktuKeluar = Carbon::createFromFormat('H:i', $row['keluar']);
 
             DB::beginTransaction();
 
+            $exitingPengampu = data_pengampu::where([
+                'pengampu_id' => $guru_id,
+            ])->get();
+
             $existingJadwal = data_jadwal::where([
-                'hari' => $row['hari'],
-                'waktu_masuk' => $waktuMasuk->toTimeString(),
-                'waktu_keluar' => $waktuKeluar->toTimeString(),
-                'tingkat_id' => $tingkat_id,
-                'nama_tingkat' => $row['tingkat'],
-                'kelas_id' => $kelas_id,
-                'nama_kelas' => $row['kelas'],
                 'pengampu_id' => $pengampu_id,
-            ])->first();
-            
-            if ($existingJadwal) {
-                DB::rollBack();
-                return null;
+            ])->get();
+
+
+            //dd(ucfirst(strtolower(str_replace(['.', ','], '', $row['pengampu']))));
+            //dd($existingJadwal);
+
+            foreach ($exitingPengampu as $existPenampu) {
+                foreach ($existingJadwal as $existJadwal) {
+                    if (ucfirst(strtolower($existJadwal->hari)) == ucfirst(strtolower($row['hari']))) {
+                        if ($existJadwal->waktu_masuk == $row['masuk'] . ':00') {
+                            if (ucfirst(strtolower(str_replace(['.', ','], '', $existPenampu->nama_mapel))) == ucfirst(strtolower(str_replace(['.', ','], '', $row['mapel'])))) {
+                                DB::rollBack();
+                                $message = 'Jadwal Sudah Tersedia';
+                                $this->onFailure(new \Exception($message));
+                                return null;
+                            }
+                        }
+                    }
+                }
             }
 
             $jadwal = new data_jadwal([
-                'hari' => $row['hari'],
+                'hari' => ucfirst(strtolower($row['hari'])),
                 'waktu_masuk' => $waktuMasuk->toTimeString(),
                 'waktu_keluar' => $waktuKeluar->toTimeString(),
                 'tingkat_id' => $tingkat_id,

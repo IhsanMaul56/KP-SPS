@@ -15,7 +15,7 @@
             <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Data Guru |</span><span class="h2 text-biru" style="padding-left: 10px;">Master Guru</span>
+                        <span class="h1 fw-bold text-biru">Data Guru |</span><span class="h2 text-biru" style="padding-left: 10px;">Kelola Guru</span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>

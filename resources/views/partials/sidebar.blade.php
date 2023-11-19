@@ -42,7 +42,7 @@
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5 ling">Jurusan</a>
                         <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5 ling">Kelas</a>
                         <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5 ling">Mapel</a>
-                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5">Aktivasi<br>Semester</a>
+                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5">Aktivasi TA</a>
                     </div>
                     <br>
                 </div>
@@ -62,6 +62,9 @@
                     <a href="{{ route('show-pengumuman') }}"
                         class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : '' }}"
                         style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
+                </div> --}}
+                {{-- <div class="row mx-0">
+                    <a href="{{ route('show_pengumuman') }}" class="sidebar {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div> --}}
 
             @elseif (Auth::user()->role == 'kurikulum')
@@ -124,11 +127,6 @@
                     <a href="{{ route('nilai-walis') }}" class="sidebar" style="text-decoration: none"><i
                             class="bi bi-journal-richtext icon-kiri"></i>Data Wali</a>
                     <br>
-                </div>
-                <div class="row mx-0">
-                    <a href="{{ route('show-pengumuman') }}"
-                        class="sidebar {{ Request::is('dashboard/admin/pengumuman') ? 'active' : '' }}"
-                        style="text-decoration: none"><i class="bi bi-megaphone icon-kiri"></i>Pusat Informasi</a><br>
                 </div>
                 <div class="row mx-0">
                     <a href="{{ route('profile-guru') }}" class="sidebar" id="btnGuru4"

@@ -24,17 +24,7 @@
                 </div>
                 <div class="row p-0 m-0">
                     <div class="card-body h-100 overflow-auto" id="shadow">
-                        <div class="row mb-1" style="display: flex; align-items: center;">
-                            <div class="col-auto">
-                                <select class="form-select" wire:model="tahunSelected" wire:change="loadDataMapel">
-                                    <option hidden selected>Pilih Tahun Akademik</option>
-                                    @if ($tahunAkademik)
-                                        @foreach ($tahunAkademik as $item)
-                                            <option value="{{ $item->kode_tahun }} {{ $item->semester_id }}">{{ $item->tahun_akademik }} - Semester {{ $item->nama_semester }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>                                                        
+                        <div class="row mb-1" style="display: flex; align-items: center;">                                                       
                             <div class="col text-end">
                                 <a href="{{ route('nilai-progress') }}" class="btn btn-success"
                                     style="text-decoration: none">Nilai Progress</a>

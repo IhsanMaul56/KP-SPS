@@ -21,10 +21,6 @@
                 <div class="alert alert-success">
                     {{ Session::get('berhasil') }}
                 </div>
-            @elseif (Session::has('gagal'))
-                <div class="alert alert-danger">
-                    {{ Session::get('gagal') }}
-                </div>
             @endif
             <tr class="text-center">
                 <th>NO</th>

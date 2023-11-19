@@ -10,6 +10,10 @@
                     <div class="alert alert-danger">
                         {{ $gagalMessage }}
                     </div>
+                @elseif (Session::has('gagal'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('gagal') }}
+                    </div>
                 @endif
                 <div class="row mb-3">
                     <div class="col">

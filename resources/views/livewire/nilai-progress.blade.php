@@ -78,7 +78,7 @@
                                     <span>Semester</span>
                                 </div>
                                 <div class="col">
-                                    <span>: 1</span>
+                                    <span>: {{ $siswa->nama_semester }}</span>
                                 </div>
                             </div>
                             <div class="row mb-1">
@@ -92,7 +92,7 @@
                                     <span>Tahun Ajaran</span>
                                 </div>
                                 <div class="col">
-                                    <span>: {{ $siswa->nama_tahun }}</span>
+                                    <span>: {{ $siswa->tahun_akademik }}</span>
                                 </div>
                             </div>
                         @endif
@@ -103,6 +103,7 @@
                                     <th rowspan="2">MATA PELAJARAN</th>
                                     <th colspan="2">FORMATIF</th>
                                     <th colspan="2">SUMATIF</th>
+                                    <th rowspan="2">NILAI AKHIR</th>
                                 </tr>
                                 <tr class="text-center">
                                     <th>TUGAS</th>
@@ -121,6 +122,7 @@
                                         <td>{{ $item->formatifs ? $item->formatifs->kuis : '-' }}</td>
                                         <td>{{ $item->sumatifs ? $item->sumatifs->uts : '-' }}</td>
                                         <td>{{ $item->sumatifs ? $item->sumatifs->uas : '-' }}</td>
+                                        <td></td>
                                     </tr>
                                 @endforeach
                             </tbody>
