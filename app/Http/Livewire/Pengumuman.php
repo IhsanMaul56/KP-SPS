@@ -96,11 +96,6 @@ class Pengumuman extends Component
         }
     }
 
-    // public function tampil()
-    // {
-    //     return view('livewire.pengumuman');
-    // }
-
     public function createPengumuman(Request $request)
     {
         // dd($request);

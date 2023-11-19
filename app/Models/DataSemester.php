@@ -10,6 +10,8 @@ class DataSemester extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_semester';
+
     protected $fillable = [
         'nama_semester',
         'status',

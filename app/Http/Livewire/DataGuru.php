@@ -40,7 +40,7 @@ class DataGuru extends Component
     {
         if ($this->selectedGuru) {
             User::where('guru_id', $this->selectedGuru->nip)->delete();
-            data_jadwal::whereHas('pengampu', function($query){
+            data_jadwal::whereHas('pengampu', function($query) {
                 $query->where('pengampu_id', $this->selectedGuru->nip);
             })->delete();
             data_pengampu::where('pengampu_id', $this->selectedGuru->nip)->delete();

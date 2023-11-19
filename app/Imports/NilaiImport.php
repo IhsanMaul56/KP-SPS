@@ -4,8 +4,8 @@ namespace App\Imports;
 
 use App\Models\data_kelas;
 use App\Models\data_tingkat;
-use App\Models\data_pengampu;
 use App\Models\DataSemester;
+use App\Models\data_pengampu;
 use App\Models\nilai_sumatif;
 use App\Models\nilai_formatif;
 use App\Models\tahun_akademik;
@@ -30,14 +30,14 @@ class NilaiImport implements ToModel, WithHeadingRow
             $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
 
             if (!$tahun_akademik_aktif) {
-                session()->flash('gagal', 'Tidak dapat menemukan tahun akademik aktif.');
+                Session::flash('error', 'Tidak dapat menemukan tahun akademik aktif');
                 return;
             }
 
             $semester_aktif = DataSemester::where('status', '=', 'aktif')->first();
 
-            if(!$semester_aktif){
-                session()->flash('gagal', 'Tidak dapat menemukan semester aktif.');
+            if (!$semester_aktif) {
+                Session::flash('error', 'Tidak dapat menemukan semester aktif.');
                 return;
             }
 
@@ -65,6 +65,8 @@ class NilaiImport implements ToModel, WithHeadingRow
 
                     nilai_formatif::create($formatifData);
                     Session::flash('berhasil_import', 'Data nilai berhasil diimport.');
+                } elseif (empty($row['tugas']) || empty($row['kuis'])) {
+                    Session::flash('error', 'Data tidak boleh kosong');
                 }
 
                 if (isset($row['uts']) && isset($row['uas'])) {
@@ -75,10 +77,14 @@ class NilaiImport implements ToModel, WithHeadingRow
 
                     nilai_sumatif::create($sumatifData);
                     Session::flash('berhasil_import', 'Data nilai berhasil diimport.');
+                } elseif (empty($row['uts']) || empty($row['uas'])) {
+                    empty($row['uts']) || empty($row['uas']);
                 }
+
             } else {
                 Session::flash('error', 'Data Excel gagal diimpor karena sudah ada.');
             }
+
         } catch (\Exception $e) {
             $errorMessage = 'Terjadi kesalahan data pada nis/nama siswa/tingkat/kelas/nama mata pelajaran. Silahkan masukan data nilai nya saja';
             Session::flash('error', $errorMessage);
