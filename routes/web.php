@@ -75,6 +75,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/aktivasi-semester', AturTahunSemester::class)->name('atur-tasem');
         Route::post('/admin/aktivasi-semester', [AturTahunSemester::class, 'insertTahun'])->name('tambah-tahun-akademik');
         Route::get('/jadwal-pelajaran', [DataJadwal::class, 'tampil'])->name('m-jadwal');
+        Route::get('/admin/aktivasi-semester/aktif', AturTahunSemester::class)->name('atur-tasem-aktif');
+        Route::post('/admin/aktivasi-semester/aktif', [AturTahunSemester::class, 'updateStatus'])->name('aktifasi-tahun-akademik');
+        Route::put('/admin/aktivasi-semester', [AturTahunSemester::class, 'updateStatus'])->name('update-status');
     });
 
     Route::prefix('/dashboard')->group(function () {
@@ -108,10 +111,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/siswa/edit', AkunSiswa::class)->name('siswa.edit');
         Route::get('/profile-siswa', [AkunSiswa::class, 'profile'])->name('profile-siswa');
         Route::get('/nilai-siswa', MasterNilaiSiswa::class)->name('nilai-siswa');
+        Route::get('/nilai-print', [MasterNilaiSiswa::class, 'NilaiPrint'])->name('cetak-nilai');
         Route::get('/nilai-progress', [MasterNilaiSiswa::class, 'NilaiProgress'])->name('nilai-progress');
-        Route::get('/', [Pengumuman::class, 'pengumumanSiswa'])->name('pengumuman_siswa');
+        Route::get('/', Pengumuman::class)->name('pengumuman_siswa');
     });
-
+    
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 

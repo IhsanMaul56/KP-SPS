@@ -22,7 +22,6 @@ class data_kelas extends Model
         'tingkat_id',
         'nama_tingkat',
         'tahun_id',
-        'nama_tahun'
     ];
 
     //cardinality
@@ -60,7 +59,7 @@ class data_kelas extends Model
     }
 
     public function tahunAkademik() : BelongsTo{
-        return $this->belongsTo(tahun_akademik::class, 'tahun_id    ', 'kode_tahun');
+        return $this->belongsTo(tahun_akademik::class, 'tahun_id', 'kode_tahun');
     }
 
     public function tingkat() : BelongsTo{

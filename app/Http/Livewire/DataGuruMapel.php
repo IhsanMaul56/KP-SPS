@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\BobotNilai;
+use App\Models\data_jadwal;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\data_pengampu;
@@ -160,6 +162,8 @@ class DataGuruMapel extends Component
     public function deletePengampu()
     {
         if ($this->selectedPengampuId) {
+            data_jadwal::where('pengampu_id', $this->selectedPengampuId->kode_pengampu)->delete();
+            BobotNilai::where('pengampu_id', $this->selectedPengampuId->kode_pengampu)->delete();
             data_pengampu::where('kode_pengampu', $this->selectedPengampuId->kode_pengampu)->delete();
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }

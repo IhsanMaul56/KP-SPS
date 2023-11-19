@@ -1,22 +1,21 @@
 @extends('layouts.app')
 
-{{-- @push('styles')
+@push('styles')
     @livewireStyles
 @endpush
 
 @push('script')
     @livewireScripts
-@endpush --}}
+@endpush
 
 @section('content')
     <div class="container-fluid p-0">
         @include('partials.sidebar')
-        @include('livewire.update-status')
         <div class="col p-0">
             <div class="grid-tengah w-100 overflow-auto">
                 <div class="row">
                     <div class="col">
-                        <span class="h1 fw-bold text-biru">Data Akademik</span></span>
+                        <span class="h1 fw-bold text-biru">Data Akademik</span>
                     </div>
                     <div class="col text-end">
                         <span class="h5">Selamat Datang,</span><br>
@@ -31,8 +30,7 @@
                                     <form wire:submit.prevent="insertTahun" action="{{ route('tambah-tahun-akademik') }}"
                                         method="POST">
                                         @csrf
-                                        <label class="fs-5 d-flex justify-content-center">Tambah Tahun Akademik</label
-                                            class="fs-5">
+                                        <label class="fs-5 d-flex justify-content-center mb-3">Tambah Tahun Akademik</label>
                                         @if (Session::has('berhasil'))
                                             <div class="alert alert-success">
                                                 {{ Session::get('berhasil') }}
@@ -47,7 +45,7 @@
                                         <div class="form-group">
                                             <input wire:model="tahun_akademik" name="tahun_akademik" id="tahun_akademik"
                                                 type="text"
-                                                class="form-control @error('tahun_akademik') is-invalid @enderror"
+                                                class="form-control @error('tahun_akademik') is-invalid @enderror mb-2"
                                                 placeholder="Masukkan Nama Tahun Akademik">
                                             @error('tahun_akademik')
                                                 <div class="invalid-feedback">
@@ -93,10 +91,16 @@
                                             <td>{{ $tahuns->nama_semester }}</td>
                                             <td>{{ $tahuns->status }}</td>
                                             <td>
-                                                <button wire:click="editStatus({{ $tahuns->kode_tahun }})" type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#UpdateStatus">
-                                                    <i class="bi bi-pencil-square text-white"></i>
-                                                </button>
+                                                <form action="{{ route('update-status', ['kode_tahun' => $tahuns->kode_tahun, 'status' => $tahuns->status != 'aktif' ? 'aktif' : 'tidak aktif']) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    @if ($tahuns->status == 'aktif')
+                                                        <button type="submit" class="btn btn-success">Aktif</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger">Tidak Aktif</button>
+                                                    @endif
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
