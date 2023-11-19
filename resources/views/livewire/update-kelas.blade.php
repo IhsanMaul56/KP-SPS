@@ -31,7 +31,12 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label>Nama Kelas :</label>
-                            <input wire:model="selectedKelas.nama_kelas" type="text" class="form-control" placeholder="Masukkan Nama Kelas" value="{{ $nama_kelas }}">
+                            <input wire:model="selectedKelas.nama_kelas" type="text" class="form-control" placeholder="Masukkan Nama Kelas" value="{{ $nama_kelas }}" @error('nama_kelas') is-invalid @enderror>
+                            @error('nama_kelas')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
                 </div>

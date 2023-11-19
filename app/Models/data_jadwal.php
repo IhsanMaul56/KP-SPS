@@ -10,6 +10,8 @@ class data_jadwal extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'kode_jadwal';
+
     protected $fillable = [
         'hari',
         'waktu_masuk',

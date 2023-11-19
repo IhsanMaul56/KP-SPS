@@ -20,7 +20,7 @@
                         <span class="h4 fw-bold">{{ Auth::user()->name }}</span>
                     </div>
                 </div>
-                <div class="row p-0 m-0 page active-page" id="Formatif" style="font-size: unset">
+                <div class="row p-0 m-0 page active-page fs-5" id="Formatif">
                     <div class="card-body h-100 overflow-auto" id="shadow">
                         <div class="row mb-1">
                             <div class="col">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="font-size: unset">
+                <div class="row fs-5">
                     <div class="col">
                         <div class="card-body h-100 overflow-auto" id="shadow">
                             <div class="row">

@@ -1,6 +1,15 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.modal-persentase')
-    <div class="row mb-1" style="display: flex; align-items: center;">
+    <div class="row">
+        <div class="col">
+            @if (Session::has('berhasil'))
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil') }}
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         <div class="col-2">
             <select wire:model="mapelSelected" class="form-select">
                 <option value="" hidden selected>Pilih Mata Pelajaran</option>
@@ -38,44 +47,27 @@
 
     <div class="col mt-3">
         @if ($siswa && !$siswa->isEmpty())
-            <div>
-                <div class="row mb-3 mt-3">
-                    <label for="">File Exel</label>
-                    <div class="col">
-                        <input type="file" class="form-control @error('file') is-invalid @enderror" wire:model="file">
-                        <small>Note<b class="text-danger">*</b> : file harus bertipe .xlsx atau .xls</small>
-                        @error('file')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary" wire:click="importExcel">IMPORT</button>
-                        <button type="button" class="btn btn-success" wire:click="downloadExcel">Download Exel</button>
-                    </div>
-                </div>
-            </div>
             @if (Session::has('berhasil_import') && !Session::has('error'))
                 <div class="alert alert-success">
                     {{ Session::get('berhasil_import') }}
                 </div>
 
-            @elseif (Session::has('error') && !Session::has('berasil_import'))
+            {{-- @elseif (Session::has('error') && !Session::has('berasil_import'))
                 <div class="alert alert-danger">
                     {{ Session::get('error') }}
-                </div>
+                </div> --}}
             @endif
 
-            @if ($errors->any())
+            
+
+            {{-- @if ($errors->any())
                 <div class="alert alert-danger">
-                    <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <div>{{ $error }}</div>
                         @endforeach
-                    </ul>
                 </div>
-            @endif
+            @endif --}}
+            <hr>
             <table class="table table-bordered text-center">
                 <thead>
                     <th>NO</th>
@@ -99,11 +91,33 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col form-control" style="margin-left: 12px; margin-right: 12px;">
+                    <div class="row">
+                        <label for="" class="mb-2 fs-5">File Excel</label>
+                        <div class="col">
+                            <input type="file" class="form-control mb-1 @error('file') is-invalid @enderror" wire:model="file">
+                            <b class="text-danger">*</b><small style="color: grey">Note: File Harus Bertipe .xlsx atau .xls</small>
+                            @error('file')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary" wire:click="importExcel"><i class="bi-cloud-upload" style="padding-right: 5px"></i>Import</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success" wire:click="downloadExcel"><i class="bi-cloud-download" style="padding-right: 5px"></i>Excel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @else
         <div class="col text-center">
             <hr>
             <img src="{{URL::asset('/img/warning.png')}}" alt="warning" class="mb-3" width="125px;">
-            <p>Tidak Ada Hasil Yang Ditemukan</p>
+            <p>Mohon Atur Persentase Terlebih Dahulu</p>
         </div>
         @endif
     </div>

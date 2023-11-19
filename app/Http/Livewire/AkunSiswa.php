@@ -52,7 +52,7 @@ class AkunSiswa extends Component
                     'no_hp' => $this->data['no_hp'],
                 ]);
 
-            Session::flash('message', 'Data berhasil di update');
+            Session::flash('message', 'Data Berhasil Diupdate');
             
         }
         

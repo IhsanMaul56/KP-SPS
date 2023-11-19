@@ -10,7 +10,7 @@
                 <div class="text-break text-center textdisable-modal">Apakah Anda yakin ingin menghapus data ini?</div>
                 <div class="modal-footer justify-content-center" style="border-top:unset !important">
                     <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Batal</button>
-                    <button wire:click="deleteSiswa" class="btn btn-danger">Hapus</button>
+                    <button wire:click="deleteJadwal" class="btn btn-danger">Hapus</button>
                 </div>
             </div>
         </div>

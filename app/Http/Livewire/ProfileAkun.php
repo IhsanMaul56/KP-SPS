@@ -94,6 +94,6 @@ public function updatedPhoto()
         session()->flash('error', 'Anda tidak memiliki izin untuk mengunggah file.');
     }
 
-    session()->flash('message', 'Foto profil berhasil diunggah.');
+    session()->flash('message', 'Foto Profil Berhasil Diunggah');
     }
 }
