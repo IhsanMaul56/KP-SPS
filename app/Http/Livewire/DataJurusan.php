@@ -52,17 +52,20 @@ class DataJurusan extends Component
         return view('livewire.data-jurusan', compact('jurusan'));
     }
 
-    public function countKelas($jurusanId){
+    public function countKelas($jurusanId)
+    {
         $kelasCount = data_kelas::where('jurusan_id', $jurusanId)->count();
 
         return $kelasCount;
     }
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
-    public function tampil(){
+    public function tampil()
+    {
         return view('partials.jurusan-data');
     }
 
@@ -84,7 +87,7 @@ class DataJurusan extends Component
             );
 
             $kajur = data_kajur::where('guru_id', $this->guru_id)->orderBy('created_at', 'desc')->first();
-        
+
             data_jurusan::create([
                 'nama_jurusan' => $this->nama_jurusan,
                 'kajur_id' => $kajur->kode_kajur,
@@ -94,7 +97,6 @@ class DataJurusan extends Component
             $this->reset(['nama_jurusan', 'guru_id']);
 
             Session::flash('berhasil', 'Data Berhasil Ditambahkan');
-
         } catch (\Exception $e) {
             Session::flash('gagal', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
         }
@@ -106,14 +108,17 @@ class DataJurusan extends Component
         $jurusan = data_jurusan::with('kajur')->find($jurusanId);
         if ($jurusan) {
             $this->jurusanSelectedId = $jurusanId;
+
             $this->selectedJurusan = [
                 'kode_jurusan' => $jurusan->kode_jurusan,
                 'nama_jurusan' => $jurusan->nama_jurusan,
-                'guru_id' => $jurusan->kajur->guru_id,
+                'guru_id' => optional($jurusan->kajur)->guru_id,
             ];
+
             $this->showModal = true;
         }
     }
+
 
     public function updateSelectedJurusan()
     {
@@ -162,24 +167,24 @@ class DataJurusan extends Component
     public function deleteJurusan()
     {
         if ($this->jurusanSelectedId) {
-            User::whereHas('siswa', function($query) {
-                $query->whereHas('kelas', function($kelasQuery) {
+            User::whereHas('siswa', function ($query) {
+                $query->whereHas('kelas', function ($kelasQuery) {
                     $kelasQuery->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
                 });
             })->delete();
-            data_jadwal::whereHas('kelas', function($query) {
+            data_jadwal::whereHas('kelas', function ($query) {
                 $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
             })->delete();
-            data_siswa::whereHas('kelas', function($query) {
+            data_siswa::whereHas('kelas', function ($query) {
                 $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
             })->delete();
-            data_wali::whereHas('kelas', function($query) {
+            data_wali::whereHas('kelas', function ($query) {
                 $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
             })->delete();
-            nilai_formatif::whereHas('kelas', function($query) {
+            nilai_formatif::whereHas('kelas', function ($query) {
                 $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
             })->delete();
-            nilai_sumatif::whereHas('kelas', function($query) {
+            nilai_sumatif::whereHas('kelas', function ($query) {
                 $query->where('jurusan_id', $this->jurusanSelectedId->kode_jurusan);
             })->delete();
             data_kelas::where('jurusan_id', $this->jurusanSelectedId->kode_jurusan)->delete();
