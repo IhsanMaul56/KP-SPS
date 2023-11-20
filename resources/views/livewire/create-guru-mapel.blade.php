@@ -18,7 +18,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label>Guru :</label>
-                        <select name="pengampu_id" wire:model="pengampu_id" class="form-select">
+                        <select name="pengampu_id" wire:model="pengampu_id" class="form-select @error('pengampu_id') is-invalid @enderror">
                             <option value="" hidden selected>Pilih NIP - Nama Guru</option>
                             @foreach ($guruList as $nipGuru => $namaGuru)
                                 <option value="{{ $nipGuru }}">{{ $nipGuru }} - {{ $namaGuru }}</option>
@@ -29,7 +29,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label>Mata Pelajaran :</label>
-                        <select name="mapel_id" wire:model="mapel_id" class="form-select">
+                        <select name="mapel_id" wire:model="mapel_id" class="form-select @error('mapel_id') is-invalid @enderror">
                             <option value="" hidden selected>Pilih Kode Mapel - Nama Mapel</option>
                             @foreach ($mapelList as $kodeMapel => $namaMapel)
                                 <option value="{{ $kodeMapel }}">{{ $kodeMapel }} - {{ $namaMapel }}</option>

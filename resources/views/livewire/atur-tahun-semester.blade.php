@@ -46,7 +46,7 @@
                                             <input wire:model="tahun_akademik" name="tahun_akademik" id="tahun_akademik"
                                                 type="text"
                                                 class="form-control @error('tahun_akademik') is-invalid @enderror mb-2"
-                                                placeholder="Masukkan Nama Tahun Akademik">
+                                                placeholder="Masukkan Nama Tahun Akademik" oninput="this.value = this.value.replace(/[^0-9/]/g, '')">
                                             @error('tahun_akademik')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
