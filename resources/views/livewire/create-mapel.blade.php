@@ -5,6 +5,11 @@
                 <h5 class="modal-title fw-bold" id="exampleModalLabel">TAMBAH MATA PELAJARAN</h5>
             </div>
             <div class="modal-body">
+                @if (Session::has('gagal'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('gagal') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col">
                         <label>Nama Mata Pelajaran :</label>

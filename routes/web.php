@@ -71,8 +71,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
         Route::get('/admin/set-atp', [NilaiAtp::class, 'tampil'])->name('cek-atp');
-        Route::get('/admin/aktivasi-semester/', AturTahunSemester::class)->name('atur-tasem');
-        Route::post('/admin/aktivasi-semester/', [AturTahunSemester::class, 'insertTahun'])->name('tambah-tahun-akademik');
+        Route::get('/admin/aktivasi-semester', AturTahunSemester::class)->name('atur-tasem');
+        Route::post('/admin/aktivasi-semester', [AturTahunSemester::class, 'insertTahun'])->name('tambah-tahun-akademik');
+        Route::get('/jadwal-pelajaran', [DataJadwal::class, 'tampil'])->name('m-jadwal');
+        Route::get('/admin/aktivasi-semester/aktif', AturTahunSemester::class)->name('atur-tasem-aktif');
+        Route::post('/admin/aktivasi-semester/aktif', [AturTahunSemester::class, 'updateStatus'])->name('aktifasi-tahun-akademik');
         Route::put('/admin/aktivasi-semester', [AturTahunSemester::class, 'updateStatus'])->name('update-status');
     });
 

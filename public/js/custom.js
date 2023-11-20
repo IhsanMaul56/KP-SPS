@@ -145,3 +145,9 @@ $(document).ready(function() {
     $('#UpdateJadwal').modal('hide');
     $('#DeleteDataJadwal').modal('hide');
 });
+
+// Modal Atur Persentase
+$(document).ready(function() {
+    // Sembunyikan modal saat halaman dimuat
+    $('#InsertPercent').modal('hide');
+});

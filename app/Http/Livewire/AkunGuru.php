@@ -57,7 +57,7 @@ class AkunGuru extends Component
                     'alamat' => $this->data['alamat'],
                 ]);
 
-            Session::flash('message', 'Data berhasil di update');
+            Session::flash('message', 'Data Berhasil Diupdate');
         }
 
         $this->emit('refreshComponent');
