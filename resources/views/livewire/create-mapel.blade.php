@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col">
                         <label>Nama Mata Pelajaran :</label>
-                        <input wire:model="nama_mapel" type="text" class="form-control" placeholder="Masukkan Nama Mata Pelajaran">
+                        <input wire:model="nama_mapel" type="text" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="Masukkan Nama Mata Pelajaran">
                     </div>
                 </div>
             </div>
