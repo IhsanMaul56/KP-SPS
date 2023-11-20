@@ -83,7 +83,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1; ?>
+                                    {{ $no = 1; }}
                                     @foreach ($tahunAkademik as $tahuns)
                                         <tr>
                                             <td>{{ $no++ }}</td>

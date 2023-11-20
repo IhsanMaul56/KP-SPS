@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use PHPUnit\Framework\Constraint\IsEmpty;
 
 class AkunGuru extends Component
 {
@@ -20,6 +22,8 @@ class AkunGuru extends Component
         'rw' => '',
         'alamat' => ''
     ];
+    public $password;
+    public $email;
 
     public function render()
     {
@@ -38,6 +42,34 @@ class AkunGuru extends Component
         }
         
         return view('livewire.akun-guru');
+    }
+
+    public function changePassword(){
+        $user = Auth::user();
+        
+        try{
+            if($user && $user->guru_id){
+                if($this->email != $user->email){
+                    Session::flash('gagal', 'Email yang dimasukkan salah');
+                }elseif($this->password == null){
+                    Session::flash('gagal', 'Password harus di isi!');
+                }else{
+                    DB::table('users')
+                    ->where('guru_id', $user->guru_id)
+                    ->where('email', $user->email)
+                    ->update([
+                        'password' => bcrypt($this->password)
+                    ]);
+                    Session::flash('berhasil', 'Password berhasil di update');
+                }
+                // dd($this->password, $user);
+            }else{
+                Session::flash('gagal', 'Password gagal di update');
+            }
+        }catch(\Exception $e){
+            Session::flash('gagal', 'Password tidak boleh Kosong');
+        }
+
     }
 
     public function update()
