@@ -147,11 +147,11 @@ class DataNilaiGuru extends Component
             $kelasId = DB::table('data_kelas')
                 ->where('nama_kelas', $this->kelasSelected)
                 ->value('kode_kelas');
-            
+
             $tahun = DB::table('tahun_akademiks')
                 ->where('status', 'aktif')
                 ->value('kode_tahun');
-            
+
             $semester = DB::table('data_semesters')
                 ->where('status', 'aktif')
                 ->value('kode_semester');

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('data_jurusans', function (Blueprint $table) {
             $table->id('kode_jurusan');
             $table->string('nama_jurusan');
-            $table->foreignId('kajur_id')->constrained('data_kajurs', 'kode_kajur');
-            $table->string('nama_guru');
+            $table->foreignId('kajur_id')->nullable()->constrained('data_kajurs', 'kode_kajur');
+            $table->string('nama_guru')->nullable();
             $table->timestamps();
         });
     }

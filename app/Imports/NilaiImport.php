@@ -9,6 +9,8 @@ use App\Models\data_pengampu;
 use App\Models\nilai_sumatif;
 use App\Models\nilai_formatif;
 use App\Models\tahun_akademik;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -18,8 +20,25 @@ class NilaiImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         try {
+            //validasi jika nama_mapel tidak ada dalam tabel pengampu
             $mapel = data_pengampu::where('nama_mapel', $row['mapel'])->first();
             $mapel_id = $mapel ? $mapel->mapel_id : null;
+
+            $user = Auth::user();
+            if ($user && $user->guru_id) {
+                $pengampu = DB::table('data_pengampus')
+                    ->where('pengampu_id', $user->guru_id)
+                    ->where('nama_mapel', $row['mapel'])
+                    ->first();
+
+                if (!$pengampu) {
+                    Session::flash('error', 'Anda tidak menjadi pengampu pada mata pelajaran ini');
+                    return null;
+                }
+            } else {
+                Session::flash('error', 'Anda tidak menjadi pengampu pada mata pelajaran ini');
+                return null;
+            }
 
             $kelas = data_kelas::where('nama_kelas', $row['kelas'])->first();
             $kelas_id = $kelas ? $kelas->kode_kelas : null;
@@ -80,11 +99,9 @@ class NilaiImport implements ToModel, WithHeadingRow
                 } elseif (empty($row['uts']) || empty($row['uas'])) {
                     empty($row['uts']) || empty($row['uas']);
                 }
-
             } else {
                 Session::flash('error', 'Data Excel gagal diimpor karena sudah ada.');
             }
-
         } catch (\Exception $e) {
             $errorMessage = 'Terjadi kesalahan data pada nis/nama siswa/tingkat/kelas/nama mata pelajaran. Silahkan masukan data nilai nya saja';
             Session::flash('error', $errorMessage);

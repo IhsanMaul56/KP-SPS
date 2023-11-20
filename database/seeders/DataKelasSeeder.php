@@ -21,7 +21,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'PPLG 2',
@@ -30,7 +29,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'PPLG 3',
@@ -39,7 +37,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'PM 1',
@@ -48,7 +45,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'PM 2',
@@ -57,7 +53,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'PM 3',
@@ -66,7 +61,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'MPLB 1',
@@ -75,7 +69,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'MPLB 2',
@@ -84,7 +77,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'MPLB 3',
@@ -93,7 +85,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'AKL 1',
@@ -102,7 +93,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
             [
                 'nama_kelas' => 'AKL 2',
@@ -111,7 +101,6 @@ class DataKelasSeeder extends Seeder
                 'tingkat_id' => '1',
                 'nama_tingkat' => 'x',
                 'tahun_id' => '1',
-                'nama_tahun' => '2023/2024'
             ],
         ];
 
