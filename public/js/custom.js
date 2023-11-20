@@ -7,7 +7,7 @@ buttons.forEach(button => {
     });
 });
 
-// show n hide password
+// show n hide password 1
 document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const showPasswordToggle = document.getElementById('showPasswordToggle');
@@ -20,6 +20,44 @@ document.addEventListener('DOMContentLoaded', function() {
             eyeIcon.classList.add('bi-eye-slash');
         } else {
             passwordInput.type = 'password';
+            eyeIcon.classList.remove('bi-eye-slash');
+            eyeIcon.classList.add('bi-eye');
+        }
+    });
+});
+
+// show n hide password 2
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput2 = document.getElementById('password2');
+    const showPasswordToggle2 = document.getElementById('showPasswordToggle2');
+    const eyeIcon = showPasswordToggle2.querySelector('i');
+
+    showPasswordToggle2.addEventListener('click', function() {
+        if (passwordInput2.type === 'password') {
+            passwordInput2.type = 'text';
+            eyeIcon.classList.remove('bi-eye');
+            eyeIcon.classList.add('bi-eye-slash');
+        } else {
+            passwordInput2.type = 'password';
+            eyeIcon.classList.remove('bi-eye-slash');
+            eyeIcon.classList.add('bi-eye');
+        }
+    });
+});
+
+// show n hide password 3
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput3 = document.getElementById('password3');
+    const showPasswordToggle3 = document.getElementById('showPasswordToggle3');
+    const eyeIcon = showPasswordToggle3.querySelector('i');
+
+    showPasswordToggle3.addEventListener('click', function() {
+        if (passwordInput3.type === 'password') {
+            passwordInput3.type = 'text';
+            eyeIcon.classList.remove('bi-eye');
+            eyeIcon.classList.add('bi-eye-slash');
+        } else {
+            passwordInput3.type = 'password';
             eyeIcon.classList.remove('bi-eye-slash');
             eyeIcon.classList.add('bi-eye');
         }
