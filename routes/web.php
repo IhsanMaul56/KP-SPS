@@ -67,7 +67,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/kelas', [DataKelas::class, 'tampil'])->name('data-kelas');
         Route::post('/admin/insert-kelas', [DataKelas::class, 'createKelas'])->name('create-kelas');
         Route::post('/admin/update-kelas', [DataKelas::class, 'updateKelas'])->name('update-kelas');
-        // Route::get('/admin/tambah-wali', [GuruWali::class, 'create_wali'])->name('create-data-wali');
         Route::get('/admin/tambah-guru-mapel', [DataGuruMapel::class, 'create_gumapel'])->name('create-guru-mapel');
         Route::get('/admin/master-mapel', [MasterMapel::class, 'tampil'])->name('master-mapel');
         Route::get('/admin/set-tp', [NilaiTp::class, 'tampil'])->name('cek-tp');
@@ -88,7 +87,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jadwal-pelajaran', [DataJadwal::class, 'tampil'])->name('m-jadwal');
         Route::get('/jurusan', [DataJurusan::class, 'tampil'])->name('m-jurusan');
         Route::get('/kelas', [DataKelas::class, 'tampil'])->name('m-kelas');
-        // Route::get('/profile', [AkunGuru::class, 'ProfileKurikulum'])->name('m-kelas');
     });
 
     Route::prefix('/dashboard')->group(function () {

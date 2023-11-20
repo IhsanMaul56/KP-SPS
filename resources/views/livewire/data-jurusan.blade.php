@@ -29,7 +29,11 @@
                 <tr class="text-center">
                     <td>{{ $no++ }}</td>
                     <td class="text-start">{{ $item->nama_jurusan}}</td>
-                    <td class="text-start">{{ $item->nama_guru}}</td>
+                    @if ($item->kajur_id) 
+                        <td class="text-start">{{ $item->nama_guru}}</td>
+                    @else
+                        <td>-</td>
+                    @endif
                     <td>{{ $this->countKelas( $item->kode_jurusan) }}</td>
                     <td>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#UpdateJurusan" wire:click="editJurusan({{ $item->kode_jurusan }})">

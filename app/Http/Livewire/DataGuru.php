@@ -6,6 +6,8 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\data_guru;
 use App\Models\data_jadwal;
+use App\Models\data_jurusan;
+use App\Models\data_kajur;
 use App\Models\data_pengampu;
 use App\Models\data_wali;
 use Livewire\WithPagination;
@@ -24,9 +26,9 @@ class DataGuru extends Component
     public function render()
     {
         return view('livewire.data-guru', [
-            'dagur' => data_guru::where('nip', 'like', '%'.$this->search.'%')
-            ->orWhere('nama_guru', 'like', '%' . $this->search . '%')
-            ->paginate(10)
+            'dagur' => data_guru::where('nip', 'like', '%' . $this->search . '%')
+                ->orWhere('nama_guru', 'like', '%' . $this->search . '%')
+                ->paginate(10)
         ]);
     }
 
@@ -35,18 +37,24 @@ class DataGuru extends Component
         $this->selectedGuru = data_guru::find($nip);
     }
 
-
     public function deleteGuru()
     {
         if ($this->selectedGuru) {
             User::where('guru_id', $this->selectedGuru->nip)->delete();
-            data_jadwal::whereHas('pengampu', function($query) {
+            data_jadwal::whereHas('pengampu', function ($query) {
                 $query->where('pengampu_id', $this->selectedGuru->nip);
             })->delete();
             data_pengampu::where('pengampu_id', $this->selectedGuru->nip)->delete();
             data_wali::where('wali_id', $this->selectedGuru->nip)->delete();
+            data_jurusan::whereHas('kajur', function ($query) {
+                $query->where('guru_id', $this->selectedGuru->nip);
+            })->update([
+                'kajur_id' => null,
+                'nama_guru' => null
+            ]);
+            data_kajur::where('guru_id', $this->selectedGuru->nip)->delete();
             data_guru::where('nip', $this->selectedGuru->nip)->delete();
-            
+
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
@@ -54,11 +62,13 @@ class DataGuru extends Component
         return redirect()->route('master-guru');
     }
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
-    public function tampil(){
+    public function tampil()
+    {
         return view('partials.master-guru');
     }
 }
