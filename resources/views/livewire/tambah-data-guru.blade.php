@@ -130,10 +130,14 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group">
-                                        <input id="agama" type="text"
-                                            class="form-control @error('agama') is-invalid @enderror"
-                                            placeholder="Masukkan Agama" wire:model="agama" name="agama"
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
+                                        <select name="agama" wire:model="agama" class="form-select @error('agama') is-invalid @enderror">
+                                            <option value="" selected>Pilih Agama</option>
+                                            <option value="islam">Islam</option>
+                                            <option value="kristen">Kristen</option>
+                                            <option value="hindu">Hindu</option>
+                                            <option value="buddha">Buddha</option>
+                                            <option value="konghucu">Konghucu</option>
+                                        </select>
                                         @error('agama')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -184,69 +188,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-3">
-                                    <span>Provinsi</span>
-                                </div>
-                                <div class="col-auto">
-                                    <span>:</span>
-                                </div>
-                                <div class="col-3">
-                                    <div class="input-group">
-                                        <input id="provinsi" type="text"
-                                            class="form-control @error('provinsi') is-invalid @enderror"
-                                            placeholder="Masukkan Provinsi" wire:model="provinsi" name="provinsi"
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
-                                        @error('provinsi')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-3">
-                                    <span>Kota</span>
-                                </div>
-                                <div class="col-auto">
-                                    <span>:</span>
-                                </div>
-                                <div class="col-3">
-                                    <div class="input-group">
-                                        <input id="kota" type="text"
-                                            class="form-control @error('kota') is-invalid @enderror"
-                                            placeholder="Masukkan Kota" wire:model="kota" name="kota"
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
-                                        @error('kota')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-3">
-                                    <span>Desa</span>
-                                </div>
-                                <div class="col-auto">
-                                    <span>:</span>
-                                </div>
-                                <div class="col-3">
-                                    <div class="input-group">
-                                        <input id="desa" type="text"
-                                            class="form-control @error('desa') is-invalid @enderror"
-                                            placeholder="Masukkan Desa" wire:model="desa" name="desa"
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
-                                        @error('desa')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
+                            <livewire:wilayah />
                             <div class="row mb-3 align-items-center">
                                 <div class="col-3">
                                     <span>RT/RW</span>

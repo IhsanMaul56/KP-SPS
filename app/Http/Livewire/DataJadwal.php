@@ -45,6 +45,7 @@ class DataJadwal extends Component
             $jadwal = DB::table('data_jadwals')
                 ->select('data_jadwals.*')
                 ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
+                ->join('data_gurus', 'data_pengampus.pengampu_id', 'nip')
                 ->select(
                     'data_jadwals.*',
                     'data_pengampus.nama_guru',
@@ -56,7 +57,10 @@ class DataJadwal extends Component
                         ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%')
                         ->orWhere('data_jadwals.nama_kelas', 'like', '%' . $this->search . '%');
                 })
-                ->paginate(5);
+                ->where(function ($query) {
+                    $query->where('is_delete', 0);
+                })
+                ->paginate(10);
 
             $this->pengampu = DB::table('data_pengampus')
                 ->select('kode_pengampu', 'nama_guru', 'nama_mapel')
@@ -79,6 +83,7 @@ class DataJadwal extends Component
             $jadwal = DB::table('data_jadwals')
                 ->select('data_jadwals.*')
                 ->leftJoin('data_pengampus', 'data_jadwals.pengampu_id', '=', 'data_pengampus.kode_pengampu')
+                ->join('data_gurus', 'data_pengampus.pengampu_id', 'nip')
                 ->select(
                     'data_jadwals.*',
                     'data_pengampus.nama_guru',
@@ -90,7 +95,10 @@ class DataJadwal extends Component
                         ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%')
                         ->orWhere('data_jadwals.nama_kelas', 'like', '%' . $this->search . '%');
                 })
-                ->paginate(5);
+                ->where(function ($query) {
+                    $query->where('is_delete', 0);
+                })
+                ->paginate(10);
 
             $pengampu = DB::table('data_pengampus')
                 ->select('kode_pengampu', 'nama_guru', 'nama_mapel')

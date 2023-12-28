@@ -2,13 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\BobotNilai;
+use App\Models\PredikatNilai;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
-
-use function Laravel\Prompts\select;
 
 class MasterNilaiSiswa extends Component
 {
@@ -24,7 +23,6 @@ class MasterNilaiSiswa extends Component
     public function render()
     {
         $this->getNilai();
-
 
         return view('livewire.master-nilai-siswa');
     }
@@ -100,44 +98,63 @@ class MasterNilaiSiswa extends Component
             $bobotNilai = DB::table('bobot_nilais')
                 ->whereIn('pengampu_id', $pengampuIds)
                 ->get();
-            
-            // dd($bobotNilai);
 
             foreach ($this->dataMapel as $mapel) {
                 $mapel->formatifs = $nilaiFormatifs->where('mapel_id', $mapel->mapel_id)->first();
                 $mapel->sumatifs = $nilaiSumatifs->where('mapel_id', $mapel->mapel_id)->first();
                 $mapel->bobotNilai = $bobotNilai->where('pengampu_id', $mapel->kode_pengampu)->first();
 
+                //perhitungan nilai formatif, uts dan uas
                 $nilaiTugasKuis = $mapel->formatifs ? ((($mapel->formatifs->tugas + $mapel->formatifs->kuis) / 2)) : 0;
                 $nilaiUTS = $mapel->sumatifs ? $mapel->sumatifs->uts : 0;
                 $nilaiUAS = $mapel->sumatifs ? $mapel->sumatifs->uas : 0;
 
+                //menghitung nilai berdasarkan bobot
                 $bobotFormatif = $mapel->bobotNilai ? ($mapel->bobotNilai->formatif_akhir / 100) : 0;
                 $bobotUts = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uts / 100) : 0;
                 $bobotUas = $mapel->bobotNilai ? ($mapel->bobotNilai->sumatif_uas / 100) : 0;
 
+                //menghitung nilai akhir berdasarkan bobot
                 $nilaiAkhir = ($nilaiTugasKuis * $bobotFormatif) + ($nilaiUTS * $bobotUts) + ($nilaiUAS * $bobotUas);
 
                 $mapel->nilai_akhir = $nilaiAkhir;
-                $mapel->huruf_nilai = $this->getHurufNilai($nilaiAkhir);
+                $mapel->huruf_nilai = $this->getHurufNilai($nilaiAkhir, $mapel->kode_pengampu);
             }
         }
     }
 
-    public function getHurufNilai($nilaiAkhir)
+    public function getHurufNilai($nilaiAkhir, $pengampuIds)
     {
-        if ($nilaiAkhir == 0) {
+        $predikatNilais = DB::table('predikat_nilais')
+            ->select('predikat_nilais.*')
+            ->where('predikat_nilais.pengampu_id', $pengampuIds)
+            ->get();
+
+        if (!$predikatNilais) {
             return '-';
-        } elseif ($nilaiAkhir >= 1 && $nilaiAkhir <= 40) {
-            return 'D';
-        } elseif ($nilaiAkhir >= 41 && $nilaiAkhir <= 70) {
-            return 'C';
-        } elseif ($nilaiAkhir >= 71 && $nilaiAkhir <= 85) {
-            return 'B';
-        } elseif ($nilaiAkhir >= 86 && $nilaiAkhir <= 100) {
-            return 'A';
-        } else {
-            return 'Invalid';
+        }
+
+        foreach ($predikatNilais as $predikatNilai) {
+            $predikatA = $predikatNilai->nilai_a;
+            $predikatB = $predikatNilai->nilai_b;
+            $predikatC = $predikatNilai->nilai_c;
+            $predikatD = $predikatNilai->nilai_d;
+    
+            if ($nilaiAkhir <= 0) {
+                return '-';
+            } elseif ($nilaiAkhir >= 1 && $nilaiAkhir < $predikatD) {
+                return 'E';
+            } elseif ($nilaiAkhir >= $predikatD && $nilaiAkhir < $predikatC ) {
+                return 'D';
+            } elseif ($nilaiAkhir >= $predikatC && $nilaiAkhir < $predikatB) {
+                return 'C';
+            } elseif ($nilaiAkhir >= $predikatB && $nilaiAkhir < $predikatA) {
+                return 'B';
+            } elseif ($nilaiAkhir >= $predikatA) {
+                return 'A';
+            } else {
+                return 'Invalid';
+            }
         }
     }
 

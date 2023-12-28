@@ -4,16 +4,21 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Village;
 use App\Models\data_siswa;
+use App\Models\tahun_akademik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class TambahDataSiswa extends Component
 {
-    public $nis, $nama_siswa, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $agama, $no_hp, $provinsi, $kota, $desa, $rt, $rw, $alamat;
+    public $nis, $nama_siswa, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $agama, $no_hp, $provinsi, $kota, $kecamatan, $desa, $rt, $rw, $alamat;
+    public $provinces, $citys, $districts, $villages;
     public $email;
-    public $nik_ayah, $nama_ayah, $pekerjaan_ayah, $nik_ibu, $nama_ibu ,$pekerjaan_ibu, $provinsi_ortu, $kota_ortu, $desa_ortu, $rt_ortu, $rw_ortu, $alamat_ortu;
+    public $nik_ayah, $nama_ayah, $pekerjaan_ayah, $nik_ibu, $nama_ibu ,$pekerjaan_ibu, $provinsi_ortu, $kota_ortu, $kecamatan_ortu, $desa_ortu, $rt_ortu, $rw_ortu, $alamat_ortu;
     public $kelas_id, $tingkat_id;
     public $tingkatList, $kelasList;
     public $data = [
@@ -25,6 +30,7 @@ class TambahDataSiswa extends Component
         'agama' => '',
         'provinsi' => '',
         'kota' => '',
+        'kecamatan' => '',
         'desa' => '',
         'rt' => '',
         'rw' => '',
@@ -38,6 +44,7 @@ class TambahDataSiswa extends Component
         'nama_ibu' => '',
         'pekerjaan_ibu' => '',
         'provinsi_ortu' => '',
+        'kecamatan_ortu' => '',
         'kota_ortu' => '',
         'desa_ortu' => '',
         'rt_ortu' => '',
@@ -45,39 +52,28 @@ class TambahDataSiswa extends Component
         'alamat_ortu' => '',
     ];
 
-    public $formPart1 = [
-        'nis' => '',
-        'nama_siswa' => '',
-        'tempat_lahir' => '',
-        'tanggal_lahir' => '',
-        'jenis_kelamin' => '',
-        'agama' => '',
-        'provinsi' => '',
-        'kota' => '',
-        'desa' => '',
-        'rt' => '',
-        'rw' => '',
-        'alamat' => '',
-        'no_hp' => '',
-    ];
-
-    public $currentPage = 1;
-
-    public function submitFormPart1()
+    public function changeProvince($provinceCode)
     {
-        $this->validate([
+        $this->kota = null;
+        $this->kecamatan = null;
+        $this->desa = null;
 
-        ]);
-        $this->currentPage = 2;
+        $this->citys = Regency::where('province_id', $provinceCode)->get();
     }
 
-    public function submitFormPart2()
+    public function changeCity($cityCode)
     {
-        $this->validate([
+        $this->kecamatan = null;
+        $this->desa = null;
 
-        ]);
-        
-        $this->currentPage = 1;
+        $this->districts = District::where('regency_id', $cityCode)->get();
+    }
+
+    public function changeDistrict($districtCode)
+    {
+        $this->desa = null;
+
+        $this->villages = Village::where('district_id', $districtCode)->get();
     }
 
     public function render()
@@ -110,6 +106,7 @@ class TambahDataSiswa extends Component
                 'no_hp' => 'required',
                 'provinsi' => 'required',
                 'kota' => 'required',
+                'kecamatan' => 'required',
                 'desa' => 'required',
                 'rt' => 'required',
                 'rw' => 'required',
@@ -124,6 +121,7 @@ class TambahDataSiswa extends Component
                 'pekerjaan_ibu' => 'required',
                 'provinsi_ortu' => 'required',
                 'kota_ortu' => 'required',
+                'kecamatan_ortu' => 'required',
                 'desa_ortu' => 'required',
                 'rt_ortu' => 'required',
                 'rw_ortu' => 'required',
@@ -142,6 +140,7 @@ class TambahDataSiswa extends Component
                 'no_hp.required' => 'No. HP Harus Diisi',
                 'provinsi.required' => 'Provinsi Harus Diisi',
                 'kota.required' => 'Kota Harus Diisi',
+                'kecamatan.required' => 'Kecamatan Harus Diisi',
                 'desa.required' => 'Desa Harus Diisi',
                 'rt.required' => 'RT Harus Diisi',
                 'rw.required' => 'RW Harus Diisi',
@@ -157,6 +156,7 @@ class TambahDataSiswa extends Component
                 'pekerjaan_ibu.required' => 'Pekerjaan Ibu Harus Diisi',
                 'provinsi_ortu.required' => 'Provinsi Harus Diisi',
                 'kota_ortu.required' => 'Kota Harus Diisi',
+                'kecamatan_ortu.required' => 'Kecamatan Harus Diisi',
                 'desa_ortu.required' => 'Desa Harus Diisi',
                 'rt_ortu.required' => 'RT Harus Diisi',
                 'rw_ortu.required' => 'RW Harus Diisi',
@@ -165,7 +165,13 @@ class TambahDataSiswa extends Component
                 'kelas_id' => 'Kelas Harus Diisi',
                 'tingkat_id' => 'Tingkat Harus Diisi',
             ]);
-    
+            
+            $tahunAkademik = tahun_akademik::where('status', 'aktif')->first();
+
+            if (!$tahunAkademik) {
+                throw new \Exception('Tahun akademik aktif tidak ditemukan.');
+            }
+
             data_siswa::create([
                 'nis' => $request->nis,
                 'nama_siswa' => $request->nama_siswa,
@@ -176,6 +182,7 @@ class TambahDataSiswa extends Component
                 'no_hp' => $request->no_hp,
                 'provinsi' => $request->provinsi,
                 'kota' => $request->kota,
+                'kecamatan' => $request->kecamatan,
                 'desa' => $request->desa,
                 'rt' => $request->rt,
                 'rw' => $request->rw,
@@ -188,12 +195,14 @@ class TambahDataSiswa extends Component
                 'pekerjaan_ibu' => $request->pekerjaan_ibu,
                 'provinsi_ortu' => $request->provinsi_ortu,
                 'kota_ortu' => $request->kota_ortu,
+                'kecamatan_ortu' => $request->kecamatan_ortu,
                 'desa_ortu' => $request->desa_ortu,
                 'rt_ortu' => $request->rt_ortu,
                 'rw_ortu' => $request->rw_ortu,
                 'alamat_ortu' => $request->alamat_ortu,
                 'kelas_id' => $request->kelas_id,
                 'tingkat_id' => $request->tingkat_id,
+                'tahun_id' => $tahunAkademik->kode_tahun,
             ]);
     
             User::create([
@@ -209,9 +218,9 @@ class TambahDataSiswa extends Component
             $this->resetForm();
         } catch (\Exception $e) {
             session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
+            return redirect()->route('tambah-data-siswa');
         }
         
-
         return redirect()->route('siswa-kurikulum');
     }
 
@@ -219,10 +228,18 @@ class TambahDataSiswa extends Component
     {
         $siswa = DB::table('users')
             ->leftJoin('data_siswas', 'users.siswa_id', '=', 'data_siswas.nis')
+            ->leftJoin('provinces', 'data_siswas.provinsi', 'provinces.id')
+            ->leftJoin('regencies', 'data_siswas.kota', 'regencies.id')
+            ->leftJoin('districts', 'data_siswas.kecamatan', 'districts.id')
+            ->leftJoin('villages', 'data_siswas.desa', 'villages.id')
             ->where('data_siswas.nis', '=', $nis)
             ->select(
                 'users.email',
-                'data_siswas.*'
+                'data_siswas.*',
+                'provinces.name as provinsi_nama',
+                'regencies.name as kota_nama',
+                'districts.name as kecamatan_nama',
+                'villages.name as desa_nama',
             )
             ->first();
 
@@ -257,6 +274,7 @@ class TambahDataSiswa extends Component
                     'no_hp' => $request->no_hp,
                     'provinsi' => $request->provinsi,
                     'kota' => $request->kota,
+                    'kecamatan' => $request->kecamatan,
                     'desa' => $request->desa,
                     'rt' => $request->rt,
                     'rw' => $request->rw,
@@ -269,6 +287,7 @@ class TambahDataSiswa extends Component
                     'pekerjaan_ibu' => $request->pekerjaan_ibu,
                     'provinsi_ortu' => $request->provinsi_ortu,
                     'kota_ortu' => $request->kota_ortu,
+                    'kecamatan_ortu' => $request->kecamatan_ortu,
                     'desa_ortu' => $request->desa_ortu,
                     'rt_ortu' => $request->rt_ortu,
                     'rw_ortu' => $request->rw_ortu,
@@ -303,6 +322,7 @@ class TambahDataSiswa extends Component
             $this->data['email'] = $dataSiswa->email;
             $this->data['provinsi'] = $dataSiswa->provinsi;
             $this->data['kota'] = $dataSiswa->kota;
+            $this->data['kecamatan'] = $dataSiswa->kecamatan;
             $this->data['desa'] = $dataSiswa->desa;
             $this->data['rt'] = $dataSiswa->rt;
             $this->data['rw'] = $dataSiswa->rw;
@@ -315,6 +335,7 @@ class TambahDataSiswa extends Component
             $this->data['pekerjaan_ibu'] = $dataSiswa->pekerjaan_ibu;
             $this->data['provinsi_ortu'] = $dataSiswa->provinsi_ortu;
             $this->data['kota_ortu'] = $dataSiswa->kota_ortu;
+            $this->data['kecamatan_ortu'] = $dataSiswa->kecamatan_ortu;
             $this->data['desa_ortu'] = $dataSiswa->desa_ortu;
             $this->data['rt_ortu'] = $dataSiswa->rt_ortu;
             $this->data['rw_ortu'] = $dataSiswa->rw_ortu;

@@ -40,6 +40,9 @@ class DataJurusan extends Component
             ->whereNotIn('nip', function ($query) {
                 $query->select('guru_id')->from('data_kajurs');
             })
+            ->where(function ($query) {
+                $query->where('is_delete', 0);
+            })
             ->get();
 
         $this->guruList = $guru->pluck('nama_guru', 'nip');
@@ -113,6 +116,7 @@ class DataJurusan extends Component
                 'kode_jurusan' => $jurusan->kode_jurusan,
                 'nama_jurusan' => $jurusan->nama_jurusan,
                 'guru_id' => optional($jurusan->kajur)->guru_id,
+                'kajur_id' => $jurusan->kajur_id,
             ];
 
             $this->showModal = true;
@@ -130,12 +134,20 @@ class DataJurusan extends Component
         try {
             $guruData = DB::table('data_gurus')
                 ->where('nip', $this->selectedJurusan['guru_id'])
+                ->where(function ($query) {
+                    $query->where('is_delete', 0);
+                })
                 ->first();
 
             if ($guruData) {
                 $kajur = data_kajur::updateOrCreate(
-                    ['guru_id' => $guruData->nip],
-                    ['nama_guru' => $guruData->nama_guru]
+                    [
+                        'kode_kajur' => $this->selectedJurusan['kajur_id']
+                    ],
+                    [
+                        'guru_id'   => $guruData->nip,
+                        'nama_guru' => $guruData->nama_guru,
+                    ]
                 );
 
                 $kajur = data_kajur::where('guru_id', $guruData->nip)->orderBy('created_at', 'desc')->first();

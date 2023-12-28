@@ -98,7 +98,6 @@ class Pengumuman extends Component
 
     public function createPengumuman(Request $request)
     {
-        // dd($request);
         $guru_id = $request->input('guru_id');
 
         $request->validate([

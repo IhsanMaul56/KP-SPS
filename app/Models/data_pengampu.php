@@ -27,6 +27,10 @@ class data_pengampu extends Model
 
     public function bobot() : HasMany{
         return $this->hasMany(BobotNilai::class, 'pengampu_id', 'kode_pengampu');
+    
+    }
+    public function predikat() : HasMany{
+        return $this->hasMany(PredikatNilai::class, 'pengampu_id', 'kode_pengampu');
     }
 
     //invers cardinality

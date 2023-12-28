@@ -17,7 +17,21 @@
                 <div class="col">
                     <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content;">
                 </div>
+                <div class="col text-end">
+                    <button type="button" class="btn btn-primary" wire:click='naikKelas'>
+                        <i class="bi bi-person-fill-up" style="padding-right:5px;"></i>Naik Kelas
+                    </button>
+                </div>
             </div>
+            @if (Session::has('berhasil'))
+                <div class="alert alert-success">
+                    {{ Session::get('berhasil') }}
+                </div>
+            @elseif (Session::has('gagal'))
+                <div class="alert alert-danger">
+                    {{ Session::get('gagal') }}
+                </div>
+            @endif
             <table class="table table-bordered">
                 <thead>
                     <tr class="text-center">
@@ -25,6 +39,10 @@
                         <th>NIS</th>
                         <th>NAMA SISWA</th>
                         <th>JENIS KELAMIN</th>
+                        <th>
+                            <input type="checkbox" id="parentCheckbox" wire:model="selectAll">
+                            <label class="form-check-label" for="parentCheckbox"></label>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +53,10 @@
                             <td>{{ $item->nis }}</td>
                             <td class="text-start">{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
+                            <td colspan="2">
+                                <input type="checkbox" class="childCheckbox" value="{{ $item->nis }}" wire:model='siswaSelected.{{ $item->nis }}'>
+                                <label class="form-check-label" for="{{ $item->nis }}"></label>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -49,3 +71,14 @@
         @endif
     </div>
 </div>
+
+<script>
+    const parentCheckbox = document.getElementById('parentCheckbox');
+    const childCheckboxes = document.querySelectorAll('.childCheckbox');
+
+    parentCheckbox.addEventListener('click', function () {
+      childCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = parentCheckbox.checked;
+      });
+    });
+  </script>

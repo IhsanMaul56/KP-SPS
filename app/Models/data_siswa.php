@@ -21,6 +21,7 @@ class data_siswa extends Model
         'agama',
         'no_hp',
         'provinsi',
+        'kecamatan',
         'kota',
         'desa',
         'rt',
@@ -34,13 +35,15 @@ class data_siswa extends Model
         'pekerjaan_ibu',
         'provinsi_ortu',
         'kota_ortu',
+        'kecamatan_ortu',
         'desa_ortu',
         'rt_ortu',
         'rw_ortu',
         'alamat_ortu',
         'foto_siswa',
         'kelas_id',
-        'tingkat_id'
+        'tingkat_id',
+        'tahun_id'
     ];
 
     //cardinality
@@ -66,5 +69,9 @@ class data_siswa extends Model
 
     public function tingkat() : BelongsTo{
         return $this->belongsTo(data_tingkat::class, 'tingkat_id', 'kode_tingkat');
+    }
+
+    public function tahun() : BelongsTo{
+        return $this->belongsTo(tahun_akademik::class, 'tahun_id', 'kode_tahun');
     }
 }

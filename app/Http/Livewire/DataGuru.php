@@ -19,16 +19,25 @@ class DataGuru extends Component
     public $selectedGuru;
     public $confirmingGuruDeletion;
     public $search = '';
+    public $nip = '';
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
+        $dagur = data_guru::where('is_delete', 0)
+        ->where(function ($query) {
+            $query->orWhere('nip', 'like', '%' . $this->search . '%');
+            $query->orWhere('nama_guru', 'like', '%' . $this->search . '%');
+        })
+        ->paginate(10);
+
+        $guruDelete = data_guru::select('nip', 'nama_guru')->where('is_delete', 1)->orderByDesc('updated_at')->get();
+
         return view('livewire.data-guru', [
-            'dagur' => data_guru::where('nip', 'like', '%' . $this->search . '%')
-                ->orWhere('nama_guru', 'like', '%' . $this->search . '%')
-                ->paginate(10)
+            'dagur'     => $dagur,
+            'listGuru'  => $guruDelete
         ]);
     }
 
@@ -40,12 +49,6 @@ class DataGuru extends Component
     public function deleteGuru()
     {
         if ($this->selectedGuru) {
-            User::where('guru_id', $this->selectedGuru->nip)->delete();
-            data_jadwal::whereHas('pengampu', function ($query) {
-                $query->where('pengampu_id', $this->selectedGuru->nip);
-            })->delete();
-            data_pengampu::where('pengampu_id', $this->selectedGuru->nip)->delete();
-            data_wali::where('wali_id', $this->selectedGuru->nip)->delete();
             data_jurusan::whereHas('kajur', function ($query) {
                 $query->where('guru_id', $this->selectedGuru->nip);
             })->update([
@@ -53,12 +56,24 @@ class DataGuru extends Component
                 'nama_guru' => null
             ]);
             data_kajur::where('guru_id', $this->selectedGuru->nip)->delete();
-            data_guru::where('nip', $this->selectedGuru->nip)->delete();
+            data_guru::where('nip', $this->selectedGuru->nip)->update(['is_delete' => 1]);
 
             Session::flash('berhasil', 'Data Berhasil Dihapus');
         }
 
         $this->resetPage();
+        return redirect()->route('master-guru');
+    }
+
+    public function restoreData()
+    {
+        $this->validate([
+            'nip' => 'required'
+        ]);
+
+        data_guru::where('nip', $this->nip)->update(['is_delete' => 0]);
+        Session::flash('berhasil', 'Data Berhasil Dikembalikan');
+
         return redirect()->route('master-guru');
     }
 

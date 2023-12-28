@@ -17,11 +17,6 @@
                 {{ Session::get('berhasil') }}
             </div>
         @endif
-        @if (session()->has('gagal'))
-            <div class="alert alert-danger">
-                {{ session('gagal') }}
-            </div>
-        @endif
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
