@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class data_guru extends Model
@@ -23,6 +24,7 @@ class data_guru extends Model
         'no_hp',
         'provinsi',
         'kota',
+        'kecamatan',
         'desa',
         'rt',
         'rw',
@@ -51,5 +53,7 @@ class data_guru extends Model
         return $this->hasOne(Pengumumaan::class, 'guru_id', 'nip');
     }
 
-    //invers cardinality
+    public function provinsi() :BelongsTo{
+        return $this->belongsTo(Province::class, 'provinsi', 'id');
+    }
 }

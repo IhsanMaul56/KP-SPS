@@ -137,11 +137,14 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                            <input id="agama" type="text"
-                                                class="form-control @error('agama') is-invalid @enderror"
-                                                placeholder="Masukan Agama" wire:model="agama" name="agama"
-                                                value="{{ $guru->agama }}"
-                                                oninput="this.value = this.value.replace(/[^a-zA-Z,.\s]/g, '')">
+                                            <select name="agama" wire:model="agama" class="form-select @error('agama') is-invalid @enderror">
+                                                <option value="{{ strtolower($guru->agama) }}" hidden selected>{{ ucfirst($guru->agama) }}</option>
+                                                <option value="islam">Islam</option>
+                                                <option value="kristen">Kristen</option>
+                                                <option value="hindu">Hindu</option>
+                                                <option value="buddha">Buddha</option>
+                                                <option value="konghucu">Konghucu</option>
+                                            </select>
                                             @error('agama')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -193,7 +196,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3 align-items-center">
+                                <livewire:wilayah :parameter="[
+                                    'provinsi'      => $guru->provinsi_nama,
+                                    'provinsi_id'   => $guru->provinsi,
+                                    'kota'          => $guru->kota_nama,
+                                    'kota_id'       => $guru->kota,
+                                    'kecamatan'     => $guru->kecamatan_nama,
+                                    'kecamatan_id'  => $guru->kecamatan,
+                                    'desa'          => $guru->desa_nama,
+                                    'desa_id'       => $guru->desa,
+                                ]" />
+                                {{-- <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>Provinsi</span>
                                     </div>
@@ -258,7 +271,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-3">
                                         <span>RT/RW</span>

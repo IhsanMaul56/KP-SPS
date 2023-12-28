@@ -1,5 +1,6 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.modal-persentase')
+    @include('livewire.modal-predikat')
     <div class="row">
         <div class="col">
             @if (Session::has('berhasil'))
@@ -9,7 +10,7 @@
             @endif
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-1" style="display: flex; align-items: center;">
         <div class="col-2">
             <select wire:model="mapelSelected" class="form-select">
                 <option value="" hidden selected>Pilih Mata Pelajaran</option>
@@ -37,6 +38,11 @@
                     @endforeach
                 @endif
             </select>
+        </div>  
+        <div class="col text-end">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#InsertPredikat">
+                <i class="bi bi-percent" style="padding-right:5px;"></i>Atur Predikat
+            </button>
         </div>
         <div class="col text-end">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InsertPercent">

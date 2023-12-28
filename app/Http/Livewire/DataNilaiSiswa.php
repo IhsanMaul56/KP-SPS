@@ -87,8 +87,11 @@ class DataNilaiSiswa extends Component
         $siswa_id = $request->input('siswa_id');
 
         $request->validate([
-            'kuis' => 'required|numeric',
-            'tugas' => 'required|numeric',
+            'kuis' => 'required|numeric|max:100',
+            'tugas' => 'required|numeric|max:100',
+        ], [
+            'kuis.max' => 'Nilai kuis tidak boleh lebih dari 100',
+            'tugas.max' => 'Nilai tugas tidak boleh lebih dari 100'
         ]);
 
         $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();
@@ -161,8 +164,11 @@ class DataNilaiSiswa extends Component
         $siswa_id = $request->input('siswa_id');
 
         $request->validate([
-            'uts' => 'required|numeric',
-            'uas' => 'required|numeric',
+            'uts' => 'required|numeric|max:100',
+            'uas' => 'required|numeric|max:100',
+        ], [
+            'uts.max' => 'Nilai UTS tidak boleh lebih dari 100',
+            'uas.max' => 'Nilai UAS tidak boleh lebih dari 100'
         ]);
 
         $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();

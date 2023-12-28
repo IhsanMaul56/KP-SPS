@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\data_kelas;
 use Livewire\Component;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Livewire\WithPagination;
 use App\Models\data_siswa;
+use Illuminate\Http\Request;
+use Livewire\WithPagination;
+use App\Models\tahun_akademik;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class GuruWali extends Component
 {
@@ -20,6 +24,8 @@ class GuruWali extends Component
     public $tingkat;
     public $akademik;
     public $dataSiswa;
+    public $siswaSelected = [];
+    public $selectAll = false;
 
     public function render()
     {
@@ -70,6 +76,47 @@ class GuruWali extends Component
         return view('livewire.guru-wali', [
             'dataSiswa' => data_siswa::where('nama_siswa','like','%'.$this->search.'%')->paginate(5)
         ]);
+    }
+
+    public function naikKelas()
+    {
+        if (!empty($this->siswaSelected)) {
+            $selectedNIS    = array_keys(array_filter($this->siswaSelected));
+            $tahunAktif     = tahun_akademik::where(['status' => 'aktif'])->value('kode_tahun');
+            $siswaData      = data_siswa::whereIn('nis', $selectedNIS)->get();
+
+            try{
+                foreach ($siswaData as $siswa) {
+                    $siswa->update([
+                        'tingkat_id'    => $siswa->tingkat_id + 1,
+                        'tahun_id'      => $tahunAktif
+                    ]);
+    
+                    $dataKelas = data_kelas::select('kode_kelas')->where([['nama_kelas', $siswa->kelas->nama_kelas], ['tingkat_id', $siswa->tingkat_id]])->first();
+                    $siswa->update([
+                        'kelas_id'    => $dataKelas->kode_kelas,
+                    ]);
+                }
+
+                session()->flash('berhasil', 'Data Berhasil Diupdate.');
+            } catch (\Exception $e) {
+                session()->flash('gagal', 'Terjadi Kesalahan Saat Mengupdate Data' . $e->getMessage());
+            }
+        } else {
+            session()->flash('gagal', 'Tidak ada untuk di update');
+        }
+    }
+
+    public function updatedSelectAll()
+    {
+        if ($this->selectAll) {
+            $this->siswaSelected = array_fill_keys(
+                $this->dataSiswa->pluck('nis')->toArray(),
+                true
+            );
+        } else {
+            $this->siswaSelected = [];
+        }
     }
 
     public function updatingSearch(){

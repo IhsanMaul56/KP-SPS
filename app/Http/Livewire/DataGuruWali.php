@@ -59,6 +59,9 @@ class DataGuruWali extends Component
             ->whereNotIn('nip', function ($query) {
                 $query->select('wali_id')->from('data_walis');
             })
+            ->where(function ($query) {
+                $query->where('is_delete', 0);
+            })
             ->get();
 
         $this->guruList = $guru->pluck('nama_guru', 'nip');
@@ -73,6 +76,9 @@ class DataGuruWali extends Component
                 $query->where('data_walis.wali_id', 'like', '%' . $this->search . '%')
                     ->orWhere('data_walis.nama_guru', 'like', '%' . $this->search . '%')
                     ->orWhere('data_walis.nama_kelas', 'like', '%' . $this->search . '%');
+            })
+            ->where(function ($query) {
+                $query->where('is_delete', 0);
             })
             ->paginate(10);
 

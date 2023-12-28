@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -59,23 +60,33 @@ class LoginController extends Controller
             'password' => $request->password
         ];
 
-        
         if (Auth::attempt($infologin)) {
             $request->session()->regenerate();
-            if(Auth::user()->role == 'admin'){
+            if (Auth::user()->role == 'admin'){
                 return redirect('/dashboard/admin');
-            }elseif(Auth::user()->role == 'kurikulum'){
-                return redirect('/dashboard/kurikulum');
-            }elseif(Auth::user()->role == 'guru'){
-                return redirect('/dashboard/guru');
-            }elseif(Auth::user()->role == 'siswa'){
+            } elseif (Auth::user()->role == 'siswa') {
                 return redirect('/dashboard/siswa');
+            } else {
+                $dataUser = User::where('email', $infologin['email'])->whereHas('guru', function ($query) {
+                    $query->where('is_delete', 0);
+                })->exists();
+
+                if ($dataUser) {
+                    if (Auth::user()->role == 'kurikulum'){
+                        return redirect('/dashboard/kurikulum');
+                    } elseif (Auth::user()->role == 'guru'){
+                        return redirect('/dashboard/guru');
+                    }
+                } else {
+                    Auth::logout();
+                    return redirect()->back()->withErrors('User Tidak Ditemukan')->withInput();
+                }
             }
         } else {
             return redirect()->back()->withErrors('Email atau Password Salah')->withInput();
-
         }
-            return back()->with('loginError', 'Login Gagal!');
+
+        return back()->with('loginError', 'Login Gagal!');
     }
 
     public function logout(){

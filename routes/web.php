@@ -116,5 +116,3 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/logout', [LoginController::class, 'logout']);
 });
-
-// Route::get('/tambah-siswa', TambahDataSiswa::class)->name('tambah-data-siswa');

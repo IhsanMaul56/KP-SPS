@@ -16,6 +16,9 @@ class data_kajur extends Model
         'nama_guru'
     ];
 
+    public $timestamps = true;
+    protected $primaryKey = 'kode_kajur';
+
     //cardinality
     public function jurusan() : HasOne{
         return $this->hasOne(data_jurusan::class, 'kajur_id', 'kode_kajur');

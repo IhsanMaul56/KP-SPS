@@ -34,6 +34,7 @@ class DataGuruMapel extends Component
     {
         $guru = DB::table('data_gurus')
             ->select('nip', 'nama_guru')
+            ->where('is_delete', 0)
             ->get();
 
         $this->guruList = $guru->pluck('nama_guru', 'nip');
@@ -54,6 +55,9 @@ class DataGuruMapel extends Component
                 $query->where('data_pengampus.pengampu_id', 'like', '%' . $this->search . '%')
                     ->orWhere('data_pengampus.nama_guru', 'like', '%' . $this->search . '%')
                     ->orWhere('data_pengampus.nama_mapel', 'like', '%' . $this->search . '%');
+            })
+            ->where(function ($query) {
+                $query->where('is_delete', 0);
             })
             ->paginate(10);
 

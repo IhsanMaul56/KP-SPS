@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\BobotNilai;
 use App\Exports\NilaiExport;
 use App\Imports\NilaiImport;
+use App\Models\PredikatNilai;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ class DataNilaiGuru extends Component
     public $nilaiAkhir;
     public $mapelList;
     public $pengampu_id, $formatif_akhir, $sumatif_uts, $sumatif_uas;
+    public $nilai_a, $nilai_b, $nilai_c, $nilai_d;
     public $mapelData;
 
     use WithFileUploads;
@@ -264,6 +266,73 @@ class DataNilaiGuru extends Component
             session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
         }
         return redirect()->route('nilai-gurus');
+    }
+
+    public function fetchPredikat()
+    {
+        $mapelData = PredikatNilai::where('pengampu_id', $this->pengampu_id)->first();
+
+        if ($mapelData) {
+            $this->nilai_a = $mapelData->nilai_a;
+            $this->nilai_b = $mapelData->nilai_b;
+            $this->nilai_c = $mapelData->nilai_c;
+            $this->nilai_d = $mapelData->nilai_d;
+        } else {
+            $this->nilai_a = null;
+            $this->nilai_b = null;
+            $this->nilai_c = null;
+            $this->nilai_d = null;
+        }
+    }
+
+    public function insertPredikat()
+    {
+        $this->validate([
+            'pengampu_id' => 'required',
+            'nilai_d' => 'required',
+            'nilai_c' => 'required',
+            'nilai_b' => 'required',
+            'nilai_a' => 'required',
+        ]);
+
+        $predikatA = $this->nilai_a;
+        $predikatB = $this->nilai_b;
+        $predikatC = $this->nilai_c;
+        $predikatD = $this->nilai_d;
+
+        if ($predikatA <= $predikatB || $predikatA <= $predikatC || $predikatA <= $predikatD) {
+            session()->flash('salah', 'Nilai Predikat A Tidak Boleh Kurang atau Sama Dengan Dari Nilai Predikat B, C, atau D');
+        } elseif ($predikatB <= $predikatC || $predikatB <= $predikatD) {
+            session()->flash('salah', 'Nilai Predikat B Tidak Boleh Kurang atau Sama Dengan Dari Nilai Predikat C atau D');
+        } elseif ($predikatC <= $predikatD) {
+            session()->flash('salah', 'Nilai Predikat C Tidak Boleh Kurang atau Sama Dengan Dari Nilai Predikat D');
+        } else {
+            try {
+                $existingData = PredikatNilai::where('pengampu_id', $this->pengampu_id)->first();
+
+                if ($existingData) {
+                    // Update existing data
+                    $existingData->update([
+                        'nilai_a' => $this->nilai_a,
+                        'nilai_b' => $this->nilai_b,
+                        'nilai_c' => $this->nilai_c,
+                        'nilai_d' => $this->nilai_d,
+                    ]);
+                    session()->flash('berhasil', 'Data Berhasil Diperbarui');
+                } else {
+                    PredikatNilai::updateOrInsert([
+                        'pengampu_id' => $this->pengampu_id,
+                        'nilai_a' => $this->nilai_a,
+                        'nilai_b' => $this->nilai_b,
+                        'nilai_c' => $this->nilai_c,
+                        'nilai_d' => $this->nilai_d,
+                    ]);
+                    session()->flash('berhasil', 'Data Berhasil Ditambahkan');
+                }
+            } catch (\Exception $e) {
+                session()->flash('gagal', 'Terjadi Kesalahan Saat Menambahkan/Data: ' . $e->getMessage());
+            }
+        }
     }
 
     public function tampil()
