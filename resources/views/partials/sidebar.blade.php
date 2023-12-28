@@ -22,7 +22,7 @@
                         <a href="{{ route('data-mapels') }}" class="sidebar dd-kiri fs-5"
                             style="text-decoration: none">Guru Mapel</a>
                         <a href="{{ route('master-guru') }}" class="sidebar dd-kiri fs-5"
-                            style="text-decoration: none">Master Guru</a>
+                            style="text-decoration: none">Kelola Guru</a>
                     </div>
                     <br>
                 </div>
