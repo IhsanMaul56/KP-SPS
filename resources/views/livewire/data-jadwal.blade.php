@@ -52,11 +52,21 @@
                     {{ session('gagal') }}
                 </div>
             @endif
-        </div>        
+        </div>
         <div class="col">
             <input type="text" class="form-control mb-3 mt-3" wire:model="search" placeholder="Cari"
                 style="width: max-content;">
         </div>
+        @if (session()->has('berhasilUpdate'))
+            <div class="alert alert-success">
+                {{ session('berhasilUpdate') }}
+            </div>
+        @endif
+        @if (session()->has('gagalUpdate'))
+            <div class="alert alert-danger">
+                {{ session('gagalUpdate') }}
+            </div>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
@@ -95,7 +105,8 @@
                                     data-bs-target="#UpdateJadwal" wire:click="editJadwal({{ $item->kode_jadwal }})">
                                     <i class="bi bi-pencil-square text-white"></i>
                                 </button>
-                                <button class="btn btn-danger" data-bs-toggle="modal" wire:click="deleteJadwalConfirm('{{ $item->kode_jadwal }}')"
+                                <button class="btn btn-danger" data-bs-toggle="modal"
+                                    wire:click="deleteJadwalConfirm('{{ $item->kode_jadwal }}')"
                                     data-bs-target="#DeleteDataJadwal">
                                     <i class="bi bi-trash3"></i>
                                 </button>

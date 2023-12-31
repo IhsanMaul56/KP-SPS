@@ -9,7 +9,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label>Jurusan :</label>
-                        <select wire:model="jurusan_id" class="form-select">
+                        <select wire:model="jurusan_id" class="form-select @error('jurusan_id') is-invalid @enderror">
                             <option value="" hidden selected>Pilih Jurusan</option>
                             @foreach ($jurusanList as $kodeJurusan => $namaJurusan)
                                 <option value="{{ $kodeJurusan }}">{{ $namaJurusan }}</option>
@@ -20,7 +20,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label>Tingkat :</label>
-                        <select wire:model="tingkat_id" class="form-select">
+                        <select wire:model="tingkat_id" class="form-select @error('tingkat_id') is-invalid @enderror">
                             <option value="" hidden selected>Pilih Tingkat</option>
                             @foreach ($tingkatList as $kodeTingkat => $namaTingkat)
                                 <option value="{{ $kodeTingkat }}">{{ $namaTingkat }}</option>

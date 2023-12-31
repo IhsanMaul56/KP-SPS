@@ -88,8 +88,8 @@ class DataKelas extends Component
             'jurusan_id' => 'required',
             'tingkat_id' => 'required',
         ],[
-            'nama_kelas.required' => 'Nama kelas harus diisi.',
-            'nama_kelas.unique' => 'Nama kelas sudah ada untuk tingkat ini.',
+            'nama_kelas.required' => 'Nama kelas harus diisi',
+            'nama_kelas.unique' => 'Nama kelas sudah ada untuk tingkat ini',
         ]);
 
         $tahun_akademik_aktif = tahun_akademik::where('status', '=', 'aktif')->first();

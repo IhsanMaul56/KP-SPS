@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([DataGuruSeeder::class]);
         $this->call([DataKajurSeeder::class]);
         $this->call([DataJurusanSeeder::class]);
-        $this->call([DataTingkatSeeder::class]);
         $this->call([DataSemesterSeeder::class]);
+        $this->call([DataTingkatSeeder::class]);
         $this->call([TahunAkademikSeeder::class]);
         $this->call([DataKelasSeeder::class]);
         $this->call([DataPengampuSeeder::class]);
@@ -32,5 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call([NilaiSumatifSeeder::class]);
         $this->call([DataNilaiSementaraSeeder::class]);
         $this->call([DataWaliSeeder::class]);
+        $this->call([PengumumanSeeder::class]);
+        $this->call([BobotNilaiSeeder::class]);
     }
 }
