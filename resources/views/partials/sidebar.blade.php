@@ -38,11 +38,12 @@
                         data-bs-toggle="collapse" data-bs-target="#Akademik" aria-expanded="false"><i
                             class="bi bi-clipboard2-minus icon-kiri"></i>Akademik</span>
                     <div class="row mx-0 collapse" id="Akademik">
-                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5 ling  ">Jadwal Mapel</a>
+                        <a href="{{ route('m-jadwal') }}" class="sidebar dd-kiri fs-5 ling">Jadwal Mapel</a>
                         <a href="{{ route('m-jurusan') }}" class="sidebar dd-kiri fs-5 ling">Jurusan</a>
                         <a href="{{ route('data-kelas') }}" class="sidebar dd-kiri fs-5 ling">Kelas</a>
                         <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5 ling">Mapel</a>
-                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5">Aktivasi TA</a>
+                        <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5 ling">Aktivasi TA</a>
+                        <a href="{{ route('atur-periode') }}" class="sidebar ling dd-kiri fs-5">Atur Periode</a>
                     </div>
                     <br>
                 </div>
