@@ -23,6 +23,7 @@ use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSiswaController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Livewire\AktivasiPenilaian;
 use App\Http\Livewire\AturPeriode;
 use App\Http\Livewire\AturTahunSemester;
 use App\Http\Livewire\EditDataGuru;
@@ -79,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/aktivasi-semester/aktif', [AturTahunSemester::class, 'updateStatus'])->name('aktifasi-tahun-akademik');
         Route::put('/admin/aktivasi-semester', [AturTahunSemester::class, 'updateStatus'])->name('update-status');
         Route::get('/admin/atur-periode', AturPeriode::class)->name('atur-periode');
+        Route::get('/aktivasi-nilai', [AktivasiPenilaian::class, 'tampil'])->name('aktivasi-nilai');
     });
 
     Route::prefix('/dashboard')->group(function () {
@@ -90,6 +92,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jadwal-pelajaran', [DataJadwal::class, 'tampil'])->name('m-jadwal');
         Route::get('/jurusan', [DataJurusan::class, 'tampil'])->name('m-jurusan');
         Route::get('/kelas', [DataKelas::class, 'tampil'])->name('m-kelas');
+        Route::get('/aktivasi-nilai', [AktivasiPenilaian::class, 'tampil'])->name('aktivasi-nilai');
     });
 
     Route::prefix('/dashboard')->group(function () {

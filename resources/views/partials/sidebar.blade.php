@@ -44,6 +44,7 @@
                         <a href="{{ route('master-mapel') }}" class="sidebar dd-kiri fs-5 ling">Mapel</a>
                         <a href="{{ route('atur-tasem') }}" class="sidebar ling dd-kiri fs-5 ling">Aktivasi TA</a>
                         <a href="{{ route('atur-periode') }}" class="sidebar ling dd-kiri fs-5">Atur Periode</a>
+                        <a href="{{ route('aktivasi-nilai') }}" class="sidebar ling dd-kiri fs-5">Atur Penilaian</a>
                     </div>
                     <br>
                 </div>
@@ -100,6 +101,7 @@
                             style="text-decoration:none">Jurusan</a>
                         <a href="{{ route('m-kelas') }}" class="sidebar dd-kiri fs-5"
                             style="text-decoration:none">Kelas</a>
+                        <a href="{{ route('aktivasi-nilai') }}" class="sidebar ling dd-kiri fs-5">Atur Penilaian</a>
                     </div>
                     <br>
                 </div>
