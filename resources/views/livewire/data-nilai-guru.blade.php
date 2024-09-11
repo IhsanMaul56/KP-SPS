@@ -1,6 +1,7 @@
 <div class="card-body h-100 overflow-auto" id="shadow">
     @include('livewire.modal-persentase')
     @include('livewire.modal-predikat')
+    @if (now() >= $periode->start_date && now() <= $periode->end_date)
     <div class="row">
         <div class="col">
             @if (Session::has('berhasil'))
@@ -83,10 +84,9 @@
                     <th>AKSI</th>
                 </thead>
                 <tbody>
-                    <?php $no = 1; ?>
                     @foreach ($siswa as $item)
                         <tr>
-                            <td>{{ $no++ }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nis }}</td>
                             <td class="text-start">{{ $item->nama_siswa }}</td>
                             <td>{{ $item->nilai_akhir }}</td>
@@ -127,4 +127,11 @@
         </div>
         @endif
     </div>
+    @else
+    <div class="col text-center">
+        <hr>
+        <img src="{{URL::asset('/img/warning.png')}}" alt="warning" class="mb-3" width="125px;">
+        <p>Periode Input Nilai Belum Dimulai</p>
+    </div>
+    @endif
 </div>

@@ -79,7 +79,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/aktivasi-semester/aktif', AturTahunSemester::class)->name('atur-tasem-aktif');
         Route::post('/admin/aktivasi-semester/aktif', [AturTahunSemester::class, 'updateStatus'])->name('aktifasi-tahun-akademik');
         Route::put('/admin/aktivasi-semester', [AturTahunSemester::class, 'updateStatus'])->name('update-status');
-        Route::get('/admin/atur-periode', AturPeriode::class)->name('atur-periode');
         Route::get('/aktivasi-nilai', [AktivasiPenilaian::class, 'tampil'])->name('aktivasi-nilai');
     });
 
