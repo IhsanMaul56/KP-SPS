@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\data_kelas;
 use Livewire\Component;
 use App\Models\data_siswa;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Models\tahun_akademik;
@@ -22,6 +23,7 @@ class GuruWali extends Component
     public $wali;
     public $kelas;
     public $tingkat;
+    public $periode;
     public $akademik;
     public $dataSiswa;
     public $siswaSelected = [];
@@ -36,6 +38,8 @@ class GuruWali extends Component
                 ->where('wali_id', '=', $user->guru_id)
                 ->select('data_walis.*')
                 ->get();
+
+            $this->periode = Periode::where('nama', 'naik_kelas')->first();
             
             if($this->wali){
                 $kelasId = $this->wali->pluck('kelas_id')->toArray();

@@ -18,9 +18,13 @@
                     <input type="text" class="form-control mb-3" wire:model="search" placeholder="Cari" style="width: max-content;">
                 </div>
                 <div class="col text-end">
-                    <button type="button" class="btn btn-primary" wire:click='naikKelas'>
-                        <i class="bi bi-person-fill-up" style="padding-right:5px;"></i>Naik Kelas
-                    </button>
+                    @if (isset($periode))
+                        @if (now() >= $periode->start_date && now() <= $periode->end_date)
+                        <button type="button" class="btn btn-primary" wire:click='naikKelas'>
+                            <i class="bi bi-person-fill-up" style="padding-right:5px;"></i>Naik Kelas
+                        </button>
+                        @endif
+                    @endif
                 </div>
             </div>
             @if (Session::has('berhasil'))

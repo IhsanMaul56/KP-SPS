@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\BobotNilai;
 use App\Exports\NilaiExport;
 use App\Imports\NilaiImport;
+use App\Models\Periode;
 use App\Models\PredikatNilai;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ class DataNilaiGuru extends Component
     public $guru;
     public $jadwal;
     public $siswa;
+    public $periode;
     public $tingkat = [];
     public $kelas = [];
     public $mapelSelected = "";
@@ -42,6 +44,8 @@ class DataNilaiGuru extends Component
                 ->where('pengampu_id', '=', $user->guru_id)
                 ->select('data_pengampus.*')
                 ->get();
+
+            $this->periode = Periode::where('nama', 'input_nilai')->first();
 
             $this->mapelList = $this->guru->pluck('nama_mapel', 'kode_pengampu');
 

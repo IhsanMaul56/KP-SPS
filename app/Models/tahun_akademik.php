@@ -38,6 +38,10 @@ class tahun_akademik extends Model
         return $this->hasOne(data_siswa::class, 'tahun_id', 'kode_tahun');
     }
 
+    public function periode() : HasMany{
+        return $this->hasMany(Periode::class, 'tahun_id', 'kode_tahun');
+    }
+
     //invers cardinality
     public function semester() : BelongsTo{
         return $this->belongsTo(DataSemester::class, 'semester_id', 'kode_semester');
